@@ -130,8 +130,45 @@ public class ReferenciaLogica {
                 respuesta += " AND refe_estado='" + objDTO.getRefe_estado() + "'";
             }
             if (!objDTO.getRefe_came().equalsIgnoreCase("-1")) {
+                if (objDTO.getRefe_came().equalsIgnoreCase("8")) {
+                    respuesta += " AND refe_came <=8 ";
+                } else if (objDTO.getRefe_came().equalsIgnoreCase("13")) {
+                    respuesta += " AND (refe_came >8 AND refe_came <= 13)  ";
+                } else {
+                    respuesta += " AND refe_came > 13 ";
+                }
 
-                respuesta += " AND refe_came='" + objDTO.getRefe_estado() + "'";
+            }
+
+            if (!objDTO.getRefe_memori().equalsIgnoreCase("-1")) {
+                if (objDTO.getRefe_memori().equalsIgnoreCase("16")) {
+                    respuesta += " AND refe_memori <= 16 ";
+                } else if (objDTO.getRefe_memori().equalsIgnoreCase("16")) {
+                    respuesta += " AND (refe_came > 16 AND refe_came <= 32 )  ";
+                } else {
+                    respuesta += " AND refe_came > 32 ";
+                }
+
+            }
+
+            if (!objDTO.getRefe_memori().equalsIgnoreCase("-1")) {
+                if (objDTO.getRefe_memori().equalsIgnoreCase("16")) {
+                    respuesta += " AND refe_memori <= 16 ";
+                } else if (objDTO.getRefe_memori().equalsIgnoreCase("16")) {
+                    respuesta += " AND (refe_memori > 16 AND refe_memori <= 32 )  ";
+                } else {
+                    respuesta += " AND refe_memori > 32 ";
+                }
+
+            }
+
+            if (!objDTO.getRefe_pantalla().equalsIgnoreCase("-1")) {
+                if (objDTO.getRefe_pantalla().equalsIgnoreCase("4")) {
+                    respuesta += " AND refe_memori <= 4 ";
+                }else{
+                    respuesta+=" AND refe_memori > 4 " ;
+                }
+
             }
         } catch (Exception e) {
             e.printStackTrace();

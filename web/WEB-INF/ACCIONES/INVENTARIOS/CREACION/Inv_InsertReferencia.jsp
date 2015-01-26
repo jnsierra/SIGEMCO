@@ -6,6 +6,7 @@
     <head>
         <s:include value="/WEB-INF/NEWTEMPLATE/cabecera.jsp"></s:include>
          <script type="text/javascript" src="JS/INVENTARIOS/Inv_UpdReferencia.js"></script>
+         <script type="text/javascript" src="JS/UTILIDADES/Validaciones.js"></script>
         </head>
         <body>
         <s:div cssClass="header">
@@ -50,20 +51,20 @@
                         <tbody>
                             <tr>
                                 <td>Descripción:</td>
-                                <td><s:textfield name="referencia.refe_desc" cssClass="form-control" /></td>
+                                <td><s:textfield name="referencia.refe_desc" cssClass="form-control"  /></td>
                             </tr>
                          
                             <tr>
                                 <td>Camara (mpx):</td>
-                                <td><s:textfield name="referencia.refe_came" cssClass="form-control" /></td>
+                                <td><s:textfield name="referencia.refe_came" cssClass="form-control" onkeypress="return validaNumeros(event)"/></td>
                             </tr>
                             <tr>
                                 <td>Memoria interna (GB):</td>
-                                <td><s:textfield name="referencia.refe_memori" cssClass="form-control" /></td>
+                                <td><s:textfield name="referencia.refe_memori" cssClass="form-control" onkeypress="return validaNumeros(event)" /></td>
                             </tr>
                             <tr>
                                 <td>Pantalla (pulgadas):</td>
-                                <td><s:textfield name="referencia.refe_pantalla" cssClass="form-control" /></td>
+                                <td><s:textfield name="referencia.refe_pantalla" cssClass="form-control" onkeypress="return validaNumeros(event)" /></td>
                             </tr>
 
                         </tbody>                        

@@ -83,6 +83,7 @@ public class ReferenciaDao {
      * Funcion la cual devuelve el query para obtener todas las categorias
      * parametrizadas en el sitema
      *
+     * @param filtros
      * @return
      */
     public String consultaFilros(String filtros) {

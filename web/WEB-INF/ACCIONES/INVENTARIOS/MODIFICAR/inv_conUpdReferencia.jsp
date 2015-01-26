@@ -6,6 +6,7 @@
     <head>
         <s:include value="/WEB-INF/NEWTEMPLATE/cabecera.jsp"></s:include>
         <script type="text/javascript" src="<%=RutaSitio%>/JS/INVENTARIOS/Inv_UpdReferencia.js"></script>
+        <script type="text/javascript" src="<%=RutaSitio%>/JS/UTILIDADES/Validaciones.js"></script>
 
     </head>
     <body>
@@ -59,15 +60,15 @@
                             </tr>
                             <tr>
                                 <td><h4>Camara (mpx):</h4></td>
-                                <td><s:textfield label="Camara (mpx)" name="referencia.refe_came" required="true" cssClass="form-control"/></td>
+                                <td><s:textfield label="Camara (mpx)" name="referencia.refe_came" required="true" cssClass="form-control" onkeypress="return validaNumeros(event)"/></td>
                             </tr>
                             <tr>
                                 <td><h4>Memoria (GB):</h4></td>
-                                <td><s:textfield label="Memoria (GB):" name="referencia.refe_memori" required="true" maxLength="10" cssClass="form-control"/></td>
+                                <td><s:textfield label="Memoria (GB):" name="referencia.refe_memori" required="true" maxLength="10" cssClass="form-control" onkeypress="return validaNumeros(event)"/></td>
                             </tr>
                             <tr>
                                 <td><h4>Pantalla (Pulgadas):</h4></td>
-                                <td><s:textfield label="Pantalla (Pulgadas):" name="referencia.refe_pantalla" required="true" maxLength="10" cssClass="form-control"/></td>
+                                <td><s:textfield label="Pantalla (Pulgadas):" name="referencia.refe_pantalla" required="true" maxLength="10" cssClass="form-control" onkeypress="return validaNumeros(event)"/></td>
                             </tr>
 
                             <tr>
