@@ -64,7 +64,7 @@
                             </tr>
                             <tr>
                                 <td>Pantalla (pulgadas):</td>
-                                <td><s:textfield name="referencia.refe_pantalla" cssClass="form-control" onkeypress="return validaNumeros(event)" /></td>
+                                <td><s:textfield name="referencia.refe_pantalla" cssClass="form-control"   onkeypress="return validaNumeros(event)"  /></td>
                             </tr>
 
                         </tbody>                        

@@ -65,13 +65,30 @@ public class ManejoString {
         String[] vecFecha = fecha.split(separador);
         String[] vecFormato = formato.split(separador);
         Map<String, String> mapFecha = new HashMap<String, String>();
-        for(int i = 0 ; i<vecFecha.length; i++){
+        for (int i = 0; i < vecFecha.length; i++) {
             mapFecha.put(vecFormato[i], vecFecha[i]);
         }
         fechaFinal = mapFecha.get("dd");
-        fechaFinal += "/"+ mapFecha.get("mm");
-        fechaFinal += "/"+ mapFecha.get("yyyy");
+        fechaFinal += "/" + mapFecha.get("mm");
+        fechaFinal += "/" + mapFecha.get("yyyy");
         return fechaFinal;
+    }
+    
+    /**
+     * Funcion para quitar puntos en una cadena
+     * @param cadena que se va a reemplazar
+     * @return Cadena sin puntos
+     */
+
+    public String eliminaMascaraMoneda(String cadena) {
+        String resultado = "0.0";
+        try {
+            resultado = cadena.replaceAll("\\.", "");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return resultado;
+
     }
 
 }
