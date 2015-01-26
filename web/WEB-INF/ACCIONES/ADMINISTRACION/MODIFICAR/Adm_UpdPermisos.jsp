@@ -209,7 +209,7 @@
                                                     <tr>
                                                         <td>Ingreso Celular</td>
                                                         <td><input type="checkbox" value="InPr7" id="InPr7" /></td>
-                                                        <td>Consulta General</td>
+                                                        <td>Consulta Equipos Celulares</td>
                                                         <td><input type="checkbox" value="InPr8" id="InPr8" /></td>
                                                     </tr>
                                                 </tbody>

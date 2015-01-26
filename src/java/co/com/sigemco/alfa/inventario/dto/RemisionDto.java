@@ -25,6 +25,12 @@ public class RemisionDto {
     private String rmce_tius_sal;
     private String rmce_codigo;
     private String rmce_sede;
+    private String rmce_estado;
+    private String rmce_pagado;
+    private String rmce_comdev;
+    //Fechas necesarias para crear las sentencias con los beteewen
+    private String valorBeteween;
+    private String fechaBeteween;
 
     public String getRmce_rmce() {
         return rmce_rmce;
@@ -41,6 +47,7 @@ public class RemisionDto {
     public void setRmce_refe(String rmce_refe) {
         this.rmce_refe = rmce_refe;
     }
+
     public String getRmce_imei() {
         return rmce_imei;
     }
@@ -137,4 +144,43 @@ public class RemisionDto {
         this.rmce_sede = rmce_sede;
     }
 
+    public String getRmce_estado() {
+        return rmce_estado;
+    }
+
+    public void setRmce_estado(String rmce_estado) {
+        this.rmce_estado = rmce_estado;
+    }
+
+    public String getRmce_pagado() {
+        return rmce_pagado;
+    }
+
+    public void setRmce_pagado(String rmce_pagado) {
+        this.rmce_pagado = rmce_pagado;
+    }
+
+    public String getRmce_comdev() {
+        return rmce_comdev;
+    }
+
+    public void setRmce_comdev(String rmce_comdev) {
+        this.rmce_comdev = rmce_comdev;
+    }
+
+    public String getValorBeteween() {
+        return valorBeteween;
+    }
+
+    public void setValorBeteween(String valorBeteween) {
+        this.valorBeteween = valorBeteween;
+    }
+
+    public String getFechaBeteween() {
+        return fechaBeteween;
+    }
+
+    public void setFechaBeteween(String fechaBeteween) {
+        this.fechaBeteween = fechaBeteween;
+    }
 }

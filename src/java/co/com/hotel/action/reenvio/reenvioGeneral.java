@@ -64,6 +64,7 @@ public class reenvioGeneral extends ActionSupport implements UsuarioHabilitado, 
     public static final int INV_CON_MOVINVENTARIO = 244;
     //Paginas de Celulares
     public static final int INV_INS_CELULAR = 251;
+    public static final int INV_CON_CELULAR = 254;
     //Paginas Referencias de celulares
     public static final int INV_INS_REFERENCIA = 261;
     public static final int INV_UPD_REFERENCIA = 262;
@@ -98,6 +99,7 @@ public class reenvioGeneral extends ActionSupport implements UsuarioHabilitado, 
     private Map<String, String> usuarioImplicado;
     //Tipo plan
     private Map<String, String> tipoPlan;
+    private Map<String, String> estadoEqCeluar; //Estado en el cual se encuentra el equipo celular
 
     private String modifica;
     private String bandera;
@@ -227,12 +229,29 @@ public class reenvioGeneral extends ActionSupport implements UsuarioHabilitado, 
                 case INV_INS_CELULAR:
                     sedeLogica = new Adm_SedeLogica();
                     this.sedes = sedeLogica.obtieneSedes();
-                    this.tipoPlan = new HashMap<String, String>();                    
-                    this.tipoPlan.put("ps", "dos");
-                    this.tipoPlan.put("pr", "uno");
+                    this.tipoPlan = new HashMap<String, String>();
+                    this.tipoPlan.put("ps", "POSTPAGO");
+                    this.tipoPlan.put("pr", "PREPAGO");
                     refeLogica = new ReferenciaLogica();
                     this.referencias = refeLogica.obtieneIdDescrReferenciaActivos();
                     nextPage = "inv_ins_celular";
+                    break;
+                case INV_CON_CELULAR:
+                    sedeLogica = new Adm_SedeLogica();
+                    this.sedes = sedeLogica.obtieneSedes();
+                    this.tipoPlan = new HashMap<String, String>();
+                    this.tipoPlan.put("ps", "POSTPAGO");
+                    this.tipoPlan.put("pr", "PREPAGO");
+                    refeLogica = new ReferenciaLogica();
+                    this.referencias = refeLogica.obtieneIdDescrReferenciaActivos();
+                    this.yesNo = new HashMap<String, String>();
+                    this.yesNo.put("S", "Si");
+                    this.yesNo.put("N", "No");
+                    this.estadoEqCeluar = new HashMap<String, String>();
+                    this.estadoEqCeluar.put("E", "STAND");
+                    this.estadoEqCeluar.put("V", "VENDIDO");
+                    this.estadoEqCeluar.put("D", "DEVUELTO");
+                    nextPage = "inv_con_celular";
                     break;
                 case FAC_UPD_FACTURA:
                     nextPage = "fac_upd_factura";
@@ -281,9 +300,6 @@ public class reenvioGeneral extends ActionSupport implements UsuarioHabilitado, 
                     this.memoria.put("16", "MENOS DE 16");
                     this.memoria.put("32", "ENTRE 16 Y 32");
                     this.memoria.put("33", "MAS DE 33");
-
-
-                    
 
                     this.estadoMap = new HashMap<String, String>();
                     this.estadoMap.put("A", "Activo");
@@ -522,5 +538,12 @@ public class reenvioGeneral extends ActionSupport implements UsuarioHabilitado, 
     public void setReferencias(Map<String, String> referencias) {
         this.referencias = referencias;
     }
-    
+
+    public Map<String, String> getEstadoEqCeluar() {
+        return estadoEqCeluar;
+    }
+
+    public void setEstadoEqCeluar(Map<String, String> estadoEqCeluar) {
+        this.estadoEqCeluar = estadoEqCeluar;
+    }
 }

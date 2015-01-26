@@ -25,6 +25,9 @@ public class RemisionDao {
     private String rmce_tius_sal;
     private String rmce_codigo;
     private String rmce_sede;
+    private String rmce_estado;
+    private String rmce_pagado;
+    private String rmce_comdev;
 
     public String getRmce_rmce() {
         return rmce_rmce;
@@ -138,6 +141,29 @@ public class RemisionDao {
         this.rmce_refe = rmce_refe;
     }
 
+    public String getRmce_estado() {
+        return rmce_estado;
+    }
+
+    public void setRmce_estado(String rmce_estado) {
+        this.rmce_estado = rmce_estado;
+    }
+
+    public String getRmce_pagado() {
+        return rmce_pagado;
+    }
+
+    public void setRmce_pagado(String rmce_pagado) {
+        this.rmce_pagado = rmce_pagado;
+    }
+
+    public String getRmce_comdev() {
+        return rmce_comdev;
+    }
+
+    public void setRmce_comdev(String rmce_comdev) {
+        this.rmce_comdev = rmce_comdev;
+    }
     /**
      * Funcion la cual retorna el query pra realizar la insercion a la base de
      * datos de remisiones de celulares

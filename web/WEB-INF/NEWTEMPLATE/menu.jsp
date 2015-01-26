@@ -124,11 +124,13 @@
                             <%}%>
                         </ul>
                     </li>
-                    <%}if(permisos.indexOf(".InPr7.") >= 0 ){%>
+                    <%}if(permisos.indexOf(".InPr7.") >= 0  || permisos.indexOf(".InPr8.") >= 0 ){%>
                     <li><a href="#">Celulares</a>
                         <ul class="dropdown-menu">
                             <%if(permisos.indexOf(".InPr7.")>=0){%>
                             <li><a href="reenvioGeneral.action?accion=251">Ingreso</a></li>
+                            <%}if(permisos.indexOf(".InPr8.")>=0){%>
+                            <li><a href="reenvioGeneral.action?accion=254">Consultas</a></li>
                             <%}%>
                         </ul>
                     </li>
