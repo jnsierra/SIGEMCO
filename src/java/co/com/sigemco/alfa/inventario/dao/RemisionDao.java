@@ -164,6 +164,7 @@ public class RemisionDao {
     public void setRmce_comdev(String rmce_comdev) {
         this.rmce_comdev = rmce_comdev;
     }
+
     /**
      * Funcion la cual retorna el query pra realizar la insercion a la base de
      * datos de remisiones de celulares
@@ -185,6 +186,21 @@ public class RemisionDao {
         insert += ",'" + this.getRmce_tius_ent() + "'";
         insert += ",'" + this.getRmce_sede() + "')";
         return insert;
+    }
+
+    /**
+     * Funcion la cual se encarga de generar el sql para la consulta general por
+     * filtros
+     *
+     * @return
+     */
+    public String consultaGeneralXFiltros() {
+        String select = "";
+        select += "SELECT rmce_rmce, rmce_refe, rmce_imei, rmce_iccid, to_char(rmce_valor,'LFM9,999,999.99') rmce_valor , rmce_comision,  \n";
+        select += "       rmce_tppl, rmce_fcve, rmce_fcsl, rmce_fcen, rmce_tius_ent, rmce_tius_sal,\n";
+        select += "       rmce_codigo, rmce_sede, rmce_estado, rmce_pagado, rmce_comdev            \n";
+        select += "  FROM in_trmce                                                                \n";
+        return select;
     }
 
 }

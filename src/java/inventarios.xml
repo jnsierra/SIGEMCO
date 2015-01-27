@@ -97,5 +97,9 @@
             <result name="success">/WEB-INF/ACCIONES/INVENTARIOS/CREACION/Inv_InsertCelulares.jsp</result>
             <result name="input">/WEB-INF/ACCIONES/INVENTARIOS/CREACION/Inv_InsertCelulares.jsp</result>            
         </action>
+        <action name="inv_consRemPorFiltrosGen" class="co.com.sigemco.alfa.inventario.action.RemisionAction" method="consultaGeneralRem">
+            <result name="success">/WEB-INF/ACCIONES/INVENTARIOS/CONSULTA/Inv_ConsGenRemision.jsp</result>
+            <result name="input">/WEB-INF/ACCIONES/INVENTARIOS/CONSULTA/Inv_ConsGenRemision.jsp</result>
+        </action>        
     </package>
 </struts>

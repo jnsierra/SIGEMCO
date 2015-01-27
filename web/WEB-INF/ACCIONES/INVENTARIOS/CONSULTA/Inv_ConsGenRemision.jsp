@@ -5,9 +5,9 @@
 <html>
     <head>
         <s:include value="/WEB-INF/NEWTEMPLATE/cabecera.jsp"></s:include>
-        <script type="text/javascript" src="<%=RutaSitio %>/JS/INVENTARIOS/Inv_ConsGenRemision.js"></script>
-        </head>
-        <body>
+        <script type="text/javascript" src="<%=RutaSitio%>/JS/INVENTARIOS/Inv_ConsGenRemision.js"></script>
+    </head>
+    <body>
         <s:div cssClass="header">
             <s:include value="/WEB-INF/NEWTEMPLATE/FrameTop.jsp" > 
                 <s:param name="nombre"><s:text name="usuario.apellido"/> <s:text name="usuario.nombre"/></s:param>
@@ -40,6 +40,7 @@
                     </s:if>
                 </div>
                 <s:form action="inv_consRemPorFiltrosGen" id="inv_consRemPorFiltrosGen" theme="simple">
+                    <s:textfield name="accion" cssStyle="display:none" value="consultaGen" />
                     <div class="form-group col-md-12 col-sm-12 col-xs-12 thumbnail">
                         <div class="row">
                             <div class="form-group col-md-12 col-sm-12 col-xs-12 ">
@@ -121,6 +122,54 @@
                         </div>
                     </div>
                 </s:form>
+            </div>
+            <div class="col-md-1 col-sm-0 col-xs-0"></div>
+        </div>
+        <div class="row">
+            <div class="col-md-1 col-sm-0 col-xs-0"></div>
+            <div class="col-md-10 col-sm-12 col-xs-12">
+                <s:if test="listRemisiones != null" >
+                    <table class="table table-hover" style="width: 100%">
+                        <thead>
+                            <tr>
+                                <th>REFERENCIA</th>
+                                <th>TIPO PLAN</th>
+                                <th>SEDE</th>
+                                <th>FECHA VENCIMIENTO</th>
+                                <th>VALOR DE VENTA</th>
+                                <th>ESTADO</th>
+                                <th>PAG. CEN.</th>
+                            </tr>                    
+                        </thead>
+                        <tbody>
+                            <%
+                                int i = 0;
+                            %>
+                            <s:iterator value="listRemisiones">
+                                <%
+                                    if (i % 2 == 0) {
+                                %>
+                                <tr class="active">
+                                    <%
+                                    } else {
+                                    %>
+                                <tr>
+                                    <%
+                                        }
+                                        i++;
+                                    %>
+                                    <td><s:property value="rmce_refe"/></td>
+                                    <td><s:property value="rmce_tppl"/></td>
+                                    <td><s:property value="rmce_sede"/></td>
+                                    <td><s:property value="rmce_fcve"/></td>
+                                    <td><s:property value="rmce_valor"/></td>
+                                    <td><s:property value="rmce_estado"/></td>
+                                    <td><s:property value="rmce_pagado"/></td>
+                                </tr>
+                            </s:iterator>
+                        </tbody>
+                    </table>
+                </s:if>
             </div>
             <div class="col-md-1 col-sm-0 col-xs-0"></div>
         </div>

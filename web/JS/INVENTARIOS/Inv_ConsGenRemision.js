@@ -3,3 +3,7 @@ $(function() {
         format: 'mm/dd/yyyy'
     });
 });
+
+function buscaGeneral(){
+    document.getElementById('inv_consRemPorFiltrosGen').submit();
+}

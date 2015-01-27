@@ -8,6 +8,10 @@ package co.com.sigemco.alfa.inventario.logica;
 import co.com.hotel.persistencia.general.EnvioFunction;
 import co.com.sigemco.alfa.inventario.dao.RemisionDao;
 import co.com.sigemco.alfa.inventario.dto.RemisionDto;
+import java.sql.ResultSet;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
 
 /**
  * Clase encargada de la logica de las remisones del sistema
@@ -25,10 +29,10 @@ public class RemisionLogica {
         String rta = "";
         RemisionDao objDao = null;
         try (EnvioFunction function = new EnvioFunction()) {
-            objDao = poblarDao(objDto);            
-            if(function.enviarUpdate(objDao.insert())){
+            objDao = poblarDao(objDto);
+            if (function.enviarUpdate(objDao.insert())) {
                 rta = "Ok";
-            }else{
+            } else {
                 rta = "Error al insertar";
             }
         } catch (Exception e) {
@@ -38,6 +42,13 @@ public class RemisionLogica {
         return rta;
     }
 
+    /**
+     * Funcion encargada de migrar la informacion de un objeto Dto a un objeto
+     * dao
+     *
+     * @param objDto Objeto Data Transfer Object dto
+     * @return RemisionDao Objeto Data Acces object
+     */
     public RemisionDao poblarDao(RemisionDto objDto) {
         RemisionDao rta = null;
         try {
@@ -56,6 +67,49 @@ public class RemisionLogica {
             rta.setRmce_tius_sal(objDto.getRmce_tius_sal());
             rta.setRmce_codigo(objDto.getRmce_codigo());
             rta.setRmce_sede(objDto.getRmce_sede());
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return rta;
+    }
+
+    /**
+     * Funcion encargada de realizar la logica de la consulta general por
+     * filtros de las remisiones
+     *
+     * @param objTo
+     * @return
+     */
+    public List<RemisionDto> consultaGeneralXFiltros(RemisionDto objTo) {
+        List<RemisionDto> rta = null;
+        RemisionDao objDao = null;
+        objDao = poblarDao(objTo);
+        try (EnvioFunction function = new EnvioFunction()) {
+            ResultSet rs = function.enviarSelect(objDao.consultaGeneralXFiltros());
+            while (rs.next()) {
+                if (rta == null) {
+                    rta = new ArrayList<RemisionDto>();
+                }
+                RemisionDto aux = new RemisionDto();
+                aux.setRmce_rmce(rs.getString("rmce_rmce"));
+                aux.setRmce_refe(rs.getString("rmce_refe"));
+                aux.setRmce_imei(rs.getString("rmce_imei"));
+                aux.setRmce_iccid(rs.getString("rmce_iccid"));
+                aux.setRmce_valor(rs.getString("rmce_valor"));
+                aux.setRmce_comision(rs.getString("rmce_comision"));
+                aux.setRmce_tppl(rs.getString("rmce_tppl"));
+                aux.setRmce_fcve(rs.getString("rmce_fcve"));
+                aux.setRmce_fcsl(rs.getString("rmce_fcsl"));
+                aux.setRmce_fcen(rs.getString("rmce_fcen"));
+                aux.setRmce_tius_ent(rs.getString("rmce_tius_ent"));
+                aux.setRmce_tius_sal(rs.getString("rmce_tius_sal"));
+                aux.setRmce_codigo(rs.getString("rmce_codigo"));
+                aux.setRmce_sede(rs.getString("rmce_sede"));
+                aux.setRmce_estado(rs.getString("rmce_estado"));
+                aux.setRmce_pagado(rs.getString("rmce_pagado"));
+                aux.setRmce_comdev(rs.getString("rmce_comdev"));
+                rta.add(aux);
+            }
         } catch (Exception e) {
             e.printStackTrace();
         }

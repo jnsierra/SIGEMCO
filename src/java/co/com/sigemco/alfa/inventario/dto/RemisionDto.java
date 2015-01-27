@@ -81,6 +81,11 @@ public class RemisionDto {
     }
 
     public String getRmce_tppl() {
+        if(rmce_tppl.equalsIgnoreCase("ps")){
+            return "POSTPAGO";
+        }else if(rmce_tppl.equalsIgnoreCase("pr")){
+            return "PREPAGO";
+        }
         return rmce_tppl;
     }
 
@@ -144,7 +149,14 @@ public class RemisionDto {
         this.rmce_sede = rmce_sede;
     }
 
-    public String getRmce_estado() {
+    public String getRmce_estado(){
+        if(rmce_estado.equalsIgnoreCase("E")){
+            return "STAND";
+        }else if(rmce_estado.equalsIgnoreCase("V")){
+            return "VENDIDO";
+        }else if(rmce_estado.equalsIgnoreCase("D")){
+            return "DEVUELTO";
+        }
         return rmce_estado;
     }
 

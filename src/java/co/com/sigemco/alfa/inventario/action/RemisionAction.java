@@ -15,6 +15,7 @@ import co.com.sigemco.alfa.inventario.logica.ReferenciaLogica;
 import co.com.sigemco.alfa.inventario.logica.RemisionLogica;
 import com.opensymphony.xwork2.ActionSupport;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import org.apache.struts2.interceptor.SessionAware;
 
@@ -33,7 +34,15 @@ public class RemisionAction extends ActionSupport implements UsuarioHabilitado, 
     private Map<String, String> tipoPlan;
     private Map<String, String> sedes;
     private Map<String, String> referencias;
+    private Map<String, String> estadoEqCeluar;
+    private Map<String, String> yesNo;
+    private List<RemisionDto> listRemisiones;
 
+    /**
+     * Funcion encargada de realizar la accion de insertar una remision
+     *
+     * @return
+     */
     public String insertarRemision() {
         RemisionLogica logica = null;
         try {
@@ -51,6 +60,26 @@ public class RemisionAction extends ActionSupport implements UsuarioHabilitado, 
         return SUCCESS;
     }
 
+    /**
+     * Funcion encargada de realizar la consulta general por filtros de las
+     * remisiones
+     *
+     * @return
+     */
+    public String consultaGeneralRem() {
+        RemisionLogica logica = null;
+        try {
+            logica = new RemisionLogica();
+            this.listRemisiones = logica.consultaGeneralXFiltros(remision);
+            if(listRemisiones == null){
+                addActionError("La consulta no arrojo ningun resultado");
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return SUCCESS;
+    }
+
     public void validate() {
         Adm_SedeLogica sedeLogica = new Adm_SedeLogica();
         this.sedes = sedeLogica.obtieneSedes();
@@ -59,29 +88,38 @@ public class RemisionAction extends ActionSupport implements UsuarioHabilitado, 
         tipoPlan.put("ps", "POSTPAGO");
         ReferenciaLogica refeLogica = new ReferenciaLogica();
         this.referencias = refeLogica.obtieneIdDescrReferenciaActivos();
+        this.estadoEqCeluar = new HashMap<String, String>();
+        this.estadoEqCeluar.put("E", "STAND");
+        this.estadoEqCeluar.put("V", "VENDIDO");
+        this.estadoEqCeluar.put("D", "DEVUELTO");
+        this.yesNo = new HashMap<String, String>();
+        this.yesNo.put("S", "Si");
+        this.yesNo.put("N", "No");
         ValidaCampos valida = new ValidaCampos();
-        if (accion.equalsIgnoreCase("insertar")){
-            if(remision.getRmce_refe().equalsIgnoreCase("-1")){
+        if (accion.equalsIgnoreCase("insertar")) {
+            if (remision.getRmce_refe().equalsIgnoreCase("-1")) {
                 addActionError("Debe seleccionar la referencia del Equipo Celular");
-            }else if(!valida.validaNulo(remision.getRmce_imei())){
+            } else if (!valida.validaNulo(remision.getRmce_imei())) {
                 addActionError("El campo Imei no puede ser nulo");
-            }else if(!valida.validaNulo(remision.getRmce_iccid())){
+            } else if (!valida.validaNulo(remision.getRmce_iccid())) {
                 addActionError("El campo iccid no puede ser nulo");
-            }else if(!valida.validaNulo(remision.getRmce_valor())){
+            } else if (!valida.validaNulo(remision.getRmce_valor())) {
                 addActionError("El campo Valor de Venta no puede ser nulo");
-            }else if(!valida.validaNumerico(remision.getRmce_valor())){
+            } else if (!valida.validaNumerico(remision.getRmce_valor())) {
                 addActionError("El campo Valor de venta debe ser numerico");
-            }else if(!valida.validaNulo(remision.getRmce_comision())){
+            } else if (!valida.validaNulo(remision.getRmce_comision())) {
                 addActionError("El campo comision no puede ser nulo");
-            }else if(!valida.validaNumerico(remision.getRmce_comision())){
+            } else if (!valida.validaNumerico(remision.getRmce_comision())) {
                 addActionError("El campo comision debe ser numerico");
-            }else if(remision.getRmce_tppl().equalsIgnoreCase("-1")){
+            } else if (remision.getRmce_tppl().equalsIgnoreCase("-1")) {
                 addActionError("Seleccione el tipo de plan del equipo celular");
-            }else if(!valida.validaNulo(remision.getRmce_fcve())){
+            } else if (!valida.validaNulo(remision.getRmce_fcve())) {
                 addActionError("El campo fecha de Vencimiento no puede ser nulo");
-            }else if(remision.getRmce_sede().equalsIgnoreCase("-1")){
+            } else if (remision.getRmce_sede().equalsIgnoreCase("-1")) {
                 addActionError("Debe seleccionar la sede en cual estara el equipo celular");
             }
+        } else if (accion.equalsIgnoreCase("consultaGen")) {
+            //Aqui hacemos la logica para la consulta general de remisiones
         }
         valida = null;
     }
@@ -140,5 +178,29 @@ public class RemisionAction extends ActionSupport implements UsuarioHabilitado, 
 
     public void setReferencias(Map<String, String> referencias) {
         this.referencias = referencias;
+    }
+
+    public Map<String, String> getEstadoEqCeluar() {
+        return estadoEqCeluar;
+    }
+
+    public void setEstadoEqCeluar(Map<String, String> estadoEqCeluar) {
+        this.estadoEqCeluar = estadoEqCeluar;
+    }
+
+    public Map<String, String> getYesNo() {
+        return yesNo;
+    }
+
+    public void setYesNo(Map<String, String> yesNo) {
+        this.yesNo = yesNo;
+    }
+
+    public List<RemisionDto> getListRemisiones() {
+        return listRemisiones;
+    }
+
+    public void setListRemisiones(List<RemisionDto> listRemisiones) {
+        this.listRemisiones = listRemisiones;
     }
 }
