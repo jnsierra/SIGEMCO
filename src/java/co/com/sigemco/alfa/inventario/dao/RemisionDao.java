@@ -5,6 +5,8 @@
  */
 package co.com.sigemco.alfa.inventario.dao;
 
+import co.com.hotel.validacion.ValidaCampos;
+
 /**
  *
  * @author nicolas
@@ -28,6 +30,7 @@ public class RemisionDao {
     private String rmce_estado;
     private String rmce_pagado;
     private String rmce_comdev;
+    private String valorBeteween;
 
     public String getRmce_rmce() {
         return rmce_rmce;
@@ -165,6 +168,14 @@ public class RemisionDao {
         this.rmce_comdev = rmce_comdev;
     }
 
+    public String getValorBeteween() {
+        return valorBeteween;
+    }
+
+    public void setValorBeteween(String valorBeteween) {
+        this.valorBeteween = valorBeteween;
+    }
+
     /**
      * Funcion la cual retorna el query pra realizar la insercion a la base de
      * datos de remisiones de celulares
@@ -200,7 +211,51 @@ public class RemisionDao {
         select += "       rmce_tppl, rmce_fcve, rmce_fcsl, rmce_fcen, rmce_tius_ent, rmce_tius_sal,\n";
         select += "       rmce_codigo, rmce_sede, rmce_estado, rmce_pagado, rmce_comdev            \n";
         select += "  FROM in_trmce                                                                \n";
+        select += armaWhereObjDao();
         return select;
+    }
+
+    public String armaWhereObjDao() {
+        String rta = "where 1= 1\n";
+        ValidaCampos valida = new ValidaCampos();
+        try {
+            if (valida.validaNulo(this.rmce_refe) && !this.getRmce_refe().equalsIgnoreCase("-1")) {
+                rta += "and rmce_refe = " + this.getRmce_refe() + "\n";
+            }
+            if (valida.validaNulo(this.getRmce_tppl()) && !this.getRmce_tppl().equalsIgnoreCase("-1")) {
+                rta += "and rmce_tppl = '" + this.getRmce_tppl() + "'\n";
+            }
+            if (valida.validaNulo(this.getRmce_sede()) && !this.getRmce_sede().equalsIgnoreCase("-1")) {
+                rta += "and rmce_sede = " + this.getRmce_sede() + "\n";
+            }
+            if (valida.validaNulo(this.getRmce_pagado()) && !this.getRmce_pagado().equalsIgnoreCase("-1")) {
+                rta += "and rmce_pagado = '" + this.getRmce_pagado() + "'\n";
+            }
+            if (valida.validaNulo(this.getRmce_estado()) && !this.getRmce_estado().equalsIgnoreCase("-1")) {
+                rta += "and rmce_estado = '" + this.getRmce_estado() + "'\n";
+            }
+            if (valida.validaNulo(this.getRmce_valor()) && !this.getRmce_valor().equalsIgnoreCase("0")) {
+                if (valida.validaNulo(this.valorBeteween) && !this.getValorBeteween().equalsIgnoreCase("0")) {
+                    rta += "and rmce_valor BETWEEN " + this.getRmce_valor() + " and " + this.getValorBeteween() + "\n";
+                } else {
+                    rta += "and rmce_valor <= " + this.getRmce_valor() + "\n";
+                }
+            }
+            if (valida.validaNulo(this.getValorBeteween()) && !this.getValorBeteween().equalsIgnoreCase("-1")) {
+                rta += "and rmce_valor >= " + this.getValorBeteween() + "\n";
+            }
+            if (valida.validaNulo(this.getRmce_iccid()) && !this.getRmce_iccid().equalsIgnoreCase("")) {
+                rta += "and upper(rmce_iccid) like upper('%" + this.getRmce_iccid() + "%') \n";
+            }
+            if (valida.validaNulo(this.getRmce_imei()) && !this.getRmce_imei().equalsIgnoreCase("")) {
+                rta += "and upper(rmce_imei) like upper('%" + this.getRmce_imei().trim() + "%') \n";
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return rta;
     }
 
 }

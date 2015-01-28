@@ -31,6 +31,8 @@ public class RemisionDto {
     //Fechas necesarias para crear las sentencias con los beteewen
     private String valorBeteween;
     private String fechaBeteween;
+    //
+    private String filtros;  // Variable la cual me indicara si el dto es para mostrar al usuario o es para la base de datos
 
     public String getRmce_rmce() {
         return rmce_rmce;
@@ -81,10 +83,12 @@ public class RemisionDto {
     }
 
     public String getRmce_tppl() {
-        if(rmce_tppl.equalsIgnoreCase("ps")){
-            return "POSTPAGO";
-        }else if(rmce_tppl.equalsIgnoreCase("pr")){
-            return "PREPAGO";
+        if (this.filtros.equalsIgnoreCase("S")) {
+            if (rmce_tppl.equalsIgnoreCase("ps")) {
+                return "POSTPAGO";
+            } else if (rmce_tppl.equalsIgnoreCase("pr")) {
+                return "PREPAGO";
+            }
         }
         return rmce_tppl;
     }
@@ -150,12 +154,14 @@ public class RemisionDto {
     }
 
     public String getRmce_estado(){
-        if(rmce_estado.equalsIgnoreCase("E")){
-            return "STAND";
-        }else if(rmce_estado.equalsIgnoreCase("V")){
-            return "VENDIDO";
-        }else if(rmce_estado.equalsIgnoreCase("D")){
-            return "DEVUELTO";
+        if (this.filtros.equalsIgnoreCase("S")) {
+            if (rmce_estado.equalsIgnoreCase("E")) {
+                return "STAND";
+            } else if (rmce_estado.equalsIgnoreCase("V")) {
+                return "VENDIDO";
+            } else if (rmce_estado.equalsIgnoreCase("D")) {
+                return "DEVUELTO";
+            }
         }
         return rmce_estado;
     }
@@ -195,4 +201,13 @@ public class RemisionDto {
     public void setFechaBeteween(String fechaBeteween) {
         this.fechaBeteween = fechaBeteween;
     }
+
+    public String getFiltros() {
+        return filtros;
+    }
+
+    public void setFiltros(String filtros) {
+        this.filtros = filtros;
+    }
+
 }

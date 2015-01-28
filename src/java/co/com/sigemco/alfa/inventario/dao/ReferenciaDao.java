@@ -103,7 +103,6 @@ public class ReferenciaDao {
         select += "SELECT refe_refe, refe_desc, refe_estado, refe_came, refe_memori,refe_pantalla \n";
         select += "  FROM in_trefe                                                 \n";
         select += " WHERE refe_refe = " + this.refe_refe + " \n";
-        System.out.println("Select "+select);
         return select;
     }
 

@@ -32,7 +32,6 @@ public class Adm_SedeLogica {
         try {
             String sql = "INSERT INTO EM_TSEDE (SEDE_NOMBRE,SEDE_DIRECCION,SEDE_TELEFONO,SEDE_TIUS) VALUES "
                     + "('" + objTO.getSede_nombre() + "','" + objTO.getSede_direccion() + "','" + objTO.getSede_telefono() + "','" + UsuarioLogeado + "')";
-            System.out.println("Sql" + sql);
             boolean valida = function.enviarUpdate(sql);
             if (!valida) {
                 resultado = "Error";
@@ -47,6 +46,15 @@ public class Adm_SedeLogica {
         return resultado;
     }
 
+    /**
+     * Funcion encargada de recuperar en un arraylist todas la sedes
+     * parametrizadas basandose en una serie de filtros proporcionados por el
+     * usuario
+     *
+     * @param filtro
+     * @return
+     * @throws SQLException
+     */
     public ArrayList<Sede> consultaGeneralSede(String filtro) throws SQLException {
         ArrayList<Sede> resultado = null;
         String sql = "select sede_sede id, sede_nombre nombre, sede_direccion direccion, sede_estado estado, sede_telefono telefono\n";
@@ -61,7 +69,6 @@ public class Adm_SedeLogica {
         }
         EnvioFunction function = new EnvioFunction();
         ResultSet rs = null;
-        System.out.println("Este es el select" + sql);
         rs = function.enviarSelect(sql);
         function.cerrarConexion();
         if (rs != null) {
@@ -110,37 +117,48 @@ public class Adm_SedeLogica {
         return rta;
     }
 
+    /**
+     * Funcion encargada de actualizar una sede basandose en el id de la sede
+     *
+     * @param objTo
+     * @return
+     */
     public String actualizaSede(Sede objTo) {
         String sql = "";
         String rta = "Ok";
-        
-        try(EnvioFunction function = new EnvioFunction();) {
-           sql=sql.concat("UPDATE em_tsede SET sede_nombre = '"
-                   .concat(objTo.getSede_nombre()).concat("',")
-                   .concat("sede_direccion = '").concat(objTo.getSede_direccion()).concat("',")
-                   .concat("sede_telefono = '").concat(objTo.getSede_telefono()).concat("',")
-                   .concat( "sede_estado= '").concat(objTo.getSede_estado()).concat("'")
-                   .concat(" WHERE sede_sede = ").concat(objTo.getSede_sede())
+
+        try (EnvioFunction function = new EnvioFunction();) {
+            sql = sql.concat("UPDATE em_tsede SET sede_nombre = '"
+                    .concat(objTo.getSede_nombre()).concat("',")
+                    .concat("sede_direccion = '").concat(objTo.getSede_direccion()).concat("',")
+                    .concat("sede_telefono = '").concat(objTo.getSede_telefono()).concat("',")
+                    .concat("sede_estado= '").concat(objTo.getSede_estado()).concat("'")
+                    .concat(" WHERE sede_sede = ").concat(objTo.getSede_sede())
             );
-            System.out.println("sql"+sql);
-             boolean validaUpd = function.enviarUpdate(sql);
-                if(!validaUpd){
-                    rta = "Error al actualizar en la base de datos";
-                }
+            boolean validaUpd = function.enviarUpdate(sql);
+            if (!validaUpd) {
+                rta = "Error al actualizar en la base de datos";
+            }
         } catch (Exception e) {
             e.printStackTrace();
         }
         return rta;
     }
-    
-    public Sede consultarSedeEspecifico(String id){
+
+    /**
+     * Funcion encargada de recuperar una sede en especifico basandose en el
+     * identificador de la tabla de sedes
+     *
+     * @param id
+     * @return
+     */
+    public Sede consultarSedeEspecifico(String id) {
         Sede sede = null;
         String sql = "";
-        try(EnvioFunction function = new EnvioFunction();){
-            sql= "SELECT sede_sede, sede_nombre, sede_direccion, sede_telefono, sede_fecin,sede_tius, sede_estado FROM em_tsede WHERE sede_sede = '"+id+"' ";
-            System.out.println("SQL:"+sql);
+        try (EnvioFunction function = new EnvioFunction();) {
+            sql = "SELECT sede_sede, sede_nombre, sede_direccion, sede_telefono, sede_fecin,sede_tius, sede_estado FROM em_tsede WHERE sede_sede = '" + id + "' ";
             ResultSet rs = function.enviarSelect(sql);
-            while(rs.next()){
+            while (rs.next()) {
                 sede = new Sede();
                 sede.setSede_sede(rs.getString("sede_sede"));
                 sede.setSede_nombre(rs.getString("sede_nombre"));
@@ -150,12 +168,11 @@ public class Adm_SedeLogica {
                 sede.setSede_tius(rs.getString("sede_tius"));
                 sede.setSede_estado(rs.getString("sede_estado"));
             }
-            
-        }catch(Exception e){
+
+        } catch (Exception e) {
             e.printStackTrace();
         }
         return sede;
-        
     }
 
 }

@@ -5,8 +5,11 @@
  */
 package co.com.sigemco.alfa.inventario.logica;
 
+import co.com.hotel.dto.Sede;
+import co.com.hotel.logica.sede.Adm_SedeLogica;
 import co.com.hotel.persistencia.general.EnvioFunction;
 import co.com.sigemco.alfa.inventario.dao.RemisionDao;
+import co.com.sigemco.alfa.inventario.dto.ReferenciaDTO;
 import co.com.sigemco.alfa.inventario.dto.RemisionDto;
 import java.sql.ResultSet;
 import java.util.ArrayList;
@@ -29,6 +32,7 @@ public class RemisionLogica {
         String rta = "";
         RemisionDao objDao = null;
         try (EnvioFunction function = new EnvioFunction()) {
+            objDto.setFiltros("N");
             objDao = poblarDao(objDto);
             if (function.enviarUpdate(objDao.insert())) {
                 rta = "Ok";
@@ -67,6 +71,9 @@ public class RemisionLogica {
             rta.setRmce_tius_sal(objDto.getRmce_tius_sal());
             rta.setRmce_codigo(objDto.getRmce_codigo());
             rta.setRmce_sede(objDto.getRmce_sede());
+            rta.setRmce_pagado(objDto.getRmce_pagado());
+            rta.setRmce_estado(objDto.getRmce_estado());
+            rta.setValorBeteween(objDto.getValorBeteween());
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -108,6 +115,19 @@ public class RemisionLogica {
                 aux.setRmce_estado(rs.getString("rmce_estado"));
                 aux.setRmce_pagado(rs.getString("rmce_pagado"));
                 aux.setRmce_comdev(rs.getString("rmce_comdev"));
+                //Logica para obtener la descripcion de la referencia
+                ReferenciaLogica logicaRef = new ReferenciaLogica();
+                ReferenciaDTO objRef = new ReferenciaDTO();
+                objRef.setRefe_refe(aux.getRmce_refe());
+                objRef = logicaRef.traeReferenciaEspecifica(objRef);
+                logicaRef= null;
+                aux.setRmce_refe(objRef.getRefe_desc());
+                //Logica para obtener el nombre de la sede
+                Adm_SedeLogica logicaSede = new Adm_SedeLogica();
+                Sede sedeAux = logicaSede.consultarSedeEspecifico(aux.getRmce_sede());
+                aux.setRmce_sede(sedeAux.getSede_nombre());
+                logicaSede = null;
+                aux.setFiltros("S");
                 rta.add(aux);
             }
         } catch (Exception e) {

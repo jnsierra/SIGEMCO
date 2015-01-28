@@ -132,8 +132,8 @@
                     <table class="table table-hover" style="width: 100%">
                         <thead>
                             <tr>
-                                <th>REFERENCIA</th>
-                                <th>TIPO PLAN</th>
+                                <th>REFERENCIA/IMEI</th>
+                                <th>TIPO PLAN/ICCID</th>
                                 <th>SEDE</th>
                                 <th>FECHA VENCIMIENTO</th>
                                 <th>VALOR DE VENTA</th>
@@ -158,8 +158,12 @@
                                         }
                                         i++;
                                     %>
-                                    <td><s:property value="rmce_refe"/></td>
-                                    <td><s:property value="rmce_tppl"/></td>
+                                    <td><span class="muestraImei"><s:property value="rmce_refe"/><br/></span>
+                                        <span class="imei" style="display: none"><b><s:property value="rmce_imei"/></b></span>
+                                    </td>
+                                    <td><span class="muestraIccid"><s:property value="rmce_tppl"/><br/></span>
+                                        <span class="iccid" style="display: none"><b><s:property value="rmce_iccid"/></b></span>
+                                    </td>
                                     <td><s:property value="rmce_sede"/></td>
                                     <td><s:property value="rmce_fcve"/></td>
                                     <td><s:property value="rmce_valor"/></td>
@@ -173,5 +177,20 @@
             </div>
             <div class="col-md-1 col-sm-0 col-xs-0"></div>
         </div>
+        <script>
+            try {
+                var vmuestraIccid = '<s:text name="muestraIccid" />';
+                if (vmuestraIccid == 'S') {
+                    muestraIccid();
+                }
+            } catch (e) {
+
+            }
+
+            var vMuestraImei = '<s:text name="muestraImei" />';
+            if (vMuestraImei == 'S') {
+                muestraImei();
+            }
+        </script>
     </body>
 </html>

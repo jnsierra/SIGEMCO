@@ -24,6 +24,13 @@ public class ReferenciaLogica {
         return rta;
     }
 
+    /**
+     * Funcion la cual se encarga de realizar la logica para consultar las
+     * referencias
+     *
+     * @param objDTO
+     * @return
+     */
     public ArrayList<ReferenciaDTO> consultaReferencias(ReferenciaDTO objDTO) {
         ResultSet rs = null;
         ReferenciaDTO aux = null;
@@ -53,6 +60,12 @@ public class ReferenciaLogica {
 
     }
 
+    /**
+     * Funcion encargada de actualizar una referecia especifica
+     *
+     * @param objDTO
+     * @return
+     */
     public String actualizaReferenciaEspecifica(ReferenciaDTO objDTO) {
 
         ReferenciaDao objDAO = null;
@@ -72,6 +85,13 @@ public class ReferenciaLogica {
 
     }
 
+    /**
+     * Funcion encargada de traer una referencia especifica por el id de la
+     * referencia
+     *
+     * @param objDTO
+     * @return
+     */
     public ReferenciaDTO traeReferenciaEspecifica(ReferenciaDTO objDTO) {
         ReferenciaDTO result = null;
         ReferenciaDao objDAO = null;
@@ -165,8 +185,8 @@ public class ReferenciaLogica {
             if (!objDTO.getRefe_pantalla().equalsIgnoreCase("-1")) {
                 if (objDTO.getRefe_pantalla().equalsIgnoreCase("4")) {
                     respuesta += " AND refe_memori <= 4 ";
-                }else{
-                    respuesta+=" AND refe_memori > 4 " ;
+                } else {
+                    respuesta += " AND refe_memori > 4 ";
                 }
 
             }

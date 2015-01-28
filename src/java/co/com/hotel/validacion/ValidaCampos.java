@@ -27,9 +27,9 @@ public class ValidaCampos {
             char aux1 = cadena.charAt(i);
             boolean aux2 = Character.isLetter(aux1);
             if (aux2 == false) {
-                if(aux1 != ' '){
+                if (aux1 != ' ') {
                     return false;
-                }                
+                }
             }
         }
         return rta;
@@ -61,8 +61,10 @@ public class ValidaCampos {
             return false;
         }
     }
+
     /**
      * Valida si la cadena tiene espacios en medio
+     *
      * @param String cadena: cadena de caracteres que se desea evaluar
      * @return retorna true si la cadena no contiene espacios
      */
@@ -76,8 +78,10 @@ public class ValidaCampos {
         }
         return rta;
     }
+
     /**
      * Valida si la cadena que se envia es numerico
+     *
      * @param String number: cadena de caracteres que se desea evaluar
      * @return true: si la cadena es un numero
      */
@@ -90,8 +94,8 @@ public class ValidaCampos {
             return false;
         }
     }
-    
-    public boolean validaFloat(String number){
+
+    public boolean validaFloat(String number) {
         try {
             float number2;
             number2 = Float.parseFloat(number);
@@ -100,30 +104,38 @@ public class ValidaCampos {
         }
         return true;
     }
+
     /**
-     * Evalua si el campo es nulo o vacio retorna true si no es nulo y false si es nulo
+     * Evalua si el campo es nulo o vacio retorna true si no es nulo y false si
+     * es nulo
+     *
      * @param campo
-     * @return 
+     * @return
      */
-    public boolean validaNulo(String campo){
-        if(campo.isEmpty() || campo == null || campo.trim().equalsIgnoreCase("")){
+    public boolean validaNulo(String campo) {
+        try {
+            if (campo.isEmpty() || campo == null || campo.trim().equalsIgnoreCase("")) {
+                return false;
+            }
+        } catch (Exception e) {
             return false;
         }
+
         return true;
     }
-    
-    public boolean validaDuplicados(String valor1, String valor2){
+
+    public boolean validaDuplicados(String valor1, String valor2) {
         return valor1.equals(valor2);
     }
-    
-    public boolean validaCantidadCaracteres(String valor, int valMax, int valMin){
+
+    public boolean validaCantidadCaracteres(String valor, int valMax, int valMin) {
         int tam = valor.length();
-        if(valMax >= tam){
-            if(valMin <= tam){
-                return  true;
+        if (valMax >= tam) {
+            if (valMin <= tam) {
+                return true;
             }
         }
         return false;
     }
-            
+
 }
