@@ -5,9 +5,9 @@
 <html>
     <head>
         <s:include value="/WEB-INF/NEWTEMPLATE/cabecera.jsp"></s:include>
-            <script type="text/javascript" src="<%=RutaSitio %>/JS/INVENTARIOS/Inv_ParPrecio.js"></script>
-        </head>
-        <body>
+        <script type="text/javascript" src="<%=RutaSitio%>/JS/INVENTARIOS/Inv_ParPrecio.js"></script>
+    </head>
+    <body>
         <s:div cssClass="header">
             <s:include value="/WEB-INF/NEWTEMPLATE/FrameTop.jsp" > 
                 <s:param name="nombre"><s:text name="usuario.apellido"/> <s:text name="usuario.nombre"/></s:param>
@@ -20,143 +20,117 @@
                 <s:param name="title"><s:property value="usuario.usuario" /></s:param>
             </s:include> 
         </s:div>
-        <br/>
-        <br/>
-        <br/>
-        <div id="contenido"> 
-            <center>
-                <div class="errorMensajes" style="display: none;">
+        <div class="row"> 
+            <div class="col-md-3 col-sm-0 col-xs-0"></div>
+            <div class="col-md-6 col-sm-12 col-xs-12">
+                <div class="Mensajes" style="display: none;">
                     <s:if test="hasActionErrors()">
-                        <div class="errors">
-                            <s:actionerror/>                                               
-                            <script>
-                                mostrarMsnErr();
-                            </script>
-                        </div>
-                    </s:if>
-                </div>
-                <div class="mensajesOk" style="display: none;">
-                    <s:if test="hasActionMessages()">
-                        <s:actionmessage/>
+                        <div class="alert alert-danger" id="info" role="alert" ><h4><s:actionerror /></h4></div>
                         <script>
                             mostrarMsn();
                         </script>
-                    </s:if>                
+                    </s:if>
                 </div>
-                <br/>
-                <br/>
+                <div class="MensajesOk" style="display: none;">
+                    <s:if test="hasActionMessages()">
+                        <div class="alert alert-success" id="info" role="alert" ><h4><s:actionmessage/></h4></div>
+                        <script>
+                            mostrarMsnOk();
+                        </script>
+                    </s:if>
+                </div>
                 <s:if test="habitacion == null" >
-                    <form action="inv_ConsultaServ" id="inv_ConsultaServ" autocomplete="off">
-                        <div class="tableInsert">
-                            <table>
-                                <thead>
-                                    <tr>
-                                        <td colspan="2">PARAMETRIZACIÓN DE PRECIOS</td>
-                                    </tr>
-                                    <tr>
-                                        <td colspan="2">Habitación a darle el precio</td>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td><s:textfield label="Numero de habitacion" name="habitacion.numHabi" /></td>
-                                    </tr>
-                                </tbody>
-                                <tfoot>
-                                    <tr>
-                                        <td colspan="2">
-                                            <s:include value="/WEB-INF/TEMPLATE/botones/find.jsp" >
-                                                <s:param name="function">consultar</s:param>
-                                                <s:param name="title">Buscar Habiacion</s:param>                                    
-                                            </s:include>
-                                            <s:include value="/WEB-INF/TEMPLATE/botones/clean.jsp" />                                    
-                                        </td>
-                                    </tr>
-                                </tfoot>
-                            </table>
+                    <s:form theme="simple" action="inv_ConsultaServ" id="inv_ConsultaServ" autocomplete="off">
+                        <div class="row thumbnail">
+                            <div class="alert alert-success text-center"><h3>PARAMETRIZACIÓN DE PRECIOS</h3></div>
+                            <p>Habitación a darle el precio<p>
+                            <div class="form-group col-md-12 col-sm-12 col-xs-12">
+                                Numero de habitacion:
+                                <s:textfield cssClass="form-control" name="habitacion.numHabi" />
+                            </div>
+                            <div class="form-group col-md-12 col-sm-12 col-xs-12">
+                                <s:include value="/WEB-INF/TEMPLATE/botones/find.jsp" >
+                                    <s:param name="function">consultar</s:param>
+                                    <s:param name="title">Buscar Habiacion</s:param>                                    
+                                </s:include>
+                                <s:include value="/WEB-INF/TEMPLATE/botones/clean.jsp" />                                    
+                            </div>
                         </div>  
-                    </form>
+                    </s:form>
                 </s:if>
                 <s:else>
-                    <form action="inv_ParamPrecioSv" id="inv_ParamPrecioSv" autocomplete="off">
+                    <s:form theme="simple" action="inv_ParamPrecioSv" id="inv_ParamPrecioSv" autocomplete="off">
                         <s:textfield name="habitacion.idHabitacion" cssStyle="display:none" />
                         <s:textfield name="habitacion.numHabi" cssStyle="display:none" />
-                        <div class="tableInsert">
-                            <table>
-                                <thead>
+                        <table class="table table-bordered">
+                            <thead>
+                                <tr>
+                                    <td colspan="2" class="alert alert-info text-center"><h3>PARAMETRIZACIÓN DE PRECIOS<h3></td>
+                                </tr>
+                                <tr>
+                                    <td colspan="2">Habitación a darle el precio</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td colspan="2" style="text-align: center"><b>Datos Basicos Habitación</b></td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        Num Habitacion: <s:text name="habitacion.numHabi" />
+                                    </td>
+                                    <td>
+                                        Id Habitación: <s:text name="habitacion.idHabitacion" />
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td colspan="2"><s:textfield cssClass="form-control" name="habitacion.precio" label="Precio Bruto"/></td>
+                                </tr>
+                            </tbody>
+                            <tfoot>
+                                <tr>
+                                    <td colspan="2">
+                                        <s:include value="/WEB-INF/TEMPLATE/botones/find.jsp" >
+                                            <s:param name="title">Buscar Otra Habitación</s:param>
+                                            <s:param name="link">href="reenvioGeneral.action?accion=231"</s:param>
+                                        </s:include>
+                                        <s:include value="/WEB-INF/TEMPLATE/botones/parametrizar.jsp" >
+                                            <s:param name="title">Parametrizar precio de la habitación</s:param>
+                                            <s:param name="function">insertarParametro</s:param>                                                
+                                        </s:include>
+                                    </td>
+                                </tr>
+                            </tfoot>
+                        </table>
+                    </s:form>
+                <s:if test="hisPrecio != null">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <td colspan="3" class="alert-success text-center">Historial de Precios</td>
+                                </tr>
+                                <tr>
+                                    <td>Fecha</td>
+                                    <td>Precio</td>
+                                    <td>Estado</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <s:iterator value="hisPrecio">
                                     <tr>
-                                        <td colspan="2">PARAMETRIZACIÓN DE PRECIOS</td>
+                                        <td><s:property value="prha_fecha"/></td>
+                                        <td><s:property value="prha_precio"/></td>
+                                        <td><s:property value="prha_estado"/></td>
                                     </tr>
-                                    <tr>
-                                        <td colspan="2">Habitación a darle el precio</td>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td colspan="2" style="text-align: center"><b>Datos Basicos Habitación</b></td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            Num Habitacion: <s:text name="habitacion.numHabi" />
-                                        </td>
-                                        <td>
-                                            Id Habitación: <s:text name="habitacion.idHabitacion" />
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td><s:textfield name="habitacion.precio" label="Precio Bruto"/></td>
-                                    </tr>
-                                </tbody>
-                                <tfoot>
-                                    <tr>
-                                        <td colspan="2">
-                                            <s:include value="/WEB-INF/TEMPLATE/botones/find.jsp" >
-                                                <s:param name="title">Buscar Otra Habitación</s:param>
-                                                <s:param name="link">href="reenvioGeneral.action?accion=231"</s:param>
-                                            </s:include>
-                                            <s:include value="/WEB-INF/TEMPLATE/botones/parametrizar.jsp" >
-                                                <s:param name="title">Parametrizar precio de la habitación</s:param>
-                                                <s:param name="function">insertarParametro</s:param>                                                
-                                            </s:include>
-                                        </td>
-                                    </tr>
-                                </tfoot>
-                            </table>
-                        </div>
-                    </form>
-                    <br/>
-                    <br/>
-                    <br/>
-                    <s:if test="hisPrecio != null">
-                        <div class="tableInsert">
-                            <table>
-                                <thead>
-                                    <tr>
-                                        <td colspan="3">Historial de Precios</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Fecha</td>
-                                        <td>Precio</td>
-                                        <td>Estado</td>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <s:iterator value="hisPrecio">
-                                        <tr>
-                                            <td><s:property value="prha_fecha"/></td>
-                                            <td><s:property value="prha_precio"/></td>
-                                            <td><s:property value="prha_estado"/></td>
-                                        </tr>
-                                    </s:iterator>
-                                </tbody>
-                            </table>
-                        </div>
-                    </s:if>
-                    <s:else>
-                        <b>ESTA HABITACION NO TIENE HISTORIAL DE PRECIOS</b>
-                    </s:else>
+                                </s:iterator>
+                            </tbody>
+                        </table>
+                </s:if>
+                <s:else>
+                    <b>ESTA HABITACION NO TIENE HISTORIAL DE PRECIOS</b>
                 </s:else>
-            </center>
+            </s:else>
+            </div>
         </div>
     </body>
 </html>

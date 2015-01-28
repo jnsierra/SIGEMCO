@@ -6,7 +6,7 @@
     <head>
         <s:include value="/WEB-INF/NEWTEMPLATE/cabecera.jsp"></s:include>
         <s:head/>
-        <script type="text/javascript" src="<%=RutaSitio %>/JS/INVENTARIOS/Inv_UpdServicio.js"></script>
+        <script type="text/javascript" src="<%=RutaSitio%>/JS/INVENTARIOS/Inv_UpdServicio.js"></script>
     </head>
     <body>
         <s:div cssClass="header">
@@ -21,75 +21,80 @@
                 <s:param name="title"><s:property value="usuario.usuario" /></s:param>
             </s:include> 
         </s:div>
-        <br/>
-    <center>
-        <div class="errorMensajes" style="display: none;">
-            <s:if test="hasActionErrors()">
-                <div class="errors">
-                    <s:actionerror/>                                               
-                    <script>
-                        mostrarMsnErr();
-                    </script>
+        <div class="row">
+            <div class="col-md-3 col-sm-0 col-xs-0"></div>
+            <div class="col-md-6 col-sm-12 col-xs-12">
+                <div class="Mensajes" style="display: none;">
+                    <s:if test="hasActionErrors()">
+                        <div class="alert alert-danger" id="info" role="alert" ><h4><s:actionerror /></h4></div>
+                        <script>
+                            mostrarMsn();
+                        </script>
+                    </s:if>
                 </div>
-            </s:if>
-        </div>
-        <br/>
-        <div id="contenido">
-            <form action="adm_updServicio" name="adm_updServicio" id="adm_updServicio">
-                <s:textfield name="accion" value="updServicio" cssStyle="display:none;"/>
-                <s:textfield name="subAccion" cssStyle="display:none;" value="consulta" />
-                <s:textfield name="habitacion.idHabitacion" cssStyle="display:none"/>
-                <div class="tableInsert">
-                    <table>
+                <s:form theme="simple" action="adm_updServicio" name="adm_updServicio" id="adm_updServicio">
+                    <s:textfield name="accion" value="updServicio" cssStyle="display:none;"/>
+                    <s:textfield name="subAccion" cssStyle="display:none;" value="consulta" />
+                    <s:textfield name="habitacion.idHabitacion" cssStyle="display:none"/>
+                    <table class="table table-bordered">
                         <thead>
                             <tr>
-                                <td colspan="2">ACTUALIZAR HABITACION</td>
+                                <td colspan="2" class="alert alert-info text-center"><h3>ACTUALIZAR HABITACION</h3></td>
                             </tr>
                         </thead>
                         <tbody>
                             <tr>
-                                <td>
-                                    <s:textfield  label="Numero Habitacion*" name="habitacion.numHabi" title="Recuerda que el primer digito es piso en el cual se encuentra la habitación" />
+                                <td>Numero Habitación:</td>
+                                <td style="width: 80%">
+                                    <s:textfield cssClass="form-control" name="habitacion.numHabi" title="Recuerda que el primer digito es piso en el cual se encuentra la habitación" />
                                 </td>
                             </tr>
                             <tr>
+                                <td>Num. Maximo de Personas:</td>
                                 <td>
-                                    <s:textfield label="Num. Maximo de Personas*" name="habitacion.numMaxPers" />
+                                    <s:textfield cssClass="form-control" name="habitacion.numMaxPers" />
                                 </td>
                             </tr>
                             <tr>
+                                <td>Num. Minimo de Personas:</td>
                                 <td>
-                                    <s:textfield label="Num. Minimo de Personas*" name="habitacion.numMinPers" />
+                                    <s:textfield cssClass="form-control" name="habitacion.numMinPers" />
                                 </td>
                             </tr>
                             <tr>
+                                <td>Iva:</td>
                                 <td>
-                                    <s:textfield label="Iva" name="habitacion.iva" />
+                                    <s:textfield cssClass="form-control" name="habitacion.iva" />
                                 </td>
                             </tr>
                             <tr>
+                                <td>Baño</td>
                                 <td>
-                                    <s:select label="Baño" list="yesNo"  name="habitacion.bano" headerKey="-1" headerValue="Servicio Baño" />
+                                    <s:select cssClass="form-control" list="yesNo"  name="habitacion.bano" headerKey="-1" headerValue="Servicio Baño" />
                                 </td>
                             </tr>
                             <tr>
+                                <td>Televisión:</td>
                                 <td>
-                                    <s:select label="Televisión" list="yesNo"  name="habitacion.television" headerKey="-1" headerValue="Servicio de Televisión" />
+                                    <s:select cssClass="form-control" list="yesNo"  name="habitacion.television" headerKey="-1" headerValue="Servicio de Televisión" />
                                 </td>
                             </tr>
                             <tr>
+                                <td>Cable:</td>
                                 <td>
-                                    <s:select label="Cable" list="yesNo"  name="habitacion.cable" headerKey="-1" headerValue="Servicio de Cable" />
+                                    <s:select cssClass="form-control" list="yesNo"  name="habitacion.cable" headerKey="-1" headerValue="Servicio de Cable" />
                                 </td>
                             </tr>
                             <tr>
+                                <td>Numero de Camas:</td>
                                 <td>
-                                    <s:textfield label="Numero de Camas" name="habitacion.numCamas" />
+                                    <s:textfield cssClass="form-control" name="habitacion.numCamas" />
                                 </td>
                             </tr>
                             <tr>
+                                <td>Cama Auxiliar:</td>
                                 <td>
-                                    <s:select label="Cama Auxiliar"  list="yesNo"  name="habitacion.camaAux" headerKey="-1" headerValue="Cama Auxiliar" />
+                                    <s:select cssClass="form-control"  list="yesNo"  name="habitacion.camaAux" headerKey="-1" headerValue="Cama Auxiliar" />
                                 </td>
                             </tr>
                         </tbody>
@@ -112,30 +117,28 @@
                                 </td>
                             </tr>
                         </tfoot>
-                    </table>
-                </div>            
-            </form>
+                    </table>            
+                </s:form>
+            </div>
         </div>
-        <br/>
-        <div class="mensajesOk" style="display: none;">
+        <div class="MensajesOk" style="display: none;">
             <s:if test="hasActionMessages()">
-                <s:actionmessage/>
+                <div class="alert alert-success" id="info" role="alert" ><h4><s:actionmessage/></h4></div>
                 <script>
-                    mostrarMsn();
+                    mostrarMsnOk();
                 </script>
-            </s:if>                
+            </s:if>
         </div>
-    </center>
-    <s:set var="bandera" value="bandera"/>
-    <s:if test="%{bandera.equalsIgnoreCase('S')}">
-        <script>
-            manipulaBoton('Actualiza');
-        </script>
-    </s:if>
-    <s:else>
-        <script>
-            manipulaBoton('Consulta');
-        </script>
-    </s:else>
-</body>
+        <s:set var="bandera" value="bandera"/>
+        <s:if test="%{bandera.equalsIgnoreCase('S')}">
+            <script>
+                manipulaBoton('Actualiza');
+            </script>
+        </s:if>
+        <s:else>
+            <script>
+                manipulaBoton('Consulta');
+            </script>
+        </s:else>
+    </body>
 </html>

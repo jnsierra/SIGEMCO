@@ -70,7 +70,7 @@
                             </div>
                         </div>
                         <div class="row">
-                            <div class="form-group col-md-4 col-sm-4 col-xs-4">
+                            <div class="form-group col-md-4 col-sm-6 col-xs-6">
                                 Margen de Fechas<br>
                                 <table>
                                     <tr>
@@ -92,7 +92,7 @@
                                     </tr>
                                 </table>
                             </div>
-                            <div class="form-group col-md-4 col-sm-4 col-xs-4">
+                            <div class="form-group col-md-4 col-sm-6 col-xs-6">
                                 Valor:<br>
                                 <table>
                                     <tr>
@@ -102,22 +102,24 @@
                                     </tr>
                                 </table>
                             </div>
-                            <div class="form-group col-md-2 col-sm-2 col-xs-2">
+                            <div class="form-group col-md-2 col-sm-6 col-xs-6">
                                 Estado:<br>
                                 <s:select cssClass="form-control" list="estadoEqCeluar" name="remision.rmce_estado"  headerKey="-1" headerValue="Ubicacion del Equipo Celular" />                                
                             </div>
-                            <div class="form-group col-md-2 col-sm-2 col-xs-2">
+                            <div class="form-group col-md-2 col-sm-6 col-xs-6">
                                 Pagado en Central:<br>
                                 <s:select cssClass="form-control" list="yesNo" name="remision.rmce_pagado"  headerKey="-1" headerValue="Cancelado en Claro" />
                             </div>
                         </div>
                         <div class="row">
-                            <div class="col-md-10 col-sm-10 col-xs-10"></div>
-                            <div class="col-md-2 col-sm-2 col-xs-2">
-                                <s:include value="/WEB-INF/TEMPLATE/botones/find.jsp">
-                                    <s:param name="function">buscaGeneral</s:param>
-                                    <s:param name="title">Busca Productos</s:param>
-                                </s:include>
+                            <div class="col-md-10 col-sm-8 col-xs-8"></div>
+                            <div class="col-md-2 col-sm-4 col-xs-4" >
+                                <div style="float: right">
+                                    <s:include value="/WEB-INF/TEMPLATE/botones/find.jsp">
+                                        <s:param name="function">buscaGeneral</s:param>
+                                        <s:param name="title">Busca Productos</s:param>
+                                    </s:include>
+                                </div>
                             </div>
                         </div>
                     </div>

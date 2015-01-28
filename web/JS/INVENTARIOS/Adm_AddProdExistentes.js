@@ -22,7 +22,7 @@ function cambioMovimento(valor){
 function postAjax(valor, opcion){
     if(opcion == '1'){
         valor = eliminarEnter(valor);
-        document.getElementsByClassName("natMov")[0].value = valor;
+        document.getElementById("natuMov").value = valor;
         evaluaValor(valor);
         
     }

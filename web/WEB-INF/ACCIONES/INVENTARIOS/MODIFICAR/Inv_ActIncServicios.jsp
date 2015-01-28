@@ -20,40 +20,29 @@
                 <s:param name="title"><s:property value="usuario.usuario" /></s:param>
             </s:include> 
         </s:div>
-    <center>
-        <br/>
-        <br/>
-        <div id="contenido">
-            <div class="errorMensajes" style="display: none;">
-                <s:if test="hasActionErrors()">
-                    <div class="errors">
-                        <s:actionerror/>                                               
+        <div calss="row">
+            <div class="col-md-3 col-sm-0 col-xs-0"></div>
+            <div class="col-md-6 col-sm-12 col-xs-12">
+                <div class="Mensajes" style="display: none;">
+                    <s:if test="hasActionErrors()">
+                        <div class="alert alert-danger" id="info" role="alert" ><h4><s:actionerror /></h4></div>
                         <script>
-                            mostrarMsnErr();
+                            mostrarMsn();
                         </script>
+                    </s:if>
+                </div>
+                <div class="row thumbnail">
+                    <div class="alert alert-success text-center"><h3>ACTIVACION Ó INACTIVACION DE SERVICIOS</h3></div>
+                    <div class="form-group col-md-6 col-sm-6 col-xs-6">
+                        Numero de Habitación<br>
+                        <s:textfield cssClass="form-control" name="habitacion.numHabi" />
                     </div>
-                </s:if>
-                <br/>
+                    <div class="form-group col-md-6 col-sm-6 col-xs-6">
+                        Estado:<br>
+                        <s:select cssClass="form-control" list="estadoMap"  name="habitacion.estado" required="true" headerKey="-1" headerValue="ESTADO" />
+                    </div>
+                </div>
             </div>
-            <br/>
-            <div class="tableInsert">
-                <table>
-                    <thead>
-                        <tr>
-                            <td colspan="2">ACTIVACION O INACTIVACION DE SERVICIOS</td>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td><s:textfield name="habitacion.numHabi" label="Numero de Habitación"/></td>
-                        </tr>
-                        <tr>
-                            <td><s:select label="Estado" list="estadoMap"  name="habitacion.estado" required="true" headerKey="-1" headerValue="ESTADO" /></td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-
         </div>
     </body>
 </html>

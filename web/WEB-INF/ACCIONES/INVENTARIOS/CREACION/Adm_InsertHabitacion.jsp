@@ -38,90 +38,96 @@
                 <s:param name="title"><s:property value="usuario.usuario" /></s:param>
             </s:include> 
         </s:div>
-        <br>
-    <center>
-        <s:if test="hasActionErrors()">
-            <div class="errorMensajes" style="display: none;">
-                <div class="errors">
-                    <s:actionerror/>                                               
-                    <script>
-                        mostrarMsnErr();
-                    </script>
+        <div class="row">
+            <div class="col-md-3 col-sm-0 col-xs-0"></div>
+            <div class="col-md-6 col-sm-12 col-xs-12">
+                <div class="Mensajes" style="display: none;">
+                    <s:if test="hasActionErrors()">
+                        <div class="alert alert-danger" id="info" role="alert" ><h4><s:actionerror /></h4></div>
+                        <script>
+                            mostrarMsn();
+                        </script>
+                    </s:if>
                 </div>
+                <s:form theme="simple" action="adm_insertHabitacion" name="adm_insertHabitacion" id="adm_insertHabitacion">
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <td colspan="2" class="alert alert-info text-center" ><h3>INGRESAR HABITACIONES</h3></td>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Numero Habitacion:</td>
+                                <td style="width: 80%">
+                                    <s:textfield cssClass="form-control" name="habitacion.numHabi" title="Recuerda que el primer digito es piso en el cual se encuentra la habitación" />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Num. Maximo de Personas:</td>
+                                <td>
+                                    <s:textfield cssClass="form-control" name="habitacion.numMaxPers" />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Num. Minimo de Personas</td>
+                                <td>
+                                    <s:textfield cssClass="form-control" name="habitacion.numMinPers" />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Iva:</td>
+                                <td>
+                                    <s:textfield cssClass="form-control" name="habitacion.iva" />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Baño:</td>
+                                <td>
+                                    <s:select cssClass="form-control" list="yesNo"  name="habitacion.bano" headerKey="-1" headerValue="Servicio Baño" />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Televisión:</td>
+                                <td>
+                                    <s:select cssClass="form-control" list="yesNo"  name="habitacion.television" headerKey="-1" headerValue="Servicio de Televisión" />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Cable:</td>
+                                <td>
+                                    <s:select cssClass="form-control" list="yesNo"  name="habitacion.cable" headerKey="-1" headerValue="Servicio de Cable" />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Numero de Camas:</td>
+                                <td>
+                                    <s:textfield cssClass="form-control" name="habitacion.numCamas" />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Cama Aúxiliar:</td>
+                                <td>
+                                    <s:select cssClass="form-control"  list="yesNo"  name="habitacion.camaAux" headerKey="-1" headerValue="Cama Auxiliar" />
+                                </td>
+                            </tr>
+                        </tbody>
+                        <tfoot>
+                            <tr>
+                                <td colspan="2">
+                                    <s:include value="/WEB-INF/TEMPLATE/botones/add.jsp" >
+                                        <s:param name="function">insertar</s:param>
+                                        <s:param name="title">Insertar Habitación</s:param>                                    
+                                    </s:include>
+                                    <s:include value="/WEB-INF/TEMPLATE/botones/clean.jsp" />
+                                </td>
+                            </tr>
+                        </tfoot>
+                    </table>            
+                </s:form>
             </div>
-            <br>
-            <br>
-        </s:if>
-        <form action="adm_insertHabitacion" name="adm_insertHabitacion" id="adm_insertHabitacion">
-            <div class="tableInsert">
-                <table>
-                    <thead>
-                        <tr>
-                            <td colspan="2">INGRESAR HABITACIONES</td>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>
-                                <s:textfield  label="Numero Habitacion*" name="habitacion.numHabi" title="Recuerda que el primer digito es piso en el cual se encuentra la habitación" />
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <s:textfield label="Num. Maximo de Personas*" name="habitacion.numMaxPers" />
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <s:textfield label="Num. Minimo de Personas*" name="habitacion.numMinPers" />
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <s:textfield label="Iva" name="habitacion.iva" />
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <s:select label="Baño" list="yesNo"  name="habitacion.bano" headerKey="-1" headerValue="Servicio Baño" />
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <s:select label="Televisión" list="yesNo"  name="habitacion.television" headerKey="-1" headerValue="Servicio de Televisión" />
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <s:select label="Cable" list="yesNo"  name="habitacion.cable" headerKey="-1" headerValue="Servicio de Cable" />
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <s:textfield label="Numero de Camas" name="habitacion.numCamas" />
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <s:select label="Cama Auxiliar"  list="yesNo"  name="habitacion.camaAux" headerKey="-1" headerValue="Cama Auxiliar" />
-                            </td>
-                        </tr>
-                    </tbody>
-                    <tfoot>
-                        <tr>
-                            <td colspan="2">
-                                <s:include value="/WEB-INF/TEMPLATE/botones/add.jsp" >
-                                    <s:param name="function">insertar</s:param>
-                                    <s:param name="title">Insertar Habitación</s:param>                                    
-                                </s:include>
-                                <s:include value="/WEB-INF/TEMPLATE/botones/clean.jsp" />
-                            </td>
-                        </tr>
-                    </tfoot>
-                </table>
-            </div>            
-        </form>
-        <br>
+            <div class="col-md-3 col-sm-0 col-xs-0"></div>
+        </div>
         <div class="mensajesOk" style="display: none;">
             <s:if test="hasActionMessages()">
                 <s:actionmessage/>

@@ -5,7 +5,7 @@
 <html>
     <head>
         <s:include value="/WEB-INF/NEWTEMPLATE/cabecera.jsp"></s:include>
-            <script type="text/javascript" src="/PROYECTOHOTEL/JS/INVENTARIOS/Inv_ParPrecioProd.js"></script>
+            <script type="text/javascript" src="<%=RutaSitio%>/JS/INVENTARIOS/Inv_ParPrecioProd.js"></script>
         </head>
         <body>
         <s:div cssClass="header">
@@ -178,6 +178,5 @@
             </div>
             <div class="col-md-3 col-xs-0 col-sm-0"></div>
         </div>
-    </div>
-</body>
+    </body>
 </html>

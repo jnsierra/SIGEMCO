@@ -72,6 +72,7 @@
                                 <s:select list="yesNo" name="movimiento.mvin_revfact" required="true" headerKey="-1" headerValue="reverso de facturacion" cssClass="form-control"/>
                             </div>
                             <div class="form-group col-md-4 col-sm-4 col-xs-4">
+                                <br>
                                 <s:include value="/WEB-INF/TEMPLATE/botones/find.jsp">
                                     <s:param name="function">buscaGeneralMvIn</s:param>
                                     <s:param name="title">Busqueda de Movimientos de Inventario</s:param>
