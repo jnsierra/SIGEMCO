@@ -58,7 +58,7 @@
                             <option value="-1" >Todas</option>
                             <option value="A">Activo</option>
                             <option value="I">Inactivo</option>
-                        </select> 
+                        </select><br>
                         <s:include value="/WEB-INF/TEMPLATE/botones/find.jsp">
                             <s:param name="function">consultar</s:param>
                             <s:param name="title">Busca Sedes Por Estado </s:param>                                    

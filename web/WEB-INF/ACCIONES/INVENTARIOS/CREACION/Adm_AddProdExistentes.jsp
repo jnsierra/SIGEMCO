@@ -5,8 +5,7 @@
 <html>
     <head>
         <s:include value="/WEB-INF/NEWTEMPLATE/cabecera.jsp"></s:include>
-            <script type="text/javascript" src="<%=RutaSitio %>/JS/INVENTARIOS/Adm_AddProdExistentes.js"></script>
-        <s:head/>
+        <script type="text/javascript" src="<%=RutaSitio%>/JS/INVENTARIOS/Adm_AddProdExistentes.js"></script>
     </head>
     <body>
         <s:div cssClass="header">
@@ -21,112 +20,92 @@
                 <s:param name="title"><s:property value="usuario.usuario" /></s:param>
             </s:include> 
         </s:div>
-        <div id="contenido">
-            <center>
-                <br/>
-                <br/>
-                <div class="errorMensajes" style="display: none;">
+        <div class="row">
+            <div class="col-md-3 col-xs-0 col-sm-0"></div>
+            <div class="col-md-6 col-xs-12 col-sm-12">
+                <div class="Mensajes" style="display: none;">
                     <s:if test="hasActionErrors()">
-                        <div class="errors">
-                            <s:actionerror/>                                               
-                            <script>
-                                mostrarMsnErr();
-                            </script>
-                        </div>
+                        <div class="alert alert-danger" id="info" role="alert" ><h4><s:actionerror /></h4></div>
+                        <script>
+                            mostrarMsn();
+                        </script>
                     </s:if>
                 </div>
-                <br/>
-                <br/>
                 <s:set name="variable" value="bandera" />
                 <s:if test="%{#variable.equalsIgnoreCase('S')}">
-                    <form action="inv_consPrIndAddExistente" id="inv_consPrIndAddExistente" autocomplete="off">
-                        <div class="tableInsert" style="width:50%; ">
-                            <table>
-                                <thead>
-                                    <tr>
-                                        <td colspan="2" align="center">Busqueda del producto Producto</td>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <s:textfield label="CODIGO" name="producto.codigo" cssClass="codigoProducto" placeholder="Codigo del Producto" cssStyle="width: 250px;"/>
-                                    </tr>
-                                </tbody>
-                                <tfoot>
-                                    <tr>
-                                        <td style="text-align: right" colspan="2">
-                                            <s:include value="/WEB-INF/TEMPLATE/botones/find.jsp" > 
-                                                <s:param name="function">buscarProductoIndividual</s:param>
-                                                <s:param name="title">Busqueda Individual por Codigo</s:param>
-                                            </s:include>
-                                        </td>
-                                    </tr>
-                                </tfoot>
-                            </table>
+                    <s:form theme="simple" action="inv_consPrIndAddExistente" id="inv_consPrIndAddExistente" autocomplete="off">
+                        <div class="form-group col-md-12 col-sm-12 col-xs-12 thumbnail">
+                            <div class="alert alert-success text-center"  role="alert" ><h3>BUSQUEDA DEL PRODUCTO</h3></div>
+                            Código:<br>
+                            <s:textfield cssClass="form-control" name="producto.codigo"  placeholder="Codigo del Producto" /><br>
+                            <s:include value="/WEB-INF/TEMPLATE/botones/find.jsp" > 
+                                <s:param name="function">buscarProductoIndividual</s:param>
+                                <s:param name="title">Busqueda Individual por Codigo</s:param>
+                            </s:include>
+
+                            </tr>
+                            </tfoot>
                         </div>
                         <s:textfield name="accion" value="consIndividual" cssStyle="display:none"/>
-                    </form>
+                    </s:form>
                 </s:if>                
                 <s:else>                    
-                    <br/>
-                    <br/>
-                    <div class="tableConsultaMultiFiltro" style="width: 70%"> 
-                        <table>
-                            <thead>
-                                <tr>
-                                    <td style="text-align: center; height: 30px;" colspan="2" class="titulo"><b>PRODUCTO EL CUAL SE ADICIONARA AL INVENTARIO</b></td>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td style="width: 50%">
-                                        <table>
-                                            <tr>
-                                                <td style="width: 30%"><s:textfield label="CODIGO" name="producto.codigo" readonly="true"/></td>
-                                            </tr>
-                                        </table>
-                                    </td>
-                                    <td style="width: 50%">
-                                        <table>
-                                            <tr>
-                                                <td style="width: 30%"><s:textfield label="NOMBRE" name="producto.nombre" readonly="true" /></td>
-                                            </tr>
-                                        </table>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <table>
-                                            <tr>
-                                                <td style="width: 30%"><s:textfield label="DESCRIPCIÓN" name="producto.descripcion" readonly="true"/></td>
-                                            </tr>
-                                        </table>
-                                    </td>
-                                    <td>
-                                        <table>
-                                            <tr>
-                                                <td style="width: 30%"><s:textfield label="MARCA" name="producto.marca" readonly="true" /></td>
-                                            </tr>
-                                        </table>
-                                    </td>
-                                </tr>
-                            </tbody>
-                            <tfoot>
-                                <tr>
-                                    <td colspan="2" style="height: 40px;text-align: right">
-                                        <s:include value="/WEB-INF/TEMPLATE/botones/find.jsp" > 
-                                            <s:param name="function">buscarProductoIndividual</s:param>
-                                            <s:param name="title">Iniciar Busqueda de Nuevo</s:param>
-                                            <s:param name="link">href="reenvioGeneral.action?accion=219"</s:param>                                            
-                                        </s:include>
-                                    </td>
-                                </tr>
-                            </tfoot>
-                        </table>
-                    </div>
-                    <br/>
-                    <br/>
-                    <br/>
+                    <table class="table thumbnail">
+                        <thead>
+                            <tr>
+                                <td colspan="2" class="alert alert-info text-center"><b>PRODUCTO EL CUAL SE ADICIONARA AL INVENTARIO</b></td>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td >
+                                    <table>
+                                        <tr>
+                                            <td>Código:<td>
+                                            <td><s:textfield cssClass="form-control" name="producto.codigo" readonly="true"/></td>
+                                        </tr>
+                                    </table>
+                                </td>
+                                <td >
+                                    <table>
+                                        <tr>
+                                            <td>Nombre:</td>
+                                            <td><s:textfield cssClass="form-control"  name="producto.nombre" readonly="true" /></td>
+                                        </tr>
+                                    </table>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <table>
+                                        <tr>
+                                            <td>Descripción:</td>
+                                            <td><s:textfield cssClass="form-control" name="producto.descripcion" readonly="true"/></td>
+                                        </tr>
+                                    </table>
+                                </td>
+                                <td>
+                                    <table>
+                                        <tr>
+                                            <td>Marca:</td>
+                                            <td ><s:textfield cssClass="form-control" name="producto.marca" readonly="true" /></td>
+                                        </tr>
+                                    </table>
+                                </td>
+                            </tr>
+                        </tbody>
+                        <tfoot>
+                            <tr>
+                                <td colspan="2" style="height: 40px;text-align: right">
+                                    <s:include value="/WEB-INF/TEMPLATE/botones/find.jsp" > 
+                                        <s:param name="function">buscarProductoIndividual</s:param>
+                                        <s:param name="title">Iniciar Busqueda de Nuevo</s:param>
+                                        <s:param name="link">href="reenvioGeneral.action?accion=219"</s:param>                                            
+                                    </s:include>
+                                </td>
+                            </tr>
+                        </tfoot>
+                    </table>
                     <form action="inv_addProdExstInv" id="inv_addProdExstInv">
                         <s:textfield name="producto.marca" cssStyle="display:none;"/>
                         <s:textfield name="producto.descripcion" cssStyle="display:none;"/>
@@ -190,8 +169,6 @@
                         </div>
                     </form>
                 </s:else>               
-                <br/>
-                <br/>
                 <div class="mensajesOk" style="display: none;">
                     <s:if test="hasActionMessages()">
                         <s:actionmessage/>
@@ -199,9 +176,10 @@
                             mostrarMsn();
                         </script>
                     </s:if>                
-                </div>                
-            </center>            
-        </div>    
+                </div>                           
+            </div> 
+            <div class="col-md-3 col-xs-0 col-sm-0"></div>
+        </div>
         <div id="informacion" title="Información" style="display: none;">
             <div id="mensaje"></div>
         </div>

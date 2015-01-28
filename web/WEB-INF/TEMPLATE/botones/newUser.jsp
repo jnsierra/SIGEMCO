@@ -1,4 +1,4 @@
 <%@include file="/WEB-INF/NEWTEMPLATE/Parametros.jsp" %>
 <a onclick="addNewUser()" title="Agregar Un Nuevo Usuario">
-    <img src="<%=RutaSitio %>/ICONS/addUser.ico" class="imagenIcono"/>
+    <button type="button" class="btn btn-default"><span class="glyphicon glyphicon-plus"></span>&nbsp;Agregar</button>
 </a>

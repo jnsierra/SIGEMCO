@@ -51,7 +51,7 @@
                             </thead>
                             <tbody>
                                 <tr>
-                                    <td colspan="2"><h4>PRODUCTO A DARLE EL PRECIO</h4></td>
+                                    <td colspan="2" class="text-center"><h4>PRODUCTO A DARLE EL PRECIO</h4></td>
                                 </tr>
                                 <tr>
                                     <td>Codigo del Producto</td>

@@ -47,7 +47,7 @@
                             <option value="-1" >Todos</option>
                             <option value="A">Activo</option>
                             <option value="I">Inactivo</option>
-                        </select>
+                        </select><br>
                         <!--<a href="#" class="btnConsulta" onclick="consultar()">CONSULTAR</a>&nbsp;&nbsp;&nbsp;-->
                         <s:include value="/WEB-INF/TEMPLATE/botones/find.jsp">
                             <s:param name="function">consultar</s:param>

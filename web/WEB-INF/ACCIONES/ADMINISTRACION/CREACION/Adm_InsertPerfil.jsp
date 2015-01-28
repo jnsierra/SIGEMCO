@@ -63,7 +63,7 @@
                         <thead>
                             <tr>
                                 <th colspan="2" class="alert alert-info text-center"><h3>INGRESAR PERFIL</h3></th>
-                            </tr>
+                        </tr>
                         </thead>
                         <tbody>
                             <tr>
@@ -96,12 +96,12 @@
                             </tr>
                         </tfoot>
                     </table>
-                </div>
-                <div style="display: none;">
-                    <s:textfield name="inserto" />
-                </div>
-                <div class="col-md-3 col-xs-0 col-sm-0"></div>
-            </s:form>
+                </s:form>
+            </div>
+            <div style="display: none;">
+                <s:textfield name="inserto" />
+            </div>
+            <div class="col-md-3 col-xs-0 col-sm-0"></div>
         </div>        
         <s:set name="estado" value="%{valorSelect}" />
         <s:if test="%{#estado.equalsIgnoreCase('A')}">            

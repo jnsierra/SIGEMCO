@@ -72,28 +72,31 @@
                             <tr>
                                 <td colspan="2" style="text-align: right;">
                                     <div class="row">
-                                        <div class="col-md-9 col-sm-6 col-xs-6"></div>
-                                        <div class="col-md-1 col-sm-2 col-xs-2 divBtnActualizar" style="display:none">
-                                            <s:include value="/WEB-INF/TEMPLATE/botones/modify.jsp"  >
-                                                <s:param name="function">actualizar</s:param>
-                                                <s:param name="title">Modificar Atributos del Perifl</s:param>
-                                            </s:include>
-                                        </div>
-                                        <div class="col-md-1 col-sm-2 col-xs-2 divBtnConsulta">
-                                            <s:include value="/WEB-INF/TEMPLATE/botones/find.jsp" >
-                                                <s:param name="function">consultarPerfil</s:param>
-                                                <s:param name="title">Buscar Perfil</s:param>
-                                            </s:include>
-                                        </div>
-                                        <div class="col-md-1 col-sm-2 col-xs-2">
-                                            <s:include value="/WEB-INF/TEMPLATE/botones/clean.jsp" />
-                                        </div>
+                                        <div class="form-group col-md-4 col-sm-0 col-xs-0"></div>
+                                        <div class="form-group col-md-4 col-sm-0 col-xs-0" ></div>
+                                        <div class="form-group col-md-4 col-sm-12 col-xs-12">                      
+                                            <div class="divBtnConsulta" style="float: right" >
+                                                <s:include value="/WEB-INF/TEMPLATE/botones/find.jsp" >
+                                                    <s:param name="function">consultarPerfil</s:param>
+                                                    <s:param name="title">Buscar Perfil</s:param>
+                                                </s:include>
+                                            </div>
+                                            <div class="divBtnActualizar" style="display:none;float: right">
+                                                <s:include value="/WEB-INF/TEMPLATE/botones/modify.jsp"  >
+                                                    <s:param name="function">actualizar</s:param>
+                                                    <s:param name="title">Modificar Atributos del Perifl</s:param>
+                                                </s:include>
+                                            </div>
+                                            <div style="float: right">
+                                                <s:include value="/WEB-INF/TEMPLATE/botones/clean.jsp" />
+                                            </div>
+                                        </div>                                        
                                     </div>
 
                                     <div class="divBtnConsulta">
 
                                     </div>
-                                    
+
                                 </td>
                             </tr>
                         </tfoot>

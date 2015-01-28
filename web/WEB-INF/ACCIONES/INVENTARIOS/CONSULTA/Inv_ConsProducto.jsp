@@ -69,7 +69,8 @@
                                 Marca:<br>
                                 <s:textfield name="producto.marca" label="Marca" placeholder="Filtro" cssClass="form-control"/>
                             </div>
-                            <div class="form-group col-md-4 col-sm-4 col-xs-4">
+                            <div class="form-group col-md-4 col-sm-4 col-xs-4 ">
+                                <br>
                                 <s:include value="/WEB-INF/TEMPLATE/botones/find.jsp">
                                     <s:param name="function">buscaGeneral</s:param>
                                     <s:param name="title">Busca Productos</s:param>

@@ -1,4 +1,4 @@
 <%@include file="/WEB-INF/NEWTEMPLATE/Parametros.jsp" %>
 <a onclick="${param.function}(${param.parametros})" title="${param.title}">
-    <img src="<%=RutaSitio %>/ICONS/parametros.png" class="imagenIcono"/>
+    <button type="button" class="btn btn-default"><span class="glyphicon glyphicon-cog"></span>&nbsp;Parámetros</button>
 </a>

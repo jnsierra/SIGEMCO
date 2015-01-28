@@ -1,4 +1,4 @@
 <%@include file="/WEB-INF/NEWTEMPLATE/Parametros.jsp" %>
 <a onclick="${param.function}()" title="${param.title}">
-    <img src="<%=RutaSitio %>/ICONS/insertMovimiento.png" class="imagenIconoPeq"/>
+    <button type="button" class="btn btn-default"><span class="glyphicon glyphicon-paste"></span>&nbsp;Insertar Mov.</button>
 </a>
