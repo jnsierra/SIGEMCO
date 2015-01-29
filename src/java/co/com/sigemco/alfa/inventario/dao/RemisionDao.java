@@ -243,10 +243,9 @@ public class RemisionDao {
                 } else {
                     rta += "and rmce_valor <= " + this.getRmce_valor() + "\n";
                 }
+            }else if (valida.validaNulo(this.getValorBeteween()) && !this.getValorBeteween().equalsIgnoreCase("-1")) {
+                rta += "and rmce_valor >= " + this.getValorBeteween() + "\n";
             }
-//            if (valida.validaNulo(this.getValorBeteween()) && !this.getValorBeteween().equalsIgnoreCase("-1")) {
-//                rta += "and rmce_valor >= " + this.getValorBeteween() + "\n";
-//            }
             if (valida.validaNulo(this.getRmce_iccid()) && !this.getRmce_iccid().equalsIgnoreCase("")) {
                 rta += "and upper(rmce_iccid) like upper('%" + this.getRmce_iccid() + "%') \n";
             }
