@@ -148,7 +148,25 @@
                 </ul>
             </li>
             <%if (permisos.indexOf(".RpIn1.") >= 0) {%>
-            <li><a href="reenvioGeneral.action?accion=411"><span class="glyphicon glyphicon-floppy-save"></span>Reportes</a></li>
+            <li><a href="#"><span class="glyphicon glyphicon-floppy-save"></span>Reportes</a>
+                <ul class="dropdown-menu">
+                    <li><a href="#">Usuarios</a>
+                        <ul class="dropdown-menu">
+                            <li><a href="reenvioGeneral.action?accion=431">Activos</a></li>
+                            <li><a href="#">Facturación de Usuarios</a></li>
+                        </ul>
+                    </li>
+                    <% if (permisos.indexOf(".RpIn1.") > 0) {%>
+                    <li><a href="#">Inventario</a>
+                        <% if (permisos.indexOf(".RpIn1.") > 0) { %>
+                        <ul class="dropdown-menu">
+                            <li><a href="reenvioGeneral.action?accion=411">Promedio Ponderado</a></li>
+                        </ul>
+                        <%}%>
+                    </li>
+                    <%}%>
+                </ul>
+            </li>
             <%}%>
         </ul>
 

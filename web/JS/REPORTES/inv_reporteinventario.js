@@ -1,4 +1,4 @@
-$(function() {
+/*$(function() {
     $("#accordion").accordion({
         heightStyle: "content"
     });
@@ -9,8 +9,12 @@ $(function() {
         changeYear: true,
         defaultDate: +1
     });
+});*/
+$(function(){
+    $('.input-group.date').datepicker({
+        format: 'mm/dd/yyyy'
+    });
 });
-
 function buscaProducto(){
     document.getElementById('inv_consProdPorFiltro').submit();
 }
