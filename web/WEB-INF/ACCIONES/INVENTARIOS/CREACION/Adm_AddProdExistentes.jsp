@@ -31,6 +31,14 @@
                         </script>
                     </s:if>
                 </div>
+                <div class="MensajesOk" style="display: none;">
+                    <s:if test="hasActionMessages()">
+                        <div class="alert alert-success" id="info" role="alert" ><h4><s:actionmessage/></h4></div>
+                        <script>
+                            mostrarMsnOk();
+                        </script>
+                    </s:if>
+                </div>
                 <s:set name="variable" value="bandera" />
                 <s:if test="%{#variable.equalsIgnoreCase('S')}">
                     <s:form theme="simple" action="inv_consPrIndAddExistente" id="inv_consPrIndAddExistente" autocomplete="off">
@@ -42,9 +50,6 @@
                                 <s:param name="function">buscarProductoIndividual</s:param>
                                 <s:param name="title">Busqueda Individual por Codigo</s:param>
                             </s:include>
-
-                            </tr>
-                            </tfoot>
                         </div>
                         <s:textfield name="accion" value="consIndividual" cssStyle="display:none"/>
                     </s:form>
@@ -86,6 +91,22 @@
                         <s:textfield name="producto.codigo" cssStyle="display:none;" />
                         <s:textfield name="producto.id" cssStyle="display:none;"/>
                         <s:textfield name="accion" value="addProductosExistents" cssStyle="display:none;"/>
+                        <div class="Mensajes" style="display: none;">
+                            <s:if test="hasActionErrors()">
+                                <div class="alert alert-danger" id="info" role="alert" ><h4><s:actionerror /></h4></div>
+                                <script>
+                                    mostrarMsn();
+                                </script>
+                            </s:if>
+                        </div>
+                        <div class="MensajesOk" style="display: none;">
+                            <s:if test="hasActionMessages()">
+                                <div class="alert alert-success" id="info" role="alert" ><h4><s:actionmessage/></h4></div>
+                                <script>
+                                    mostrarMsnOk();
+                                </script>
+                            </s:if>
+                        </div>
                         <table class="table table-bordered">
                             <thead>
                                 <tr>
@@ -129,6 +150,17 @@
                                         </table>
                                     </td>
                                 </tr>
+                                <tr>
+                                    <td colspan="2">
+                                        <table>
+                                            <tr>
+                                                <td>Sede del producto:</td>
+                                                <td><s:textfield name="addicionProd.sede" cssClass="form-control" /></td>
+                                            <tr>
+                                        </table>
+
+                                    </td>
+                                </tr>
                             </tbody>
                             <tfoot>
                                 <tr>
@@ -139,7 +171,7 @@
                                         </s:include>
                                     </td>
                                 </tr>
-                            <tfoot>
+                            </tfoot>
                         </table>
                     </div>
                 </s:form>
@@ -154,9 +186,8 @@
             </div>                           
         </div> 
         <div class="col-md-3 col-xs-0 col-sm-0"></div>
-    </div>
-    <div id="informacion" title="Información" style="display: none;">
-        <div id="mensaje"></div>
-    </div>
-</body>
+        <div id="informacion" title="Información" style="display: none;">
+            <div id="mensaje"></div>
+        </div>
+    </body>
 </html>
