@@ -65,7 +65,12 @@
                         </s:include>
                     </div>
                 </s:form>
-                <br/>
+            </div>
+            <div class="col-md-3 col-sm-0 col-xs-0"></div>
+        </div>
+        <div class="row">
+            <div class="col-md-1 col-sm-0 col-xs-0"></div>
+            <div class="col-md-10 col-sm-12 col-xs-12">
                 <table class="table table-hover">
                     <tr>
                         <td>NOMBRE</td>
@@ -78,18 +83,18 @@
                         int i = 0;
                     %>
                     <s:iterator value="resultSede">
-                        <%                        
-                        if(i%2==0){
-                            %>
-                            <tr class="active">
-                            <%
-                        }else{
-                            %>
-                            <tr>
-                            <%
-                        }
-                        i++;
+                        <%
+                            if (i % 2 == 0) {
                         %>
+                        <tr class="active">
+                            <%
+                            } else {
+                            %>
+                        <tr>
+                            <%
+                                }
+                                i++;
+                            %>
                             <td><a href="#" onclick="permisoSede('<s:text name="sede_sede"/>')" class="linkPemiso"><s:property value="sede_nombre"/></a></td>
                             <td><s:property value="sede_direccion"/></td>
                             <td><s:property value="sede_telefono"/></td>                        
@@ -104,10 +109,11 @@
                         </tr>
                     </s:iterator>                
                 </table>
+                <div class="col-md-1 col-sm-0 col-xs-0"></div>
             </div>
-            <s:form action="adm_conEspSede" theme="simple" id="adm_conEspSede" method="post">
-                <s:textfield type="hidden" name="sede.sede_sede" id="linkSede" />
-            </s:form>
         </div>
-</body>
+        <s:form action="adm_conEspSede" theme="simple" id="adm_conEspSede" method="post">
+            <s:textfield type="hidden" name="sede.sede_sede" id="linkSede" />
+        </s:form>
+    </body>
 </html>

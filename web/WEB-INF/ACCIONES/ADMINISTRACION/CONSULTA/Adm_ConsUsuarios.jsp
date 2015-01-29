@@ -67,56 +67,55 @@
                             <s:include value="/WEB-INF/TEMPLATE/botones/report.jsp" />
                         </div>
                     </div>
-                </div>
-            </s:form>
-        </div>
-        <div class="col-md-6 col-sm-12 col-xs-12"></div>
-    </div>
-    <div class="row">
-        <div class="col-md-1 col-sm-0 col-xs-0"></div>
-        <div class="col-md-10 col-sm-12 col-xs-12">
-            <s:if test="resultConsGeneral != null">
-                <table class="table table-hover" style="width: 100%">
-                    <thead>
-                        <tr>
-                            <th>NOMBRE</th>
-                            <th>IDENTIFICACIÓN</th>
-                            <th>CORREO</th>
-                            <th>USUARIO</th>
-                            <th>PERFIL</th>
-                            <th>SEDE</th>
-                        </tr>                    
-                    </thead>
-                    <tbody>
-                        <%
-                            int i = 0;
-                        %>
-                        <s:iterator value="resultConsGeneral">
-                            <%
-                                if (i % 2 == 0) {
-                            %>
-                            <tr class="active">
-                                <%
-                                } else {
-                                %>
+                </s:form>
+            </div>
+            <div class="col-md-3 col-sm-0 col-xs-0"></div>
+        </div>       
+        <div class="row">
+            <div class="col-md-1 col-sm-0 col-xs-0"></div>
+            <div class="col-md-10 col-sm-12 col-xs-12">
+                <s:if test="resultConsGeneral != null">
+                    <table class="table table-hover" style="width: 100%">
+                        <thead>
                             <tr>
+                                <th>NOMBRE</th>
+                                <th>IDENTIFICACIÓN</th>
+                                <th>CORREO</th>
+                                <th>USUARIO</th>
+                                <th>PERFIL</th>
+                                <th>SEDE</th>
+                            </tr>                    
+                        </thead>
+                        <tbody>
+                            <%
+                                int i = 0;
+                            %>
+                            <s:iterator value="resultConsGeneral">
                                 <%
-                                    }
-                                    i++;
+                                    if (i % 2 == 0) {
                                 %>
-                                <td><s:property value="nombre"/></td>
-                                <td><s:property value="cedula"/></td>
-                                <td><s:property value="correo"/></td>
-                                <td><s:property value="usuario"/></td>
-                                <td><s:property value="NomPerfil"/></td>
-                                <td><s:property value="sede"/></td>
-                            </tr>
-                        </s:iterator>
-                    </tbody>
-                </table>
-            </s:if>                
+                                <tr class="active">
+                                    <%
+                                    } else {
+                                    %>
+                                <tr>
+                                    <%
+                                        }
+                                        i++;
+                                    %>
+                                    <td><s:property value="nombre"/></td>
+                                    <td><s:property value="cedula"/></td>
+                                    <td><s:property value="correo"/></td>
+                                    <td><s:property value="usuario"/></td>
+                                    <td><s:property value="NomPerfil"/></td>
+                                    <td><s:property value="sede"/></td>
+                                </tr>
+                            </s:iterator>
+                        </tbody>
+                    </table>
+                </s:if>                
+            </div>
+            <div class="col-md-1 col-sm-0 col-xs-0"></div>
         </div>
-        <div class="col-md-1 col-sm-0 col-xs-0"></div>
-    </div>
-</body>
+    </body>
 </html>

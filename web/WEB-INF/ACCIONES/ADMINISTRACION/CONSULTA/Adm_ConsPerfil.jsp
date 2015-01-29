@@ -5,7 +5,7 @@
 <html>
     <head>
         <s:include value="/WEB-INF/NEWTEMPLATE/cabecera.jsp"></s:include>
-            <script type="text/javascript" src="<%=RutaSitio %>/JS/ADMINISTRACION/PERFIL/Adm_ConsdPerfil.js"></script>
+        <script type="text/javascript" src="<%=RutaSitio%>/JS/ADMINISTRACION/PERFIL/Adm_ConsdPerfil.js"></script>
         <s:head/>
         <style>
             .linkPemiso{
@@ -63,6 +63,12 @@
                         </script>
                     </s:if>
                 </div>
+            </div>
+            <div class="col-md-3 col-sm-0 col-xs-0"></div>
+        </div>
+        <div class="row">
+            <div class="col-md-1 col-sm-0 col-xs-0"></div>
+            <div class="col-md-10 col-sm-12 col-xs-12">
                 <table class="table">
                     <tr>
                         <td>NOMBRE</td>
@@ -93,13 +99,13 @@
                         </tr>
                     </s:iterator>                
                 </table>
+                <div class="col-md-1 col-sm-0 col-xs-0"></div>
             </div>
-            <div class="col-md-3 col-sm-0 col-xs-0"></div>
-        </div>
-        <form action="adm_updPermisos" id="adm_updPermisos" method="post">
-            <input type="hidden" name="perfil" id="linkPerfil" value="">
-        </form>
-    </div>
 
-</body>
+            <form action="adm_updPermisos" id="adm_updPermisos" method="post">
+                <input type="hidden" name="perfil" id="linkPerfil" value="">
+            </form>
+        </div>
+
+    </body>
 </html>
