@@ -80,10 +80,11 @@ public class ManejoString {
      * @return Cadena sin puntos
      */
 
-    public String eliminaMascaraMoneda(String cadena) {
-        String resultado = "0.0";
+    public static String eliminaMascaraMoneda(String cadena) {
+        String resultado = "";
         try {
             resultado = cadena.replaceAll("\\.", "");
+                   
         } catch (Exception e) {
             e.printStackTrace();
         }

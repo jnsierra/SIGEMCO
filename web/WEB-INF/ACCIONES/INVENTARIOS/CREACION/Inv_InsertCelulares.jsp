@@ -6,6 +6,7 @@
     <head>
         <s:include value="/WEB-INF/NEWTEMPLATE/cabecera.jsp"></s:include>
         <script type="text/javascript" src="<%=RutaSitio%>/JS/INVENTARIOS/Inv_InsertCelulares.js"></script>
+        <script type="text/javascript" src="<%=RutaSitio%>/JS/UTILIDADES/Validaciones.js"></script>
     </head>
     <body>
         <s:div cssClass="header">
@@ -70,7 +71,7 @@
                             <tr>
                                 <td>Valor de Venta:</td>
                                 <td>
-                                    <s:textfield name="remision.rmce_valor" cssClass="form-control" />
+                                    <s:textfield name="remision.rmce_valor" cssClass="form-control" onkeyup="mascaraMoneda(this)" onkeypress="return validaNumeros(event)"/>
                                 </td>
                             </tr>
                             <tr>

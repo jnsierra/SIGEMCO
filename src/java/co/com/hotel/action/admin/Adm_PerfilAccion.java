@@ -33,7 +33,7 @@ public class Adm_PerfilAccion extends ActionSupport implements SessionAware, Usu
     public String execute() {
         Adm_PerfilLogica perfil = new Adm_PerfilLogica();
         try {
-            if(inserto.isEmpty()){
+            if( inserto==null || inserto.isEmpty()){
                 inserto = "N";
             }
             if (inserto.equalsIgnoreCase("N")) {
@@ -50,6 +50,7 @@ public class Adm_PerfilAccion extends ActionSupport implements SessionAware, Usu
                 this.inserto = "S";
             }
         } catch (Exception e) {
+            e.printStackTrace();
             return ERROR;
         }
         return SUCCESS;

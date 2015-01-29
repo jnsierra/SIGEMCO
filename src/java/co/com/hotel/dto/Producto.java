@@ -3,14 +3,16 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package co.com.hotel.dto;
+
+import co.com.hotel.utilidades.ManejoString;
 
 /**
  *
  * @author nicolas
  */
 public class Producto {
+
     private String id;
     private String referencia;
     private String codigo;
@@ -65,7 +67,7 @@ public class Producto {
 
     public void setIva(String iva) {
         this.iva = iva;
-    }   
+    }
 
     public String getMarca() {
         return marca;
@@ -90,7 +92,7 @@ public class Producto {
     public void setCantidad(String cantidad) {
         this.cantidad = cantidad;
     }
-    
+
     public String getCosto() {
         return costo;
     }
@@ -108,7 +110,7 @@ public class Producto {
     }
 
     public String getPrecio() {
-        return precio;
+        return ManejoString.eliminaMascaraMoneda(precio);
     }
 
     public void setPrecio(String precio) {
@@ -137,7 +139,7 @@ public class Producto {
 
     public void setFechaVencimiento(String fechaVencimiento) {
         this.fechaVencimiento = fechaVencimiento;
-    } 
+    }
 
     public String getRegistroUnico() {
         return registroUnico;
@@ -146,5 +148,5 @@ public class Producto {
     public void setRegistroUnico(String registroUnico) {
         this.registroUnico = registroUnico;
     }
-    
+
 }

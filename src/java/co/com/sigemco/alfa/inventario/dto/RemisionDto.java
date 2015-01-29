@@ -5,6 +5,8 @@
  */
 package co.com.sigemco.alfa.inventario.dto;
 
+import co.com.hotel.utilidades.ManejoString;
+
 /**
  *
  * @author nicolas
@@ -67,7 +69,8 @@ public class RemisionDto {
     }
 
     public String getRmce_valor() {
-        return rmce_valor;
+
+        return ManejoString.eliminaMascaraMoneda(rmce_valor);
     }
 
     public void setRmce_valor(String rmce_valor) {
@@ -153,7 +156,7 @@ public class RemisionDto {
         this.rmce_sede = rmce_sede;
     }
 
-    public String getRmce_estado(){
+    public String getRmce_estado() {
         if (this.filtros.equalsIgnoreCase("S")) {
             if (rmce_estado.equalsIgnoreCase("E")) {
                 return "STAND";

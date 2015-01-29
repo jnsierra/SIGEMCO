@@ -6,6 +6,7 @@
     <head>
         <s:include value="/WEB-INF/NEWTEMPLATE/cabecera.jsp"></s:include>
             <script type="text/javascript" src="<%=RutaSitio%>/JS/INVENTARIOS/Inv_ParPrecioProd.js"></script>
+            <script type="text/javascript" src="<%=RutaSitio%>/JS/UTILIDADES/Validaciones.js"></script>
         </head>
         <body>
         <s:div cssClass="header">
@@ -128,7 +129,7 @@
                                         <td colspan="3">
                                             <div class="input-group">
                                                 <span class="input-group-addon">$</span>
-                                                <s:textfield cssClass="form-control" name="producto.precio" title="Precio que deseas vender el producto sin impuestos" data-toggle="tooltip" data-placement="left"/>
+                                                <s:textfield cssClass="form-control" name="producto.precio" title="Precio que deseas vender el producto sin impuestos" data-toggle="tooltip" data-placement="left" onkeyup="mascaraMoneda(this)" onkeypress="return validaNumeros(event)"/>
                                             </div>
                                         </td>
                                     </tr>

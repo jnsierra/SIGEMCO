@@ -8,7 +8,6 @@ package co.com.hotel.action.admin;
 import co.com.hotel.datos.session.Usuario;
 import co.com.hotel.dto.Producto;
 import co.com.hotel.logica.productos.IngresaProductoNuevo;
-import co.com.hotel.utilidades.ManejoString;
 import co.com.hotel.utilidades.UsuarioHabilitado;
 import co.com.hotel.validacion.ValidaCampos;
 import co.com.hotel.validacion.ValidaDuplicadodosProd;

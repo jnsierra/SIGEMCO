@@ -6,6 +6,7 @@
     <head>
         <s:include value="/WEB-INF/NEWTEMPLATE/cabecera.jsp"></s:include>
         <script type="text/javascript" src="<%=RutaSitio%>/JS/INVENTARIOS/Inv_ConsGenRemision.js"></script>
+        <script type="text/javascript" src="<%=RutaSitio%>/JS/UTILIDADES/Validaciones.js"></script>
     </head>
     <body>
         <s:div cssClass="header">
@@ -96,9 +97,9 @@
                                 Valor:<br>
                                 <table>
                                     <tr>
-                                        <td><s:textfield name="remision.rmce_valor" cssClass="form-control" /></td>
+                                        <td><s:textfield name="remision.rmce_valor" cssClass="form-control" onkeyup="mascaraMoneda(this)" onkeypress="return validaNumeros(event)"/></td>
                                         <td>A</td>
-                                        <td><s:textfield name="remision.valorBeteween" cssClass="form-control" /></td>
+                                        <td><s:textfield name="remision.valorBeteween" cssClass="form-control" onkeyup="mascaraMoneda(this)" onkeypress="return validaNumeros(event)"/></td>
                                     </tr>
                                 </table>
                             </div>

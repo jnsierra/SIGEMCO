@@ -5,6 +5,7 @@
  */
 package co.com.sigemco.alfa.inventario.dao;
 
+import co.com.hotel.utilidades.ManejoString;
 import co.com.hotel.validacion.ValidaCampos;
 
 /**
@@ -57,7 +58,7 @@ public class RemisionDao {
     }
 
     public String getRmce_valor() {
-        return rmce_valor;
+        return ManejoString.eliminaMascaraMoneda(rmce_valor);
     }
 
     public void setRmce_valor(String rmce_valor) {
@@ -169,7 +170,7 @@ public class RemisionDao {
     }
 
     public String getValorBeteween() {
-        return valorBeteween;
+        return ManejoString.eliminaMascaraMoneda(valorBeteween);
     }
 
     public void setValorBeteween(String valorBeteween) {
@@ -212,6 +213,8 @@ public class RemisionDao {
         select += "       rmce_codigo, rmce_sede, rmce_estado, rmce_pagado, rmce_comdev            \n";
         select += "  FROM in_trmce                                                                \n";
         select += armaWhereObjDao();
+
+        System.out.println("select between" + select);
         return select;
     }
 
@@ -241,9 +244,9 @@ public class RemisionDao {
                     rta += "and rmce_valor <= " + this.getRmce_valor() + "\n";
                 }
             }
-            if (valida.validaNulo(this.getValorBeteween()) && !this.getValorBeteween().equalsIgnoreCase("-1")) {
-                rta += "and rmce_valor >= " + this.getValorBeteween() + "\n";
-            }
+//            if (valida.validaNulo(this.getValorBeteween()) && !this.getValorBeteween().equalsIgnoreCase("-1")) {
+//                rta += "and rmce_valor >= " + this.getValorBeteween() + "\n";
+//            }
             if (valida.validaNulo(this.getRmce_iccid()) && !this.getRmce_iccid().equalsIgnoreCase("")) {
                 rta += "and upper(rmce_iccid) like upper('%" + this.getRmce_iccid() + "%') \n";
             }
