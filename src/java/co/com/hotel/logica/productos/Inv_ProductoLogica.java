@@ -31,6 +31,7 @@ public class Inv_ProductoLogica {
             function.adicionarNumeric(usuario);
             function.adicionarNumeric(obj.getNoProductos());
             function.adicionarNumeric(obj.getCosto());
+            function.adicionarNumeric(obj.getSede());
             String rta = "";
             rta = function.llamarFunction(function.getSql());
             function.recuperarString();

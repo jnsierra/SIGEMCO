@@ -75,7 +75,6 @@ public class Inv_ProdAccion extends ActionSupport implements SessionAware, Usuar
     public String addProdExisInv() {
         addicionProd.setIdProd(producto.getId());
         Inv_ProductoLogica logica = new Inv_ProductoLogica();
-        System.out.println("Este es el tius: " + usuario.getIdTius());
         String rta = logica.ingresaProductoExistente(addicionProd, usuario.getIdTius());
         String []vectorRta = rta.split("-");
         if (vectorRta[0].equalsIgnoreCase("Ok")) {

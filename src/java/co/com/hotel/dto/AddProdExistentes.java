@@ -17,6 +17,7 @@ public class AddProdExistentes {
     private String noProductos;
     private String natuMov;
     private String idProd;
+    private String sede;
 
     public String getMovInv() {
         return movInv;
@@ -56,5 +57,13 @@ public class AddProdExistentes {
 
     public void setIdProd(String idProd) {
         this.idProd = idProd;
+    }
+
+    public String getSede() {
+        return sede;
+    }
+
+    public void setSede(String sede) {
+        this.sede = sede;
     }
 }
