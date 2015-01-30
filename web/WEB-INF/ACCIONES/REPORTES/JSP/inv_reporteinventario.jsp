@@ -72,11 +72,9 @@
                                     <td><s:textfield cssClass="form-control" name="producto.referencia" /></td>
                                 </div>   
                                 <div class="form-group col-md-12 col-xs-12 col-sm-12">
-                                    <td colspan="3">
-                                        <a onclick="buscaProducto()" style="cursor:pointer;float: right" >
-                                            <button type="button" class="btn btn-default"><span class="glyphicon glyphicon-search"></span>&nbsp;Buscar</button>
-                                        </a>
-                                    </td>
+                                    <a onclick="buscaProducto()" style="cursor:pointer;float: right" >
+                                        <button type="button" class="btn btn-default"><span class="glyphicon glyphicon-search"></span>&nbsp;Buscar</button>
+                                    </a>
                                 </div>
                             </div>
                         </div>

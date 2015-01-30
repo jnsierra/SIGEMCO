@@ -153,7 +153,7 @@
                     <li><a href="#">Usuarios</a>
                         <ul class="dropdown-menu">
                             <li><a href="reenvioGeneral.action?accion=431">Activos</a></li>
-                            <li><a href="#">Facturación de Usuarios</a></li>
+                            <li><a href="reenvioGeneral.action?accion=431">Facturación de Usuarios</a></li>
                         </ul>
                     </li>
                     <% if (permisos.indexOf(".RpIn1.") > 0) {%>
