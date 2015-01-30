@@ -63,7 +63,7 @@
                         <thead>
                             <tr>
                                 <th colspan="2" class="alert alert-info text-center"><h3>INGRESAR PERFIL</h3></th>
-                        </tr>
+                            </tr>
                         </thead>
                         <tbody>
                             <tr>

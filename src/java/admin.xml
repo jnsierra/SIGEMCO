@@ -85,7 +85,9 @@
             <result name="input">/WEB-INF/ACCIONES/ADMINISTRACION/CREACION/Adm_ParametrosEmpresariales.jsp</result>
             <result name="error">/inicio.jsp</result>
         </action>
-        
+        <action name="adm_paramgenerales" class="co.com.hotel.action.admin.Adm_ParametrosEmpresaAccion">
+            <result name="succes">/WEB-INF/ACCIONES/ADMINISTRACION/CREACION/Adm_ParamGenerales.jsp</result>
+        </action>    
         <action name="adm_insertSede" class="co.com.hotel.action.admin.Adm_SedeAccion" method="insertarSede">
             <result name="success">/WEB-INF/ACCIONES/ADMINISTRACION/CREACION/Adm_InsertSede.jsp</result>
             <result name="input">/WEB-INF/ACCIONES/ADMINISTRACION/CREACION/Adm_InsertSede.jsp</result>

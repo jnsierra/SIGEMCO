@@ -5,9 +5,9 @@
 <html>
     <head>
         <s:include value="/WEB-INF/NEWTEMPLATE/cabecera.jsp"></s:include>
-            <script type="text/javascript" src="<%=RutaSitio %>/JS/ADMINISTRACION/USUARIO/Adm_InsertUsuarios.js"></script>
-        </head>
-        <body>
+        <script type="text/javascript" src="<%=RutaSitio%>/JS/ADMINISTRACION/USUARIO/Adm_InsertUsuarios.js"></script>
+    </head>
+    <body>
         <s:div cssClass="header">
             <s:include value="/WEB-INF/NEWTEMPLATE/FrameTop.jsp" > 
                 <s:param name="nombre"><s:text name="usuario.apellido"/> <s:text name="usuario.nombre"/></s:param>
@@ -88,14 +88,15 @@
                         </tbody>
                         <tfoot>
                             <tr>
-                                <!--<td colspan="2"><a href="#" class="btnInserta" onclick="insertar()">Insertar</a>&nbsp;&nbsp; <a href="#" class="btnLimpia" onclick="limpiar()">Limpiar</a>&nbsp;&nbsp;&nbsp;</td>-->
                                 <td colspan="2">
-                                    <s:include value="/WEB-INF/TEMPLATE/botones/newUser.jsp"></s:include>
-                                    <s:include value="/WEB-INF/TEMPLATE/botones/clean.jsp"></s:include>
-                                    </td>
-                                </tr>
-                            </tfoot>
-                        </table>
+                                    <s:include value="/WEB-INF/TEMPLATE/botones/newUser.jsp"> 
+                                    </s:include>
+                                    <s:include value="/WEB-INF/TEMPLATE/botones/clean.jsp">
+                                    </s:include>
+                                </td>
+                            </tr>
+                        </tfoot>
+                    </table>
                 </s:form>
             </div>
             <div class="col-md-3 col-xs-0 col-sm-0"></div>

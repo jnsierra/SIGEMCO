@@ -59,8 +59,16 @@
                             <%}%>
                         </ul>
                     </li>
-                    <%}if (permisos.indexOf(".AdEm1.") >= 0 ) {%>
-                    <li><a href="reenvioGeneral.action?accion=131">Empresa</a></li>
+                    <%}if (permisos.indexOf(".AdEm1.") >= 0 || permisos.indexOf(".AdEm2.") >= 0) {%>
+                    <li><a href="#">Empresa</a>
+                        <ul class="dropdown-menu">
+                            <%if (permisos.indexOf(".AdEm1.") >= 0 ) {%>
+                            <li><a href="reenvioGeneral.action?accion=131">Información</a></li>
+                            <%}if (permisos.indexOf(".AdEm2.") >= 0 ) {%>
+                            <li><a href="reenvioGeneral.action?accion=132">Parametros Generales</a></li>
+                            <%}%>
+                        </ul>
+                    </li>
                     <%}%>
                 </ul>
             </li>
@@ -147,15 +155,17 @@
                     <li><a href="#">Cerrar Factura</a></li>
                 </ul>
             </li>
-            <%if (permisos.indexOf(".RpIn1.") >= 0) {%>
+            <%if (permisos.indexOf(".RpIn1.") >= 0 || permisos.indexOf(".RpIn1.") > 0) {%>
             <li><a href="#"><span class="glyphicon glyphicon-floppy-save"></span>Reportes</a>
                 <ul class="dropdown-menu">
+                    <% if (permisos.indexOf(".RpIn1.") > 0) {%>
                     <li><a href="#">Usuarios</a>
                         <ul class="dropdown-menu">
                             <li><a href="reenvioGeneral.action?accion=431">Activos</a></li>
                             <li><a href="reenvioGeneral.action?accion=431">Facturación de Usuarios</a></li>
                         </ul>
                     </li>
+                    <%}%>
                     <% if (permisos.indexOf(".RpIn1.") > 0) {%>
                     <li><a href="#">Inventario</a>
                         <% if (permisos.indexOf(".RpIn1.") > 0) { %>

@@ -107,10 +107,10 @@
                                                 </thead>
                                                 <tbody style="display: none;" class="subPermisoAdmEmp">
                                                     <tr>
-                                                        <td style="width: 30%">Parametros Generales</td>
+                                                        <td style="width: 30%">Información Empresarial</td>
                                                         <td style="width: 20%"><input type="checkbox" value="AdEm1" id="AdEm1"></td>
-                                                        <td style="width: 30%">&nbsp;&nbsp;&nbsp;</td>
-                                                        <td style="width: 20%">&nbsp;&nbsp;&nbsp;</td>
+                                                        <td style="width: 30%">Parametros Generales </td>
+                                                        <td style="width: 20%"><input type="checkbox" value="AdEm2" id="AdEm2"></td>
                                                     </tr>
                                                 </tbody>
                                             </table>

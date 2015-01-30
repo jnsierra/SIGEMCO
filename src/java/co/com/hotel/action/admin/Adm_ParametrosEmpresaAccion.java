@@ -3,7 +3,6 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package co.com.hotel.action.admin;
 
 import co.com.hotel.datos.session.Usuario;
@@ -18,27 +17,32 @@ import org.apache.struts2.interceptor.SessionAware;
  *
  * @author nicolas
  */
-public class Adm_ParametrosEmpresaAccion extends ActionSupport  implements SessionAware, UsuarioHabilitado{
-    
+public class Adm_ParametrosEmpresaAccion extends ActionSupport implements SessionAware, UsuarioHabilitado {
+
     private Usuario usuario;
     private Map session;
     private Empresa empresa;
-    
-   public String modificarParametros(){
-       Emp_EmpresaLogica logica = null;
-       try {
-           logica = new Emp_EmpresaLogica(); 
-           String rta = logica.ingresarParametrosPrincempresa(empresa);
-           if(rta.equalsIgnoreCase("Ok")){
-               addActionMessage("Parametros ingresados Correctamente ");               
-           }else{
-               addActionError(rta);
-           }           
-       } catch (Exception e) {
-           System.err.println("Error Adm_ParametrosEmpresaAccion.modificarParametros " + e );
-       }
-       return SUCCESS;
-   }
+
+    /**
+     * Accion encargada de insertar la informacion general de la empresa
+     *
+     * @return
+     */
+    public String modificarParametros() {
+        Emp_EmpresaLogica logica = null;
+        try {
+            logica = new Emp_EmpresaLogica();
+            String rta = logica.ingresarParametrosPrincempresa(empresa);
+            if (rta.equalsIgnoreCase("Ok")) {
+                addActionMessage("Parametros ingresados Correctamente ");
+            } else {
+                addActionError(rta);
+            }
+        } catch (Exception e) {
+            System.err.println("Error Adm_ParametrosEmpresaAccion.modificarParametros " + e);
+        }
+        return SUCCESS;
+    }
 
     public Usuario getUsuario() {
         return usuario;
@@ -63,5 +67,5 @@ public class Adm_ParametrosEmpresaAccion extends ActionSupport  implements Sessi
     public void setEmpresa(Empresa empresa) {
         this.empresa = empresa;
     }
-    
+
 }

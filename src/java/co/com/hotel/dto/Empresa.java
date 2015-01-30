@@ -16,6 +16,7 @@ public class Empresa {
     private String direccion;
     private String ciudad;
     private String telefono;
+    
 
     public String getNombre() {
         return nombre;
