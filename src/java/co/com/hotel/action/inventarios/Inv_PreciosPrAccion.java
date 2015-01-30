@@ -9,6 +9,7 @@ import co.com.hotel.datos.session.Usuario;
 import co.com.hotel.dto.PrecioProducto;
 import co.com.hotel.dto.Producto;
 import co.com.hotel.logica.productos.Inv_ProductoLogica;
+import co.com.hotel.logica.sede.Adm_SedeLogica;
 import co.com.hotel.utilidades.UsuarioHabilitado;
 import co.com.hotel.validacion.ValidaCampos;
 import com.opensymphony.xwork2.ActionSupport;
@@ -28,31 +29,36 @@ public class Inv_PreciosPrAccion extends ActionSupport implements SessionAware, 
     private Producto producto;
     private List<PrecioProducto> listaPreciosPr;
     private String accion;
-    
-    public String buscaProductoEspecifico(){
-        Inv_ProductoLogica logica = new Inv_ProductoLogica(); 
+    private Map<String, String> sedes;
+
+    public String buscaProductoEspecifico() {
+        Adm_SedeLogica sedeLogica = new Adm_SedeLogica();
+        this.sedes = sedeLogica.obtieneSedes();
+        Inv_ProductoLogica logica = new Inv_ProductoLogica();
         try {
-            producto= logica.buscaProductosXCodigo(producto.getCodigo());
-            if(producto!= null){
+            producto = logica.buscaProductosXCodigo(producto.getCodigo());
+            if (producto != null) {
                 listaPreciosPr = logica.buscaHistorialPreciosProd(producto.getId());
-            }else{
+            } else {
                 addActionError("No existe ningún producto con estos criterios de busqueda ");
             }
-            
+
         } catch (Exception e) {
             System.out.println("Error Inv_PreciosPrAccion.buscaProductoEspecifico " + e);
         }
         return SUCCESS;
     }
-    
-    public String paramPrecioPr(){
-        Inv_ProductoLogica logica = new Inv_ProductoLogica(); 
+
+    public String paramPrecioPr() {
+        Adm_SedeLogica sedeLogica = new Adm_SedeLogica();
+        this.sedes = sedeLogica.obtieneSedes();
+        Inv_ProductoLogica logica = new Inv_ProductoLogica();
         try {
-            String rta = logica.parametrizaPrecioPr(producto.getId(),usuario.getIdTius() , producto.getPrecio());
-            if(rta.equalsIgnoreCase("Ok")){
+            String rta = logica.parametrizaPrecioPr(producto.getId(), usuario.getIdTius(), producto.getPrecio(), producto.getSede());
+            if (rta.equalsIgnoreCase("Ok")) {
                 addActionMessage("Parametrizacion de precio correctamente");
                 producto = null;
-            }else{
+            } else {
                 addActionError("Error al adicionar el producto");
             }
         } catch (Exception e) {
@@ -61,18 +67,22 @@ public class Inv_PreciosPrAccion extends ActionSupport implements SessionAware, 
         return SUCCESS;
     }
 
-    public void validate(){
+    public void validate() {
         ValidaCampos valida = new ValidaCampos();
-        if(accion.equalsIgnoreCase("buscarProducto")){
-                        
-        }else if(accion.equalsIgnoreCase("parametrizarPr")){
-            if(!valida.validaNulo(producto.getPrecio().trim())){
+        Adm_SedeLogica sedeLogica = new Adm_SedeLogica();
+        this.sedes = sedeLogica.obtieneSedes();
+        if (accion.equalsIgnoreCase("buscarProducto")) {
+
+        } else if (accion.equalsIgnoreCase("parametrizarPr")) {
+            if (!valida.validaNulo(producto.getPrecio())) {
                 addActionError("El campo precio no puede ser nulo");
+            }if(producto.getSede().equalsIgnoreCase("-1")){
+                addActionError("Por favor seleccione la sede a la cual desea parametrizarle el precio");
             }
         }
         valida = null;
     }
-    
+
     public Usuario getUsuario() {
         return usuario;
     }
@@ -111,5 +121,13 @@ public class Inv_PreciosPrAccion extends ActionSupport implements SessionAware, 
 
     public void setAccion(String accion) {
         this.accion = accion;
+    }
+
+    public Map<String, String> getSedes() {
+        return sedes;
+    }
+
+    public void setSedes(Map<String, String> sedes) {
+        this.sedes = sedes;
     }
 }

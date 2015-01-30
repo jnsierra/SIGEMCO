@@ -110,7 +110,7 @@
                         <table class="table table-bordered">
                             <thead>
                                 <tr>
-                                    <td class="alert alert-info text-center" colspan="2" ><h3>INSERCION DE PRODUCTOS AL INVENTARIO</h3></td>
+                                    <td class="alert alert-info text-center" colspan="2" ><h3>INSERCIÓN DE PRODUCTOS AL INVENTARIO</h3></td>
                                 </tr>
                             </thead>
                             <tbody>
@@ -155,7 +155,9 @@
                                         <table>
                                             <tr>
                                                 <td>Sede del producto:</td>
-                                                <td><s:textfield name="addicionProd.sede" cssClass="form-control" /></td>
+                                                <td>
+                                                    <s:select cssClass="form-control" list="sedes" name="addicionProd.sede"  headerKey="-1" headerValue="Sede de ingreso del producto" />
+                                                </td>
                                             <tr>
                                         </table>
 

@@ -195,5 +195,13 @@
                 muestraImei();
             }
         </script>
+        <s:set name="valor" value="remision.rmce_valor"/>
+        <s:if test="%{#valor!=null}">
+            <script>
+                var numero = mascaraMonedaConValor('<s:text name="valor" />');
+                document.getElementById('inv_consRemPorFiltrosGen_remision_rmce_valor').value = numero;
+            </script>
+            
+        </s:if>
     </body>
 </html>

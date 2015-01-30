@@ -125,6 +125,14 @@
                                         </td>
                                     </tr>
                                     <tr>
+                                        <td>
+                                            Sedes:
+                                        </td>
+                                        <td colspan="3">
+                                            <s:select cssClass="form-control" list="sedes" name="producto.sede"  headerKey="-1" headerValue="Sede a darle precio" />
+                                        </td>
+                                    </tr>
+                                    <tr>
                                         <td>Precio Bruto</td>
                                         <td colspan="3">
                                             <div class="input-group">

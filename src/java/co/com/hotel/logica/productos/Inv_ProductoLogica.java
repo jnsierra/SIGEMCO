@@ -393,14 +393,14 @@ public class Inv_ProductoLogica {
         return r;        
     }
     
-    public String  parametrizaPrecioPr(String dska_dska, String tius_tius, String precio){
+    public String  parametrizaPrecioPr(String dska_dska, String tius_tius, String precio,String sede){
         String rta = "Ok";
         EnvioFunction function = new EnvioFunction();
         try {
             String sql = "INSERT INTO in_tprpr(";
-            sql += "prpr_dska, prpr_precio, prpr_tius_crea, prpr_tius_update )";
+            sql += "prpr_dska, prpr_precio, prpr_tius_crea, prpr_tius_update, prpr_sede )";
             sql += "values(";
-            sql += dska_dska + "," + precio + "," + tius_tius + "," + tius_tius;
+            sql += dska_dska + "," + precio + "," + tius_tius + "," + tius_tius + "," + sede;
             sql += ")";
             function.enviarUpdate(sql);            
         } catch (Exception e) {

@@ -11,6 +11,7 @@ import co.com.hotel.dto.Producto;
 import co.com.hotel.logica.movInventario.Inv_MovInLogica;
 import co.com.hotel.logica.productos.ConsultaProductos;
 import co.com.hotel.logica.productos.Inv_ProductoLogica;
+import co.com.hotel.logica.sede.Adm_SedeLogica;
 import co.com.hotel.utilidades.UsuarioHabilitado;
 import co.com.hotel.validacion.ValidaCampos;
 import com.opensymphony.xwork2.ActionSupport;
@@ -39,6 +40,7 @@ public class Inv_ProdAccion extends ActionSupport implements SessionAware, Usuar
     private String subAccion;
     private Map<String, String> gravamen;
     private Map<String, String> yesNo;
+    private Map<String, String> sedes;
 
     /**
      * Consulta de producto la cual se realiza con el codigo unico del producto
@@ -48,6 +50,8 @@ public class Inv_ProdAccion extends ActionSupport implements SessionAware, Usuar
      */
     @SkipValidation
     public String consultaIndividual() {
+        Adm_SedeLogica sedeLogica = new Adm_SedeLogica();
+        this.sedes = sedeLogica.obtieneSedes();
         ConsultaProductos logica = new ConsultaProductos();
         try {
             producto = logica.buscaProductoIndividual(producto.getCodigo());
@@ -76,7 +80,7 @@ public class Inv_ProdAccion extends ActionSupport implements SessionAware, Usuar
         addicionProd.setIdProd(producto.getId());
         Inv_ProductoLogica logica = new Inv_ProductoLogica();
         String rta = logica.ingresaProductoExistente(addicionProd, usuario.getIdTius());
-        String []vectorRta = rta.split("-");
+        String[] vectorRta = rta.split("-");
         if (vectorRta[0].equalsIgnoreCase("Ok")) {
             reset();
             bandera = "S";
@@ -131,9 +135,9 @@ public class Inv_ProdAccion extends ActionSupport implements SessionAware, Usuar
                     bandera = "N";
                 }
                 acceso = usuario.getPermisos().indexOf(".InPr6.");
-                if(acceso>=0){
+                if (acceso >= 0) {
                     permisoParam = "S";
-                }else{
+                } else {
                     permisoParam = "N";
                 }
             }
@@ -228,15 +232,19 @@ public class Inv_ProdAccion extends ActionSupport implements SessionAware, Usuar
                 if (!validaCampos.validaNulo(producto.getNombre().trim())) {
                     addFieldError("producto.nombre", "El campo no puede ser nulo");
                 }
-                if(!validaCampos.validaNulo(producto.getDescripcion().trim())){
+                if (!validaCampos.validaNulo(producto.getDescripcion().trim())) {
                     addFieldError("producto.descripcion", "El campo no puede ser nulo");
-                }if(!validaCampos.validaNulo(producto.getReferencia().trim())){
+                }
+                if (!validaCampos.validaNulo(producto.getReferencia().trim())) {
                     addFieldError("producto.referencia", "El campo no puede ser nulo");
-                }if(!validaCampos.validaNulo(producto.getMarca())){
+                }
+                if (!validaCampos.validaNulo(producto.getMarca())) {
                     addFieldError("producto.marca", "El campo no puede ser nulo");
-                }if(!validaCampos.validaNumerico(producto.getPorcIva())){
+                }
+                if (!validaCampos.validaNumerico(producto.getPorcIva())) {
                     addFieldError("producto.porcIva", "El campo debe ser numerico");
-                }if(producto.getIva() == "-1"){
+                }
+                if (producto.getIva() == "-1") {
                     addFieldError("producto.iva", "Por favor seleccione una de las opciones");
                 }
             }
@@ -350,5 +358,12 @@ public class Inv_ProdAccion extends ActionSupport implements SessionAware, Usuar
     public void setPermisoParam(String permisoParam) {
         this.permisoParam = permisoParam;
     }
-    
+
+    public Map<String, String> getSedes() {
+        return sedes;
+    }
+
+    public void setSedes(Map<String, String> sedes) {
+        this.sedes = sedes;
+    }
 }
