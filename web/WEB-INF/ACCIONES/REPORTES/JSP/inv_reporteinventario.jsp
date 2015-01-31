@@ -97,7 +97,7 @@
                             <s:if test="%{#variable.equalsIgnoreCase('S')}">                            
                                 <div class="form-group alert alert-info col-md-12 col-xs-12 col-sm-12" role="alert">
                                     <p>
-                                        Si realmente este es <b>PRODUCTO</b> que buscas genera el reporte 
+                                        Si realmente este el <b>PRODUCTO</b> que buscas genera el reporte 
                                     </p>
                                 </div>                           
                                 <table class="table table-bordered">
@@ -215,10 +215,20 @@
             <input type="text" name="nombre_Jasper" value="inv_promedioPonderado.jasper"/>
             <input type="text" name="SALIDA" value="PDF"/>
         </form>
-        <script>
-            $(function () {
-                $('#myTab a:last').tab('show');
-            })
-        </script>
+        <s:set name="variable" value="bandera" />
+        <s:if test="%{#variable.equalsIgnoreCase('S')}">                            
+            <script>
+                $(function() {
+                    $('#myTab a:last').tab('show');
+                })
+            </script>
+        </s:if>
+        <s:else>
+            <script>
+                $(function() {
+                    $('#myTab a:first').tab('show');
+                })
+            </script>
+        </s:else>
     </body>
 </html>

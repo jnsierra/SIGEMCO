@@ -147,4 +147,14 @@ public class Inv_PreciosPrAccion extends ActionSupport implements SessionAware, 
     public void setSedes(Map<String, String> sedes) {
         this.sedes = sedes;
     }
+
+    public List<PrecioSedeDto> getListaPrecioSede() {
+        return listaPrecioSede;
+    }
+
+    public void setListaPrecioSede(List<PrecioSedeDto> listaPrecioSede) {
+        this.listaPrecioSede = listaPrecioSede;
+    }
+    
+    
 }

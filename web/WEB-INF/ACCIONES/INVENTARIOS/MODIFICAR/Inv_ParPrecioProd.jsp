@@ -5,10 +5,10 @@
 <html>
     <head>
         <s:include value="/WEB-INF/NEWTEMPLATE/cabecera.jsp"></s:include>
-            <script type="text/javascript" src="<%=RutaSitio%>/JS/INVENTARIOS/Inv_ParPrecioProd.js"></script>
-            <script type="text/javascript" src="<%=RutaSitio%>/JS/UTILIDADES/Validaciones.js"></script>
-        </head>
-        <body>
+        <script type="text/javascript" src="<%=RutaSitio%>/JS/INVENTARIOS/Inv_ParPrecioProd.js"></script>
+        <script type="text/javascript" src="<%=RutaSitio%>/JS/UTILIDADES/Validaciones.js"></script>
+    </head>
+    <body>
         <s:div cssClass="header">
             <s:include value="/WEB-INF/NEWTEMPLATE/FrameTop.jsp" > 
                 <s:param name="nombre"><s:text name="usuario.apellido"/> <s:text name="usuario.nombre"/></s:param>
@@ -158,28 +158,53 @@
                                 </tfoot>
                             </table>
                         </s:form>
-                        <s:if test="listaPrecioSede!=null" >
-                            <table class="table table-bordered">
-                                <thead>
-                                    <tr>
-                                        <th colspan="3" style="text-align: center;" class="alert alert-info text-center"><h3>HISTORIAL DE PRECIOS</h3></th>
-                                </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td><h4 style="font-weight: bold">Fecha</h4></td>
-                                        <td><h4 style="font-weight: bold">Precio</h4></td>
-                                        <td><h4 style="font-weight: bold">Estado</h4></td>
-                                    </tr>
-                                    <s:iterator value="listaPreciosPr">
-                                        <tr>
-                                            <td><s:property value="prpr_fecha"/></td>
-                                            <td><s:property value="prpr_precio"/></td>
-                                            <td><s:property value="prpr_estado"/></td>
-                                        </tr>
-                                    </s:iterator>
-                                </tbody>
-                            </table>
+                        <s:if test="%{listaPrecioSede!=null}" >
+                            <ul class="nav nav-tabs" id="myTab">
+                                <%int i = 1;%>
+                                <s:iterator value="listaPrecioSede">
+                                    <li>
+                                        <a href="#tabs-<%=i%>" data-toggle="tab" style="text-transform: uppercase;"><s:property value="sede_nombre" /></a>
+                                    </li>
+                                    <%i++;%>
+                                </s:iterator>
+                            </ul>
+                            <div id="myTabContent" class="tab-content">
+                                <%int j = 1;%>
+                                <s:iterator value="listaPrecioSede">
+                                    <div id="tabs-<%=j%>" class="tab-pane fade">
+                                        <br/>
+                                        <table class="table table-bordered">
+                                            <thead>
+                                                <tr>
+                                                    <th colspan="3" style="text-align: center;" class="alert alert-info text-center"><h3>HISTORIAL DE PRECIOS</h3></th>
+                                            </tr>
+                                            </thead>
+                                            <tbody>
+                                                <s:if test="%{precios!=null}" >
+                                                    <tr>
+                                                        <td><h4 style="font-weight: bold">Fecha</h4></td>
+                                                        <td><h4 style="font-weight: bold">Precio</h4></td>
+                                                        <td><h4 style="font-weight: bold">Estado</h4></td>
+                                                    </tr>
+                                                    <s:iterator value="precios">
+                                                        <tr>
+                                                            <td><s:property value="prpr_fecha"/></td>
+                                                            <td><s:property value="prpr_precio"/></td>
+                                                            <td><s:property value="prpr_estado"/></td>
+                                                        </tr>                                                        
+                                                    </s:iterator>                                                    
+                                                </s:if>
+                                                <s:else>
+                                                    <tr>
+                                                        <td>NO EXISTEN PRECIOS PARAMETRIZADOS PARA ESTA SEDE</td>
+                                                    </tr>
+                                                </s:else>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                    <%j++;%>
+                                </s:iterator>
+                            </div>
                         </s:if>
                     </div>
                     <div class="col-md-0 col-xs-0 col-sm-0"></div>
@@ -187,5 +212,13 @@
             </div>
             <div class="col-md-3 col-xs-0 col-sm-0"></div>
         </div>
+        <br/>
+        <br/>
+        <br/>
+        <script>
+            $(function() {
+                $('#myTab a:first').tab('show');
+            })
+        </script>
     </body>
 </html>

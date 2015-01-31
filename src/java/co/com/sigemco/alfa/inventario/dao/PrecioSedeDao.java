@@ -39,13 +39,28 @@ public class PrecioSedeDao {
         this.dska_dska = dska_dska;
     }
 
-    public String obtienePreciosProductoPorSede() {
+    public String obtienePreciosProductoPorSedeConFormatos() {
         String sql = "";
-        sql += "SELECT prpr_prpr, prpr_dska, prpr_precio, prpr_tius_crea, prpr_tius_update, ";
-        sql += "       prpr_estado, prpr_fecha, prpr_sede                                   ";
-        sql += "  FROM in_tprpr                                                             ";
+        sql += "SELECT prpr_prpr, prpr_dska, to_char(prpr_precio,'LFM9,999,999.00') as prpr_precio , prpr_tius_crea, prpr_tius_update, \n ";
+        sql += "       prpr_estado, to_char(prpr_fecha,'dd/mm/yyyy') as prpr_fecha, prpr_sede                                   \n ";
+        sql += "  FROM in_tprpr                                                             \n ";
         sql += " WHERE prpr_sede = " + this.getSede_sede() + "\n";
-        sql += "  AND prpr_dska = " + this.getDska_dska();
+        sql += "  AND prpr_dska = " + this.getDska_dska()  + "\n";
+        sql += "  order by prpr_prpr desc \n";
+        return sql;
+    }
+    /**
+     * Consul
+     * @return 
+     */
+    public String obtienePreciosProductoPorSedeSinFormatos() {
+        String sql = "";
+        sql += "SELECT prpr_prpr, prpr_dska, to_char(prpr_precio,'LFM9,999,999.00') as prpr_precio , prpr_tius_crea, prpr_tius_update, \n ";
+        sql += "       prpr_estado, prpr_fecha, prpr_sede                                   \n ";
+        sql += "  FROM in_tprpr                                                             \n ";
+        sql += " WHERE prpr_sede = " + this.getSede_sede() + "\n";
+        sql += "  AND prpr_dska = " + this.getDska_dska()  + "\n";
+        sql += "  order by prpr_prpr desc \n";
         return sql;
     }
 

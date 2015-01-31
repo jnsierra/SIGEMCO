@@ -68,7 +68,7 @@ public class PreciosLogica {
             objDao = new PrecioSedeDao();
             objDao.setSede_sede(sede_sede);
             objDao.setDska_dska(dska_dska);
-            ResultSet rs = function.enviarSelect(objDao.obtienePreciosProductoPorSede());
+            ResultSet rs = function.enviarSelect(objDao.obtienePreciosProductoPorSedeConFormatos());
             while (rs.next()) {
                 if (rta == null) {
                     rta = new ArrayList<PrecioProductoDto>();
