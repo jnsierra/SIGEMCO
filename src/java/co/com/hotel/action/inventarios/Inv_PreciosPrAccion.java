@@ -12,6 +12,7 @@ import co.com.hotel.logica.productos.Inv_ProductoLogica;
 import co.com.hotel.logica.sede.Adm_SedeLogica;
 import co.com.hotel.utilidades.UsuarioHabilitado;
 import co.com.hotel.validacion.ValidaCampos;
+import co.com.sigemco.alfa.inventario.dto.PrecioSedeDto;
 import com.opensymphony.xwork2.ActionSupport;
 import java.util.ArrayList;
 import java.util.List;
@@ -28,9 +29,16 @@ public class Inv_PreciosPrAccion extends ActionSupport implements SessionAware, 
     private Map session;
     private Producto producto;
     private List<PrecioProducto> listaPreciosPr;
+    private List<PrecioSedeDto> listaPrecioSede;
     private String accion;
     private Map<String, String> sedes;
 
+    /**
+     * Accion encargada de buscar un producto en especifico para luego
+     * parametrizarle el precio
+     *
+     * @return
+     */
     public String buscaProductoEspecifico() {
         Adm_SedeLogica sedeLogica = new Adm_SedeLogica();
         this.sedes = sedeLogica.obtieneSedes();
@@ -49,6 +57,11 @@ public class Inv_PreciosPrAccion extends ActionSupport implements SessionAware, 
         return SUCCESS;
     }
 
+    /**
+     * Accion encargada de parametrizar los precios de los productos
+     *
+     * @return
+     */
     public String paramPrecioPr() {
         Adm_SedeLogica sedeLogica = new Adm_SedeLogica();
         this.sedes = sedeLogica.obtieneSedes();
@@ -76,7 +89,8 @@ public class Inv_PreciosPrAccion extends ActionSupport implements SessionAware, 
         } else if (accion.equalsIgnoreCase("parametrizarPr")) {
             if (!valida.validaNulo(producto.getPrecio())) {
                 addActionError("El campo precio no puede ser nulo");
-            }if(producto.getSede().equalsIgnoreCase("-1")){
+            }
+            if (producto.getSede().equalsIgnoreCase("-1")) {
                 addActionError("Por favor seleccione la sede a la cual desea parametrizarle el precio");
             }
         }
