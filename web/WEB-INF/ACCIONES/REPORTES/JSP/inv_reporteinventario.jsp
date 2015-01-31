@@ -42,7 +42,7 @@
                     <s:textfield name="producto.id" cssStyle="display:none;"/>
                     <div id="tabs">
                         <ul class="nav nav-tabs" id="myTab">
-                            <li class="active"><a href="#tabs-1" data-toggle="tab">Busqueda</a></li>
+                            <li ><a href="#tabs-1" data-toggle="tab">Busqueda</a></li>
                             <li><a href="#tabs-2" data-toggle="tab">Explicación</a></li>
                             <li><a href="#tabs-3" data-toggle="tab">Filtros</a></li>
                         </ul>

@@ -13,6 +13,7 @@ import co.com.hotel.logica.sede.Adm_SedeLogica;
 import co.com.hotel.utilidades.UsuarioHabilitado;
 import co.com.hotel.validacion.ValidaCampos;
 import co.com.sigemco.alfa.inventario.dto.PrecioSedeDto;
+import co.com.sigemco.alfa.inventario.logica.PreciosLogica;
 import com.opensymphony.xwork2.ActionSupport;
 import java.util.ArrayList;
 import java.util.List;
@@ -43,10 +44,12 @@ public class Inv_PreciosPrAccion extends ActionSupport implements SessionAware, 
         Adm_SedeLogica sedeLogica = new Adm_SedeLogica();
         this.sedes = sedeLogica.obtieneSedes();
         Inv_ProductoLogica logica = new Inv_ProductoLogica();
+        PreciosLogica objLogica = new PreciosLogica();
         try {
             producto = logica.buscaProductosXCodigo(producto.getCodigo());
             if (producto != null) {
-                listaPreciosPr = logica.buscaHistorialPreciosProd(producto.getId());
+                //listaPreciosPr = logica.buscaHistorialPreciosProd(producto.getId());
+                listaPrecioSede = objLogica.buscaPreciosSedes(producto.getId());
             } else {
                 addActionError("No existe ningún producto con estos criterios de busqueda ");
             }

@@ -92,7 +92,7 @@
                                     </tr>
                                     <tr>
                                         <td>Nombre:</td>
-                                        <td>
+                                        <td colspan="2">
                                             <s:text name="producto.nombre" />
                                         </td>
                                     </tr>
@@ -158,7 +158,7 @@
                                 </tfoot>
                             </table>
                         </s:form>
-                        <s:if test="listaPreciosPr!=null" >
+                        <s:if test="listaPrecioSede!=null" >
                             <table class="table table-bordered">
                                 <thead>
                                     <tr>
