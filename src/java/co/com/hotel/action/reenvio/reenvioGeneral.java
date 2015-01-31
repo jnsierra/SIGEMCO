@@ -42,7 +42,7 @@ public class reenvioGeneral extends ActionSupport implements UsuarioHabilitado, 
     public static final int ADM_CON_PERFIL = 124;
     public static final int ADM_INS_EMPRESA = 131;   //Informacion general de la empresa
     public static final int ADM_INS_PAREMPRE = 132;   //Informacion general de la empresa
-    
+
     public static final int ADM_INS_SEDE = 141;   //
     public static final int ADM_UPD_SEDE = 142;   //
     public static final int ADM_CON_SEDE = 144;   //
@@ -119,6 +119,7 @@ public class reenvioGeneral extends ActionSupport implements UsuarioHabilitado, 
         Adm_SedeLogica sedeLogica = null;
         Inv_CategoriaLogica cateLogica = null;
         ReferenciaLogica refeLogica = null;
+        Emp_EmpresaLogica logicaEmp = null;
         try {
             switch (this.accion) {
                 case ADM_CON_USUARIO:
@@ -159,10 +160,12 @@ public class reenvioGeneral extends ActionSupport implements UsuarioHabilitado, 
                     break;
                 case ADM_INS_EMPRESA:
                     nextPage = "adm_ins_empresa";
-                    Emp_EmpresaLogica logica = new Emp_EmpresaLogica();
-                    empresa = logica.obtieneDatosEmpresa();
+                    logicaEmp = new Emp_EmpresaLogica();
+                    empresa = logicaEmp.obtieneDatosEmpresa();
                     break;
                 case ADM_INS_PAREMPRE:
+                    logicaEmp = new Emp_EmpresaLogica();
+                    empresa = logicaEmp.obtieneDatosEmpresa();
                     nextPage = "adm_ins_parempre";
                     break;
                 case INV_INS_PRODUCTO:

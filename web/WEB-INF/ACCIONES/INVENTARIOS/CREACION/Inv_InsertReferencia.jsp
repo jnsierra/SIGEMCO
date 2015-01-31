@@ -6,7 +6,6 @@
     <head>
         <s:include value="/WEB-INF/NEWTEMPLATE/cabecera.jsp"></s:include>
          <script type="text/javascript" src="JS/INVENTARIOS/Inv_UpdReferencia.js"></script>
-         <script type="text/javascript" src="JS/UTILIDADES/Validaciones.js"></script>
         </head>
         <body>
         <s:div cssClass="header">

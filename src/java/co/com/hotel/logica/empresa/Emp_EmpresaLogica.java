@@ -15,6 +15,13 @@ import java.sql.ResultSet;
  */
 public class Emp_EmpresaLogica {
 
+    /**
+     * Funcion encargada de realizar la logica para parametrizar los parametros
+     * generales de la empresa
+     *
+     * @param empresa
+     * @return
+     */
     public String ingresarParametrosPrincempresa(Empresa empresa) {
         String rta = "";
         String inserts = "";
@@ -47,6 +54,40 @@ public class Emp_EmpresaLogica {
         return rta;
     }
 
+    /**
+     * Funcion encargada de realizar la logica para ingresar los parametros
+     * Generales de la empresa
+     *
+     * @param empresa
+     * @return
+     */
+    public String ingresarParametrosGeneEmpresa(Empresa empresa) {
+        String rta = "";
+        String inserts = "";
+        try {
+            inserts = this.ingresaIvaEmpresa(empresa.getIva());
+            if (!inserts.equalsIgnoreCase("Ok")) {
+                return inserts;
+            }
+            inserts = this.ingresaDiasVencimiento(empresa.getDiasVen());
+            if (!inserts.equalsIgnoreCase("Ok")) {
+                return inserts;
+            }
+            rta = "Ok";
+        } catch (Exception e) {
+            rta = "Error " + e;
+            e.printStackTrace();
+        }
+        return rta;
+    }
+
+    /**
+     * Funcion la cual se encarga de ingresa el nombre de la empresa en la base
+     * de datos
+     *
+     * @param nomEmpresa
+     * @return
+     */
     private String ingresaNombreEmpresa(String nomEmpresa) {
         EnvioFunction function = new EnvioFunction();
         ResultSet rs = null;
@@ -58,7 +99,6 @@ public class Emp_EmpresaLogica {
             select += "from em_tpara                            \n";
             select += "where upper(para_clave) = 'NOMBREEMPRESA' \n";
             rs = function.enviarSelect(select);
-            System.out.println("Este es el sql: " + select);
             while (rs.next()) {
                 cont = rs.getInt("contador");
             }
@@ -71,7 +111,6 @@ public class Emp_EmpresaLogica {
                 sql += "SET para_valor = '" + nomEmpresa + "'         \n";
                 sql += "WHERE upper(para_clave) = 'NOMBREEMPRESA'\n";
             }
-            System.out.println("\n\n\n\nEste es el sql: " + sql);
             function.enviarUpdate(sql);
         } catch (Exception e) {
             System.err.println("Error Emp_EmpresaLogica.ingresaNombreEmpresa");
@@ -219,22 +258,108 @@ public class Emp_EmpresaLogica {
         return "Ok";
     }
 
+    /**
+     * Funcion encargada de ingresar el iva que cobrara la empresa
+     *
+     * @param iva
+     * @return
+     */
+    private String ingresaIvaEmpresa(String iva) {
+        EnvioFunction function = new EnvioFunction();
+        ResultSet rs = null;
+        String select = "";
+        String sql = "";
+        int cont = 0;
+        try {
+            select += "select COUNT(*)  contador              \n";
+            select += "from em_tpara                          \n";
+            select += "where upper(para_clave) = 'IVAPR' \n";
+            rs = function.enviarSelect(select);
+            while (rs.next()) {
+                cont = rs.getInt("contador");
+            }
+            if (cont == 0) {
+                sql = "insert into em_tpara(para_clave, para_valor) \n";
+                sql += "values('IVAPR', '" + iva + "')   \n";
+
+            } else {
+                sql = "UPDATE em_tpara                     \n";
+                sql += "SET para_valor = '" + iva + "'  \n";
+                sql += "WHERE upper(para_clave) = 'IVAPR' \n";
+            }
+            function.enviarUpdate(sql);
+        } catch (Exception e) {
+            System.err.println("Error Emp_EmpresaLogica.ingresaNombreEmpresa");
+            e.printStackTrace();
+            return "Error al insertar el nombre de la empresa: " + e;
+        } finally {
+            function.cerrarConexion();
+        }
+        return "Ok";
+    }
+
+    /**
+     * Funcion encargada de ingresar a la base de datos los dias de Vencimiento
+     * para iniciar a enviar notificaciones de vencimiento
+     *
+     * @param diasVen
+     * @return
+     */
+    private String ingresaDiasVencimiento(String diasVen) {
+        EnvioFunction function = new EnvioFunction();
+        ResultSet rs = null;
+        String select = "";
+        String sql = "";
+        int cont = 0;
+        try {
+            select += "select COUNT(*)  contador              \n";
+            select += "from em_tpara                          \n";
+            select += "where upper(para_clave) = 'DIASVEN' \n";
+            rs = function.enviarSelect(select);
+            while (rs.next()) {
+                cont = rs.getInt("contador");
+            }
+            if (cont == 0) {
+                sql = "insert into em_tpara(para_clave, para_valor) \n";
+                sql += "values('DIASVEN', '" + diasVen + "')   \n";
+
+            } else {
+                sql = "UPDATE em_tpara                     \n";
+                sql += "SET para_valor = '" + diasVen + "'  \n";
+                sql += "WHERE upper(para_clave) = 'DIASVEN' \n";
+            }
+            function.enviarUpdate(sql);
+        } catch (Exception e) {
+            System.err.println("Error Emp_EmpresaLogica.ingresaNombreEmpresa");
+            e.printStackTrace();
+            return "Error al insertar el nombre de la empresa: " + e;
+        } finally {
+            function.cerrarConexion();
+        }
+        return "Ok";
+    }
+    /**
+     * Funcion que obtiene todos los datos empresariales parametrizados previamente en la aplicacion
+     * @return 
+     */
     public Empresa obtieneDatosEmpresa() {
         Empresa obj = null;
         EnvioFunction function = new EnvioFunction();
         ResultSet rs = null;
         String sql = "";
-        int contador= 0;
+        int contador = 0;
         try {
-            sql = "SELECT (SELECT para_valor FROM em_tpara where UPPER(para_clave) = 'NIT') NIT,              ";
+            sql = "SELECT (SELECT para_valor FROM em_tpara where UPPER(para_clave) = 'NIT') NIT,               ";
             sql += "       (SELECT para_valor FROM em_tpara where UPPER(para_clave) = 'NOMBREEMPRESA') NOMBRE, ";
             sql += "       (SELECT para_valor FROM em_tpara where UPPER(para_clave) = 'TELEFONOS') TELEFONOS,  ";
             sql += "       (SELECT para_valor FROM em_tpara where UPPER(para_clave) = 'DIRECCION') DIRECCION,  ";
-            sql += "       (SELECT para_valor FROM em_tpara where UPPER(para_clave) = 'CIUDAD') CIUDAD         ";
-            
+            sql += "       (SELECT para_valor FROM em_tpara where UPPER(para_clave) = 'CIUDAD') CIUDAD      ,  ";
+            sql += "       (SELECT para_valor FROM em_tpara where UPPER(para_clave) = 'DIASVEN') DIASVEN    ,  ";
+            sql += "       (SELECT para_valor FROM em_tpara where UPPER(para_clave) = 'IVAPR') IVAPR           ";
+
             rs = function.enviarSelect(sql);
-            while(rs.next()){                
-                if(contador == 0){
+            while (rs.next()){
+                if (contador == 0) {
                     obj = new Empresa();
                     contador++;
                 }
@@ -243,6 +368,8 @@ public class Emp_EmpresaLogica {
                 obj.setTelefono(rs.getString("telefonos"));
                 obj.setDireccion(rs.getString("direccion"));
                 obj.setCiudad(rs.getString("ciudad"));
+                obj.setDiasVen(rs.getString("diasven"));
+                obj.setIva(rs.getString("ivapr"));
             }
         } catch (Exception e) {
             System.out.println("Error Emp_EmpresaLogica.obtieneDatosEmpresa " + e);

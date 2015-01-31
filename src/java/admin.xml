@@ -85,6 +85,11 @@
             <result name="input">/WEB-INF/ACCIONES/ADMINISTRACION/CREACION/Adm_ParametrosEmpresariales.jsp</result>
             <result name="error">/inicio.jsp</result>
         </action>
+        <action name="adm_updtParaGenEmp" class="co.com.hotel.action.admin.Adm_ParametrosEmpresaAccion" method="modificaParametrosGeneralesEmp">
+            <result name="success">/WEB-INF/ACCIONES/ADMINISTRACION/CREACION/Adm_ParamGenerales.jsp</result>
+            <result name="input">/WEB-INF/ACCIONES/ADMINISTRACION/CREACION/AAdm_ParamGenerales.jsp</result>
+            <result name="error">/inicio.jsp</result>
+        </action>
         <action name="adm_paramgenerales" class="co.com.hotel.action.admin.Adm_ParametrosEmpresaAccion">
             <result name="succes">/WEB-INF/ACCIONES/ADMINISTRACION/CREACION/Adm_ParamGenerales.jsp</result>
         </action>    

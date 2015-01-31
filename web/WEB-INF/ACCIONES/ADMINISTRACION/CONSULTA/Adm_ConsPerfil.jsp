@@ -69,43 +69,43 @@
         <div class="row">
             <div class="col-md-1 col-sm-0 col-xs-0"></div>
             <div class="col-md-10 col-sm-12 col-xs-12">
-                <table class="table">
-                    <tr>
-                        <td>NOMBRE</td>
-                        <td>DESCRIPCION</td>
-                        <td>ESTADO</td>
-                        <td>IDENTIFICACION</td>
-                    </tr>
-                    <%
-                        int i = 0;
-                    %>
-                    <s:iterator value="resultPerfil">
-                        <%
-                            if (i % 2 == 0) {
-                        %>
-                        <tr class="active">
-                            <%
-                            } else {
-                            %>
+                <s:if test="%{resultPerfil != null }">
+                    <table class="table">
                         <tr>
-                            <%
-                                }
-                                i++;
-                            %>
-                            <td><a href="#" onclick="permisoPerfil('<s:text name="id"/>')" class="linkPemiso"><s:property value="nombre"/></a></td>
-                            <td><s:property value="descripcion"/></td>
-                            <td><s:property value="estado"/></td>                        
-                            <td><s:property value="id"/> </td>                        
+                            <td>NOMBRE</td>
+                            <td>DESCRIPCION</td>
+                            <td>ESTADO</td>
+                            <td>IDENTIFICACION</td>
                         </tr>
-                    </s:iterator>                
-                </table>
-                <div class="col-md-1 col-sm-0 col-xs-0"></div>
+                        <%
+                            int i = 0;
+                        %>
+                        <s:iterator value="resultPerfil">
+                            <%
+                                if (i % 2 == 0) {
+                            %>
+                            <tr class="active">
+                                <%
+                                } else {
+                                %>
+                            <tr>
+                                <%
+                                    }
+                                    i++;
+                                %>
+                                <td><a href="#" onclick="permisoPerfil('<s:text name="id"/>')" class="linkPemiso"><s:property value="nombre"/></a></td>
+                                <td><s:property value="descripcion"/></td>
+                                <td><s:property value="estado"/></td>                        
+                                <td><s:property value="id"/> </td>                        
+                            </tr>
+                        </s:iterator>                
+                    </table>
+                </s:if>                
             </div>
-
+            <div class="col-md-1 col-sm-0 col-xs-0"></div>
             <form action="adm_updPermisos" id="adm_updPermisos" method="post">
                 <input type="hidden" name="perfil" id="linkPerfil" value="">
             </form>
         </div>
-
     </body>
 </html>

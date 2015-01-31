@@ -6,7 +6,6 @@
     <head>
         <s:include value="/WEB-INF/NEWTEMPLATE/cabecera.jsp"></s:include>
         <script type="text/javascript" src="<%=RutaSitio%>/JS/INVENTARIOS/Inv_InsertCelulares.js"></script>
-        <script type="text/javascript" src="<%=RutaSitio%>/JS/UTILIDADES/Validaciones.js"></script>
     </head>
     <body>
         <s:div cssClass="header">

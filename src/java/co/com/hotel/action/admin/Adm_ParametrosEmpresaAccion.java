@@ -44,6 +44,28 @@ public class Adm_ParametrosEmpresaAccion extends ActionSupport implements Sessio
         return SUCCESS;
     }
 
+    /**
+     * Funcion encargada de modificar los parametros generales como el iva y los
+     * dias de vencimiento para los equipos celulares
+     *
+     * @return
+     */
+    public String modificaParametrosGeneralesEmp() {
+        Emp_EmpresaLogica logica = null;
+        try {
+            logica = new Emp_EmpresaLogica();
+            String rta = logica.ingresarParametrosGeneEmpresa(empresa);
+            if (rta.equalsIgnoreCase("Ok")) {
+                addActionMessage("Parametros ingresados Correctamente ");
+            } else {
+                addActionError(rta);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return SUCCESS;
+    }
+
     public Usuario getUsuario() {
         return usuario;
     }

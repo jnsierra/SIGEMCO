@@ -16,7 +16,8 @@ public class Empresa {
     private String direccion;
     private String ciudad;
     private String telefono;
-    
+    private String iva;
+    private String diasVen;//Dias de vencimiento para las notificaciones
 
     public String getNombre() {
         return nombre;
@@ -57,5 +58,23 @@ public class Empresa {
     public void setTelefono(String telefono) {
         this.telefono = telefono;
     }
+
+    public String getIva() {
+        return iva;
+    }
+
+    public void setIva(String iva) {
+        this.iva = iva;
+    }
+
+    public String getDiasVen() {
+        return diasVen;
+    }
+
+    public void setDiasVen(String diasVen) {
+        this.diasVen = diasVen;
+    }
+    
+    
 
 }

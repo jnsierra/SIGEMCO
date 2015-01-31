@@ -24,7 +24,23 @@
         <div class="row">
             <div class="col-md-3 col-xs-0 col-sm-0"></div>
             <div class="col-md-6 col-xs-12 col-sm-12">
-                <s:form theme="simple" name="adm_paramgenerales" id="adm_paramgenerales" action="adm_paramgenerales">
+                <div class="Mensajes" style="display: none;">
+                    <s:if test="hasActionErrors()">
+                        <div class="alert alert-danger" id="info" role="alert" ><h4><s:actionerror /></h4></div>
+                        <script>
+                            mostrarMsn();
+                        </script>
+                    </s:if>
+                </div>
+                <div class="MensajesOk" style="display: none;">
+                    <s:if test="hasActionMessages()">
+                        <div class="alert alert-success" id="info" role="alert" ><h4><s:actionmessage/></h4></div>
+                        <script>
+                            mostrarMsnOk();
+                        </script>
+                    </s:if>
+                </div>
+                <s:form theme="simple" name="adm_updtParaGenEmp" id="adm_updtParaGenEmp" action="adm_updtParaGenEmp" autocomplete="off">
                     <table class="table table-bordered">
                         <thead>
                             <tr>
@@ -35,23 +51,22 @@
                             <tr>
                                 <td>IVA</td>
                                 <td>
-                                    
                                     <div class="input-group">
                                         <span class="input-group-addon">%</span>
-                                        <s:textfield id="iva" name="iva" cssClass="form-control" onkeypress="soloNumeros();"/>
+                                        <s:textfield id="iva" name="empresa.iva" cssClass="form-control" onkeypress="soloNumeros();"/>
                                     </div>
                                 </td>
                             </tr>
                             <tr>
                                 <td>Dias Vencimiento</td>
-                                <td><s:textfield id="iva" name="iva" cssClass="form-control" data-toggle="tooltip" data-placement="bottom" title="Número de días Previos a vencimiento de entrega del equipo"  onkeypress="soloNumeros();"/></td>
+                                <td><s:textfield id="diasVen" name="empresa.diasVen" cssClass="form-control" data-toggle="tooltip" data-placement="bottom" title="Número de días Previos a vencimiento de entrega del equipo"  onkeypress="soloNumeros();"/></td>
                             </tr>
                             <tr>
                                 <td colspan="2" >
                                     <div style="float: right">
                                         <s:include value="/WEB-INF/TEMPLATE/botones/add.jsp">
                                             <s:param name="function">ingresarParametros</s:param>
-                                            <s:param name="title">Actualizar parametros</s:param>
+                                            <s:param name="title">Actualizar parametros Generales de la compañia</s:param>
                                         </s:include>
                                         <s:include value="/WEB-INF/TEMPLATE/botones/clean.jsp">
                                         </s:include>
