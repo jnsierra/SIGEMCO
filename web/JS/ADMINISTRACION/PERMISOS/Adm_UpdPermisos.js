@@ -29,6 +29,9 @@ $(function() {
     $("#InRefe").click(function() {
         $(".subPermisoInRefe").toggle("slow");
     });
+    $("#RepUsua").click(function() {
+        $(".subPermisoRepUsua").toggle("slow");
+    });
 });
 
 function actualizar() {
@@ -104,6 +107,10 @@ function mostrarPermisos(valor) {
     var referencias = valor.indexOf('InRef');
     if (referencias > 0) {
         $(".subPermisoInRefe").show("slow");
+    }
+    var repUsua = valor.indexOf('RpUs');
+    if (repUsua > 0) {
+        $(".subPermisoRepUsua").show("slow");
     }
     cargarPermisos(vector);
 }

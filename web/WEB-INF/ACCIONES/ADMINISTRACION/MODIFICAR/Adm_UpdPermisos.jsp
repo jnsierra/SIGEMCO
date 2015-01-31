@@ -358,7 +358,7 @@
                                             <table style="width: 100%">
                                                 <thead>
                                                     <tr>
-                                                        <th class="subTitulo"><a id="RepInv" >INVENTARIO</a></th>
+                                                        <th class="subTitulo"><a id="RepInv">INVENTARIO</a></th>
                                                     </tr>
                                                 </thead>
                                                 <tbody style="display: none;" class="subPermisoRepInv">
@@ -371,6 +371,25 @@
                                                 </tbody>
                                             </table>
                                         </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-12 col-sm-12 col-xs-12">
+                                            <table style="width: 100%">
+                                                <thead>
+                                                    <tr>
+                                                        <th class="subTitulo"><a id="RepUsua" >USUARIOS</a></th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody style="display: none;" class="subPermisoRepUsua">
+                                                    <tr>
+                                                        <td style="width: 30%;">Usuarios aplicación</td>
+                                                        <td style="width: 20%;"><input type="checkbox" value="RpUs1" id="RpUs1"/></td>
+                                                        <td style="width: 30%;">&nbsp;</td>
+                                                        <td style="width: 20%;">&nbsp;</td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>                                                                                        
+                                        </div>                                        
                                     </div>
                                 </div>
                             </div>

@@ -35,7 +35,7 @@ public class Rep_ReporteUsuario extends ActionSupport implements SessionAware, U
         HttpServletRequest request = ServletActionContext.getRequest();
         File reporte = new File(request.getSession().getServletContext().getRealPath("/WEB-INF/ACCIONES/REPORTES/FUENTES/" + nombreJasper));
         File reporteDestino = new File(request.getSession().getServletContext().getRealPath("/IMAGENES/REPORTES/reporteUsuarios.pdf"));
-        try {
+        try{
             String path = reporte.getPath();
             Rep_ReporteLogica logica = new Rep_ReporteLogica();
             String rta = logica.generarReporteUsuarios(usuarioRep, path, reporteDestino.getPath());

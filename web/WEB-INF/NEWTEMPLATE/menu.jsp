@@ -155,10 +155,10 @@
                     <li><a href="#">Cerrar Factura</a></li>
                 </ul>
             </li>
-            <%if (permisos.indexOf(".RpIn1.") >= 0 || permisos.indexOf(".RpIn1.") > 0) {%>
+            <%if (permisos.indexOf(".RpIn1.") >= 0 || permisos.indexOf(".RpUs1.") > 0) {%>
             <li><a href="#"><span class="glyphicon glyphicon-floppy-save"></span>Reportes</a>
                 <ul class="dropdown-menu">
-                    <% if (permisos.indexOf(".RpIn1.") > 0) {%>
+                    <% if (permisos.indexOf(".RpUs1.") > 0) {%>
                     <li><a href="#">Usuarios</a>
                         <ul class="dropdown-menu">
                             <li><a href="reenvioGeneral.action?accion=431">Activos</a></li>
