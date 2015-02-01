@@ -6,8 +6,10 @@
 package co.com.hotel.action.inventarios;
 
 import co.com.hotel.datos.session.Usuario;
+import co.com.hotel.dto.Empresa;
 import co.com.hotel.dto.Producto;
 import co.com.hotel.logica.categoria.Inv_CategoriaLogica;
+import co.com.hotel.logica.empresa.Emp_EmpresaLogica;
 import co.com.hotel.logica.productos.IngresaProductoNuevo;
 import co.com.hotel.logica.sede.Adm_SedeLogica;
 import co.com.hotel.utilidades.UsuarioHabilitado;
@@ -62,19 +64,20 @@ public class Inv_ProductoAccion extends ActionSupport implements SessionAware, U
         this.sedes = sedeLogica.obtieneSedes();
         Inv_CategoriaLogica cateLogica = new Inv_CategoriaLogica();
         this.categorias = cateLogica.obtieneCategorias();
-        this.yesNo = new HashMap<String, String>();
-        this.yesNo.put("S", "Si");
-        this.yesNo.put("N", "No");
         ValidaCampos valida = new ValidaCampos();
         ValidaDuplicadodosProd duplicados = new ValidaDuplicadodosProd();
+        Emp_EmpresaLogica logicaEmp = new Emp_EmpresaLogica();
+        Empresa empresa = logicaEmp.obtieneDatosEmpresa();
+        producto.setPorcIva(empresa.getIva());
+        empresa = null;
         boolean rtaValida = false;
-        rtaValida = valida.validaLetras(producto.getNombre());
+        rtaValida = valida.validaNulo(producto.getNombre());
         if (rtaValida == false) {
-            addActionError("El campo nombre solo puede contener letras");
+            addActionError("El campo nombre no puede ser nulo");
         }
-        rtaValida = valida.validaLetras(producto.getDescripcion());
+        rtaValida = valida.validaNulo(producto.getDescripcion());
         if (rtaValida == false) {
-            addActionError("El campo descripcion solo puede contener letras");
+            addActionError("El campo descripcion no puede ser nulo");
         }
         rtaValida = valida.validaFloat("" + producto.getPorcIva());
         if (rtaValida == false) {
@@ -87,17 +90,17 @@ public class Inv_ProductoAccion extends ActionSupport implements SessionAware, U
         rtaValida = valida.validaNumerico(producto.getCantidad());
         if (rtaValida == false) {
             addActionError("El campo cantidad debe ser numerico");
-        }else if (producto.getIva().equalsIgnoreCase("-1")) {
+        } else if (producto.getIva().equalsIgnoreCase("-1")) {
             addActionError("Seleccione una de las opciones de la lista Gravamen");
         }
-        boolean dup = duplicados.verificaCodigo(producto.getCodigo());
-        if (dup == false) {
-            addActionError("El codigo ingresado ya esta referenciado a otro producto");
-        }else if (producto.getSede().equalsIgnoreCase("-1")) {
-            addActionError("Por Favor seleccione la sede a la cual ira el producto");
-        }else if (producto.getCategoria().equalsIgnoreCase("-1")) {
-            addActionError("Por Favor seleccione la categoria a la cual pertenece el producto");
-        }
+//        boolean dup = duplicados.verificaCodigo(producto.getCodigo());
+//        if (dup == false) {
+//            addActionError("El codigo ingresado ya esta referenciado a otro producto");
+//        } else if (producto.getSede().equalsIgnoreCase("-1")) {
+//            addActionError("Por Favor seleccione la sede a la cual ira el producto");
+//        } else if (producto.getCategoria().equalsIgnoreCase("-1")) {
+//            addActionError("Por Favor seleccione la categoria a la cual pertenece el producto");
+//        }
         valida = null;
     }
 

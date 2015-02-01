@@ -106,7 +106,7 @@ public class Inv_ProductoLogica {
         return r;
     }
     
-    public Producto buscaProductosXCodigo(String codigo) {
+    public Producto buscaProductosXCodigo(String codigo,String id) {
         Producto r = null;
         EnvioFunction function = new EnvioFunction();
         ResultSet rs = null;
@@ -118,6 +118,9 @@ public class Inv_ProductoLogica {
             sql += "from in_tdska LEFT JOIN in_tprpr\n";
             sql += "on dska_dska = prpr_dska\n";
             sql += "where upper(dska_cod) like upper('%" + codigo.trim() + "%')\n";                    
+            if(id !=null && !id.equalsIgnoreCase("")){
+                sql += " and dska_dska = " + id + "\n";
+            }
             rs = function.enviarSelect(sql);
             while (rs.next()) {
                 if (cont == 0) {

@@ -46,7 +46,7 @@ public class Inv_PreciosPrAccion extends ActionSupport implements SessionAware, 
         Inv_ProductoLogica logica = new Inv_ProductoLogica();
         PreciosLogica objLogica = new PreciosLogica();
         try {
-            producto = logica.buscaProductosXCodigo(producto.getCodigo());
+            producto = logica.buscaProductosXCodigo(producto.getCodigo(),producto.getId());
             if (producto != null) {
                 //listaPreciosPr = logica.buscaHistorialPreciosProd(producto.getId());
                 listaPrecioSede = objLogica.buscaPreciosSedes(producto.getId());

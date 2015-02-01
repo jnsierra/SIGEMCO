@@ -56,7 +56,7 @@ public class Rep_ReporteLogica {
     public Connection generarConexion() {
         Connection con = null;
         try {
-            ResourceBundle rb = ResourceBundle.getBundle("co.com.sigemco.alfa.inventario.archivos.BASECONFIG");
+            ResourceBundle rb = ResourceBundle.getBundle("co.com.sigemco.alfa.archivos.BASECONFIG");
             String host = rb.getString("HOST").trim();
             String user = rb.getString("USER").trim();
             String pass = rb.getString("PASSWORD").trim();

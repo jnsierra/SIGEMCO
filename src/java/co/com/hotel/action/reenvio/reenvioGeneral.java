@@ -7,6 +7,7 @@ package co.com.hotel.action.reenvio;
 
 import co.com.hotel.datos.session.Usuario;
 import co.com.hotel.dto.Empresa;
+import co.com.hotel.dto.Producto;
 import co.com.hotel.logica.categoria.Inv_CategoriaLogica;
 import co.com.hotel.logica.empresa.Emp_EmpresaLogica;
 import co.com.hotel.logica.perfil.Adm_PerfilLogica;
@@ -102,6 +103,7 @@ public class reenvioGeneral extends ActionSupport implements UsuarioHabilitado, 
     //Tipo plan
     private Map<String, String> tipoPlan;
     private Map<String, String> estadoEqCeluar; //Estado en el cual se encuentra el equipo celular
+    private Producto producto;
 
     private String modifica;
     private String bandera;
@@ -174,9 +176,11 @@ public class reenvioGeneral extends ActionSupport implements UsuarioHabilitado, 
                     this.sedes = sedeLogica.obtieneSedes();
                     cateLogica = new Inv_CategoriaLogica();
                     this.categorias = cateLogica.obtieneCategorias();
-                    this.yesNo = new HashMap<String, String>();
-                    this.yesNo.put("S", "Si");
-                    this.yesNo.put("N", "No");
+                    logicaEmp = new Emp_EmpresaLogica();
+                    empresa = logicaEmp.obtieneDatosEmpresa();
+                    producto = new Producto(); 
+                    producto.setPorcIva(empresa.getIva());
+                    empresa = null;
                     break;
                 case INV_INS_PRODEXIS:
                     bandera = "S";
@@ -554,4 +558,13 @@ public class reenvioGeneral extends ActionSupport implements UsuarioHabilitado, 
     public void setEstadoEqCeluar(Map<String, String> estadoEqCeluar) {
         this.estadoEqCeluar = estadoEqCeluar;
     }
+
+    public Producto getProducto() {
+        return producto;
+    }
+
+    public void setProducto(Producto producto) {
+        this.producto = producto;
+    }
+
 }

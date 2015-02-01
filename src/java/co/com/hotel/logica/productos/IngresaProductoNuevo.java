@@ -27,7 +27,8 @@ public class IngresaProductoNuevo {
             EnvioFunction function = new EnvioFunction();
             function.adicionarNombre("US_FINSERT_NUEVO_PROD");
             function.adicionarParametro(producto.getReferencia());
-            function.adicionarParametro(producto.getCodigo());
+            //function.adicionarParametro(producto.getCodigo());
+            function.adicionarNull();
             function.adicionarParametro(producto.getNombre());
             function.adicionarParametro(producto.getDescripcion());
             function.adicionarParametro(producto.getIva());

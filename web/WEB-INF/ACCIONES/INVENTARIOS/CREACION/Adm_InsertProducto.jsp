@@ -62,17 +62,20 @@
                                 <td>Referencia:</td>
                                 <td><s:textfield name="producto.referencia" required="true" maxLength="10" cssClass="form-control" id="producto_referencia"/></td>
                             </tr>
-                            <tr>
+                            <%--<tr>
                                 <td>Codigo</td>
                                 <td><s:textfield name="producto.codigo" required="true" maxLength="9" cssClass="form-control" id="producto_codigo"/></td>
-                            </tr>
+                            </tr>--%>
                             <tr>
                                 <td>Gravamen:</td>
-                                <td><s:select  list="yesNo"  name="producto.iva" required="true" headerKey="-1" headerValue="Cobro Iva" onchange="cambioIva(this.value)" cssClass="form-control" id="gravamen"/></td>
+                                <td>
+                                    <s:textfield name="producto.iva" required="true" cssStyle="max-lenght: 10;" cssClass="form-control" id="iva" value="S" readonly="true"/>
+                                    <%--<s:select  list="yesNo"  name="producto.iva" required="true" headerKey="-1" headerValue="Cobro Iva" onchange="cambioIva(this.value)" cssClass="form-control" id="gravamen"/>--%>
+                                </td>
                             </tr>
                             <tr>
                                 <td>Porcentaje iva:</td>
-                                <td><s:textfield name="producto.porcIva" required="true" cssStyle="max-lenght: 10;" cssClass="form-control" id="producto_porcIva"/></td>
+                                <td><s:textfield name="producto.porcIva" cssClass="form-control" readonly="true"/></td>
                             </tr>
                             <tr>
                                 <td>Marca:</td>

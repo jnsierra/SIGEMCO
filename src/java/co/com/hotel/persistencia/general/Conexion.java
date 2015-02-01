@@ -34,7 +34,7 @@ public class Conexion {
     private static String db;
 
     private Conexion() {
-        ResourceBundle rb = ResourceBundle.getBundle("co.com.sigemco.alfa.inventario.archivos.BASECONFIG");        
+        ResourceBundle rb = ResourceBundle.getBundle("co.com.sigemco.alfa.archivos.BASECONFIG");        
         this.host = rb.getString("HOST").trim();
         this.user = rb.getString("USER").trim();
         this.pass = rb.getString("PASSWORD").trim();

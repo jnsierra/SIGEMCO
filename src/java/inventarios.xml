@@ -19,7 +19,6 @@
             <result name="login" type="redirect">/inicio.jsp</result>
             <result name="exception">/exception.jsp</result>
         </global-results> 
-        
         <global-exception-mappings>
             <exception-mapping exception="java.sql.SQLException" result="exception"/>
             <exception-mapping exception="java.lang.Exception" result="exception"/>
@@ -42,7 +41,7 @@
             <result name="success">/WEB-INF/ACCIONES/REPORTES/JSP/inv_reporteinventario.jsp</result>
             <result name="input">/WEB-INF/ACCIONES/REPORTES/JSP/inv_reporteinventario.jsp</result>
         </action>
-        <action name="inv_consProdPorFiltrosGen" class="co.com.hotel.action.inventarios.Inv_ProdAccion" method="consultaProdXFiltrosGen">
+        <action name="inv_consProdPorFiltrosGen" class="co.com.sigemco.alfa.inventario.action.ProductoAction" method="consultaGenXFiltros">
             <result name="success">/WEB-INF/ACCIONES/INVENTARIOS/CONSULTA/Inv_ConsProducto.jsp</result>
             <result name="input">/WEB-INF/ACCIONES/INVENTARIOS/CONSULTA/Inv_ConsProducto.jsp</result>
         </action>

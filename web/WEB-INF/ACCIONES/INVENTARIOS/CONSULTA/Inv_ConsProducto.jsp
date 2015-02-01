@@ -40,6 +40,7 @@
                     </s:if>
                 </div>
                 <s:form action="inv_consProdPorFiltrosGen" id="inv_consProdPorFiltrosGen" theme="simple">
+                    <s:textfield name="accion" value="consultaGen" cssStyle="display:none" />
                     <div class="form-group col-md-12 col-sm-12 col-xs-12 thumbnail">
                         <div class="row">
                             <div class="form-group col-md-12 col-sm-12 col-xs-12 ">
@@ -49,25 +50,25 @@
                         <div class="row">
                             <div class="form-group col-md-4 col-sm-4 col-xs-4">
                                 Nombre Producto:<br>
-                                <s:textfield name="producto.nombre" placeholder="Filtro" cssClass="form-control" />
+                                <s:textfield name="producto.dska_nom_prod" placeholder="Filtro" cssClass="form-control" />
                             </div>
                             <div class="form-group col-md-4 col-sm-4 col-xs-4">
                                 Descripción Producto:<br>
-                                <s:textfield name="producto.descripcion" placeholder="Filtro" cssClass="form-control"/>
+                                <s:textfield name="producto.dska_desc" placeholder="Filtro" cssClass="form-control"/>
                             </div>
                             <div class="form-group col-md-4 col-sm-4 col-xs-4">
                                 Referencia:<br>
-                                <s:textfield name="producto.referencia" placeholder="Filtro" cssClass="form-control" />
+                                <s:textfield name="producto.dska_refe" placeholder="Filtro" cssClass="form-control" />
                             </div>
                         </div>
                         <div class="row">
                             <div class="form-group col-md-4 col-sm-4 col-xs-4">
                                 Codigo:<br>
-                                <s:textfield name="producto.codigo" placeholder="Filtro" cssClass="form-control" />
+                                <s:textfield name="producto.dska_cod" placeholder="Filtro" cssClass="form-control" />
                             </div>
                             <div class="form-group col-md-4 col-sm-4 col-xs-4">
                                 Marca:<br>
-                                <s:textfield name="producto.marca" label="Marca" placeholder="Filtro" cssClass="form-control"/>
+                                <s:textfield name="producto.dska_marca" placeholder="Filtro" cssClass="form-control"/>
                             </div>
                             <div class="form-group col-md-4 col-sm-4 col-xs-4 ">
                                 <br>
@@ -84,11 +85,11 @@
         </div>
         <br/>
         <div class="row">
-            <div class="col-md-2 col-sm-0 col-xs-0"></div>
-            <div class="col-md-8 col-sm-12 col-xs-12">
-                <s:if test="%{rtaConsProd != null}" >
-                    <s:set var="permisoActualizar" value="bandera" />
-                    <s:set var="permisoParPrecio" value="permisoParam" />
+            <div class="col-md-1 col-sm-0 col-xs-0"></div>
+            <div class="col-md-10 col-sm-12 col-xs-12">
+                <s:if test="%{listProductos != null}" >
+                    <s:set var="permisoActualizar" value="perActualizar" />
+                    <s:set var="permisoParPrecio" value="perParamPrecio" />
                     <table class="table table-hover">
                         <thead>
                             <tr>
@@ -96,56 +97,32 @@
                                 <th>Descripción</th>
                                 <th>Referencia</th>
                                 <th>Codigo</th>
-                                <th>Cant. Existentes</th>
-                                <th>Marca</th>
-                                    <s:if test="%{#permisoActualizar.equalsIgnoreCase('S') || #permisoParPrecio.equalsIgnoreCase('S')}">
-                                    <th>Acción</th>
-                                    </s:if>
+                                <th>Cant.<br/>Exis.</th>
+                                <th>Marca</th>                                    
                             </tr>
                         </thead>
                         <tbody>
-                            <%
-                                int i = 0;
-                            %>
-                            <s:iterator value="rtaConsProd">                            
-                                <%
-                                    if (i % 2 == 0) {
-                                %>
+                            <%int i = 0;%>
+                            <s:iterator value="listProductos">                            
+                                <%if (i % 2 == 0) {%>
                                 <tr class="active">
-                                    <%
-                                    } else {
-                                    %>
+                                    <%} else {%>
                                 <tr>
-                                    <%
-                                        }
-                                        i++;
-                                    %>
-                                    <td><s:property value="nombre"/></td>
-                                    <td><s:property value="descripcion"/></td>
-                                    <td><s:property value="referencia"/></td>
-                                    <td><s:property value="codigo"/></td>
-                                    <td><s:property value="cantidad"/></td>
-                                    <td><s:property value="marca"/></td>
-                                    <s:if test="%{#permisoActualizar.equalsIgnoreCase('S') || #permisoParPrecio.equalsIgnoreCase('S')}">                                
-                                        <td style="height: 25px;">
-                                            <s:if test="%{#permisoActualizar.equalsIgnoreCase('S')}">
-                                                <s:include value="/WEB-INF/TEMPLATE/botones/update.jsp" >
-                                                    <s:param name="function">actulizarEspecifico</s:param>
-                                                    <s:param name="title">Actualizar Producto <s:property value="codigo"/> </s:param>
-                                                    <s:param name="paramFunction">'<s:property value="id"/>'</s:param>
-                                                    <s:param name="clase">imagenIconoPeq</s:param>
-                                                </s:include>
-                                            </s:if>
-                                            <s:if test="%{#permisoParPrecio.equalsIgnoreCase('S')}">
-                                                <s:include value="/WEB-INF/TEMPLATE/botones/parametrizar.jsp" >
-                                                    <s:param name="title">Parametrizar precio del Producto <s:property value="codigo"/></s:param>
-                                                    <s:param name="function">parametirzarPrecio</s:param>                                                
-                                                    <s:param name="parametros">'<s:property value="codigo"/>'</s:param>                                                
-                                                </s:include>
-
-                                            </s:if>
+                                    <%}
+                                        i++;%>
+                                    <s:if test="%{#permisoActualizar.equalsIgnoreCase('S') || #permisoParPrecio.equalsIgnoreCase('S')}">
+                                        <td>
+                                            <a href="#" onclick="ejecutaAcciones('<s:text name="permisoActualizar" />', '<s:text name="permisoParPrecio" />', '<s:text name="dska_cod" />','<s:text name="dska_dska" />')"><s:property value="dska_nom_prod"/></a>
                                         </td>
-                                    </s:if>                                    
+                                    </s:if>
+                                    <s:else>
+                                        <td><s:property value="dska_nom_prod"/></td>
+                                    </s:else>
+                                    <td><s:property value="dska_desc"/></td>
+                                    <td><s:property value="dska_refe"/></td>
+                                    <td><s:property value="dska_cod"/></td>
+                                    <td><s:property value="cantExis"/></td>
+                                    <td><s:property value="dska_marca"/></td>                                   
                                 </tr>
                             </s:iterator>
                         <tbody>
@@ -153,17 +130,41 @@
                 </s:if>
 
             </div>
-            <div class="col-md-2 col-sm-0 col-xs-0"></div>
+            <div class="col-md-1 col-sm-0 col-xs-0"></div>
         </div>        
-        <form action="inv_UpdProducto" method="post" id="inv_UpdProducto"> 
-            <s:textfield name="producto.id" cssStyle="display:none;" cssClass="idProductoUpdate"/>
+        <s:form action="inv_UpdProducto" method="post" id="inv_UpdProducto"  theme="simple"> 
+            <s:textfield name="producto.id" cssStyle="display:none;" id="idProductoUpdate"/>
             <s:textfield name="accion" cssStyle="display:none" value="updProductoIndv"/>
             <s:textfield name="subAccion" cssStyle="display:none" value="consulta" />        
-        </form>
+        </s:form>
 
         <s:form theme="simple" action="inv_BuscaProducto" method="post"  id="inv_BuscaProducto" cssStyle="display:none;">
             <s:textfield name="accion" cssStyle="display:none" value="buscarProducto" />
-            <s:textfield name="producto.codigo" />
+            <s:textfield name="producto.codigo" id="codigoParametriza"/>
+            <s:textfield name="producto.id" id="idParametriza"/>
         </s:form>
+        <div class="modal fade" tabindex="-1" role="dialog" aria-hidden="true" id="dialogoAcciones">
+            <div class="modal-dialog">                
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title">Acci&oacute;n Producto</h4>
+                    </div>
+                    <div class="modal-body">
+                        ¿Que accion desea Realizale al producto?
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">
+                            CERRAR
+                        </button>
+                        <button type="button" class="btn btn-primary" id="parametrizar">
+                            PARAMETRIZAR PRECIO
+                        </button>
+                        <button type="button" class="btn btn-primary" id="actualizar">
+                            ACTUALIZAR
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>        
     </body>
 </html>
