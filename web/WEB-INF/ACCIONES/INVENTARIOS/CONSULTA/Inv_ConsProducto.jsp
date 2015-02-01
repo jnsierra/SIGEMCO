@@ -112,7 +112,7 @@
                                         i++;%>
                                     <s:if test="%{#permisoActualizar.equalsIgnoreCase('S') || #permisoParPrecio.equalsIgnoreCase('S')}">
                                         <td>
-                                            <a href="#" onclick="ejecutaAcciones('<s:text name="permisoActualizar" />', '<s:text name="permisoParPrecio" />', '<s:text name="dska_cod" />','<s:text name="dska_dska" />')"><s:property value="dska_nom_prod"/></a>
+                                            <a href="#" onclick="ejecutaAcciones('<s:text name="permisoActualizar" />', '<s:text name="permisoParPrecio" />', '<s:text name="dska_cod" />', '<s:text name="dska_dska" />')"><s:property value="dska_nom_prod"/></a>
                                         </td>
                                     </s:if>
                                     <s:else>
@@ -155,6 +155,9 @@
                     <div class="modal-footer">
                         <button type="button" class="btn btn-default" data-dismiss="modal">
                             CERRAR
+                        </button>
+                        <button type="button" class="btn btn-primary" id="sticker">
+                            STICKER
                         </button>
                         <button type="button" class="btn btn-primary" id="parametrizar">
                             PARAMETRIZAR PRECIO

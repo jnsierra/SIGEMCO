@@ -49,7 +49,6 @@ public class ProductoAction extends ActionSupport implements SessionAware, Usuar
                 } else {
                     perParamPrecio = "N";
                 }
-
             }
         } catch (Exception e) {
             e.printStackTrace();
