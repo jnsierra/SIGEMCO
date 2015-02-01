@@ -9,3 +9,7 @@ function cleanForm(){
 function insertarParametro(){
     document.getElementById('inv_ParamPrecioPr').submit();
 }
+
+function despuesEnter(){
+    consultarProd();
+}

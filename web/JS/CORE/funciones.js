@@ -161,3 +161,15 @@ function validaFechaDDMMAAAA(fecha) {
         return false;
     }
 }
+
+function remplazaGuion(valor,id){
+    var nuevoVal = valor.replace('\'','-');
+    document.getElementById(id).value = nuevoVal;
+}
+
+function validar(e) {
+  tecla = (document.all) ? e.keyCode : e.which;
+  if (tecla==13){
+      despuesEnter();
+  }
+}
