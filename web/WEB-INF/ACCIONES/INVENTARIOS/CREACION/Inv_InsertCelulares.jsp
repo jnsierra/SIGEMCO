@@ -58,7 +58,7 @@
                             <tr>
                                 <td>Imei:</td>
                                 <td>
-                                    <s:textfield name="remision.rmce_imei" cssClass="form-control" />
+                                    <s:textfield name="remision.rmce_imei" cssClass="form-control" maxLength="15" />
                                 </td>
                             </tr>
                             <tr>

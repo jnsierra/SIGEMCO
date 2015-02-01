@@ -243,7 +243,7 @@ public class RemisionDao {
                 } else {
                     rta += "and rmce_valor <= " + this.getRmce_valor() + "\n";
                 }
-            }else if (valida.validaNulo(this.getValorBeteween()) && !this.getValorBeteween().equalsIgnoreCase("-1")) {
+            } else if (valida.validaNulo(this.getValorBeteween()) && !this.getValorBeteween().equalsIgnoreCase("-1")) {
                 rta += "and rmce_valor >= " + this.getValorBeteween() + "\n";
             }
             if (valida.validaNulo(this.getRmce_iccid()) && !this.getRmce_iccid().equalsIgnoreCase("")) {
@@ -258,6 +258,23 @@ public class RemisionDao {
         }
 
         return rta;
+    }
+
+    /**
+     * Funcion la cual se encarga de crear el sql para obtener los equipos
+     * celulares vencidos
+     *
+     * @return
+     */
+    public String remisionesProximasAVencer() {
+        String sql = "";
+        sql += "SELECT rmce_rmce , to_char(rmce_fcve,'dd/mm/yyyy') rmce_fcve , refe_desc, sede_nombre, rmce_imei, rmce_iccid\n";
+        sql += "  FROM in_trmce, in_trefe, em_tsede               \n";
+        sql += " WHERE rmce_fcve <= (select current_date + (select cast(para_valor as int) dias from em_tpara where para_clave = 'DIASVEN'))\n";
+        sql += "   AND rmce_estado = 'E'    \n";
+        sql += "   AND rmce_refe = refe_refe\n";
+        sql += "   AND rmce_sede = sede_sede\n";
+        return sql;
     }
 
 }

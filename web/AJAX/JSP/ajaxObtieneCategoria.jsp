@@ -13,7 +13,6 @@
       CategoriaDto objDto = null;
       objDto = logica.obtieneCategoriasXId(id);
       objJson = gson.toJson(objDto);
-      System.out.println("Este es el objeto json: " + objJson);
       out.print(objJson);
   }catch(Exception e){
       e.printStackTrace();

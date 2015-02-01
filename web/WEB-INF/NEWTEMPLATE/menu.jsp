@@ -11,7 +11,7 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
         </button>
-        <a class="navbar-brand" href="#">SIGEMCO</a>
+        <a class="navbar-brand" href="#" onclick="irInicio()">SIGEMCO</a>
     </div>
     <div class="navbar-collapse collapse">
 
@@ -188,4 +188,9 @@
             </li>
         </ul>
     </div><!--/.nav-collapse -->
+    <script>
+        function irInicio(){
+            location.href = RutaSitio+'/inicioAdmin.action';
+        }        
+    </script>
 </div>

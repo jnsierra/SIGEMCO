@@ -120,13 +120,44 @@ public class RemisionLogica {
                 ReferenciaDTO objRef = new ReferenciaDTO();
                 objRef.setRefe_refe(aux.getRmce_refe());
                 objRef = logicaRef.traeReferenciaEspecifica(objRef);
-                logicaRef= null;
+                logicaRef = null;
                 aux.setRmce_refe(objRef.getRefe_desc());
                 //Logica para obtener el nombre de la sede
                 Adm_SedeLogica logicaSede = new Adm_SedeLogica();
                 Sede sedeAux = logicaSede.consultarSedeEspecifico(aux.getRmce_sede());
                 aux.setRmce_sede(sedeAux.getSede_nombre());
                 logicaSede = null;
+                aux.setFiltros("S");
+                rta.add(aux);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return rta;
+    }
+
+    /**
+     * Funcion encargada de realizar la logica para encontrar los equipos
+     * celulares proximos a vencer
+     *
+     * @return
+     */
+    public List<RemisionDto> encuentraEquiposProximosAVencer() {
+        List<RemisionDto> rta = null;
+        RemisionDao objDao = new RemisionDao();
+        try (EnvioFunction function = new EnvioFunction()) {
+            ResultSet rs = function.enviarSelect(objDao.remisionesProximasAVencer());
+            while (rs.next()) {
+                if (rta == null) {
+                    rta = new ArrayList<RemisionDto>();
+                }
+                RemisionDto aux = new RemisionDto();
+                aux.setRmce_rmce(rs.getString("rmce_rmce"));
+                aux.setRmce_refe(rs.getString("refe_desc"));
+                aux.setRmce_fcve(rs.getString("rmce_fcve"));
+                aux.setRmce_sede(rs.getString("sede_nombre"));
+                aux.setRmce_iccid(rs.getString("rmce_iccid"));
+                aux.setRmce_imei(rs.getString("rmce_imei"));
                 aux.setFiltros("S");
                 rta.add(aux);
             }
