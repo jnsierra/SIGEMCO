@@ -99,7 +99,8 @@
                                     <p>
                                         Si realmente este el <b>PRODUCTO</b> que buscas genera el reporte 
                                     </p>
-                                </div>                           
+                                </div>  
+                                <br/>
                                 <table class="table table-bordered">
                                     <tr >
                                         <td colspan="2" class="alert-info text-center">Detalle Producto</td>

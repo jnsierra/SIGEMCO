@@ -219,6 +219,10 @@
                     </div>
                 </div>
             </div>
-        </div> 
+        </div>
+        <s:form action="inv_ConCelular" id="inv_ConCelular" theme="simple">
+            <s:textfield id="accion" name="accion" value="consultaEspecifica"/>  
+            <s:textfield id="rmce_rmce" name="remision.rmce_rmce"/>   
+        </s:form>
     </body>
 </html>
