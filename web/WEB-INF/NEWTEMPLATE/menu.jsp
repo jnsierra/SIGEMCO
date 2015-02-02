@@ -194,7 +194,7 @@
                     <li><a href="#">Grupos</a>
                         <% if (permisos.indexOf(".CoPu2.") > 0) { %>
                         <ul class="dropdown-menu">
-                            <li><a href="reenvioGeneral.action?accion=411">Insertar</a></li>
+                            <li><a href="reenvioGeneral.action?accion=521">Insertar</a></li>
                             <li><a href="reenvioGeneral.action?accion=411">Consultar</a></li>
                             <li><a href="reenvioGeneral.action?accion=411">Modificar</a></li>
                         </ul>
@@ -205,7 +205,7 @@
                     <li><a href="#">Cuentas</a>
                         <% if (permisos.indexOf(".CoPu3.") > 0) { %>
                         <ul class="dropdown-menu">
-                            <li><a href="reenvioGeneral.action?accion=411">Insertar</a></li>
+                            <li><a href="reenvioGeneral.action?accion=531">Insertar</a></li>
                             <li><a href="reenvioGeneral.action?accion=411">Consultar</a></li>
                             <li><a href="reenvioGeneral.action?accion=411">Modificar</a></li>
                         </ul>
@@ -216,7 +216,7 @@
                     <li><a href="#">SubCuentas</a>
                         <% if (permisos.indexOf(".CoPu4.") > 0) { %>
                         <ul class="dropdown-menu">
-                            <li><a href="reenvioGeneral.action?accion=411">Insertar</a></li>
+                            <li><a href="reenvioGeneral.action?accion=541">Insertar</a></li>
                             <li><a href="reenvioGeneral.action?accion=411">Consultar</a></li>
                             <li><a href="reenvioGeneral.action?accion=411">Modificar</a></li>
                         </ul>

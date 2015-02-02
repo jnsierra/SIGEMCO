@@ -81,10 +81,13 @@ public class reenvioGeneral extends ActionSupport implements UsuarioHabilitado, 
     // primer digito(3) segundo (inventarios = 1, productos = 2 , usuarios= 3)
     public static final int REP_INV_PONDERADO = 411;
     public static final int REP_INV_USUARIOS = 431;//Reportes de usuarios
-    
+
     //MODULO DE CONTABILIDAD (Primer digito 5)
     public static final int Con_InserClases = 511;
-    
+    public static final int Con_InsertGrupos = 521;
+    public static final int Con_InsertCuentas = 531;
+    public static final int Con_InsertSubCuentas = 541;
+
     //Listas iniciales de las paginas
     private List<String> perfiles;
     private List<String> estadoUsuario;
@@ -182,7 +185,7 @@ public class reenvioGeneral extends ActionSupport implements UsuarioHabilitado, 
                     this.categorias = cateLogica.obtieneCategorias();
                     logicaEmp = new Emp_EmpresaLogica();
                     empresa = logicaEmp.obtieneDatosEmpresa();
-                    producto = new Producto(); 
+                    producto = new Producto();
                     producto.setPorcIva(empresa.getIva());
                     empresa = null;
                     break;
@@ -358,7 +361,16 @@ public class reenvioGeneral extends ActionSupport implements UsuarioHabilitado, 
                     nextPage = "adm_ins_sede";
                     break;
                 case Con_InserClases:
-                     nextPage = "Con_InserClases";
+                    nextPage = "Con_InserClases";
+                    break;
+                case Con_InsertGrupos:
+                    nextPage = "Con_InsertGrupos";
+                    break;
+                case Con_InsertCuentas:
+                    nextPage = "Con_InsertCuentas";
+                    break;
+                case Con_InsertSubCuentas:
+                    nextPage = "Con_InsertSubCuentas";
                     break;
             }
         } catch (Exception e) {
