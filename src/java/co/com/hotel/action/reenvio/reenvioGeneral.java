@@ -81,6 +81,10 @@ public class reenvioGeneral extends ActionSupport implements UsuarioHabilitado, 
     // primer digito(3) segundo (inventarios = 1, productos = 2 , usuarios= 3)
     public static final int REP_INV_PONDERADO = 411;
     public static final int REP_INV_USUARIOS = 431;//Reportes de usuarios
+    
+    //MODULO DE CONTABILIDAD (Primer digito 5)
+    public static final int Con_InserClases = 511;
+    
     //Listas iniciales de las paginas
     private List<String> perfiles;
     private List<String> estadoUsuario;
@@ -352,6 +356,9 @@ public class reenvioGeneral extends ActionSupport implements UsuarioHabilitado, 
                     break;
                 case ADM_INS_SEDE:
                     nextPage = "adm_ins_sede";
+                    break;
+                case Con_InserClases:
+                     nextPage = "Con_InserClases";
                     break;
             }
         } catch (Exception e) {

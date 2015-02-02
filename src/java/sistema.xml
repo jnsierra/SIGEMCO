@@ -59,6 +59,7 @@
             <result name="Inv_ConReferencia">/WEB-INF/ACCIONES/INVENTARIOS/CONSULTA/Inv_ConsReferencia.jsp</result>
             <result name="inv_con_celular">/WEB-INF/ACCIONES/INVENTARIOS/CONSULTA/Inv_ConsGenRemision.jsp</result>
             <result name="adm_ins_parempre">/WEB-INF/ACCIONES/ADMINISTRACION/CREACION/Adm_ParamGenerales.jsp</result>
+            <result name="Con_InserClases">/WEB-INF/ACCIONES/CONTABILIDAD/CREACION/Con_InserClases.jsp</result>
             <result name="error">/inicio.jsp</result>
         </action>
         <!-- Acciones que sirven para redireccionar -->    

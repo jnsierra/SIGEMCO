@@ -350,6 +350,44 @@
                         <div class="col-md-12 col-sm-12 col-xs-12">
                             <div class="panel panel-info">
                                 <div class="panel-heading">
+                                    Modulo de Contabilidad
+                                </div>
+                                <div class="panel-body">
+                                    <div class="row">
+                                        <div class="col-md-12 col-sm-12 col-xs-12">
+                                            <table style="width: 100%">
+                                                <thead>
+                                                    <tr>
+                                                        <th class="subTitulo"><a id="RepInv">PUC</a></th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody style="display: none;" class="subPermisoRepInv">
+                                                    <tr>
+                                                        <td style="width: 30%;">Clases</td>
+                                                        <td style="width: 20%;"><input type="checkbox" value="CoPu1" id="CoPu1"/></td>
+                                                        <td style="width: 30%;">Grupos</td>
+                                                        <td style="width: 20%;"><input type="checkbox" value="CoPu2" id="CoPu2"/></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td style="width: 30%;">Cuentas</td>
+                                                        <td style="width: 20%;"><input type="checkbox" value="CoPu3" id="CoPu3"/></td>
+                                                        <td style="width: 30%;">SubCuentas</td>
+                                                        <td style="width: 20%;"><input type="checkbox" value="CoPu4" id="CoPu4"/></td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-0 col-sm-0 col-xs-0"></div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-0 col-sm-0 col-xs-0"></div>
+                        <div class="col-md-12 col-sm-12 col-xs-12">
+                            <div class="panel panel-info">
+                                <div class="panel-heading">
                                     Reportes
                                 </div>
                                 <div class="panel-body">
