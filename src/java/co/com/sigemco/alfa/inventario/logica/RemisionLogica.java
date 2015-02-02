@@ -34,6 +34,7 @@ public class RemisionLogica {
         try (EnvioFunction function = new EnvioFunction()) {
             objDto.setFiltros("N");
             objDao = poblarDao(objDto);
+            System.out.println("Sql: " + objDao.insert());
             if (function.enviarUpdate(objDao.insert())) {
                 rta = "Ok";
             } else {

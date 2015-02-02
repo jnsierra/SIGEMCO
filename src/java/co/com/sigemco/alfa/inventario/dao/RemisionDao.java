@@ -187,7 +187,7 @@ public class RemisionDao {
         String insert = "";
         insert += "INSERT INTO in_trmce(";
         insert += "            rmce_refe, rmce_imei, rmce_iccid, rmce_valor, rmce_comision,    ";
-        insert += "            rmce_tppl, rmce_fcve, rmce_tius_ent, rmce_sede)values(";
+        insert += "            rmce_tppl, rmce_fcve, rmce_tius_ent, rmce_codigo, rmce_sede  )values(";
         insert += "'" + this.getRmce_refe() + "'";
         insert += ",'" + this.getRmce_imei() + "'";
         insert += ",'" + this.getRmce_iccid() + "'";
@@ -196,6 +196,7 @@ public class RemisionDao {
         insert += ",'" + this.getRmce_tppl() + "'";
         insert += "," + this.getRmce_fcve() + "";
         insert += ",'" + this.getRmce_tius_ent() + "'";
+        insert += ",(select '2-' || coalesce(count(1), 0) +1 id from in_trmce) ";
         insert += ",'" + this.getRmce_sede() + "')";
         return insert;
     }

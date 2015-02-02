@@ -144,23 +144,14 @@
                             </tr>                    
                         </thead>
                         <tbody>
-                            <%
-                                int i = 0;
-                            %>
+                            <%int i = 0;%>
                             <s:iterator value="listRemisiones">
-                                <%
-                                    if (i % 2 == 0) {
-                                %>
+                                <%if (i % 2 == 0) {%>
                                 <tr class="active">
-                                    <%
-                                    } else {
-                                    %>
+                                    <%} else {%>
                                 <tr>
-                                    <%
-                                        }
-                                        i++;
-                                    %>
-                                    <td><span class="muestraImei"><s:property value="rmce_refe"/><br/></span>
+                                    <%}i++;%>
+                                    <td><span class="muestraImei" onclick="accionesEquipo('<s:property value="rmce_rmce"/>')"><s:property value="rmce_refe"/><br/></span>
                                         <span class="imei" style="display: none"><b><s:property value="rmce_imei"/></b></span>
                                     </td>
                                     <td><span class="muestraIccid"><s:property value="rmce_tppl"/><br/></span>
@@ -200,7 +191,34 @@
                 var numero = mascaraMonedaConValor('<s:text name="valor" />');
                 document.getElementById('inv_consRemPorFiltrosGen_remision_rmce_valor').value = numero;
             </script>
-            
+
         </s:if>
+
+        <div class="modal fade" tabindex="-1" role="dialog" aria-hidden="true" id="dialogoAcciones">
+            <div class="modal-dialog">                
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title">Acci&oacute;n Equipos Celulares</h4>
+                    </div>
+                    <div class="modal-body">
+                        ¿Que accion desea Realizale al Equipo Celular?
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">
+                            CERRAR
+                        </button>
+                        <button type="button" class="btn btn-primary" id="sticker">
+                            STICKER
+                        </button>
+                        <button type="button" class="btn btn-primary" id="parametrizar">
+                            DEVOLUCION
+                        </button>
+                        <button type="button" class="btn btn-primary" id="actualizar">
+                            ACTUALIZAR
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div> 
     </body>
 </html>

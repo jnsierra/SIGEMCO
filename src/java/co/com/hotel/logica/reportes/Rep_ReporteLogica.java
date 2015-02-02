@@ -22,7 +22,6 @@ import net.sf.jasperreports.engine.JasperPrint;
 import net.sf.jasperreports.engine.JasperReport;
 import net.sf.jasperreports.engine.util.JRLoader;
 
-
 /**
  *
  * @author nicolas
@@ -64,7 +63,7 @@ public class Rep_ReporteLogica {
             String db = rb.getString("DATABASE").trim();
             String port = rb.getString("PUERTO").trim();
             Class.forName("org.postgresql.Driver");
-            String url = "jdbc:postgresql://"+host+":"+port+"/"+db;
+            String url = "jdbc:postgresql://" + host + ":" + port + "/" + db;
             con = DriverManager.getConnection(url, user, pass);
         } catch (Exception e) {
             System.out.println("Error al realizar la conexion...");
@@ -96,7 +95,7 @@ public class Rep_ReporteLogica {
         }
         return rta;
     }
-    
+
     public String generarStikerProd(String dska_dska, String ruta, String rutaDestino) {
         String rta = "Ok";
         Connection conn = null;
@@ -104,7 +103,31 @@ public class Rep_ReporteLogica {
             conn = this.generarConexion();
             String ubicacionReporte = ruta;
             Map<String, Object> properties = new HashMap<String, Object>();
-            properties.put("dska_dska",dska_dska.trim() );
+            properties.put("dska_dska", dska_dska.trim());
+            JasperReport jasperReport = (JasperReport) JRLoader.loadObject(ubicacionReporte);
+            JasperPrint print = JasperFillManager.fillReport(jasperReport, properties, conn);
+            JasperExportManager.exportReportToPdfFile(print, rutaDestino);
+        } catch (Exception e) {
+            e.printStackTrace();
+            rta = "Error " + e;
+        } finally {
+            try {
+                conn.close();
+            } catch (SQLException ex) {
+                Logger.getLogger(Rep_ReporteLogica.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        return rta;
+    }
+
+    public String generarStikerCelular(String rmce_rmce, String ruta, String rutaDestino) {
+        String rta = "Ok";
+        Connection conn = null;
+        try {
+            conn = this.generarConexion();
+            String ubicacionReporte = ruta;
+            Map<String, Object> properties = new HashMap<String, Object>();
+            properties.put("rmce_rmce", rmce_rmce.trim());
             JasperReport jasperReport = (JasperReport) JRLoader.loadObject(ubicacionReporte);
             JasperPrint print = JasperFillManager.fillReport(jasperReport, properties, conn);
             JasperExportManager.exportReportToPdfFile(print, rutaDestino);
