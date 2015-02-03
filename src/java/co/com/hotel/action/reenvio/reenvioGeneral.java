@@ -85,6 +85,9 @@ public class reenvioGeneral extends ActionSupport implements UsuarioHabilitado, 
 
     //MODULO DE CONTABILIDAD (Primer digito 5)
     public static final int Con_InserClases = 511;
+    public static final int Con_InsertGrupos = 521;
+    public static final int Con_InsertCuentas = 531;
+    public static final int Con_InsertSubCuentas = 541;
 
     //Listas iniciales de las paginas
     private List<String> perfiles;
@@ -365,6 +368,15 @@ public class reenvioGeneral extends ActionSupport implements UsuarioHabilitado, 
                     break;
                 case Con_InserClases:
                     nextPage = "Con_InserClases";
+                    break;
+                case Con_InsertGrupos:
+                    nextPage = "Con_InsertGrupos";
+                    break;
+                case Con_InsertCuentas:
+                    nextPage = "Con_InsertCuentas";
+                    break;
+                case Con_InsertSubCuentas:
+                    nextPage = "Con_InsertSubCuentas";
                     break;
             }
         } catch (Exception e) {
