@@ -100,5 +100,13 @@
             <result name="success">/WEB-INF/ACCIONES/INVENTARIOS/CONSULTA/Inv_ConsGenRemision.jsp</result>
             <result name="input">/WEB-INF/ACCIONES/INVENTARIOS/CONSULTA/Inv_ConsGenRemision.jsp</result>
         </action>        
+        <action name="inv_ConCelular" class="co.com.sigemco.alfa.inventario.action.RemisionAction" method="consultaEspecificaCelular">
+            <result name="success">/WEB-INF/ACCIONES/INVENTARIOS/MODIFICAR/inv_UpdCelular.jsp</result>
+            <result name="input">/WEB-INF/ACCIONES/INVENTARIOS/MODIFICAR/inv_UpdCelular.jsp</result>
+        </action>        
+        <action name="inv_UpdCelular" class="co.com.sigemco.alfa.inventario.action.RemisionAction" method="actualizaEspecificoCelular">
+            <result name="success">/WEB-INF/ACCIONES/INVENTARIOS/MODIFICAR/inv_UpdCelular.jsp</result>
+            <result name="input">/WEB-INF/ACCIONES/INVENTARIOS/MODIFICAR/inv_UpdCelular.jsp</result>
+        </action>        
     </package>
 </struts>

@@ -44,7 +44,7 @@
                     <table class="table table-bordered">
                         <thead>
                             <tr>
-                                <th colspan="2" style="text-align: center;" class="alert alert-info text-center"><h3>INGRESAR USUARIO</h3></th>
+                                <th colspan="2" class="alert alert-info text-center"><h3>INGRESAR USUARIO</h3></th>
                         </tr>
                         </thead>
                         <tbody>

@@ -137,6 +137,40 @@ public class RemisionLogica {
         return rta;
     }
 
+    public RemisionDto consultaCelularEspecifico(RemisionDto objTo) {
+        RemisionDao objDao = null;
+        objDao = poblarDao(objTo);
+        RemisionDto aux = new RemisionDto();
+        try (EnvioFunction function = new EnvioFunction()) {
+            ResultSet rs = function.enviarSelect(objDao.consultaEspecifica());
+
+            while (rs.next()) {
+                aux.setRmce_rmce(rs.getString("rmce_rmce"));
+                aux.setRmce_refe(rs.getString("rmce_refe"));
+                aux.setRmce_imei(rs.getString("rmce_imei"));
+                aux.setRmce_iccid(rs.getString("rmce_iccid"));
+                aux.setRmce_valor(rs.getString("rmce_valor"));
+                aux.setRmce_comision(rs.getString("rmce_comision"));
+                aux.setRmce_tppl(rs.getString("rmce_tppl"));
+                aux.setRmce_fcve(rs.getString("rmce_fcve"));
+                aux.setRmce_fcsl(rs.getString("rmce_fcsl"));
+                aux.setRmce_fcen(rs.getString("rmce_fcen"));
+                aux.setRmce_tius_ent(rs.getString("rmce_tius_ent"));
+                aux.setRmce_tius_sal(rs.getString("rmce_tius_sal"));
+                aux.setRmce_codigo(rs.getString("rmce_codigo"));
+                aux.setRmce_sede(rs.getString("rmce_sede"));
+                aux.setRmce_estado(rs.getString("rmce_estado"));
+                aux.setRmce_pagado(rs.getString("rmce_pagado"));
+                aux.setRmce_comdev(rs.getString("rmce_comdev"));
+                aux.setFiltros("N");
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return aux;
+    }
+
     /**
      * Funcion encargada de realizar la logica para encontrar los equipos
      * celulares proximos a vencer
@@ -166,5 +200,21 @@ public class RemisionLogica {
             e.printStackTrace();
         }
         return rta;
+    }
+
+    public String actualizaCelularEspecifico(RemisionDto objTo) {
+        RemisionDao objDao = null;
+        objDao = poblarDao(objTo);
+        try (EnvioFunction function = new EnvioFunction()) {
+            if (function.enviarUpdate(objDao.actualizaEspecifica())) {
+                return "CELULAR ACTUALIZADO CORRECTAMENTE";
+            } else {
+                return "NO PUDO ACTUALIZAR EL CELULAR";
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            return "ERROR AL ACTUALIZAR CELULAR";
+        }
     }
 }

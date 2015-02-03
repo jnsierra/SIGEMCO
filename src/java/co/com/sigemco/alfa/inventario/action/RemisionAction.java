@@ -77,22 +77,51 @@ public class RemisionAction extends ActionSupport implements UsuarioHabilitado, 
             this.listRemisiones = logica.consultaGeneralXFiltros(remision);
             if (listRemisiones == null) {
                 addActionError("La consulta no arrojo ningun resultado");
-            }else{
-                if(remision.getRmce_iccid() != null && !remision.getRmce_iccid().equalsIgnoreCase("")){
+            } else {
+                if (remision.getRmce_iccid() != null && !remision.getRmce_iccid().equalsIgnoreCase("")) {
                     muestraIccid = "S";
-                }else{
+                } else {
                     muestraIccid = "N";
                 }
-                if(remision.getRmce_imei() != null && !remision.getRmce_imei().equalsIgnoreCase("")){
+                if (remision.getRmce_imei() != null && !remision.getRmce_imei().equalsIgnoreCase("")) {
                     muestraImei = "S";
-                }else{
+                } else {
                     muestraImei = "N";
                 }
-                    
+
             }
         } catch (Exception e) {
             e.printStackTrace();
         }
+        return SUCCESS;
+    }
+
+    public String actualizaEspecificoCelular() {
+        RemisionLogica logica = null;
+        try {
+            logica = new RemisionLogica();
+            logica.actualizaCelularEspecifico(remision);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return SUCCESS;
+    }
+
+    /**
+     * Funcion encargada de actualizar los celulares
+     *
+     * @return
+     */
+    public String consultaEspecificaCelular() {
+        RemisionLogica logica = null;
+        try {
+            logica = new RemisionLogica();
+            this.remision = logica.consultaCelularEspecifico(remision);
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
         return SUCCESS;
     }
 
@@ -140,6 +169,8 @@ public class RemisionAction extends ActionSupport implements UsuarioHabilitado, 
                 }
             } else if (accion.equalsIgnoreCase("consultaGen")) {
                 //Aqui hacemos la logica para la consulta general de remisiones
+                remision.setFiltros("N");
+            }else if(accion.equalsIgnoreCase("updRemisionIndv")){
                 remision.setFiltros("N");
             }
             valida = null;

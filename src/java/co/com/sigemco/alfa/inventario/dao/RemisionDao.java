@@ -214,8 +214,31 @@ public class RemisionDao {
         select += "       rmce_codigo, rmce_sede, rmce_estado, rmce_pagado, rmce_comdev            \n";
         select += "  FROM in_trmce                                                                \n";
         select += armaWhereObjDao();
+        return select;
+    }
 
-        System.out.println("select between" + select);
+    public String consultaEspecifica() {
+        String select = "SELECT rmce_rmce, rmce_refe, rmce_imei, rmce_iccid, rmce_valor rmce_valor , rmce_comision, rmce_tppl, rmce_fcve, rmce_fcsl, rmce_fcen, rmce_tius_ent, rmce_tius_sal,rmce_codigo, rmce_sede, rmce_estado, rmce_pagado, rmce_comdev FROM in_trmce where rmce_rmce='"
+                .concat(this.getRmce_rmce())
+                .concat("'");
+        System.out.println("select especifico" + select);
+        return select;
+    }
+
+    public String actualizaEspecifica() {
+        String select = "UPDATE in_trmce SET  "
+                .concat("rmce_refe=").concat(this.rmce_refe)
+                .concat(",rmce_imei='").concat(this.rmce_imei)
+                .concat("',rmce_iccid='").concat(this.rmce_iccid)
+                .concat("',rmce_valor='").concat(this.rmce_valor)
+                .concat("',rmce_comision='").concat(this.rmce_comision)
+                .concat("',rmce_fcve='").concat(this.rmce_fcve)
+                .concat("',rmce_sede=").concat(this.rmce_sede)
+                .concat(",rmce_pagado='").concat(this.rmce_pagado)
+                .concat("' WHERE rmce_rmce=".concat(this.rmce_rmce));
+        ;
+
+        System.out.println("update especifico" + select);
         return select;
     }
 

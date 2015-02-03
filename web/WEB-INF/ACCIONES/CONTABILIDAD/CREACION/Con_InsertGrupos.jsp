@@ -23,14 +23,18 @@
         <div class="row">
             <div class="col-md-3 col-sm-0 col-xs-0"></div>
             <div class="col-md-6 col-sm-12 col-xs-12">
-                <s:form theme="simple" action="Con_InserClases" name="InsertClases" id="InsertClases">
+                <s:form theme="simple" action="Con_InsertGrupos" name="InsertGrupos" id="InsertGrupos">
                     <table class="table table-bordered">
                         <thead>
                             <tr>
-                                <td colspan="2" class="alert alert-info text-center"><h3>INGRESAR CLASES</h3></td>
+                                <td colspan="2" class="alert alert-info text-center"><h3>INGRESAR GRUPOS</h3></td>
                             </tr>
                         </thead>
                         <tbody>
+                            <tr>
+                                <td>Clase:</td>
+                                <td><s:textfield cssClass="form-control" name="clase" id="clase"/></td>
+                            </tr>
                             <tr>
                                 <td>Código:</td>
                                 <td><s:textfield cssClass="form-control" name="codigo" id="codigo"/></td>
