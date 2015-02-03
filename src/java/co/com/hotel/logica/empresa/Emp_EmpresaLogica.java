@@ -73,6 +73,11 @@ public class Emp_EmpresaLogica {
             if (!inserts.equalsIgnoreCase("Ok")) {
                 return inserts;
             }
+            inserts = this.ingresaComision(empresa.getComision());
+            if (!inserts.equalsIgnoreCase("Ok")) {
+                return inserts;
+            }
+
             rta = "Ok";
         } catch (Exception e) {
             rta = "Error " + e;
@@ -338,9 +343,53 @@ public class Emp_EmpresaLogica {
         }
         return "Ok";
     }
+
     /**
-     * Funcion que obtiene todos los datos empresariales parametrizados previamente en la aplicacion
-     * @return 
+     * Funcion encargada de insertar o modificar la comision que se cobrara por
+     * los equipos celulares
+     *
+     * @param comision
+     * @return
+     */
+    private String ingresaComision(String comision) {
+        EnvioFunction function = new EnvioFunction();
+        ResultSet rs = null;
+        String select = "";
+        String sql = "";
+        int cont = 0;
+        try {
+            select += "select COUNT(*)  contador            \n";
+            select += "from em_tpara                        \n";
+            select += "where upper(para_clave) = 'COMISION' \n";
+            rs = function.enviarSelect(select);
+            while (rs.next()) {
+                cont = rs.getInt("contador");
+            }
+            if (cont == 0) {
+                sql = "insert into em_tpara(para_clave, para_valor) \n";
+                sql += "values('COMISION', '" + comision + "')   \n";
+
+            } else {
+                sql = "UPDATE em_tpara                     \n";
+                sql += "SET para_valor = '" + comision + "'  \n";
+                sql += "WHERE upper(para_clave) = 'COMISION' \n";
+            }
+            function.enviarUpdate(sql);
+        } catch (Exception e) {
+            System.err.println("Error Emp_EmpresaLogica.ingresaNombreEmpresa");
+            e.printStackTrace();
+            return "Error al insertar el nombre de la empresa: " + e;
+        } finally {
+            function.cerrarConexion();
+        }
+        return "Ok";
+    }
+
+    /**
+     * Funcion que obtiene todos los datos empresariales parametrizados
+     * previamente en la aplicacion
+     *
+     * @return
      */
     public Empresa obtieneDatosEmpresa() {
         Empresa obj = null;
@@ -355,10 +404,11 @@ public class Emp_EmpresaLogica {
             sql += "       (SELECT para_valor FROM em_tpara where UPPER(para_clave) = 'DIRECCION') DIRECCION,  ";
             sql += "       (SELECT para_valor FROM em_tpara where UPPER(para_clave) = 'CIUDAD') CIUDAD      ,  ";
             sql += "       (SELECT para_valor FROM em_tpara where UPPER(para_clave) = 'DIASVEN') DIASVEN    ,  ";
-            sql += "       (SELECT para_valor FROM em_tpara where UPPER(para_clave) = 'IVAPR') IVAPR           ";
+            sql += "       (SELECT para_valor FROM em_tpara where UPPER(para_clave) = 'IVAPR') IVAPR        ,  ";
+            sql += "       (SELECT para_valor FROM em_tpara where UPPER(para_clave) = 'COMISION') COMISION     ";
 
             rs = function.enviarSelect(sql);
-            while (rs.next()){
+            while (rs.next()) {
                 if (contador == 0) {
                     obj = new Empresa();
                     contador++;
@@ -370,6 +420,7 @@ public class Emp_EmpresaLogica {
                 obj.setCiudad(rs.getString("ciudad"));
                 obj.setDiasVen(rs.getString("diasven"));
                 obj.setIva(rs.getString("ivapr"));
+                obj.setComision(rs.getString("comision"));
             }
         } catch (Exception e) {
             System.out.println("Error Emp_EmpresaLogica.obtieneDatosEmpresa " + e);

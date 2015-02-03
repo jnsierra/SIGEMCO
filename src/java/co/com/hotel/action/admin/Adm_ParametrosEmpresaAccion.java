@@ -8,6 +8,7 @@ package co.com.hotel.action.admin;
 import co.com.hotel.datos.session.Usuario;
 import co.com.hotel.dto.Empresa;
 import co.com.hotel.logica.empresa.Emp_EmpresaLogica;
+import co.com.hotel.utilidades.ManejoString;
 import co.com.hotel.utilidades.UsuarioHabilitado;
 import com.opensymphony.xwork2.ActionSupport;
 import java.util.Map;
@@ -53,6 +54,8 @@ public class Adm_ParametrosEmpresaAccion extends ActionSupport implements Sessio
     public String modificaParametrosGeneralesEmp() {
         Emp_EmpresaLogica logica = null;
         try {
+            String comisionAux = ManejoString.eliminaMascaraMoneda(empresa.getComision());
+            empresa.setComision(comisionAux);
             logica = new Emp_EmpresaLogica();
             String rta = logica.ingresarParametrosGeneEmpresa(empresa);
             if (rta.equalsIgnoreCase("Ok")) {

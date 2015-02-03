@@ -49,7 +49,7 @@
                         </thead>
                         <tbody>
                             <tr>
-                                <td>IVA</td>
+                                <td>IVA:</td>
                                 <td>
                                     <div class="input-group">
                                         <span class="input-group-addon">%</span>
@@ -58,8 +58,17 @@
                                 </td>
                             </tr>
                             <tr>
-                                <td>Dias Vencimiento</td>
+                                <td>Dias Vencimiento:</td>
                                 <td><s:textfield id="diasVen" name="empresa.diasVen" cssClass="form-control" data-toggle="tooltip" data-placement="bottom" title="Número de días Previos a vencimiento de entrega del equipo"  onkeypress="soloNumeros();"/></td>
+                            </tr>
+                            <tr>
+                                <td>Comisi&oacute;n:</td>
+                                <td>
+                                    <div class="input-group">
+                                        <span class="input-group-addon">$</span>
+                                        <s:textfield id="comision" name="empresa.comision" cssClass="form-control" data-toggle="tooltip" data-placement="bottom" title="Valor de comision que se cobrara por cada equipo celular al venderlo"  onkeypress="soloNumeros();" onkeyup="mascaraMoneda(this)"/>
+                                    </div>
+                                </td>
                             </tr>
                             <tr>
                                 <td colspan="2" >
@@ -79,5 +88,11 @@
             </div>
             <div class="col-md-3 col-xs-0 col-sm-0"></div>
         </div>
+        <s:if test="%{empresa.comision!=null}">
+            <script>
+                var valor = mascaraMonedaConValor('<s:text name="empresa.comision" />');
+                document.getElementById('comision').value = valor;
+            </script>
+        </s:if>
     </body>
 </html>

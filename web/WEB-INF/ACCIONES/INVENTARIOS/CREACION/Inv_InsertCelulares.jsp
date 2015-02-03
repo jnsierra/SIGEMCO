@@ -76,7 +76,7 @@
                             <tr>
                                 <td>Comision:</td>
                                 <td>
-                                    <s:textfield name="remision.rmce_comision" cssClass="form-control" />
+                                    <s:textfield name="remision.rmce_comision" cssClass="form-control" id="comision" readonly="true" />
                                 </td>
                             </tr>
                             <tr>
@@ -114,5 +114,16 @@
             </div>
             <div class="col-md-3 col-xs-0 col-sm-0"></div>
         </div>
+        <s:if test="%{remision.rmce_comision != null }">
+            <script type="text/javascript">
+                var valor = mascaraMonedaConValor('<s:text name="remision.rmce_comision" />');
+                document.getElementById('comision').value = valor;
+            </script>
+        </s:if>
+        <s:else>
+            <script>
+                alert('Debe parametrizar la comision de venta para equipos celulares');
+            </script>
+        </s:else>
     </body>
 </html>

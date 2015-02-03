@@ -8,6 +8,7 @@ package co.com.sigemco.alfa.inventario.action;
 import co.com.hotel.datos.session.Usuario;
 import co.com.hotel.dto.Sede;
 import co.com.hotel.logica.sede.Adm_SedeLogica;
+import co.com.hotel.utilidades.ManejoString;
 import co.com.hotel.utilidades.UsuarioHabilitado;
 import co.com.hotel.validacion.ValidaCampos;
 import co.com.sigemco.alfa.inventario.dto.RemisionDto;
@@ -113,6 +114,8 @@ public class RemisionAction extends ActionSupport implements UsuarioHabilitado, 
             this.yesNo.put("N", "No");
             ValidaCampos valida = new ValidaCampos();
             if (accion.equalsIgnoreCase("insertar")) {
+                String auxComision = ManejoString.eliminaMascaraMoneda(remision.getRmce_comision());
+                remision.setRmce_comision(auxComision);
                 remision.setFiltros("N");
                 if (remision.getRmce_refe().equalsIgnoreCase("-1")) {
                     addActionError("Debe seleccionar la referencia del Equipo Celular");

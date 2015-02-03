@@ -14,6 +14,7 @@ import co.com.hotel.logica.perfil.Adm_PerfilLogica;
 import co.com.hotel.logica.sede.Adm_SedeLogica;
 import co.com.hotel.logica.usuarios.Adm_UsuarioLogica;
 import co.com.hotel.utilidades.UsuarioHabilitado;
+import co.com.sigemco.alfa.inventario.dto.RemisionDto;
 import co.com.sigemco.alfa.inventario.logica.ReferenciaLogica;
 import com.opensymphony.xwork2.ActionSupport;
 import java.util.ArrayList;
@@ -81,10 +82,10 @@ public class reenvioGeneral extends ActionSupport implements UsuarioHabilitado, 
     // primer digito(3) segundo (inventarios = 1, productos = 2 , usuarios= 3)
     public static final int REP_INV_PONDERADO = 411;
     public static final int REP_INV_USUARIOS = 431;//Reportes de usuarios
-    
+
     //MODULO DE CONTABILIDAD (Primer digito 5)
     public static final int Con_InserClases = 511;
-    
+
     //Listas iniciales de las paginas
     private List<String> perfiles;
     private List<String> estadoUsuario;
@@ -113,6 +114,7 @@ public class reenvioGeneral extends ActionSupport implements UsuarioHabilitado, 
     private String bandera;
     private String estado;
     private Empresa empresa;
+    private RemisionDto remision;
 
     /**
      *
@@ -182,7 +184,7 @@ public class reenvioGeneral extends ActionSupport implements UsuarioHabilitado, 
                     this.categorias = cateLogica.obtieneCategorias();
                     logicaEmp = new Emp_EmpresaLogica();
                     empresa = logicaEmp.obtieneDatosEmpresa();
-                    producto = new Producto(); 
+                    producto = new Producto();
                     producto.setPorcIva(empresa.getIva());
                     empresa = null;
                     break;
@@ -250,6 +252,10 @@ public class reenvioGeneral extends ActionSupport implements UsuarioHabilitado, 
                     this.tipoPlan.put("pr", "PREPAGO");
                     refeLogica = new ReferenciaLogica();
                     this.referencias = refeLogica.obtieneIdDescrReferenciaActivos();
+                    logicaEmp = new Emp_EmpresaLogica();
+                    empresa = logicaEmp.obtieneDatosEmpresa();
+                    remision = new RemisionDto();
+                    remision.setRmce_comision(empresa.getComision());
                     nextPage = "inv_ins_celular";
                     break;
                 case INV_CON_CELULAR:
@@ -358,7 +364,7 @@ public class reenvioGeneral extends ActionSupport implements UsuarioHabilitado, 
                     nextPage = "adm_ins_sede";
                     break;
                 case Con_InserClases:
-                     nextPage = "Con_InserClases";
+                    nextPage = "Con_InserClases";
                     break;
             }
         } catch (Exception e) {
@@ -572,6 +578,14 @@ public class reenvioGeneral extends ActionSupport implements UsuarioHabilitado, 
 
     public void setProducto(Producto producto) {
         this.producto = producto;
+    }
+
+    public RemisionDto getRemision() {
+        return remision;
+    }
+
+    public void setRemision(RemisionDto remision) {
+        this.remision = remision;
     }
 
 }

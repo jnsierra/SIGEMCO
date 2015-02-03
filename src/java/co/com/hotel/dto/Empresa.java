@@ -18,6 +18,7 @@ public class Empresa {
     private String telefono;
     private String iva;
     private String diasVen;//Dias de vencimiento para las notificaciones
+    private String comision;
 
     public String getNombre() {
         return nombre;
@@ -74,7 +75,13 @@ public class Empresa {
     public void setDiasVen(String diasVen) {
         this.diasVen = diasVen;
     }
-    
-    
+
+    public String getComision() {
+        return comision;
+    }
+
+    public void setComision(String comision) {
+        this.comision = comision;
+    }
 
 }
