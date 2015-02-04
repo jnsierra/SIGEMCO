@@ -76,9 +76,12 @@
                     <div class="col-md-0 col-xs-0 col-sm-0"></div>
                     <div class="col-md-12 col-xs-12 col-sm-12">
                         <s:form action="inv_ParamPrecioPr" id="inv_ParamPrecioPr" autocomplete="off" theme="simple">
-                            <s:textfield name="producto.id" cssStyle="display:none" />
+                            <s:textfield name="producto.id" cssStyle="display:none" id="dska_dska"/>
                             <s:textfield name="producto.codigo" cssStyle="display:none" />
                             <s:textfield name="accion" value="parametrizarPr" cssStyle="display:none" />
+                            <s:textfield name="producto.nombre" cssStyle="display:none" />
+                            <s:textfield name="producto.descripcion" cssStyle="display:none" />
+                            <s:textfield name="producto.cantidad" cssStyle="display:none" />
                             <table class="table table-bordered">
                                 <thead>
                                     <tr>
@@ -93,6 +96,7 @@
                                         <td>Nombre:</td>
                                         <td colspan="2">
                                             <s:text name="producto.nombre" />
+                                            
                                         </td>
                                     </tr>
                                     <tr>
@@ -136,7 +140,7 @@
                                         <td colspan="3">
                                             <div class="input-group">
                                                 <span class="input-group-addon">$</span>
-                                                <s:textfield cssClass="form-control" name="producto.precio" title="Precio que deseas vender el producto sin impuestos" data-toggle="tooltip" data-placement="left" onkeyup="mascaraMoneda(this)" onkeypress="return validaNumeros(event)"/>
+                                                <s:textfield cssClass="form-control" name="producto.precio" title="Precio que deseas vender el producto sin impuestos" data-toggle="tooltip" data-placement="left" onkeyup="mascaraMoneda(this)" onkeypress="return validaNumeros(event)" id="futuroPrecio"/>
                                             </div>
                                         </td>
                                     </tr>
@@ -213,11 +217,37 @@
         </div>
         <br/>
         <br/>
-        <br/>
+        <div class="modal fade" tabindex="-1" role="dialog" aria-hidden="true" id="confirmacion">
+            <div class="modal-dialog">                
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title">Confirmaci&oacute;n Parametrizaci&oacute;m Precio</h4>
+                    </div>
+                    <div class="modal-body">
+                        El valor que desea Parametrizarle al producto es inferior al Costo ponderado del mismo
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">
+                            CANCELAR
+                        </button>
+                        <button type="button" class="btn btn-primary" id="continuar">
+                            CONTINUAR                            
+                        </button>                        
+                    </div>
+                </div>
+            </div>
+        </div>
         <script>
             $(function() {
                 $('#myTab a:first').tab('show');
-            })
+            });
         </script>
+        <s:if test="%{producto.precio != null }"> 
+            <script>
+                var precio = '<s:text name="producto.precio" />'
+                precio = mascaraMonedaConValor(precio);
+                document.getElementById('futuroPrecio').value = precio;
+            </script>
+        </s:if>
     </body>
 </html>

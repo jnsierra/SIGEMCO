@@ -162,14 +162,23 @@ function validaFechaDDMMAAAA(fecha) {
     }
 }
 
-function remplazaGuion(valor,id){
-    var nuevoVal = valor.replace('\'','-');
+function remplazaGuion(valor, id) {
+    var nuevoVal = valor.replace('\'', '-');
     document.getElementById(id).value = nuevoVal;
 }
 
 function validar(e) {
-  tecla = (document.all) ? e.keyCode : e.which;
-  if (tecla==13){
-      despuesEnter();
-  }
+    tecla = (document.all) ? e.keyCode : e.which;
+    if (tecla == 13) {
+        despuesEnter();
+    }
+}
+
+/**
+ * Funcion la cual remplaza todas las coincidencias de un texto
+ */
+function replaceAll(text, busca, reemplaza) {
+    while (text.toString().indexOf(busca) != - 1)
+        text = text.toString().replace(busca, reemplaza);
+    return text;
 }

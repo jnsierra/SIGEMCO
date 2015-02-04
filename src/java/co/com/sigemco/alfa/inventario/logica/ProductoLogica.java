@@ -104,5 +104,21 @@ public class ProductoLogica {
         }
         return rta;
     }
+    
+    public String obtieneValorPonderadoProducto(String dska_dska){
+        String valor = null;
+        ProductoDao objDao = null;
+        try(EnvioFunction function = new EnvioFunction()){
+            objDao = new ProductoDao();
+            objDao.setDska_dska(dska_dska);
+            ResultSet rs = function.enviarSelect(objDao.encontrarValorPromedioXProd());
+            while(rs.next()){
+                valor = rs.getString("costo");
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return valor;        
+    }
 
 }

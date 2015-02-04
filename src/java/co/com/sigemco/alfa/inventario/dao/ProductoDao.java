@@ -150,4 +150,18 @@ public class ProductoDao {
         return sql;
     }
 
+    /**
+     * Funcion encargada de realizar el query para obtener el valor promedio de
+     * cada producto
+     *
+     * @return String Query
+     */
+    public String encontrarValorPromedioXProd() {
+        String select = "SELECT kapr_cost_saldo_uni costo "
+                .concat("  FROM in_tkapr k1 ")
+                .concat(" WHERE k1.kapr_dska = ").concat(this.getDska_dska())
+                .concat("   AND k1.kapr_kapr = (SELECT max(k2.kapr_kapr) FROM in_tkapr k2 WHERE k2.kapr_dska = k1.kapr_dska ) ");
+        return select;
+    }
+
 }

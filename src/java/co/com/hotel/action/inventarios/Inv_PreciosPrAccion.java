@@ -70,11 +70,14 @@ public class Inv_PreciosPrAccion extends ActionSupport implements SessionAware, 
         this.sedes = sedeLogica.obtieneSedes();
         Inv_ProductoLogica logica = new Inv_ProductoLogica();
         try {
+            PreciosLogica objLogica = new PreciosLogica();
             String rta = logica.parametrizaPrecioPr(producto.getId(), usuario.getIdTius(), producto.getPrecio(), producto.getSede());
             if (rta.equalsIgnoreCase("Ok")) {
                 addActionMessage("Parametrizacion de precio correctamente");
                 producto = null;
             } else {
+                listaPrecioSede = objLogica.buscaPreciosSedes(producto.getId());
+                objLogica = null;
                 addActionError("Error al adicionar el producto");
             }
         } catch (Exception e) {
@@ -90,6 +93,9 @@ public class Inv_PreciosPrAccion extends ActionSupport implements SessionAware, 
         if (accion.equalsIgnoreCase("buscarProducto")) {
 
         } else if (accion.equalsIgnoreCase("parametrizarPr")) {
+            PreciosLogica objLogica = new PreciosLogica();
+            listaPrecioSede = objLogica.buscaPreciosSedes(producto.getId());
+            objLogica = null;
             if (!valida.validaNulo(producto.getPrecio())) {
                 addActionError("El campo precio no puede ser nulo");
             }

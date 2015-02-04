@@ -54,7 +54,10 @@ public class RemisionAction extends ActionSupport implements UsuarioHabilitado, 
             String rta = logica.insertaRemision(remision);
             if (rta.equalsIgnoreCase("Ok")) {
                 addActionMessage("Celular ingresado correctamente");
+                String auxComision = remision.getRmce_comision();
                 remision = null;
+                remision = new RemisionDto();
+                remision.setRmce_comision(auxComision);
             } else {
                 addActionError("Error al ingresar el Equipo Celular \n" + rta);
             }
