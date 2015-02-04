@@ -234,8 +234,7 @@ public class RemisionDao {
                 .concat("',rmce_comision='").concat(this.rmce_comision)
                 .concat("',rmce_fcve='").concat(this.rmce_fcve)
                 .concat("',rmce_sede=").concat(this.rmce_sede)
-                .concat(",rmce_pagado='").concat(this.rmce_pagado)
-                .concat("' WHERE rmce_rmce=".concat(this.rmce_rmce));
+                .concat(" WHERE rmce_rmce=".concat(this.rmce_rmce));
         ;
 
         System.out.println("update especifico" + select);

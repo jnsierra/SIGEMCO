@@ -217,4 +217,15 @@ public class RemisionLogica {
             return "ERROR AL ACTUALIZAR CELULAR";
         }
     }
+    
+    /**
+     * Funcion encargada de devolver un  celular
+     * @param rmce_rmce
+     * @param rmce_comdev
+     * @return 
+     */
+    
+    public String devolverCelular(String rmce_rmce, String rmce_comdev){
+        return "Ok";
+    }
 }

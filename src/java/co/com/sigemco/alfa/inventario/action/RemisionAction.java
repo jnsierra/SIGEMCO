@@ -103,8 +103,9 @@ public class RemisionAction extends ActionSupport implements UsuarioHabilitado, 
         RemisionLogica logica = null;
         try {
             logica = new RemisionLogica();
-            logica.actualizaCelularEspecifico(remision);
+            addActionMessage(logica.actualizaCelularEspecifico(remision));
         } catch (Exception e) {
+            addActionError("Error Actualizando Celular");
             e.printStackTrace();
         }
         return SUCCESS;

@@ -150,7 +150,8 @@
                                 <tr class="active">
                                     <%} else {%>
                                 <tr>
-                                    <%}i++;%>
+                                    <%}
+                                        i++;%>
                                     <td><span class="muestraImei" onclick="accionesEquipo('<s:property value="rmce_rmce"/>')"><s:property value="rmce_refe"/><br/></span>
                                         <span class="imei" style="display: none"><b><s:property value="rmce_imei"/></b></span>
                                     </td>
@@ -210,7 +211,7 @@
                         <button type="button" class="btn btn-primary" id="sticker">
                             STICKER
                         </button>
-                        <button type="button" class="btn btn-primary" id="parametrizar">
+                        <button type="button" class="btn btn-primary" id="devolucion">
                             DEVOLUCION
                         </button>
                         <button type="button" class="btn btn-primary" id="actualizar">
@@ -220,7 +221,32 @@
                 </div>
             </div>
         </div>
-        <s:form action="inv_ConCelular" id="inv_ConCelular" theme="simple">
+        <div class="modal fade" tabindex="-1" role="dialog" aria-hidden="true" id="dialogoAccionDevolver">
+            <div class="modal-dialog">                
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title">Devolución de equipos</h4>
+                    </div>
+                    <div class="modal-body">
+                        ¿Esta seguro de devolver el celular?
+                    </div>
+                    <div class="modal-footer">
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">COMENTARIO DEVOLUCIÓN</label>
+                            <input type="text" id="comentario" class="form-control"  />
+                        </div>
+                        <button type="button" class="btn btn-default" data-dismiss="modal">
+                            CANCELAR
+                        </button>
+                        <button type="button" class="btn btn-primary" id="devolver">
+                            DEVOLVER
+                        </button>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <s:form action="inv_ConCelular"  id="inv_ConCelular" theme="simple" cssStyle="display:none">
             <s:textfield id="accion" name="accion" value="consultaEspecifica"/>  
             <s:textfield id="rmce_rmce" name="remision.rmce_rmce"/>   
         </s:form>

@@ -20,6 +20,12 @@ $(function () {
     $('#actualizar').on('click', function () {
         actualizarCelular(idRemision);
     });
+    $('#devolucion').on('click', function () {
+        devolverCelular(idRemision);
+    });
+    $('#devolver').on('click', function () {
+        generarDevolucion(idRemision);
+    });
 });
 
 function buscaGeneral() {
@@ -48,5 +54,30 @@ function actualizarCelular(id) {
     document.getElementById('rmce_rmce').value = id;
     document.getElementById('inv_ConCelular').submit();
 
+}
+function devolverCelular(id) {
+    idRemision = id;
+    $('#dialogoAcciones').modal('hide');
+    $('#dialogoAccionDevolver').modal('show');
+
+}
+
+function generarDevolucion(id) {
+    var comentarioDevolucion = $('#comentario').val();
+    var dato = new Object();
+    dato.rmce_rmce = id;
+    dato.rmce_comdev = comentarioDevolucion;
+
+    $.ajax({
+        url: RutaSitio + '/AJAX/JSP/ajaxDevuelveCelular.jsp',
+        type: 'POST',
+        data: dato,
+        dataType: 'json',
+        success: function (data, textStatus, jqXHR) {
+            alert('rta:' + data.rta);
+            $('#dialogoAccionDevolver').modal('hide');
+
+        }
+    });
 }
 
