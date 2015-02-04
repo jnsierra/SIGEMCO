@@ -73,7 +73,7 @@
         <br/>
         <table>
             <tr class="titulo">
-                <td colspan="3">Metodo: <b>Promedio Ponderado</b></td>
+                <td colspan="4">Metodo: <b>Promedio Ponderado</b></td>
                 <td colspan="3">ENTRADAS</td>
                 <td colspan="3">SALIDAS</td>
                 <td colspan="3">EXISTENCIAS</td>
@@ -82,6 +82,7 @@
                 <td >No.</td>
                 <td>FECHA</td>
                 <td>CONCEPTO</td>
+                <td>SEDE</td>
                 <td>CANT.</td>
                 <td>COSTO UNIDAD</td>
                 <td>COSTO TOTAL</td>
@@ -90,7 +91,7 @@
                 <td>COSTO TOTAL</td>
                 <td>CANT.</td>
                 <td>COSTO UNIDAD</td>
-                <td>COSTO TOTAL</td>
+                <td>COSTO TOTAL</td>                    
             </tr>
             <%
                 int i = 0;
@@ -111,6 +112,7 @@
                     <td>&nbsp;<s:property value="consecutivo"/></td>
                     <td>&nbsp;<s:property value="fecha"/></td>
                     <td>&nbsp;<s:property value="mvInv"/></td>
+                    <td>&nbsp;<s:property value="sede"/></td>
                     <td>&nbsp;<s:property value="cantEnt"/></td>
                     <td>&nbsp;<s:property value="costoUnidaddEnt"/></td>
                     <td>&nbsp;<s:property value="costoTotalEnt"/></td>                    

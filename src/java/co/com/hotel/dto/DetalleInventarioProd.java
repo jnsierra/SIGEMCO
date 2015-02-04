@@ -3,7 +3,6 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package co.com.hotel.dto;
 
 /**
@@ -11,7 +10,7 @@ package co.com.hotel.dto;
  * @author SOFIA
  */
 public class DetalleInventarioProd {
-    
+
     private String consecutivo;
     private String fecha;
     private String mvInv;
@@ -24,6 +23,7 @@ public class DetalleInventarioProd {
     private String cantTotal;
     private String costoUnidadTot;
     private String costoTotalTot;
+    private String sede;
 
     public String getConsecutivo() {
         return consecutivo;
@@ -119,5 +119,13 @@ public class DetalleInventarioProd {
 
     public void setCostoTotalTot(String costoTotalTot) {
         this.costoTotalTot = costoTotalTot;
+    }
+
+    public String getSede() {
+        return sede;
+    }
+
+    public void setSede(String sede) {
+        this.sede = sede;
     }
 }

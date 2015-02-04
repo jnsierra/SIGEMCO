@@ -207,11 +207,13 @@ public class Inv_ProductoLogica {
             sql += "        end costMvtTotSa,                              \n";
             sql += "    kapr_cant_saldo cantSaldo,                         \n";
             sql += "    kapr_cost_saldo_uni,                               \n";
-            sql += "    kapr_cost_saldo_tot                                \n";
-            sql += "from in_tkapr, in_tmvin                                \n";
+            sql += "    kapr_cost_saldo_tot,                                \n";
+            sql += "    sede_nombre  sede                              \n";
+            sql += "from in_tkapr, in_tmvin, em_tsede                      \n";
             sql += "where kapr_dska = "+id+"                               \n";
             sql += "and kapr_mvin = mvin_mvin                              \n";
-            sql += "and kapr_fecha between '"+fechaIni+"' and '"+fechaFin+"'\n";
+            sql += "and kapr_fecha between '"+fechaIni+"' and '"+fechaFin+"' \n";
+            sql += "and kapr_sede = sede_sede    ";
             sql += "order by kapr_cons_pro asc                             \n";
             rs = function.enviarSelect(sql);
             while (rs.next()) {
@@ -232,6 +234,7 @@ public class Inv_ProductoLogica {
                 det.setCantTotal(rs.getString("cantSaldo"));
                 det.setCostoUnidadTot(rs.getString("kapr_cost_saldo_uni"));
                 det.setCostoTotalTot(rs.getString("kapr_cost_saldo_tot"));
+                det.setSede(rs.getString("sede"));
                 r.add(det);
             }
         } catch (Exception e) {
