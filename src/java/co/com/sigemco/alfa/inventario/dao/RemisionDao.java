@@ -242,8 +242,8 @@ public class RemisionDao {
     }
     public String devuelveCelular() {
         String select = "UPDATE in_trmce SET  "
-                .concat("rmce_comdev=").concat(this.rmce_comdev)
-                .concat(",rmce_esrado='A")
+                .concat("rmce_comdev='").concat(this.rmce_comdev)
+                .concat("',rmce_estado='D'")
                 .concat(" WHERE rmce_rmce=".concat(this.rmce_rmce));
         ;
 

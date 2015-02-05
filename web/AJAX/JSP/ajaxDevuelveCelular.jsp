@@ -14,13 +14,9 @@
 
         gson = new Gson();
         aux = logica.devolverCelular(rmce_rmce, rmce_comdev);
-        if (aux.equalsIgnoreCase("Ok")) {
             respuesta = new HashMap<String, String>();
-            respuesta.put("rta", "Ok");
-        } else {
-            respuesta = new HashMap<String, String>();
-            respuesta.put("rta", "Error");
-        }
+            respuesta.put("rta", aux);
+     
         objetoJson = gson.toJson(respuesta);
 
     } catch (Exception e) {
