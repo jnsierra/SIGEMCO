@@ -240,6 +240,16 @@ public class RemisionDao {
         System.out.println("update especifico" + select);
         return select;
     }
+    public String devuelveCelular() {
+        String select = "UPDATE in_trmce SET  "
+                .concat("rmce_comdev=").concat(this.rmce_comdev)
+                .concat(",rmce_esrado='A")
+                .concat(" WHERE rmce_rmce=".concat(this.rmce_rmce));
+        ;
+
+        System.out.println("update especifico" + select);
+        return select;
+    }
 
     public String armaWhereObjDao() {
         String rta = "where 1= 1\n";

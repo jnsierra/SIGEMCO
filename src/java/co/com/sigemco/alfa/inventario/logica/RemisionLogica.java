@@ -226,6 +226,21 @@ public class RemisionLogica {
      */
     
     public String devolverCelular(String rmce_rmce, String rmce_comdev){
-        return "Ok";
+         RemisionDao objDao = new RemisionDao();
+         try(EnvioFunction function = new EnvioFunction()) {
+            
+            objDao.setRmce_comdev(rmce_rmce);
+            objDao.setRmce_rmce(rmce_rmce);
+             if (function.enviarUpdate(objDao.devuelveCelular())) {
+                return "CELULAR DEVUELTO CORRECTAMENTE";
+            } else {
+                return "NO PUDO DEVOLVER EL CELULAR EL CELULAR";
+            }
+        } catch (Exception e) {
+            
+            e.printStackTrace();
+            return "ERROR DEVOLVIENDO CELULAR";
+        }
+        
     }
 }
