@@ -23,6 +23,22 @@
         <div calss="row">
             <div class="col-md-3 col-sm-0 col-xs-0"></div>
             <div class="col-md-6 col-sm-12 col-xs-12">
+                <div class="Mensajes" style="display: none;">
+                    <s:if test="hasActionErrors()">
+                        <div class="alert alert-danger" id="info" role="alert" ><h4><s:actionerror /></h4></div>
+                        <script>
+                            mostrarMsn();
+                        </script>
+                    </s:if>
+                </div>
+                <div class="MensajesOk" style="display: none;">
+                    <s:if test="hasActionMessages()">
+                        <div class="alert alert-success" id="info" role="alert" ><h4><s:actionmessage/></h4></div>
+                        <script>
+                            mostrarMsnOk();
+                        </script>
+                    </s:if>
+                </div>
                 <s:form theme="simple" action="inv_consGenServ" id="inv_consGenServ" method="post">
                     <div class="row thumbnail">
                         <div class="alert alert-success text-center"  role="alert" ><h3>CONSULTA GENERAL DE SERVICIOS</h3></div>

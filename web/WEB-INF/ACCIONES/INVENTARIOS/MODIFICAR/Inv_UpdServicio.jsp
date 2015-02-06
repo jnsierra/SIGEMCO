@@ -34,7 +34,7 @@
                 </div>
                 <s:form theme="simple" action="adm_updServicio" name="adm_updServicio" id="adm_updServicio">
                     <s:textfield name="accion" value="updServicio" cssStyle="display:none;"/>
-                    <s:textfield name="subAccion" cssStyle="display:none;" value="consulta" />
+                    <s:textfield name="subAccion" id="subAccion" cssStyle="display:none;" value="consulta" />
                     <s:textfield name="habitacion.idHabitacion" cssStyle="display:none"/>
                     <table class="table table-bordered">
                         <thead>
@@ -46,7 +46,7 @@
                             <tr>
                                 <td>Numero Habitación:</td>
                                 <td style="width: 80%">
-                                    <s:textfield cssClass="form-control" name="habitacion.numHabi" title="Recuerda que el primer digito es piso en el cual se encuentra la habitación" />
+                                    <s:textfield cssClass="form-control" name="habitacion.numHabi" id="numHabi" title="Recuerda que el primer digito es piso en el cual se encuentra la habitación" />
                                 </td>
                             </tr>
                             <tr>

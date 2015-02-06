@@ -10,11 +10,11 @@ function manipulaBoton(valor){
     if(valor == 'Actualiza'){
         $('.spanConsulta').hide();
         $('.spanUpdate').show();
-        document.getElementById("habitacion_numHabi").readOnly = "true";
+        $('#numHabi').prop('readonly', true);
     }else if(valor == 'Consulta'){
         $('.spanUpdate').hide();
         $('.spanConsulta').show();
-        document.getElementById("habitacion_numHabi").readOnly = false;
+        $('#numHabi').prop('readonly', false);
     }
 }
 

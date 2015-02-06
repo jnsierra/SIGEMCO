@@ -26,13 +26,18 @@ public class Adm_ServicioAccion extends ActionSupport implements SessionAware, U
     private Map session;
     private Habitacion habitacion;
     private Map<String, String> yesNo;
-
+    
+    /**
+     * Funcion encargada de insertar los servicios 
+     * @return 
+     */
     public String insertHabitacion(){
         Adm_ServicioLogica logica = null;
         try {
             logica = new Adm_ServicioLogica();
             boolean rta = logica.insertaServicio(habitacion);
             if(rta){
+                habitacion = null;
                 addActionMessage("El servicio ha sido insertado correctamente");
             }else{
                 addActionError("Error al insertar el servicio");

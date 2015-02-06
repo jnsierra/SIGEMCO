@@ -49,6 +49,14 @@
                         </script>
                     </s:if>
                 </div>
+                <div class="MensajesOk" style="display: none;">
+                    <s:if test="hasActionMessages()">
+                        <div class="alert alert-success" id="info" role="alert" ><h4><s:actionmessage/></h4></div>
+                        <script>
+                            mostrarMsnOk();
+                        </script>
+                    </s:if>
+                </div>
                 <s:form theme="simple" action="adm_insertHabitacion" name="adm_insertHabitacion" id="adm_insertHabitacion">
                     <table class="table table-bordered">
                         <thead>

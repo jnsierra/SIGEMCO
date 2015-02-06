@@ -123,7 +123,7 @@ public class Adm_ServicioLogica {
             sql += "    , dsha_cable      \n";
             sql += "    , dsha_num_camas  \n";
             sql += "    , dsha_cama_aux   \n";
-            sql += "    , dsha_iva        \n";
+            sql += "    , trunc(dsha_iva) dsha_iva \n";
             sql += "  FROM in_tdsha       \n";
             sql += "  where 1 = 1         \n";
             sql += armaWhereConsGeneral(obj);
