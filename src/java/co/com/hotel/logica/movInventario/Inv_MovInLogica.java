@@ -102,32 +102,32 @@ public class Inv_MovInLogica {
         int contador = 0;
         try {
             update += "UPDATE in_tmvin\n";
-            if(objTo.getMvin_venta().equalsIgnoreCase("S")){
-                if(contador == 0){
+            if (objTo.getMvin_venta().equalsIgnoreCase("S")) {
+                if (contador == 0) {
                     update += "SET mvin_venta = 'N'\n";
                     contador++;
-                }else{
+                } else {
                     update += ", mvin_venta = 'N'\n";
                 }
             }
-            if(objTo.getMvin_inicial().equalsIgnoreCase("S")){
-                if(contador == 0){
+            if (objTo.getMvin_inicial().equalsIgnoreCase("S")) {
+                if (contador == 0) {
                     update += "SET mvin_inicial = 'N'\n";
                     contador++;
-                }else{
+                } else {
                     update += ", mvin_inicial = 'N'\n";
                 }
             }
-            if(objTo.getMvin_revfact().equalsIgnoreCase("S")){
-                if(contador == 0){
+            if (objTo.getMvin_revfact().equalsIgnoreCase("S")) {
+                if (contador == 0) {
                     update += "SET mvin_revfact = 'N'\n";
                     contador++;
-                }else{
+                } else {
                     update += ", mvin_revfact = 'N'\n";
-                }                
+                }
             }
             boolean valida = true;
-            if(contador>0){
+            if (contador > 0) {
                 valida = function.enviarUpdate(update);
             }
             if (valida) {
@@ -167,9 +167,9 @@ public class Inv_MovInLogica {
             sql += "       CASE WHEN MVIN_REVFACT = 'S' THEN 'SI' ELSE 'NO' END MVIN_REVFACT  \n";
             sql += "FROM IN_TMVIN       \n";
             sql += "WHERE 1 = 1 \n";
-            if(filtros.getMvin_mvin() != null){
+            if (filtros.getMvin_mvin() != null) {
                 sql += "AND MVIN_MVIN = " + filtros.getMvin_mvin().trim() + "\n";
-            }else{
+            } else {
                 sql += this.armarWhereConsultafiltros(filtros);
             }
             sql += " order by MVIN_NATU ";
@@ -281,10 +281,13 @@ public class Inv_MovInLogica {
         }
         return rta;
     }
+
     /**
-     * Funcion encargada de ejecutar el query de actualizacin de Movimiento de inventarios
+     * Funcion encargada de ejecutar el query de actualizacin de Movimiento de
+     * inventarios
+     *
      * @param objTo
-     * @return 
+     * @return
      */
     public String actualizarMovimientoInv(MovInventario objTo) {
         String sql = "";
@@ -292,7 +295,7 @@ public class Inv_MovInLogica {
         EnvioFunction function = new EnvioFunction();
         try {
             String valida = this.actualizarMovInventarioVenta(objTo);
-            if(valida.trim().equalsIgnoreCase("Ok")){
+            if (valida.trim().equalsIgnoreCase("Ok")) {
                 sql += "UPDATE in_tmvin  \n";
                 sql += "SET MVIN_DESCR = '" + objTo.getMvin_descr() + "'    \n";
                 sql += ",MVIN_NATU      = '" + objTo.getMvin_natu() + "'    \n";
@@ -302,17 +305,44 @@ public class Inv_MovInLogica {
                 sql += ",MVIN_REVFACT   = '" + objTo.getMvin_revfact() + "' \n";
                 sql += "WHERE mvin_mvin =" + objTo.getMvin_mvin() + " \n";
                 boolean validaUpd = function.enviarUpdate(sql);
-                if(!validaUpd){
+                if (!validaUpd) {
                     rta = "Error al actualizar en la base de datos";
                 }
-            }            
+            }
         } catch (Exception e) {
             System.out.println("Error Inv_MovInLogica.actualizarMovimientoInv " + e);
             rta = "Error Inv_MovInLogica.actualizarMovimientoInv " + e;
-        } finally{
+        } finally {
             function.cerrarConexion();
         }
         return rta;
+    }
+
+    /**
+     * Obtiene la naturaleza del movimiento de inventario por el id
+     *
+     * @param mvin_mvin
+     * @return
+     */
+    public String consultaNaturalezaMvinXId(String mvin_mvin) {
+        String sql = "";
+        String naturaleza = null;
+        ResultSet rs = null;
+        try (EnvioFunction function = new EnvioFunction()) {
+            sql = "select case\n";
+            sql += "when mvin_natu = 'I' then 'Ingreso'\n";
+            sql += "else 'Egreso'\n";
+            sql += "end naturaleza\n";
+            sql += "from in_tmvin\n";
+            sql += "where mvin_mvin =" + mvin_mvin;
+            rs = function.enviarSelect(sql);
+            while (rs.next()) {
+                naturaleza = rs.getString("naturaleza");
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return naturaleza;
     }
 
 }
