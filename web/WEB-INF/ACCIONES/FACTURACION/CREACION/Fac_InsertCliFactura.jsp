@@ -1,71 +1,77 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@taglib uri="/struts-tags" prefix="s" %>
+<%@include file="/WEB-INF/NEWTEMPLATE/Parametros.jsp" %>
 <!DOCTYPE html>
 <html>
     <head>
-        <s:include value="/WEB-INF/TEMPLATE/cabecera.jsp"></s:include>
-        <s:head/>
-        <script type="text/javascript" src="/PROYECTOHOTEL/JS/FACTURACION/Fac_InsertClienFactura.js"></script>        
+        <s:include value="/WEB-INF/NEWTEMPLATE/cabecera.jsp"></s:include>
+        <script type="text/javascript" src="<%=RutaSitio%>/JS/FACTURACION/Fac_InsertClienFactura.js"></script>        
     </head>
     <body>
         <s:div cssClass="header">
-            <s:include value="/WEB-INF/TEMPLATE/FrameTop.jsp" > 
+            <s:include value="/WEB-INF/NEWTEMPLATE/FrameTop.jsp" > 
                 <s:param name="nombre"><s:text name="usuario.apellido"/> <s:text name="usuario.nombre"/></s:param>
                 <s:param name="perfil"><s:text name="usuario.NomPerfil"/></s:param>
                 <s:param name="ultimoIngreso"><s:text name="usuario.ultimoIngreso"/></s:param>
             </s:include>
         </s:div>
-        <br/>
         <s:div cssClass="navigator">
-            <s:include value="/WEB-INF/TEMPLATE/menuHorizontal.jsp">
+            <s:include value="/WEB-INF/NEWTEMPLATE/menu.jsp">
                 <s:param name="title"><s:property value="usuario.usuario" /></s:param>
             </s:include> 
-        </s:div>
-        <br/>
-        <br/>
-        <br/>
-    <center>
-        <div class="errorMensajes" style="display: none;">
-            <s:if test="hasActionErrors()">
-                <div class="errors">
-                    <s:actionerror/>                                               
-                    <script>
-                        mostrarMsnErr();
-                    </script>
+        </s:div>        
+        <br/>        
+        <div class="row">
+            <div class="col-md-3 col-sm-0 col-xs-0"></div>
+            <div class="col-md-6 col-sm-12 col-xs-12">
+                <div class="Mensajes" style="display: none;">
+                    <s:if test="hasActionErrors()">
+                        <div class="alert alert-danger" id="info" role="alert" ><h4><s:actionerror /></h4></div>
+                        <script>
+                            mostrarMsn();
+                        </script>
+                    </s:if>
                 </div>
-            </s:if>
-        </div>
-        <br>
-        <br>
-        <form action="Fac_consCliente" name="Fac_consCliente" id="Fac_consCliente">
-            <div class="tableInsert">
-                <table>
-                    <thead>
-                        <tr>
-                            <td colspan="2">FACTURACIÓN</td>
-                        </tr>
-                        <tr>
-                            <td colspan="2">Registro de cliente para inicio de Facturación</td>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td><s:textfield label="Cedula" name="cliente.cedula" required="true"/></td>
-                        </tr>
-                    </tbody>
-                    <tfoot>
-                        <tr>
-                            <td colspan="2" >
-                                <s:include value="/WEB-INF/TEMPLATE/botones/client.jsp" >
-                                    <s:param name="title">Buscar Cliente</s:param>
-                                    <s:param name="function">inicio</s:param>
-                                </s:include>
-                            </td>
-                        </tr>                    
-                    <tfoot>
-                </table>
+                <div class="MensajesOk" style="display: none;">
+                    <s:if test="hasActionMessages()">
+                        <div class="alert alert-success" id="info" role="alert" ><h4><s:actionmessage/></h4></div>
+                        <script>
+                            mostrarMsnOk();
+                        </script>
+                    </s:if>
+                </div>
+                <s:form action="Fac_consCliente" name="Fac_consCliente" id="Fac_consCliente" theme="simple">
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <td colspan="2" class="alert alert-info text-center" ><h3>FACTURACIÓN</h3></td>
+                            </tr>
+                            <tr>
+                                <td colspan="2" class="alert alert-info text-center" ><h3>Registro de cliente para inicio de Facturación</h3></td>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Cedula Cliente: </td>
+                                <td><s:textfield cssClass="form-control" name="cliente.cedula" required="true" /></td>
+                            </tr>
+                        </tbody>
+                        <tfoot>
+                            <tr>
+                                <td colspan="2" style="text-align: right;" >
+                                    <s:include value="/WEB-INF/TEMPLATE/botones/client.jsp" >
+                                        <s:param name="title">Buscar Cliente</s:param>
+                                        <s:param name="function">inicio</s:param>
+                                    </s:include>
+                                </td>
+                            </tr>                    
+                        </tfoot>
+                    </table>
+                </s:form>
             </div>
-        </form>
+            <div class="col-md-3 col-sm-0 col-xs-0"></div>
+        </div>
+
         <br/>
         <br/>
         <div id="clienteNuevo" style="display:none">
@@ -129,16 +135,11 @@
                 </div>
             </form>
         </div>
-
-    </center>
-    <s:set name="cliente" value="%{existeCliente}" />
-    <s:if test="%{#cliente.equalsIgnoreCase('N')}">            
-        <script>
-            $('#clienteNuevo').show('fold');
-        </script>
-    </s:if>
-    <div id="informacion" title="Mensaje">
-        <div id="mensaje"></div>
-    </div>
-</body>
+        <s:set name="cliente" value="%{existeCliente}" />
+        <s:if test="%{#cliente.equalsIgnoreCase('N')}">            
+            <script>
+                $('#clienteNuevo').show('fold');
+            </script>
+        </s:if>
+    </body>
 </html>
