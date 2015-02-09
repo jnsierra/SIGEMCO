@@ -117,7 +117,7 @@
                                         <s:include value="/WEB-INF/TEMPLATE/botones/update.jsp" >
                                             <s:param name="function">actulizarEspecifico</s:param>
                                             <s:param name="title">Actualizar Habitación Numero: <s:property value="numHabi"/>: </s:param>
-                                            <s:param name="paramFunction">'<s:property value="idHabitacion"/>'</s:param>
+                                            <s:param name="paramFunction">'<s:property value="numHabi"/>'</s:param>
                                             <s:param name="clase">imagenIconoPeq</s:param>
                                         </s:include>
                                     </td>
@@ -128,5 +128,10 @@
                 </s:if>                        
             </div>
         </div>
+        <s:form id="adm_updServicio" action="adm_updServicio" theme="simple" cssStyle="display:none;">
+            <s:textfield name="accion" value="updServicio" cssStyle="display:none;"/>
+            <s:textfield name="subAccion" id="subAccion" cssStyle="display:none;" value="consulta" />
+            <s:textfield name="habitacion.numHabi" id="numHabiPorUpd" />
+        </s:form>
     </body>
 </html>

@@ -67,7 +67,7 @@
                         <tbody>
                             <tr>
                                 <td>Numero Habitacion:</td>
-                                <td style="width: 80%">
+                                <td>
                                     <s:textfield cssClass="form-control" name="habitacion.numHabi" title="Recuerda que el primer digito es piso en el cual se encuentra la habitación" />
                                 </td>
                             </tr>

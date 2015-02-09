@@ -153,17 +153,25 @@ public class Adm_ServicioLogica {
 
     public String armaWhereConsGeneral(Habitacion obj) {
         String where = "\n";
-        if (obj.getBano().equalsIgnoreCase("S") || obj.getBano().equalsIgnoreCase("N")) {
-            where += "and dsha_bano = '" + obj.getBano() + "'\n";
+        if (obj.getBano() != null) {
+            if (obj.getBano().equalsIgnoreCase("S") || obj.getBano().equalsIgnoreCase("N")) {
+                where += "and dsha_bano = '" + obj.getBano() + "'\n";
+            }
         }
-        if (obj.getCable().equalsIgnoreCase("S") || obj.getCable().equalsIgnoreCase("N")) {
-            where += "and dsha_cable = '" + obj.getCable() + "'\n";
+        if (obj.getCable() != null) {
+            if (obj.getCable().equalsIgnoreCase("S") || obj.getCable().equalsIgnoreCase("N")) {
+                where += "and dsha_cable = '" + obj.getCable() + "'\n";
+            }
         }
-        if (obj.getCamaAux().equalsIgnoreCase("S") || obj.getCamaAux().equalsIgnoreCase("N")) {
-            where += "and dsha_cama_aux = '" + obj.getCamaAux() + "'\n";
+        if (obj.getCamaAux() != null) {
+            if (obj.getCamaAux().equalsIgnoreCase("S") || obj.getCamaAux().equalsIgnoreCase("N")) {
+                where += "and dsha_cama_aux = '" + obj.getCamaAux() + "'\n";
+            }
         }
-        if (obj.getTelevision().equalsIgnoreCase("S") || obj.getTelevision().equalsIgnoreCase("N")) {
-            where += "and dsha_televison = '" + obj.getTelevision() + "'\n";
+        if (obj.getTelevision() != null) {
+            if (obj.getTelevision().equalsIgnoreCase("S") || obj.getTelevision().equalsIgnoreCase("N")) {
+                where += "and dsha_televison = '" + obj.getTelevision() + "'\n";
+            }
         }
         if (obj.getNumCamas() > 0) {
             where += "and dsha_num_camas = " + obj.getNumCamas() + "\n";
@@ -227,11 +235,12 @@ public class Adm_ServicioLogica {
         if (valida.validaNulo("" + obj.getNumCamas())) {
             update += ", dsha_num_camas = '" + obj.getNumCamas() + "'\n";
             cont++;
-        }if (valida.validaNulo("" + obj.getIva())) {
+        }
+        if (valida.validaNulo("" + obj.getIva())) {
             update += ", dsha_iva = '" + obj.getIva() + "'\n";
             cont++;
         }
-        
+
         if (cont > 0) {
             update += "WHERE dsha_dsha = " + obj.getIdHabitacion();
         } else {
@@ -305,8 +314,8 @@ public class Adm_ServicioLogica {
             }
         } catch (Exception e) {
             System.out.println("Error Adm_ServicioLogica.buscaHabitacionXNumHab " + e);
-        }finally{
-            function.cerrarConexion();            
+        } finally {
+            function.cerrarConexion();
         }
         return r;
     }

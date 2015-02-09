@@ -45,7 +45,7 @@
                         <tbody>
                             <tr>
                                 <td>Numero Habitación:</td>
-                                <td style="width: 80%">
+                                <td>
                                     <s:textfield cssClass="form-control" name="habitacion.numHabi" id="numHabi" title="Recuerda que el primer digito es piso en el cual se encuentra la habitación" />
                                 </td>
                             </tr>
@@ -100,7 +100,7 @@
                         </tbody>
                         <tfoot>
                             <tr>
-                                <td colspan="2">
+                                <td colspan="2" style="text-align: right;">
                                     <span class="spanUpdate">
                                         <s:include value="/WEB-INF/TEMPLATE/botones/modify.jsp" >
                                             <s:param name="function">actualizaServicio</s:param>
@@ -112,8 +112,7 @@
                                             <s:param name="function">consultaServicio</s:param>
                                             <s:param name="title">Buscar Habiacion</s:param>                                    
                                         </s:include>
-                                    </span>
-                                    <s:include value="/WEB-INF/TEMPLATE/botones/clean.jsp" />                                    
+                                    </span>                                   
                                 </td>
                             </tr>
                         </tfoot>

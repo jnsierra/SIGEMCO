@@ -110,7 +110,7 @@
                         </ul>    
                     </li>
                     <%}
-                        if (permisos.indexOf(".InSr1.") >= 0 || permisos.indexOf(".InSr2.") >= 0 || permisos.indexOf(".InSr3.") >= 0 || permisos.indexOf(".InSr4.") >= 0) {%>
+                        if (permisos.indexOf(".InSr1.") >= 0 || permisos.indexOf(".InSr2.") >= 0 || permisos.indexOf(".InSr3.") >= 0) {%>
                     <li><a href="#">Servicio</a>
                         <ul class="dropdown-menu">
                             <%if (permisos.indexOf(".InSr1.") >= 0) {%>
@@ -121,9 +121,6 @@
                                 <%}
                                     if (permisos.indexOf(".InSr3.") >= 0) {%>
                             <li><a href="reenvioGeneral.action?accion=225">Inactivar Servicios</a></li>
-                                <%}
-                                    if (permisos.indexOf(".InSr4.") >= 0) {%>
-                            <li><a href="reenvioGeneral.action?accion=222">Actualizar Servicio</a></li>
                                 <%}
                                     if (permisos.indexOf(".InSr5.") >= 0) {%>
                             <li><a href="reenvioGeneral.action?accion=231">Parametrizaci&oacute;n de Precios</a></li>
