@@ -172,7 +172,8 @@
                     <%}%>
                 </ul>
             </li>
-            <li style="display: none"><a href="#">Facturación</a>
+            <% if(permisos.indexOf(".FcCr1.") >= 0 || permisos.indexOf(".FcCr3.") >= 0 ){ %>
+            <li><a href="#"><span class="glyphicon glyphicon-shopping-cart"></span>&nbsp;Facturación</a>
                 <ul class="dropdown-menu">
                     <%if (permisos.indexOf(".FcCr1.") >= 0) {%>
                     <li><a href="reenvioGeneral.action?accion=311">Crear Factura Inicial</a></li>
@@ -182,9 +183,9 @@
                         <%}%>
                     <li><a href="#">Cerrar Factura</a></li>
                 </ul>
-            </li>
-            <%if (permisos.indexOf(".RpIn1.") >= 0 || permisos.indexOf(".RpUs1.") > 0) {%>
-            <li><a href="#"><span class="glyphicon glyphicon-floppy-save"></span>Reportes</a>
+            </li>            
+            <%}if (permisos.indexOf(".RpIn1.") >= 0 || permisos.indexOf(".RpUs1.") > 0) {%>
+            <li><a href="#"><span class="glyphicon glyphicon-floppy-save"></span>&nbsp;Reportes</a>
                 <ul class="dropdown-menu">
                     <% if (permisos.indexOf(".RpUs1.") > 0) {%>
                     <li><a href="#">Usuarios</a>
@@ -207,7 +208,7 @@
             </li>
             <%}%>
             <%if (permisos.indexOf(".CoPu1.") >= 0 || permisos.indexOf(".CoPu2.") > 0 || permisos.indexOf(".CoPu3.") > 0 || permisos.indexOf(".CoPu4.") > 0) {%>
-            <li><a href="#"><span class="glyphicon glyphicon-shopping-cart"></span>Contabilidad</a>
+            <li><a href="#"><span class="glyphicon glyphicon-book"></span>&nbsp;Contabilidad</a>
                 <ul class="dropdown-menu">
                     <li><a href="#">PUC</a>
                         <ul class="dropdown-menu">
