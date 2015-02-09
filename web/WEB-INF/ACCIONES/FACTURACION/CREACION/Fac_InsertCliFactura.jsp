@@ -71,16 +71,14 @@
             </div>
             <div class="col-md-3 col-sm-0 col-xs-0"></div>
         </div>
-
-        <br/>
-        <br/>
-        <div id="clienteNuevo" style="display:none">
-            <form action="Fac_nuevoCliente" name="Fac_nuevoCliente" id="Fac_nuevoCliente">
-                <div class="tableInsert">
-                    <table>
+        <div class="row" id="clienteNuevo" style="display: none;">
+            <div class="col-md-3 col-sm-0 col-xs-0"></div>
+            <div class="col-md-6 col-sm-12 col-xs-12">
+                <s:form action="Fac_nuevoCliente" name="Fac_nuevoCliente" id="Fac_nuevoCliente" theme="simple">
+                    <table class="table table-bordered">
                         <thead>
                             <tr>
-                                <td colspan="2">Nuevo Cliente</td>
+                                <td colspan="2" class="alert alert-info text-center" ><h3>NUEVO CLIENTE</h3></td>
                             </tr>                            
                         </thead>
                         <tbody>
@@ -132,8 +130,15 @@
                             </tr>
                         </tfoot>
                     </table>                    
-                </div>
-            </form>
+                </s:form>
+            </div>
+            <div class="col-md-3 col-sm-0 col-xs-0"></div>
+        </div>
+
+        <br/>
+        <br/>
+        <div id="clienteNuevo" style="display:none">
+
         </div>
         <s:set name="cliente" value="%{existeCliente}" />
         <s:if test="%{#cliente.equalsIgnoreCase('N')}">            
