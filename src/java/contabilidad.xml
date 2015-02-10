@@ -29,14 +29,6 @@
             <exception-mapping exception="java.lang.Exception" result="exception"/>
             <exception-mapping exception="java.io.IOException" result="exception"/>
         </global-exception-mappings> 
-        <!-- REENVIO GENERAL DE LA APLICACION MODULO DE FACTURACION  -->
-        <action name="Con_InsertClase" class="co.com.sigemco.alfa.contabilidad.action.ClaseAction" method="insertarClase">
-            <result name="success">/WEB-INF/ACCIONES/CONTABILIDAD/CREACION/Con_InserClases.jsp</result>
-            <result name="input">/WEB-INF/ACCIONES/CONTABILIDAD/CREACION/Con_InserClases.jsp</result>
-        </action>
-        <action name="Con_InsertCuenta" class="co.com.sigemco.alfa.contabilidad.action.CuentaAction" method="insertarCuenta">
-            <result name="success">/WEB-INF/ACCIONES/CONTABILIDAD/CREACION/Con_InsertCuentas.jsp</result>
-            <result name="input">/WEB-INF/ACCIONES/CONTABILIDAD/CREACION/Con_InsertCuentas.jsp</result>
-        </action>
+        <!-- REENVIO GENERAL DE LA APLICACION MODULO DE FACTURACION  -->    
     </package>
 </struts>

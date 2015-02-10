@@ -29,5 +29,5 @@
     <include file="facturacion.xml" /> 
     <include file="inventarios.xml" /> 
     <include file="report.xml" /> 
-    <!--<include file="contabilidad.xml" /> -->
+    <include file="contabilidad.xml" />
 </struts>
