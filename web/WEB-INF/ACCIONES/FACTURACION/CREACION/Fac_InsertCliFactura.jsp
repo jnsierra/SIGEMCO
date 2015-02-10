@@ -21,7 +21,7 @@
             </s:include> 
         </s:div>        
         <br/>        
-        <div class="row">
+        <div class="row" id="buscaCliente">
             <div class="col-md-3 col-sm-0 col-xs-0"></div>
             <div class="col-md-6 col-sm-12 col-xs-12">
                 <div class="Mensajes" style="display: none;">
@@ -53,16 +53,16 @@
                         <tbody>
                             <tr>
                                 <td>Cedula Cliente: </td>
-                                <td><s:textfield cssClass="form-control" name="cliente.cedula" required="true" /></td>
+                                <td><s:textfield cssClass="form-control" name="cliente.cedula" required="true" id="cedulaCliente"/></td>
                             </tr>
                         </tbody>
                         <tfoot>
                             <tr>
                                 <td colspan="2" style="text-align: right;" >
-                                    <s:include value="/WEB-INF/TEMPLATE/botones/client.jsp" >
-                                        <s:param name="title">Buscar Cliente</s:param>
+                                    <s:include value="/WEB-INF/TEMPLATE/botones/find.jsp">
                                         <s:param name="function">inicio</s:param>
-                                    </s:include>
+                                        <s:param name="title">Buscar Cliente</s:param>                                    
+                                    </s:include>                                    
                                 </td>
                             </tr>                    
                         </tfoot>
@@ -74,6 +74,22 @@
         <div class="row" id="clienteNuevo" style="display: none;">
             <div class="col-md-3 col-sm-0 col-xs-0"></div>
             <div class="col-md-6 col-sm-12 col-xs-12">
+                <div class="Mensajes" style="display: none;">
+                    <s:if test="hasActionErrors()">
+                        <div class="alert alert-danger" id="info" role="alert" ><h4><s:actionerror /></h4></div>
+                        <script>
+                            mostrarMsn();
+                        </script>
+                    </s:if>
+                </div>
+                <div class="MensajesOk" style="display: none;">
+                    <s:if test="hasActionMessages()">
+                        <div class="alert alert-success" id="info" role="alert" ><h4><s:actionmessage/></h4></div>
+                        <script>
+                            mostrarMsnOk();
+                        </script>
+                    </s:if>
+                </div>
                 <s:form action="Fac_nuevoCliente" name="Fac_nuevoCliente" id="Fac_nuevoCliente" theme="simple">
                     <table class="table table-bordered">
                         <thead>
@@ -83,42 +99,31 @@
                         </thead>
                         <tbody>
                             <tr>
-                                <td>Ceula:</td>
+                                <td>Cedula:</td>
                                 <td style="text-align: left"><b><s:text name="cliente.cedula"/></b>
                                         <s:textfield name="cliente.cedula" style="display:none"/>
                                 </td>
                             </tr>
                             <tr>
-                                <td><s:textfield label="Nombres*" name="cliente.nombres"/></td>                                
+                                <td>Nombres:*</td>
+                                <td><s:textfield  name="cliente.nombres" cssClass="form-control" /></td>                                
                             </tr>
                             <tr>
-                                <td><s:textfield label="Apellidos*" name="cliente.apellidos"/></td>                                
+                                <td>Apellidos*:</td>
+                                <td><s:textfield name="cliente.apellidos" cssClass="form-control" /></td>
                             </tr>
                             <tr>
-                                <td><s:textfield label="Correo*" name="cliente.mail"/></td>                                
-                            </tr>
+                                <td>Correo:</td>
+                                <td><s:textfield name="cliente.mail" cssClass="form-control"/></td>
+                            </tr>                            
                             <tr>
-                                <td><s:textfield label="Fecha de Nacimiento" name="cliente.fechaNac"/></td>                                
-                            </tr>
-                            <tr>
-                                <td><s:textfield label="Telefono" name="cliente.tel"/></td>                                
-                            </tr>
-                            <tr>
-                                <td><s:textfield label="Celular" name="cliente.cel"/></td>                                
-                            </tr>
-                            <tr>
-                                <td><s:textfield label="Dirección" name="cliente.direccion"/></td>                                
-                            </tr>
-                            <tr>
-                                <td><s:textfield label="Departamento" name="cliente.departamentoRes"/></td>                                
-                            </tr>
-                            <tr>
-                                <td><s:textfield label="Ciudad" name="cliente.ciudadResi" /></td>                                
-                            </tr>
+                                <td>Telefono:</td>
+                                <td><s:textfield name="cliente.tel" cssClass="form-control" /></td>                                
+                            </tr>                            
                         </tbody>
                         <tfoot>
                             <tr>
-                                <td colspan="2">
+                                <td colspan="2" style="text-align: right;">
                                     <s:include value="/WEB-INF/TEMPLATE/botones/newClient.jsp" >
                                         <s:param name="function">insertar</s:param>
                                         <s:param name="title">Adicionar Cliente a la base de Datos</s:param>                                    
@@ -144,7 +149,25 @@
         <s:if test="%{#cliente.equalsIgnoreCase('N')}">            
             <script>
                 $('#clienteNuevo').show('fold');
+                $('#buscaCliente').hide('slow');
             </script>
         </s:if>
+        <div class="modal fade" tabindex="-1" role="dialog" aria-hidden="true" id="mensaje">
+            <div class="modal-dialog">                
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title">INFORMACION</h4>
+                    </div>
+                    <div class="modal-body">
+                        <span id="textoMsn"></span>
+                    </div>
+                    <div class="modal-footer">                        
+                        <button type="button" class="btn btn-default" data-dismiss="modal">
+                            ACEPTAR
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
     </body>
 </html>
