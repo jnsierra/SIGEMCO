@@ -164,4 +164,39 @@ public class ProductoDao {
         return select;
     }
 
+    /**
+     * Funcion encargada realizar el query para saber todos los ingresos del
+     * producto realizados por sede
+     *
+     * @return
+     */
+    public String ingresoProdSede(String sede) {
+        String sql = "";
+        sql += "SELECT sum(kapr_cant_mvto) ingresos  \n";
+        sql += "  FROM in_tmvin, in_tkapr   \n";
+        sql += " WHERE mvin_natu = 'I'      \n";
+        sql += "   AND mvin_mvin = kapr_mvin\n";
+        sql += "   AND kapr_sede = " + sede + " \n";
+        sql += "   AND kapr_dska = " + this.getDska_dska();
+        return sql;
+    }
+
+    /**
+     * Funcion encargada realizar el query para saber todos los egresos del
+     * producto por sede
+     *
+     * @param sede
+     * @return
+     */
+    public String egresosProdSede(String sede) {
+        String sql = "";
+        sql += "SELECT sum(kapr_cant_mvto) egresos  \n";
+        sql += "  FROM in_tmvin, in_tkapr   \n";
+        sql += " WHERE mvin_natu = 'I'      \n";
+        sql += "   AND mvin_mvin = kapr_mvin\n";
+        sql += "   AND kapr_sede = " + sede + " \n";
+        sql += "   AND kapr_dska = " + this.getDska_dska();
+        return sql;
+    }
+
 }

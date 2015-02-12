@@ -63,29 +63,59 @@ function validaDatos() {
     var costo = $('#costo');
     costo.removeClass('has-error');
     bool = $.isNumeric(costo.val());
-    if(!bool){
+    if (!bool) {
         $('#textoMsn').html('El campo costo no puede ser nulo y debe ser numerico');
         $('#mensaje').modal('show');
         costo.addClass('has-error');
-        return  false;    
+        return  false;
     }
     var mvIn = $('#movInv');
     mvIn.removeClass('has-error');
-    if(mvIn.val() == '-1'){
+    if (mvIn.val() == '-1') {
         $('#textoMsn').html('Por Favor seleccione un movimiento de inventario');
         $('#mensaje').modal('show');
         mvIn.addClass('has-error');
-        return  false;    
+        return  false;
     }
-    
+
     var sede = $('#sedes');
     sede.removeClass('has-error');
-    if(sede.val() == '-1'){
+    if (sede.val() == '-1') {
         $('#textoMsn').html('Por Favor seleccione la sede en la cual esta implicada el moviemiento de inventario');
         $('#mensaje').modal('show');
         sede.addClass('has-error');
-        return  false;    
+        return  false;
     }
-    
+    if ($('#natuMov').val() == 'Egreso') {
+        var cantidadesSede = validaCantidadesSede();
+        if (!cantidadesSede) {
+            return false;
+        }
+    }
     return true;
+}
+
+function validaCantidadesSede() {
+    var datos = new Object();
+    datos.dska_dska = $('#idProducto').val();
+    datos.sede_sede = $('#sedes').val();
+    var valida = true;
+    $.ajax({
+        data: datos,
+        dataType: 'json',
+        url: RutaSitio + "/AJAX/JSP/ajaxObtieneExistenciasProdXSede.jsp",
+        async: false,
+        success: function(data, textStatus, jqXHR) {
+            if (data.respuesta == 'Ok') {
+                var existencias = Number(data.cantidades);
+                var productos = Number($('#numProd').val());
+                if (productos > existencias) {
+                    $('#textoMsn').html('El numero de existencias en la sede es:' + existencias + ' y no existen las cantidad de productos que desea retirar de la sede por favor revise la informacion');
+                    $('#mensaje').modal('show');
+                    valida = false;
+                }
+            }
+        }
+    });
+    return valida;
 }

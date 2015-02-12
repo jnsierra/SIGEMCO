@@ -128,4 +128,35 @@ public class ProductoLogica {
         return valor;
     }
 
+    /**
+     * Funcion encarda de realizar la logica para obtener el valor de las
+     * existencias de un producto por sede
+     *
+     * @param producto Objeto con la informacion necesaria para encontrar el
+     * producto
+     * @param sede_sede Sede de la cual desea saber las existencias
+     * @return
+     */
+    public String obtenerExistenciasPorSede(ProductoDto producto, String sede_sede) {
+        String rta = null;
+        ProductoDao objDao = null;
+        try (EnvioFunction function = new EnvioFunction()) {
+            objDao = poblarDao(producto);
+            int ingresos = 0;
+            int egresos = 0;
+            ResultSet rs = function.enviarSelect(objDao.ingresoProdSede(sede_sede));
+            if (rs.next()) {
+                ingresos = rs.getInt("ingresos");
+                ResultSet rs1 = function.enviarSelect(objDao.egresosProdSede(sede_sede));
+                if (rs1.next()) {
+                    egresos = rs.getInt(1);
+                }
+            }
+            rta = "" + (ingresos - egresos);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return rta;
+    }
+
 }
