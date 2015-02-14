@@ -51,6 +51,33 @@ public class ClaseLogica {
         }
         return rta;
     }
+
+    /**
+     * Funcion encargada de realizar la logica para obtener una clase por su Id
+     *
+     * @param objDto
+     * @return
+     */
+    public ClaseDto obtieneClaseXId(ClaseDto objDto) {
+        ClaseDto rta = null;
+        ClaseDao objDao = null;
+        try (EnvioFunction function = new EnvioFunction()) {
+            objDao = poblarDao(objDto);
+            ResultSet rs = function.enviarSelect(objDao.consultaEspeciXId());
+            if (rs.next()) {
+                rta = new ClaseDto();
+                rta.setClas_clas(rs.getString("clas_clas"));
+                rta.setClas_estado(rs.getString("clas_estado"));
+                rta.setClas_nombre(rs.getString("clas_nombre"));
+                rta.setClas_codigo(rs.getString("clas_codigo"));
+                rta.setClas_descripcion(rs.getString("clas_descripcion"));
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return rta;
+    }
+
     /**
      * Funcion encargada de mapear un objeto Dto en un objeto Dao
      *
@@ -71,5 +98,4 @@ public class ClaseLogica {
         }
         return objDao;
     }
-
 }

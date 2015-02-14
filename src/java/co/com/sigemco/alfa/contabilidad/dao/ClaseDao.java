@@ -70,4 +70,12 @@ public class ClaseDao {
         sql += " WHERE clas_estado = 'A'";
         return sql;
     }
+    
+    public String consultaEspeciXId(){
+        String sql = "";
+        sql += "SELECT clas_clas, clas_estado, clas_nombre, clas_codigo, clas_descripcion\n";
+        sql += "  FROM co_tclas                                                         \n";
+        sql += "  WHERE clas_clas = " + this.getClas_clas();
+        return sql;
+    }
 }
