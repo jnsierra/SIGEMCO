@@ -20,7 +20,36 @@
             </s:include> 
         </s:div>
         <div class="row">
+            <div class="col-md-3 col-xs-0 col-sm-0"></div>
+            <div class="col-md-6 col-xs-12 col-sm-12">
+                <table class="table table-hover">
+                    <thead>
+                        <tr>
+                            <td colspan="2" style="text-align: center;" class="alert alert-info text-center"><h3>CLASES</h3></td>
+                        </tr>
+                        <tr>
+                            <td class="alert alert-info text-center" style="width: 30%">Codigo</td>
+                            <td class="alert alert-info text-center" style="width: 70%">Nombre</td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <s:iterator value="clase">
+                            <tr>
+                                <td style="text-align: center;">
+                                    <s:property value="clas_codigo" />
 
+                                </td>
+                                <td>
+                                    <a href="#" onclick="buscaClase('<s:text name="clas_clas"/>')">
+                                    <s:property value="clas_nombre" />
+                                    </a>
+                                </td>
+                            </tr>
+                        </s:iterator>
+                    </tbody>
+                </table>
+            </div>
+            <div class="col-md-3 col-xs-0 col-sm-0"></div>        
         </div>
     </body>
 </html>

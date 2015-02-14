@@ -3,14 +3,13 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package co.com.sigemco.alfa.contabilidad.dto;
+package co.com.sigemco.alfa.contabilidad.dao;
 
 /**
- * Clase encargada de transferir la informacion de las clases del puc
  *
- * @author ACER
+ * @author Nicolas
  */
-public class ClaseDto {
+public class ClaseDao {
 
     private String clas_clas;
     private String clas_estado;
@@ -58,4 +57,17 @@ public class ClaseDto {
         this.clas_descripcion = clas_descripcion;
     }
 
+    /**
+     * Funcion encargada de generar el query para realizar la consulta general
+     * de clases
+     *
+     * @return
+     */
+    public String cosultaGeneralActivos() {
+        String sql = "";
+        sql += "SELECT clas_clas, clas_estado, clas_nombre, clas_codigo, clas_descripcion\n";
+        sql += "  FROM co_tclas                                                         \n";
+        sql += " WHERE clas_estado = 'A'";
+        return sql;
+    }
 }

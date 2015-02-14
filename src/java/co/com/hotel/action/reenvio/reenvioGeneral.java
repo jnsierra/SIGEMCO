@@ -14,6 +14,8 @@ import co.com.hotel.logica.perfil.Adm_PerfilLogica;
 import co.com.hotel.logica.sede.Adm_SedeLogica;
 import co.com.hotel.logica.usuarios.Adm_UsuarioLogica;
 import co.com.hotel.utilidades.UsuarioHabilitado;
+import co.com.sigemco.alfa.contabilidad.dto.ClaseDto;
+import co.com.sigemco.alfa.contabilidad.logica.ClaseLogica;
 import co.com.sigemco.alfa.inventario.dto.RemisionDto;
 import co.com.sigemco.alfa.inventario.logica.ReferenciaLogica;
 import com.opensymphony.xwork2.ActionSupport;
@@ -86,7 +88,6 @@ public class reenvioGeneral extends ActionSupport implements UsuarioHabilitado, 
     //MODULO DE CONTABILIDAD (Primer digito 5)
     public static final int CON_CONSGENCLASES = 514;
 
-
     //Listas iniciales de las paginas
     private List<String> perfiles;
     private List<String> estadoUsuario;
@@ -110,6 +111,8 @@ public class reenvioGeneral extends ActionSupport implements UsuarioHabilitado, 
     private Map<String, String> tipoPlan;
     private Map<String, String> estadoEqCeluar; //Estado en el cual se encuentra el equipo celular
     private Producto producto;
+    //Lista de Clases del puc
+    private List<ClaseDto> clase;
 
     private String modifica;
     private String bandera;
@@ -129,6 +132,7 @@ public class reenvioGeneral extends ActionSupport implements UsuarioHabilitado, 
         Inv_CategoriaLogica cateLogica = null;
         ReferenciaLogica refeLogica = null;
         Emp_EmpresaLogica logicaEmp = null;
+        ClaseLogica logicaClase = null;
         try {
             switch (this.accion) {
                 case ADM_CON_USUARIO:
@@ -365,8 +369,10 @@ public class reenvioGeneral extends ActionSupport implements UsuarioHabilitado, 
                     nextPage = "adm_ins_sede";
                     break;
                 case CON_CONSGENCLASES:
+                    logicaClase = new ClaseLogica();
+                    clase = logicaClase.consultaGeneralActivo();
                     nextPage = "con_consgenclases";
-                    break;                
+                    break;
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -589,4 +595,11 @@ public class reenvioGeneral extends ActionSupport implements UsuarioHabilitado, 
         this.remision = remision;
     }
 
+    public List<ClaseDto> getClase() {
+        return clase;
+    }
+
+    public void setClase(List<ClaseDto> clase) {
+        this.clase = clase;
+    }
 }
