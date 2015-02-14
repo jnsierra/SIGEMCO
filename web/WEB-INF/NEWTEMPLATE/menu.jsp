@@ -207,47 +207,15 @@
                 </ul>
             </li>
             <%}%>
-            <%if (permisos.indexOf(".CoPu1.") >= 0 || permisos.indexOf(".CoPu2.") > 0 || permisos.indexOf(".CoPu3.") > 0 || permisos.indexOf(".CoPu4.") > 0) {%>
+            <%if (permisos.indexOf(".CoPu1.") >= 0) {%>
             <li><a href="#"><span class="glyphicon glyphicon-book"></span>&nbsp;Contabilidad</a>
                 <ul class="dropdown-menu">
                     <li><a href="#">PUC</a>
                         <ul class="dropdown-menu">
-
                             <% if (permisos.indexOf(".CoPu1.") > 0) {%>
-                            <li><a href="#">Clases</a>
-                                <ul class="dropdown-menu">
-                                    <li><a href="reenvioGeneral.action?accion=511">Insertar</a></li>
-                                </ul>
+                            <li><a href="reenvioGeneral.action?accion=514">Consulta General</a>                                
                             </li>
-                            <%}%>
-                            <% if (permisos.indexOf(".CoPu2.") > 0) {%>
-                            <li><a href="#">Grupos</a>
-                                <% if (permisos.indexOf(".CoPu2.") > 0) { %>
-                                <ul class="dropdown-menu">
-                                    <li><a href="reenvioGeneral.action?accion=521">Insertar</a></li>
-                                </ul>
-                                <%}%>
-                            </li>
-                            <%}%>
-                            <% if (permisos.indexOf(".CoPu3.") > 0) {%>
-                            <li><a href="#">Cuentas</a>
-                                <% if (permisos.indexOf(".CoPu3.") > 0) { %>
-                                <ul class="dropdown-menu">
-                                    <li><a href="reenvioGeneral.action?accion=531">Insertar</a></li>
-                                </ul>
-                                <%}%>
-                            </li>
-                            <%}%>
-                            <% if (permisos.indexOf(".CoPu4.") > 0) {%>
-                            <li><a href="#">SubCuentas</a>
-                                <% if (permisos.indexOf(".CoPu4.") > 0) { %>
-                                <ul class="dropdown-menu">
-                                    <li><a href="reenvioGeneral.action?accion=541">Insertar</a></li>
-                                </ul>
-                                <%}%>
-                            </li>
-                            <%}%>
-                            <li><a href="#">Consulta General</a></li>
+                            <%}%>                            
                         </ul>
                     </li>
                 </ul>

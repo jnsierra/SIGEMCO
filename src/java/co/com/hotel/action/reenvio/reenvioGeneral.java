@@ -84,10 +84,8 @@ public class reenvioGeneral extends ActionSupport implements UsuarioHabilitado, 
     public static final int REP_INV_USUARIOS = 431;//Reportes de usuarios
 
     //MODULO DE CONTABILIDAD (Primer digito 5)
-    public static final int Con_InserClases = 511;
-    public static final int Con_InsertGrupos = 521;
-    public static final int Con_InsertCuentas = 531;
-    public static final int Con_InsertSubCuentas = 541;
+    public static final int CON_CONSGENCLASES = 514;
+
 
     //Listas iniciales de las paginas
     private List<String> perfiles;
@@ -366,18 +364,9 @@ public class reenvioGeneral extends ActionSupport implements UsuarioHabilitado, 
                 case ADM_INS_SEDE:
                     nextPage = "adm_ins_sede";
                     break;
-                case Con_InserClases:
-                    nextPage = "Con_InserClases";
-                    break;
-                case Con_InsertGrupos:
-                    nextPage = "Con_InsertGrupos";
-                    break;
-                case Con_InsertCuentas:
-                    nextPage = "Con_InsertCuentas";
-                    break;
-                case Con_InsertSubCuentas:
-                    nextPage = "Con_InsertSubCuentas";
-                    break;
+                case CON_CONSGENCLASES:
+                    nextPage = "con_consgenclases";
+                    break;                
             }
         } catch (Exception e) {
             e.printStackTrace();

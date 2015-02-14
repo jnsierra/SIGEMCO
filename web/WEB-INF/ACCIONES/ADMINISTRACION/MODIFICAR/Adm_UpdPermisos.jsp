@@ -363,17 +363,12 @@
                                                 </thead>
                                                 <tbody style="display: none;" class="subPermisoRepInv">
                                                     <tr>
-                                                        <td style="width: 30%;">Clases</td>
+                                                        <td style="width: 30%;">Consulta General</td>
                                                         <td style="width: 20%;"><input type="checkbox" value="CoPu1" id="CoPu1"/></td>
-                                                        <td style="width: 30%;">Grupos</td>
+                                                        <td style="width: 30%;">Creacion SubCuentas</td>
                                                         <td style="width: 20%;"><input type="checkbox" value="CoPu2" id="CoPu2"/></td>
                                                     </tr>
-                                                    <tr>
-                                                        <td style="width: 30%;">Cuentas</td>
-                                                        <td style="width: 20%;"><input type="checkbox" value="CoPu3" id="CoPu3"/></td>
-                                                        <td style="width: 30%;">SubCuentas</td>
-                                                        <td style="width: 20%;"><input type="checkbox" value="CoPu4" id="CoPu4"/></td>
-                                                    </tr>
+                                                    
                                                 </tbody>
                                             </table>
                                         </div>
