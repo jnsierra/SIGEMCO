@@ -48,35 +48,15 @@ public class Fac_ClienteLogica {
             String param = "";
             param = function.adicionarParametro(cliente.getNombres());
             param = function.adicionarParametro(cliente.getApellidos());
-            param = function.adicionarParametro(cliente.getCedula());
+            param = function.adicionarNumeric(cliente.getCedula());
             if (cliente.getMail() == null) {
-                cliente.setMail("");
+                cliente.setMail("SIN INFO");
             }
             param = function.adicionarParametro(cliente.getMail());
-            if (cliente.getFechaNac() == null) {
-                cliente.setFechaNac("");
-            }
-            param = function.adicionarParametro(cliente.getFechaNac());
             if (cliente.getTel() == null) {
-                cliente.setTel("");
+                cliente.setTel("SIN INFO");
             }
             param = function.adicionarParametro(cliente.getTel());
-            if (cliente.getCel() == null) {
-                cliente.setCel("");
-            }
-            param = function.adicionarParametro(cliente.getCel());
-            if (cliente.getDireccion() == null) {
-                cliente.setDireccion("");
-            }
-            param = function.adicionarParametro(cliente.getDireccion());
-            if (cliente.getDepartamentoRes() == null) {
-                cliente.setDepartamentoRes("");
-            }
-            param = function.adicionarParametro(cliente.getDepartamentoRes());
-            if (cliente.getCiudadResi() == null) {
-                cliente.setCiudadResi("");
-            }
-            param = function.adicionarParametro(cliente.getCiudadResi());
             String rtaPg = function.llamarFunction(function.getSql());
             function.recuperarString();
             function.cerrarConexion();
@@ -86,9 +66,9 @@ public class Fac_ClienteLogica {
             if (rtaVector[1].equalsIgnoreCase("Ok")) {
                 //Esta es la respuesta que retorna postgres
                 String rtaFunc = function.getRespuesta();
-                String []auxRta = rtaFunc.split("-");
+                String[] auxRta = rtaFunc.split("-");
                 if ((auxRta[0].trim()).equalsIgnoreCase("OK")) {
-                    return auxRta[1];                    
+                    return auxRta[1];
                 } else {
                     return "Error";
                 }
