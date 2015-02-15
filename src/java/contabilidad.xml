@@ -29,6 +29,14 @@
             <exception-mapping exception="java.lang.Exception" result="exception"/>
             <exception-mapping exception="java.io.IOException" result="exception"/>
         </global-exception-mappings> 
-        <!-- REENVIO GENERAL DE LA APLICACION MODULO DE FACTURACION  -->    
+        <!-- REENVIO GENERAL DE LA APLICACION MODULO CONTABLE  -->
+        <action name="buscaGruposXClase" class="co.com.sigemco.alfa.contabilidad.action.ClaseAction" method="buscaGruposPorClase" >
+            <result name="success">/WEB-INF/ACCIONES/CONTABILIDAD/CONSULTA/Con_ConsGenGrupos.jsp</result>
+            <result name="input">/WEB-INF/ACCIONES/CONTABILIDAD/CONSULTA/Con_ConsGenGrupos.jsp</result>
+        </action>
+        <action name="buscaCuentasXGrup" class="co.com.sigemco.alfa.contabilidad.action.GrupoAction" method="buscarCuentasXGrupo" >
+            <result name="success">/WEB-INF/ACCIONES/CONTABILIDAD/CONSULTA/Con_ConsGenCuenta.jsp</result>
+            <result name="input">/WEB-INF/ACCIONES/CONTABILIDAD/CONSULTA/Con_ConsGenCuenta.jsp</result>
+        </action>
     </package>
 </struts>

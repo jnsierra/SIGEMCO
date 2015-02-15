@@ -5,6 +5,7 @@
 <html>
     <head>
         <s:include value="/WEB-INF/NEWTEMPLATE/cabecera.jsp"></s:include>
+        <script type="text/javascript" src="<%=RutaSitio %>/JS/CONTABILIDAD/PUC/Con_ConsGenClase.js"></script>
         </head>
         <body>
         <s:div cssClass="header">
@@ -51,5 +52,8 @@
             </div>
             <div class="col-md-3 col-xs-0 col-sm-0"></div>        
         </div>
+        <s:form action="buscaGruposXClase" id="buscaGruposXClase" cssStyle="display:none" theme="simple">
+            <s:textfield name="clase.clas_clas" id="buscaClas_clas" />
+        </s:form>
     </body>
 </html>

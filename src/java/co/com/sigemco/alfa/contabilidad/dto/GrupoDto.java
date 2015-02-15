@@ -5,6 +5,8 @@
  */
 package co.com.sigemco.alfa.contabilidad.dto;
 
+import java.util.List;
+
 /**
  *
  * @author Nicolas
@@ -17,6 +19,7 @@ public class GrupoDto {
     private String grup_nombre;
     private String grup_codigo;
     private String grup_descripcion;
+    private List<CuentaDto> cuenta;
 
     public String getGrup_grup() {
         return grup_grup;
@@ -66,4 +69,11 @@ public class GrupoDto {
         this.grup_descripcion = grup_descripcion;
     }
 
+    public List<CuentaDto> getCuenta() {
+        return cuenta;
+    }
+
+    public void setCuenta(List<CuentaDto> cuenta) {
+        this.cuenta = cuenta;
+    }
 }

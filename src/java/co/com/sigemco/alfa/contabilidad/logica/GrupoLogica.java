@@ -70,4 +70,33 @@ public class GrupoLogica {
         return objDao;
     }
 
+    /**
+     * Funcion encargada de realizar la logica para obtener un grupo basandonos
+     * en el id de ese grupo
+     *
+     * @param grup_grup
+     * @return
+     */
+    public GrupoDto obtieneGrupoXId(String grup_grup) {
+        GrupoDao objDao = null;
+        GrupoDto aux = null;
+        try (EnvioFunction function = new EnvioFunction()) {
+            objDao = new GrupoDao();
+            objDao.setGrup_grup(grup_grup);
+            ResultSet rs = function.enviarSelect(objDao.obtenerGruposXId());
+            while (rs.next()) {
+                aux = new GrupoDto();
+                aux.setGrup_grup(rs.getString("grup_grup"));
+                aux.setGrup_clas(rs.getString("grup_clas"));
+                aux.setGrup_estado(rs.getString("grup_estado"));
+                aux.setGrup_nombre(rs.getString("grup_nombre"));
+                aux.setGrup_codigo(rs.getString("grup_codigo"));
+                aux.setGrup_descripcion(rs.getString("grup_descripcion"));
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return aux;
+    }
+
 }

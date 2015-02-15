@@ -5,6 +5,8 @@
  */
 package co.com.sigemco.alfa.contabilidad.dto;
 
+import java.util.List;
+
 /**
  * Clase encargada de transferir la informacion de las clases del puc
  *
@@ -17,6 +19,7 @@ public class ClaseDto {
     private String clas_nombre;
     private String clas_codigo;
     private String clas_descripcion;
+    private List<GrupoDto> grupo;
 
     public String getClas_clas() {
         return clas_clas;
@@ -56,6 +59,14 @@ public class ClaseDto {
 
     public void setClas_descripcion(String clas_descripcion) {
         this.clas_descripcion = clas_descripcion;
+    }
+
+    public List<GrupoDto> getGrupo() {
+        return grupo;
+    }
+
+    public void setGrupo(List<GrupoDto> grupo) {
+        this.grupo = grupo;
     }
 
 }

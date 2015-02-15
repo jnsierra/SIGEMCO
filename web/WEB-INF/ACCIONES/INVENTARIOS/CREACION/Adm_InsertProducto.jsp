@@ -22,7 +22,7 @@
         </s:div>        
         <br>
         <s:form  action="inv_insertProducto" id="inv_insertProducto" theme="simple" method="post">
-            <div class="row">
+            <div class="row IngProducto">
                 <div class="col-md-3 col-xs-0 col-sm-0"></div>
                 <div class="col-md-6 col-xs-12 col-sm-12">
                     <div class="Mensajes" style="display: none;">
@@ -127,6 +127,23 @@
                 </div>
                 <div class="col-md-3 col-xs-0 col-sm-0"></div>
             </div>
-        </s:form>       
+        </s:form> 
+        <div id="msnErrorParametrizacion" style="display: none; width: 100%">
+            <div class="col-md-3 col-xs-0 col-sm-0"></div>
+            <div class="col-md-6 col-xs-12 col-sm-12">
+                <h4 class="alert alert-danger">
+                    <span id="errorPar"></span>
+                </h4>
+            </div>
+            <div class="col-md-3 col-xs-0 col-sm-0"></div>            
+        </div>
     </body>
+    <script>
+        var iva = '<s:text name="producto.porcIva" />';
+        if(iva =='producto.porcIva'){
+            $('#errorPar').html('Por favor parametrizar el iva de los productos antes de ingresar el producto<br/> Que se encuentra en Administracion -> Empresa -> Parametros Generales ')
+            $('.IngProducto').hide('slow');
+            $('#msnErrorParametrizacion').show('slow');
+        }
+    </script>
 </html>

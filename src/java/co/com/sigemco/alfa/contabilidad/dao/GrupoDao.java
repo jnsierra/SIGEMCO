@@ -79,7 +79,22 @@ public class GrupoDao {
         select += "       grup_descripcion                                             \n";
         select += "  FROM co_tgrup                                                     \n";
         select += " WHERE grup_estado = 'A' \n";
-        select += " AND grup_clas = "+ clas_clas;
+        select += " AND grup_clas = " + clas_clas;
+        return select;
+    }
+
+    /**
+     * Funcion encargada de realizar el query de un grupo basandonos en su id
+     *
+     * @return
+     */
+    public String obtenerGruposXId() {
+        String select = "";
+        select += "SELECT grup_grup, grup_clas, grup_estado, grup_nombre, grup_codigo, \n";
+        select += "       grup_descripcion                                             \n";
+        select += "  FROM co_tgrup                                                     \n";
+        select += " WHERE grup_estado = 'A' \n";
+        select += " AND grup_grup = " + this.getGrup_grup();
         return select;
     }
 
