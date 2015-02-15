@@ -192,7 +192,7 @@ public class ProductoDao {
         String sql = "";
         sql += "SELECT sum(kapr_cant_mvto) egresos  \n";
         sql += "  FROM in_tmvin, in_tkapr   \n";
-        sql += " WHERE mvin_natu = 'I'      \n";
+        sql += " WHERE mvin_natu = 'E'      \n";
         sql += "   AND mvin_mvin = kapr_mvin\n";
         sql += "   AND kapr_sede = " + sede + " \n";
         sql += "   AND kapr_dska = " + this.getDska_dska();

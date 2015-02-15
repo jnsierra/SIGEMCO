@@ -139,22 +139,63 @@ public class ProductoLogica {
      */
     public String obtenerExistenciasPorSede(ProductoDto producto, String sede_sede) {
         String rta = null;
-        ProductoDao objDao = null;
-        try (EnvioFunction function = new EnvioFunction()) {
-            objDao = poblarDao(producto);
+        try {
             int ingresos = 0;
             int egresos = 0;
-            ResultSet rs = function.enviarSelect(objDao.ingresoProdSede(sede_sede));
-            if (rs.next()) {
-                ingresos = rs.getInt("ingresos");
-                ResultSet rs1 = function.enviarSelect(objDao.egresosProdSede(sede_sede));
-                if (rs1.next()) {
-                    egresos = rs.getInt(1);
-                }
-            }
-            rta = "" + (ingresos - egresos);
+            int total = 0;
+            ingresos = obtieneIngresosProdXSede(producto, sede_sede);
+            egresos = obtieneEgresosProdXSede(producto, sede_sede);
+            total = ingresos- egresos;
+            rta = ""+total;
         } catch (Exception e) {
             e.printStackTrace();
+        }
+        return rta;
+    }
+
+    /**
+     * Funcion encargada de obtener el numero de ingresos de determinado
+     * producto por sede
+     *
+     * @param dska_dska
+     * @return
+     */
+    public int obtieneIngresosProdXSede(ProductoDto objDto, String sede_sede) {
+        int rta = 0;
+        ProductoDao objDao = null;
+        try (EnvioFunction function = new EnvioFunction()) {
+            objDao = poblarDao(objDto);
+            ResultSet rs = function.enviarSelect(objDao.ingresoProdSede(sede_sede));
+            if (rs.next()) {
+                rta = rs.getInt("ingresos");
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            rta = 0;
+        }
+        return rta;
+    }
+
+    /**
+     * Funcion encargada de realizar la logica para obtener el numero de salidas
+     * o egresos de un producto en especifico por sede
+     *
+     * @param objDto
+     * @param sede_sede
+     * @return
+     */
+    public int obtieneEgresosProdXSede(ProductoDto objDto, String sede_sede) {
+        int rta = 0;
+        ProductoDao objDao = null;
+        try (EnvioFunction function = new EnvioFunction()) {
+            objDao = poblarDao(objDto);
+            ResultSet rs = function.enviarSelect(objDao.egresosProdSede(sede_sede));
+            if (rs.next()) {
+                rta = rs.getInt("egresos");
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            rta = 0;
         }
         return rta;
     }
