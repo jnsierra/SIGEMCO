@@ -158,6 +158,21 @@
                         </ul>
                     </li>
                     <%}
+                        if (permisos.indexOf(".InCat1.") >= 0 || permisos.indexOf(".InCat2.") >= 0 || permisos.indexOf(".InCat3.") >= 0) {%>
+                    <li><a href="#">Categorias</a>
+                        <ul class="dropdown-menu">
+                            <%if (permisos.indexOf(".InCat1.") >= 0) {%>
+                            <li><a href="reenvioGeneral.action?accion=271">Adicionar Referencia</a></li>
+                                <%}
+                                    if (permisos.indexOf(".InCat2.") >= 0) {%>
+                            <li><a href="reenvioGeneral.action?accion=272">Actualizar Referencia </a></li>
+                                <%}
+                                    if (permisos.indexOf(".InCat3.") >= 0) {%>
+                            <li><a href="reenvioGeneral.action?accion=274">Consultar Referencia</a></li>
+                                <%}%>
+                        </ul>
+                    </li>
+                    <%}
                         if (permisos.indexOf(".InPr7.") >= 0 || permisos.indexOf(".InPr8.") >= 0) {%>
                     <li><a href="#">Celulares</a>
                         <ul class="dropdown-menu">
@@ -172,7 +187,7 @@
                     <%}%>
                 </ul>
             </li>
-            <% if(permisos.indexOf(".FcCr1.") >= 0 || permisos.indexOf(".FcCr3.") >= 0 ){ %>
+            <% if (permisos.indexOf(".FcCr1.") >= 0 || permisos.indexOf(".FcCr3.") >= 0) { %>
             <li><a href="#"><span class="glyphicon glyphicon-shopping-cart"></span>&nbsp;Facturación</a>
                 <ul class="dropdown-menu">
                     <%if (permisos.indexOf(".FcCr1.") >= 0) {%>
@@ -184,7 +199,8 @@
                     <li><a href="#">Cerrar Factura</a></li>
                 </ul>
             </li>            
-            <%}if (permisos.indexOf(".RpIn1.") >= 0 || permisos.indexOf(".RpUs1.") > 0) {%>
+            <%}
+                if (permisos.indexOf(".RpIn1.") >= 0 || permisos.indexOf(".RpUs1.") > 0) {%>
             <li><a href="#"><span class="glyphicon glyphicon-floppy-save"></span>&nbsp;Reportes</a>
                 <ul class="dropdown-menu">
                     <% if (permisos.indexOf(".RpUs1.") > 0) {%>

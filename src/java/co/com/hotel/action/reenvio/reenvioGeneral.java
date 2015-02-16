@@ -75,7 +75,10 @@ public class reenvioGeneral extends ActionSupport implements UsuarioHabilitado, 
     public static final int INV_INS_REFERENCIA = 261;
     public static final int INV_UPD_REFERENCIA = 262;
     public static final int INV_CON_REFERENCIA = 264;
-
+    // paginas de categorias
+    public static final int INV_INS_CATEGORIA = 271;
+    public static final int INV_UPD_CATEGORIA = 272;
+    public static final int INV_CON_CATEGORIA = 274;
     //MODULO FACTURACION (Primer digito 3)
     public static final int FAC_INS_FACTURA = 311;
     public static final int FAC_UPD_FACTURA = 312;
@@ -94,6 +97,7 @@ public class reenvioGeneral extends ActionSupport implements UsuarioHabilitado, 
     private List<String> gravamen;
     private Map<String, String> yesNo;
     private Map<String, String> estadoMap;
+    private Map<String, String> runico;
     private Map<String, String> perfilesMap;
     private Map<String, String> sedes;
     private Map<String, String> categorias;
@@ -319,14 +323,19 @@ public class reenvioGeneral extends ActionSupport implements UsuarioHabilitado, 
                     this.camara.put("13", "ENTRE 8 Y 13");
                     this.camara.put("14", "MAS DE 13 ");
 
-                    this.pantalla = new HashMap<String, String>();
-                    this.pantalla.put("4", "MENOS DE 4");
-                    this.pantalla.put("5", "MAS DE 4");
+                case INV_INS_CATEGORIA:
+                    nextPage = "inv_ins_categoria";
+                    break;
+                case INV_UPD_CATEGORIA:
+                    nextPage = "inv_upd_categoria";
+                    break;
+                case INV_CON_CATEGORIA:
+                    nextPage = "Inv_ConCategoria";
+                    this.runico = new HashMap<String, String>();
+                    this.runico.put("A", "Activo");
+                    this.runico.put("I", "Inactivo");
+                    
 
-                    this.memoria = new HashMap<String, String>();
-                    this.memoria.put("16", "MENOS DE 16");
-                    this.memoria.put("32", "ENTRE 16 Y 32");
-                    this.memoria.put("33", "MAS DE 33");
 
                     this.estadoMap = new HashMap<String, String>();
                     this.estadoMap.put("A", "Activo");
@@ -602,4 +611,14 @@ public class reenvioGeneral extends ActionSupport implements UsuarioHabilitado, 
     public void setClase(List<ClaseDto> clase) {
         this.clase = clase;
     }
+
+    public Map<String, String> getRunico() {
+        return runico;
+    }
+
+    public void setRunico(Map<String, String> runico) {
+        this.runico = runico;
+    }
+    
+    
 }
