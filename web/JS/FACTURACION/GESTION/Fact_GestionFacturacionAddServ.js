@@ -1,3 +1,10 @@
+function filtrosReservaHabitacion(){
+    $('#dialogoAddServProd').modal('hide');    
+    $('#dialogoFiltroReservServ').modal('show');
+}
+
+/**
+
 function adicionaServicios() {
     chooseAdd.dialog("close");
     var fecha = $('#fechaReserva');
@@ -133,4 +140,4 @@ function adicionarServicios() {
         }
     }
     
-}
+}*/

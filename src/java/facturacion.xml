@@ -30,12 +30,7 @@
             <exception-mapping exception="java.io.IOException" result="exception"/>
         </global-exception-mappings> 
         <!-- REENVIO GENERAL DE LA APLICACION MODULO DE FACTURACION  -->
-        <!--
-        <action name="Fac_nuevoCliente" class="co.com.hotel.action.facturacion.Fact_FacturacionAction" method="insertarCliente">
-            <result name="error">/WEB-INF/ACCIONES/FACTURACION/CREACION/Fac_InsertCliFactura.jsp</result>
-            <result name="input">/WEB-INF/ACCIONES/FACTURACION/CREACION/Fac_InsertCliFactura.jsp</result>
-            <result name="success">/WEB-INF/ACCIONES/FACTURACION/CREACION/Fac_ReservaHabitacion.jsp</result>
-        </action>
+        <!--        
         <action name="Fac_BuscaHabitaciones" class="co.com.hotel.action.facturacion.Fact_FacturacionAction" method="buscaHabitacion">
             <result name="error">/WEB-INF/ACCIONES/FACTURACION/CREACION/Fac_ReservaHabitacion.jsp</result>
             <result name="input">/WEB-INF/ACCIONES/FACTURACION/CREACION/Fac_ReservaHabitacion.jsp</result>
@@ -74,12 +69,12 @@
         <action name="Fac_consCliente" class="co.com.sigemco.alfa.facturacion.action.ClienteAction" method="consultaClienteIniFactura">
             <result name="inexistente">/WEB-INF/ACCIONES/FACTURACION/CREACION/Fac_InsertCliFactura.jsp</result>
             <result name="input">/WEB-INF/ACCIONES/FACTURACION/CREACION/Fac_InsertCliFactura.jsp</result>
-            <result name="success">/WEB-INF/ACCIONES/FACTURACION/CREACION/Fac_ReservaHabitacion.jsp</result>
+            <result name="success">/WEB-INF/ACCIONES/FACTURACION/MODIFICAR/Fact_GestionFacturacion.jsp</result>
         </action>
         <action name="Fac_nuevoCliente" class="co.com.sigemco.alfa.facturacion.action.ClienteAction" method="insertarCliente">
             <result name="error">/WEB-INF/ACCIONES/FACTURACION/CREACION/Fac_InsertCliFactura.jsp</result>
             <result name="input">/WEB-INF/ACCIONES/FACTURACION/CREACION/Fac_InsertCliFactura.jsp</result>
-            <result name="success">/WEB-INF/ACCIONES/FACTURACION/CREACION/Fac_ReservaHabitacion.jsp</result>
+            <result name="success">/WEB-INF/ACCIONES/FACTURACION/MODIFICAR/Fact_GestionFacturacion.jsp</result>
         </action>
     </package>
 </struts>
