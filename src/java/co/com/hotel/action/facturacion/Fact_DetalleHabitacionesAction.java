@@ -6,7 +6,6 @@
 package co.com.hotel.action.facturacion;
 
 import co.com.hotel.datos.session.Usuario;
-import co.com.hotel.dto.Cliente;
 import co.com.hotel.dto.Habitacion;
 import co.com.hotel.dto.Reservacion;
 import co.com.hotel.dto.facturacion.Factura;
@@ -33,7 +32,6 @@ public class Fact_DetalleHabitacionesAction extends ActionSupport implements Ses
     private String accion;
     private Habitacion habitacion;
     private ArrayList<Reservacion> reservaciones;
-    private Cliente cliente;
     private String habitacionesReservadas;
     private String numDias;
     private String fechaInicial;
@@ -63,7 +61,7 @@ public class Fact_DetalleHabitacionesAction extends ActionSupport implements Ses
             String[] habitaciones = habitacionesReservadas.split("|");
             habitaciones = armarVector(habitaciones);
             fechaInicial = obj.convertirFormatoFechas(fechaInicial, "mm/dd/yyyy", "/");
-            Map rtaFact = fact.realizarFacturacion(habitaciones, numDias, fechaInicial, cliente.getIdCliente(), usuario.getIdTius());
+            Map rtaFact = fact.realizarFacturacion(habitaciones, numDias, fechaInicial, null, usuario.getIdTius());
             String mensaje = "";
             String aux1 = (String) rtaFact.get("RtaFact");
             if(aux1.equalsIgnoreCase("Factura realizada Exitosamente\n")){
@@ -134,7 +132,7 @@ public class Fact_DetalleHabitacionesAction extends ActionSupport implements Ses
                 addActionError("EL id de la habitación debe ser un caracter numerico");
             }
         } else if (accion.equalsIgnoreCase("reservar")) {
-            if (!valida.validaNulo(cliente.getIdCliente())) {
+            if (!valida.validaNulo(null)) {
                 addActionError("Error al recuperar la cedula del cliente por favor cree de nuevo la factura");
             }
             if (!valida.validaNulo(habitacionesReservadas)) {
@@ -185,14 +183,6 @@ public class Fact_DetalleHabitacionesAction extends ActionSupport implements Ses
 
     public void setReservaciones(ArrayList<Reservacion> reservaciones) {
         this.reservaciones = reservaciones;
-    }
-
-    public Cliente getCliente() {
-        return cliente;
-    }
-
-    public void setCliente(Cliente cliente) {
-        this.cliente = cliente;
     }
 
     public String getHabitacionesReservadas() {

@@ -41,6 +41,7 @@
                     </s:if>
                 </div>
                 <s:form action="Fac_consCliente" name="Fac_consCliente" id="Fac_consCliente" theme="simple">
+                    <s:textfield name="accion" cssStyle="display:none" value="consultaCliente" />
                     <table class="table table-bordered">
                         <thead>
                             <tr>
@@ -53,7 +54,7 @@
                         <tbody>
                             <tr>
                                 <td>Cedula Cliente: </td>
-                                <td><s:textfield cssClass="form-control" name="cliente.cedula" required="true" id="cedulaCliente"/></td>
+                                <td><s:textfield cssClass="form-control" name="cliente.clien_cedula" required="true" id="cedulaCliente"/></td>
                             </tr>
                         </tbody>
                         <tfoot>
@@ -91,6 +92,7 @@
                     </s:if>
                 </div>
                 <s:form action="Fac_nuevoCliente" name="Fac_nuevoCliente" id="Fac_nuevoCliente" theme="simple">
+                    <s:textfield name="accion" cssStyle="display:none" value="insertarCliente" />
                     <table class="table table-bordered">
                         <thead>
                             <tr>
@@ -100,25 +102,26 @@
                         <tbody>
                             <tr>
                                 <td>Cedula:</td>
-                                <td style="text-align: left"><b><s:text name="cliente.cedula"/></b>
-                                        <s:textfield name="cliente.cedula" style="display:none"/>
+                                <td style="text-align: left">
+                                    <b><s:text name="cliente.clien_cedula"/></b>
+                                    <s:textfield name="cliente.clien_cedula" style="display:none"/>
                                 </td>
                             </tr>
                             <tr>
                                 <td>Nombres:*</td>
-                                <td><s:textfield  name="cliente.nombres" cssClass="form-control" /></td>                                
+                                <td><s:textfield  name="cliente.clien_nombres" cssClass="form-control" /></td>                                
                             </tr>
                             <tr>
                                 <td>Apellidos*:</td>
-                                <td><s:textfield name="cliente.apellidos" cssClass="form-control" /></td>
+                                <td><s:textfield name="cliente.clien_apellidos" cssClass="form-control" /></td>
                             </tr>
                             <tr>
                                 <td>Correo:</td>
-                                <td><s:textfield name="cliente.mail" cssClass="form-control"/></td>
+                                <td><s:textfield name="cliente.clien_correo" cssClass="form-control"/></td>
                             </tr>                            
                             <tr>
                                 <td>Telefono:</td>
-                                <td><s:textfield name="cliente.tel" cssClass="form-control" /></td>                                
+                                <td><s:textfield name="cliente.clien_telefono" cssClass="form-control" /></td>                                
                             </tr>                            
                         </tbody>
                         <tfoot>
