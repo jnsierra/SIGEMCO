@@ -40,12 +40,14 @@
                     </s:if>
                 </div>
                 <div class="row">
-                    <h3 class="alert alert-info">CLASE:<br/>
-                        <a href="reenvioGeneral.action?accion=514">
-                            <s:text name="clase.clas_codigo" />     
-                            <s:text name="clase.clas_nombre" />  
-                        </a>
-                    </h3>
+                    <div class="alert alert-info col-md-12 col-sm-12 col-xs-12">
+                        <h3>CLASE:<br/>
+                            <a href="reenvioGeneral.action?accion=514">
+                                <s:text name="clase.clas_codigo" />     
+                                <s:text name="clase.clas_nombre" />  
+                            </a>
+                        </h3>
+                    </div>
                     <div class="panel panel-success">
                         <div class="panel-body">
                             <s:text name="clase.clas_descripcion" />

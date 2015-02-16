@@ -1,3 +1,8 @@
+<%-- 
+    Document   : Con_ConsGenCuentas
+    Created on : 16/02/2015, 02:23:02 PM
+    Author     : SISCOMPUTO
+--%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@taglib uri="/struts-tags" prefix="s" %>
 <%@include file="/WEB-INF/NEWTEMPLATE/Parametros.jsp" %>
@@ -22,7 +27,7 @@
         </s:div>
         <div class="row">
             <div class="col-md-3 col-xs-0 col-sm-0"></div>
-            <div class="col-md-6 col-xs-12 col-sm-12">
+            <div class="col-md-6 col-xs-0 col-sm-0">
                 <div class="Mensajes" style="display: none;">
                     <s:if test="hasActionErrors()">
                         <div class="alert alert-danger" id="info" role="alert" ><h4><s:actionerror /></h4></div>
@@ -55,6 +60,13 @@
                                 </a>
                             </h3>
                         </div>
+                        <div class="form-group">
+                            <h3>CUENTA:<br>
+                                <a onclick="buscaClase('<s:text name="clase.clas_clas" />')">
+                                    <h4><s:text name="grupo.grup_codigo" /> <s:text name="grupo.grup_nombre" /></h4>
+                                </a>
+                            </h3>
+                        </div>
                     </div>
                     <div class="panel panel-success">
                         <div class="panel-body">
@@ -62,28 +74,8 @@
                         </div>
                     </div>
                 </div>
-                <div class="row">
-                    <h3 class="alert alert-warning">CUENTAS</h3>
-                    <div class="panel panel-warning" style="max-height: 250px;overflow-y: scroll;">
-                        <table class="table table-hover">
-                            <tbody>
-                                <s:iterator value="grupo.cuenta" >
-                                    <tr>
-                                        <td><s:property value="cuen_codigo" /></td>
-                                        <td><a onclick="buscarSubCuenta('<s:text name="clase.clas_clas" />','<s:text name="grupo.grup_grup" />','<s:text name="cuen_cuen" />');" > <s:property value="cuen_nombre" /></a></td>
-                                    </tr>
-                                </s:iterator>
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
             </div>
             <div class="col-md-3 col-xs-0 col-sm-0"></div>
         </div>
-        <s:form action="buscaSubCuentasXCuen" id="buscaSubCuentasXCuen"  theme="simple">
-            <s:textfield name="clase.clas_clas" id="buscaClas_clas" />
-            <s:textfield name="grupo.grup_grup" id="buscaClas_grup" />
-            <s:textfield name="cuenta.cuen_cuen" id="buscaClas_cuen" />
-        </s:form>
     </body>
 </html>

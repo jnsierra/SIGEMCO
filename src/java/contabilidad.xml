@@ -38,5 +38,9 @@
             <result name="success">/WEB-INF/ACCIONES/CONTABILIDAD/CONSULTA/Con_ConsGenCuenta.jsp</result>
             <result name="input">/WEB-INF/ACCIONES/CONTABILIDAD/CONSULTA/Con_ConsGenCuenta.jsp</result>
         </action>
+        <action name="buscaSubCuentasXCuen" class="co.com.sigemco.alfa.contabilidad.action.CuentaAction" method="buscarSubCuentaXCuenta" >
+            <result name="success">/WEB-INF/ACCIONES/CONTABILIDAD/CONSULTA/Con_ConsGenSubCuentas.jsp</result>
+            <result name="input">/WEB-INF/ACCIONES/CONTABILIDAD/CONSULTA/Con_ConsGenCuenta.jsp</result>
+        </action>
     </package>
 </struts>

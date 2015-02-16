@@ -66,12 +66,31 @@ public class CuentaDao {
         this.cuen_descripcion = cuen_descripcion;
     }
 
+    /**
+     * Funcion encargada de crear Query para obtener las cuentas de un grupo
+     *
+     * @param grup_grup
+     * @return
+     */
     public String cuentasXIdGrupo(String grup_grup) {
         String sql = "";
         sql += "SELECT cuen_cuen, cuen_grup, cuen_estado, cuen_nombre, cuen_codigo,\n";
         sql += "       cuen_descripcion                                            \n";
         sql += "  FROM co_tcuen                                                    \n";
-        sql += " WHERE cuen_grup = " + grup_grup ;
+        sql += " WHERE cuen_grup = " + grup_grup;
         return sql;
+    }
+/**
+ * Funcion encargada de crear el Query para obtener la cuenta por llave cuenta_cuanta
+ * @return 
+ */
+    public String cuentasXId() {
+        String sql = "";
+        sql += "SELECT cuen_cuen, cuen_grup, cuen_estado, cuen_nombre, cuen_codigo,\n";
+        sql += "       cuen_descripcion                                            \n";
+        sql += "  FROM co_tcuen                                                    \n";
+        sql += " WHERE cuen_cuen = " + this.getCuen_cuen();
+        return sql;
+
     }
 }

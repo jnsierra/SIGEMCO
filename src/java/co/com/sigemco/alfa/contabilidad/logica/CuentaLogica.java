@@ -7,7 +7,9 @@ package co.com.sigemco.alfa.contabilidad.logica;
 
 import co.com.hotel.persistencia.general.EnvioFunction;
 import co.com.sigemco.alfa.contabilidad.dao.CuentaDao;
+import co.com.sigemco.alfa.contabilidad.dao.GrupoDao;
 import co.com.sigemco.alfa.contabilidad.dto.CuentaDto;
+import co.com.sigemco.alfa.contabilidad.dto.GrupoDto;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
@@ -49,5 +51,47 @@ public class CuentaLogica {
         }
         return rta;
     }
-
+    /**
+     *Funcion encargada de realizar la logica para obtener la cuentas teniendo
+     * en cuenta el codigo de la cuenta
+     * @param cuen_cuen
+     * @return 
+     */
+    public CuentaDto obtieneCuentaXId (String cuen_cuen){
+        CuentaDto objDto = null ;
+        CuentaDao objDao = null ;
+        try (EnvioFunction function = new EnvioFunction()){
+            objDto = new CuentaDto();
+            objDto.setCuen_cuen(cuen_cuen);
+            objDao = poblarDao(objDto);
+            ResultSet rs = function.enviarSelect(objDao.cuentasXId());
+            if(rs.next()){
+              objDto = new CuentaDto();
+              objDto.setCuen_codigo(rs.getString("cuen_codigo"));
+              objDto.setCuen_cuen(rs.getString("cuen_cuen"));
+              objDto.setCuen_descripcion(rs.getString("cuen_descripcion"));
+              objDto.setCuen_estado(rs.getString("cuen_estado"));
+              objDto.setCuen_grup(rs.getString("cuen_grup"));
+              objDto.setCuen_nombre(rs.getString("cuen_nombre"));
+            }       
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return objDto;
+    }
+    /**
+     * Function encargada de poblar el Dao de cuenta
+     * @param objDto
+     * @return 
+     */
+    public CuentaDao poblarDao(CuentaDto objDto) {
+        CuentaDao objDao = new CuentaDao();
+        objDao.setCuen_codigo(objDto.getCuen_codigo());
+        objDao.setCuen_cuen(objDto.getCuen_cuen());
+        objDao.setCuen_descripcion(objDto.getCuen_descripcion());
+        objDao.setCuen_estado(objDto.getCuen_estado());
+        objDao.setCuen_grup(objDto.getCuen_grup()); 
+        objDao.setCuen_nombre(objDto.getCuen_nombre());
+        return objDao;
+    }
 }

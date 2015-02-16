@@ -5,6 +5,8 @@
  */
 package co.com.sigemco.alfa.contabilidad.dto;
 
+import java.util.List;
+
 /**
  *
  * @author Nicolas
@@ -17,7 +19,8 @@ public class CuentaDto {
     private String cuen_nombre;
     private String cuen_codigo;
     private String cuen_descripcion;
-
+    private List<CuentaDto> subCuenta;
+    
     public String getCuen_cuen() {
         return cuen_cuen;
     }
