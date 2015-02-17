@@ -1,3 +1,21 @@
+function filtrosProductos(){
+    $('#dialogoAddServProd').modal('hide');
+    $('#dialogoFiltroAdicionProd').modal('show');        
+}
+
+function buscaPosiblesProductos(){
+    
+}
+
+
+function validaConsultaProductos(){
+    var codigo = $('#codigoProd').val();
+    var referencia = $('#referenciaProd').val();
+    var nomProd = $('#nombreProducto').val();
+    return true;
+}
+
+/*
 //Funcion a la cual se envia cuando han escogido la adicion de productos
 function adicionaProductos() {
     chooseAdd.dialog('close');
@@ -172,4 +190,4 @@ function agregarBaseDatosProductos() {
         }
     });
 }
-
+*/

@@ -7,6 +7,7 @@
         <s:include value="/WEB-INF/NEWTEMPLATE/cabecera.jsp"></s:include>
         <script type="text/javascript" src="<%=RutaSitio%>/JS/FACTURACION/GESTION/Fact_GestionFacturacion.js"></script>
         <script type="text/javascript" src="<%=RutaSitio%>/JS/FACTURACION/GESTION/Fact_GestionFacturacionAddServ.js"></script>
+        <script type="text/javascript" src="<%=RutaSitio%>/JS/FACTURACION/GESTION/Fact_GestionFacturacionAddProd.js"></script>
     </head>
     <body>
         <s:div cssClass="header">
@@ -82,13 +83,10 @@
                         </s:else>
                     </tr>
                     <tr>
-                        <td colspan="4">&nbsp;&nbsp;&nbsp;&nbsp;</td>
+                        <td colspan="5">&nbsp;&nbsp;&nbsp;&nbsp;</td>
                         <td>
                             <button type="button" class="btn btn-default" onclick="agregar()"><span class="glyphicon glyphicon-plus"></span>&nbsp;Agregar</button>
-                        </td>
-                        <td>
-                            <button type="button" class="btn btn-default" onclick="remover()"><span class="glyphicon glyphicon-minus"></span>&nbsp;Remover</button>                            
-                        </td>
+                        </td>                        
                     </tr>
                 </table>
             </div>
@@ -127,20 +125,25 @@
                         <h4 class="modal-title">Filtros Reserva Habitaciones</h4>
                     </div>
                     <div class="modal-body">
-                        <div style="width: 100%;text-align: center">POSIBLES FILTROS PARA RESERVA DE HABITACION</div>
-                        <div class="alert alert-danger" style="display: none;" ><h3><span id="msgError"></span></h3></div>
+                        <div class="alert alert-danger" style="display: none; text-align: center;padding: 5px; font-size: 13px;" id="divError" >
+                            <span id="msgError" style="font-weight: 700;"></span>
+                        </div>
+                        <div style="width: 100%;text-align: center;font-size: 14px;"><b>POSIBLES FILTROS PARA RESERVA DE HABITACION</b></div>                        
                         <form>
                             <div class="form-group">
                                 <label for="fecha" class="control-label">Fecha:</label>
-                                <input type="text" class="form-control" id="fechaReserv">
+                                <div class="input-group date">
+                                    <input type="text" class="form-control" id="fechaReserv" readonly="true" >
+                                    <span class="input-group-addon"><i class="glyphicon glyphicon-th"></i></span>
+                                </div>
                             </div>
                             <div class="form-group">
                                 <label for="numPersonas" class="control-label">Número de Personas:</label>
-                                <input type="text" class="form-control" id="numPersonasReserv">
+                                <input type="text" class="form-control" id="numPersonasReserv" onkeypress="return validaNumeros(event);">
                             </div>
                             <div class="form-group">
                                 <label for="numDias" class="control-label">Numero de Días:</label>
-                                <input type="text" class="form-control" id="numDiasReserv">
+                                <input type="text" class="form-control" id="numDiasReserv" onkeypress="return validaNumeros(event);">
                             </div>
                         </form>
                     </div>
@@ -149,6 +152,85 @@
                             CERRAR
                         </button>
                         <button type="button" class="btn btn-primary" id="buscarPosibleReservHab">
+                            BUSCAR
+                        </button>                        
+                    </div>
+                </div>                
+            </div>
+        </div>
+        <!-- Popup utilizado para visualizar informacion -->
+        <div class="modal fade" tabindex="-1" role="dialog" aria-hidden="true" id="informacionPopUp">
+            <div class="modal-dialog">                
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title">Informaci&oacute;n</h4>
+                    </div>
+                    <div class="modal-body">
+                        <span id="msnInfo"></span>                        
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">
+                            ACEPTAR
+                        </button>  
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Pop up en el cual se visualizara los resultados de la consulta de servicios -->
+        <div class="modal fade" tabindex="-1" role="dialog" aria-hidden="true" id="consultaBusquedaServ">
+            <div class="modal-dialog">                
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title">Resultados Busqueda Habitaciones</h4>
+                    </div>
+                    <div class="modal-body">
+                        <table id="tablaAddServ" class="table table-hover table-striped">
+
+                        </table>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">
+                            CANCELAR
+                        </button>   
+                        <button type="button" class="btn btn-primary" id="confirmarReserva ">
+                            RESERVAR
+                        </button> 
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Muestra un formulario con las opciones de Filtro con las cuales el usuario podra encontrar un podructo -->
+        <div class="modal fade" tabindex="-1" role="dialog" aria-hidden="true" id="dialogoFiltroAdicionProd">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title">Filtros Cosulta Productos</h4>
+                    </div>
+                    <div class="modal-body">
+                        <div class="alert alert-danger" style="display: none; text-align: center;padding: 5px; font-size: 13px;" id="divError" >
+                            <span id="msgError" style="font-weight: 700;"></span>
+                        </div>
+                        <div style="width: 100%;text-align: center;font-size: 14px;"><b>POSIBLES FILTROS PARA ENCONTRAR UN PRODUCTO</b></div>                        
+                        <form>
+                            <div class="form-group">
+                                <label for="codigoProd" class="control-label">Codigo:</label>
+                                <input type="text" class="form-control" id="codigoProd" />
+                            </div>
+                            <div class="form-group">
+                                <label for="referenciaProd" class="control-label">Referencia:</label>
+                                <input type="text" class="form-control" id="referenciaProd" />
+                            </div>
+                            <div class="form-group">
+                                <label for="nombreProducto" class="control-label">Nombre Producto:</label>
+                                <input type="text" class="form-control" id="nombreProducto" />
+                            </div>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">
+                            CERRAR
+                        </button>
+                        <button type="button" class="btn btn-primary" id="buscaPosiblesProd">
                             BUSCAR
                         </button>                        
                     </div>

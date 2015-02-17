@@ -2,6 +2,19 @@ $(function(){
     $('#sevicioAdd').click(function (){
         filtrosReservaHabitacion();
     });
+    $('.input-group.date').datepicker({
+        format: 'mm/dd/yyyy'
+    });
+    $('#buscarPosibleReservHab').click(function(){
+        buscaPosiblesReservasXFiltros();
+    });
+    $('#productoAdd').click(function(){
+        filtrosProductos();        
+    });
+    $('#buscaPosiblesProd').click(function (){
+        buscaPosiblesProductos();    
+                
+    });
 });
 
 /**
