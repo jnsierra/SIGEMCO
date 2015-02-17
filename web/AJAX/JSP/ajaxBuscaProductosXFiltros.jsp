@@ -7,10 +7,7 @@
     String codigo = ""+request.getParameter("codigo");
     String referencia = ""+request.getParameter("referencia");
     String nombre = ""+request.getParameter("nombre");
-    response.setHeader("Cache-control", "no-cache, no-store");
-    response.setHeader("Pragma", "no-cache");
-    response.setHeader("Expires", "-1");
-    System.out.println("Codigo: " + codigo + " referencia: " + referencia + " nombre: " + nombre);
+    //System.out.println("Codigo: " + codigo + " referencia: " + referencia + " nombre: " + nombre);
     Producto obj = null;
     Inv_ProductoLogica logica = null;
     Gson gson = new Gson();

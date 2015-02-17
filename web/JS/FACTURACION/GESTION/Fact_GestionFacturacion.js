@@ -12,8 +12,7 @@ $(function(){
         filtrosProductos();        
     });
     $('#buscaPosiblesProd').click(function (){
-        buscaPosiblesProductos();    
-                
+        buscaPosiblesProductos();                
     });
 });
 
