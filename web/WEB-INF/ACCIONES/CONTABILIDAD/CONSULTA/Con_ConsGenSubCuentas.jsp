@@ -75,7 +75,11 @@
                     </div>
                 </div>
                 <div class="row">
-                    <h3 class="alert alert-warning">SubCuentas</h3>
+                    <div class="form-group alert alert-warning">
+                    <h3>SubCuentas
+                    <a class="text-right btn btn-danger">Crear SubCuenta</a>
+                    </h3>
+                    </div>
                     <div class="panel panel-warning" style="max-height: 250px;overflow-y: scroll;">
                         <table class="table table-hover">
                             <tbody>

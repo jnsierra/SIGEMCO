@@ -57,7 +57,7 @@ public class CuentaAction extends ActionSupport implements SessionAware, Usuario
                         addActionError("Error al realizar la consulta");
                     } else {
                         SubCuentaLogica subCuentaLogica = new SubCuentaLogica();
-                        subCuentaLogica.obtieneSubCuentaXCuenta(cuenta.getCuen_cuen());
+                        cuenta.setSubCuenta(subCuentaLogica.obtieneSubCuentaXCuenta(cuenta.getCuen_cuen()));
                     }
                 }
             }

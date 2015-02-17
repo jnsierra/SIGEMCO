@@ -19,7 +19,18 @@ public class CuentaDto {
     private String cuen_nombre;
     private String cuen_codigo;
     private String cuen_descripcion;
-    private List<CuentaDto> subCuenta;
+    private List<SubCuentaDto> subCuenta;
+
+    public List<SubCuentaDto> getSubCuenta() {
+        return subCuenta;
+    }
+
+    public void setSubCuenta(List<SubCuentaDto> subCuenta) {
+        this.subCuenta = subCuenta;
+    }
+
+
+
     
     public String getCuen_cuen() {
         return cuen_cuen;
@@ -68,5 +79,4 @@ public class CuentaDto {
     public void setCuen_descripcion(String cuen_descripcion) {
         this.cuen_descripcion = cuen_descripcion;
     }
-
 }

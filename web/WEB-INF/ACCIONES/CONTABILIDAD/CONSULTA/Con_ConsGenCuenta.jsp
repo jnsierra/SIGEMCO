@@ -80,7 +80,7 @@
             </div>
             <div class="col-md-3 col-xs-0 col-sm-0"></div>
         </div>
-        <s:form action="buscaSubCuentasXCuen" id="buscaSubCuentasXCuen"  theme="simple">
+        <s:form action="buscaSubCuentasXCuen" id="buscaSubCuentasXCuen" cssStyle="display:none" theme="simple">
             <s:textfield name="clase.clas_clas" id="buscaClas_clas" />
             <s:textfield name="grupo.grup_grup" id="buscaClas_grup" />
             <s:textfield name="cuenta.cuen_cuen" id="buscaClas_cuen" />
