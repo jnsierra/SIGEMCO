@@ -70,7 +70,7 @@
                                 <s:iterator value="grupo.cuenta" >
                                     <tr>
                                         <td><s:property value="cuen_codigo" /></td>
-                                        <td><a onclick="buscarSubCuenta('<s:text name="clase.clas_clas" />','<s:text name="grupo.grup_grup" />','<s:text name="cuen_cuen" />');" > <s:property value="cuen_nombre" /></a></td>
+                                        <td><a onclick="buscarSubCuenta('<s:text name="clase.clas_clas" />', '<s:text name="grupo.grup_grup" />', '<s:text name="cuen_cuen" />');" > <s:property value="cuen_nombre" /></a></td>
                                     </tr>
                                 </s:iterator>
                             </tbody>

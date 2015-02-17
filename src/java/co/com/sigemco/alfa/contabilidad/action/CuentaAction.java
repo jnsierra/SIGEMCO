@@ -44,17 +44,17 @@ public class CuentaAction extends ActionSupport implements SessionAware, Usuario
             claseLogica = new ClaseLogica();
             clase = claseLogica.obtieneClaseXId(clase);
             if (clase == null) {
-                addActionError("Error al realizar la consulta 1 clase:");
+                addActionError("Error al realizar la consulta");
             } else {
                 GrupoLogica grupoLogica = new GrupoLogica();
                 grupo = grupoLogica.obtieneGrupoXId(grupo.getGrup_grup());
                 if (grupo == null) {
-                    addActionError("Error al realizar la consulta 2");
+                    addActionError("Error al realizar la consulta");
                 } else {
                     CuentaLogica cuentaLogica = new CuentaLogica();
                     cuenta = cuentaLogica.obtieneCuentaXId(cuenta.getCuen_cuen());
                     if (cuenta == null) {
-                        addActionError("Error al realizar la consulta 3");
+                        addActionError("Error al realizar la consulta");
                     } else {
                         SubCuentaLogica subCuentaLogica = new SubCuentaLogica();
                         subCuentaLogica.obtieneSubCuentaXCuenta(cuenta.getCuen_cuen());

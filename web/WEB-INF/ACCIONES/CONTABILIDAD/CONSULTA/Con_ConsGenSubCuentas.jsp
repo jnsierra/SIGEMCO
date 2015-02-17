@@ -63,7 +63,7 @@
                         <div class="form-group">
                             <h3>CUENTA:<br>
                                 <a onclick="buscaClase('<s:text name="clase.clas_clas" />')">
-                                    <h4><s:text name="grupo.grup_codigo" /> <s:text name="grupo.grup_nombre" /></h4>
+                                    <h4><s:text name="cuenta.cuen_codigo" /> <s:text name="cuenta.cuen_nombre" /></h4>
                                 </a>
                             </h3>
                         </div>
@@ -72,6 +72,21 @@
                         <div class="panel-body">
                             <s:text name="clase.clas_descripcion" />
                         </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <h3 class="alert alert-warning">SubCuentas</h3>
+                    <div class="panel panel-warning" style="max-height: 250px;overflow-y: scroll;">
+                        <table class="table table-hover">
+                            <tbody>
+                                <s:iterator value="cuenta.subCuenta" >
+                                    <tr>
+                                        <td><s:property value="sbcu_codigo" /></td>
+                                        <td><a ><s:property value="sbcu_nombre" /></a></td>
+                                    </tr>
+                                </s:iterator>
+                            </tbody>
+                        </table>
                     </div>
                 </div>
             </div>

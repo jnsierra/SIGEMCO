@@ -83,5 +83,12 @@ public class SubCuentaDao {
     public void setSbcu_descripcion(String sbcu_descripcion) {
         this.sbcu_descripcion = sbcu_descripcion;
     }
-
+        public String subCuentasXIdCuenta(String cuen_cuen) {
+        String sql = "";
+        sql += "SELECT sbcu_sbcu, sbcu_cuen, sbcu_clas, sbcu_grup, sbcu_estado, sbcu_nombre,\n";
+        sql += "sbcu_codigo, sbcu_descripcion                                               \n";
+        sql += "FROM co_tsbcu;                                                              \n";
+        sql += " WHERE sbcu_cuen = " + cuen_cuen;
+        return sql;
+    }
 }

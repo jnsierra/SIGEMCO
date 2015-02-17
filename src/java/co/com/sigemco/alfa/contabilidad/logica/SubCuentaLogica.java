@@ -5,26 +5,47 @@
  */
 package co.com.sigemco.alfa.contabilidad.logica;
 
+import co.com.hotel.persistencia.general.EnvioFunction;
 import co.com.sigemco.alfa.contabilidad.dao.SubCuentaDao;
 import co.com.sigemco.alfa.contabilidad.dto.CuentaDto;
 import co.com.sigemco.alfa.contabilidad.dto.SubCuentaDto;
+import java.sql.ResultSet;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
+ * Funcion encargada de realizar la logica para obtener la lista de Sub Cuentas
+ * por medio del id de la cuenta
  *
- * @author SISCOMPUTO
+ * @author Daniel
  */
 public class SubCuentaLogica {
 
     public List<SubCuentaDto> obtieneSubCuentaXCuenta(String cuen_cuen) {
         List<SubCuentaDto> rta = null;
-        SubCuentaDao ojbDao = null;
-        try {
-            
+        SubCuentaDao objDao = null;
+        try (EnvioFunction function = new EnvioFunction();) {
+            objDao = new SubCuentaDao();
+            ResultSet rs = function.enviarSelect(objDao.subCuentasXIdCuenta(cuen_cuen));
+            while (rs.next()) {
+                if (rta == null) {
+                    rta = new ArrayList<SubCuentaDto>();
+                }
+                SubCuentaDto objDto = new SubCuentaDto();
+                objDto.setSbcu_clas(rs.getString("sbcu_clas"));
+                objDto.setSbcu_codigo(rs.getString("sbcu_codigo"));
+                objDto.setSbcu_cuen(rs.getString("sbcu_cuen"));
+                objDto.setSbcu_descripcion(rs.getString("sbcu_descripcion"));
+                objDto.setSbcu_estado(rs.getString("sbcu_estado"));
+                objDto.setSbcu_grup(rs.getString("sbcu_grup"));
+                objDto.setSbcu_nombre(rs.getString("sbcu_nombre"));
+                objDto.setSbcu_sbcu(rs.getString("sbcu_sbcu"));
+                rta.add(objDto);
+            }
         } catch (Exception e) {
             e.printStackTrace();
         }
-        
+
         return rta;
     }
 }
