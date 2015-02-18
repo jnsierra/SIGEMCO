@@ -71,7 +71,7 @@ function ejecutarBusquedaReservaHab() {
                     var numeroDias = $('#numDiasReserv').val();
                     var fechaRev = $('#fechaReserv').val();
                     var linea = '<tr>' +
-                            '<td><input type=\"checkbox\" name=\"addServ\" value=\"' + obj.idHabitacion + '\" data-numdias=\"'+numeroDias+'\" data-fecha=\"'+fechaRev+'\" /></td>' +
+                            '<td><input type=\"checkbox\" name=\"addServ\" class=\"servAdd\" value=\"' + obj.idHabitacion + '\" data-numdias=\"'+numeroDias+'\" data-fecha=\"'+fechaRev+'\" /></td>' +
                             '<td>' + obj.numHabi + '</td>' +
                             '<td>' + obj.numMaxPers + '</td>' +
                             '<td>' + obj.numMinPers + '</td>' +
@@ -82,6 +82,28 @@ function ejecutarBusquedaReservaHab() {
             }
         }
     });
+}
+
+function adicionaReservaFactura(){
+    var servicios = document.getElementsByClassName('servAdd');
+    var arrayServSelec = [];
+    var j = 0;
+    for(var i = 0 ;  i < servicios.length ; i++){
+        if(servicios[i].checked == true ){
+            var datos = new Object();
+            datos.dska_dska = servicios[i].value;
+            datos.fecha = servicios[i].dataset.fecha;
+            datos.numdias = servicios[i].dataset.numdias;
+            arrayServSelec[j] = datos;
+            j++;
+        }
+    }
+    consultaDatosFacturacionServ(arrayServSelec);
+}
+
+function consultaDatosFacturacionServ(servicios){
+        
+    //alert('Hola');
 }
 
 

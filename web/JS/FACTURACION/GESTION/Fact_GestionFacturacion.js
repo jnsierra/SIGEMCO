@@ -3,7 +3,8 @@ $(function(){
         filtrosReservaHabitacion();
     });
     $('.input-group.date').datepicker({
-        format: 'mm/dd/yyyy'
+        format: 'dd/mm/yyyy',
+        todayHighlight: true
     });
     $('#buscarPosibleReservHab').click(function(){
         buscaPosiblesReservasXFiltros();
@@ -13,6 +14,9 @@ $(function(){
     });
     $('#buscaPosiblesProd').click(function (){
         buscaPosiblesProductos();                
+    });
+    $('#confirmarReserva').click(function(){
+        adicionaReservaFactura()     
     });
 });
 
