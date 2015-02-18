@@ -1,8 +1,3 @@
-<%-- 
-    Document   : Con_ConsGenCuentas
-    Created on : 16/02/2015, 02:23:02 PM
-    Author     : SISCOMPUTO
---%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@taglib uri="/struts-tags" prefix="s" %>
 <%@include file="/WEB-INF/NEWTEMPLATE/Parametros.jsp" %>
@@ -99,6 +94,8 @@
                         <div class="modal-content">
                             <div class="modal-header">
                                 <div class="alert alert-info text-center"><h3>INGRESO DE SUBCUENTA</h3></div>
+                            </div>
+                            <div class="modal-body">
                                 <div class="form-group">
                                     <h4>Nombre:</h4>
                                     <s:textfield cssClass="form-control" name="nombre" id="nombre"/>
@@ -107,10 +104,12 @@
                                     <h4>Descripción:</h4>
                                     <s:textfield cssClass="form-control" name="descripcion" id="descripcion"/>
                                 </div>
-                                <div class="form-group">
-                                    <a class="text-right btn btn-info" onclick="guardarScuenta('<s:text name="clase.clas_clas"/>','<s:text name="grupo.grup_grup"/>','<s:text name="cuenta.cuen_cuen"/>')">Guardar</a>
-                                    <a data-toggle="modal" data-target="#myModal">Cancelar</a>
-                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <a class="text-right btn btn-info" onclick="guardarScuenta('<s:text name="clase.clas_clas"/>', '<s:text name="grupo.grup_grup"/>', '<s:text name="cuenta.cuen_cuen"/>')">Guardar</a>
+                                <button type="button" class="btn btn-default" data-dismiss="modal">
+                                    CANCELAR
+                                </button> 
                             </div>
                         </div>
                     </div>
@@ -124,10 +123,10 @@
         <s:textfield name="grupo.grup_grup" id="grupoBusca" />
     </s:form>
     <s:form action="insertSubCuenta" id="insertSubCuenta" theme="simple" cssStyle="display:none" >
-        <s:textfield name="clase.clas_clas" id="clase"/>
-        <s:textfield name="grupo.grup_grup" id="grupo" />
-        <s:textfield name="cuenta.cuen_cuen" id="cuenta"/>
-        <s:textfield name="subCuenta.sbcu_nombre" id="sbcu_nombre"/>
-        <s:textfield name="subCuenta.sbcu_descripcion" id="sbcu_descripcion"/>
+        <s:textfield name="clase.clas_clas" id="claseEnvio" />
+        <s:textfield name="grupo.grup_grup" id="grupoEnvio" />
+        <s:textfield name="cuenta.cuen_cuen" id="cuentaEnvio" />
+        <s:textfield name="subCuenta.sbcu_nombre" id="sbcu_nombreEnvio"/>
+        <s:textfield name="subCuenta.sbcu_descripcion" id="sbcu_descripcionEnvio"/>
     </s:form>
 </html>

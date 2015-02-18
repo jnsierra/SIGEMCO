@@ -8,9 +8,11 @@ function guardarScuenta(calse,grupo,cuenta){
     document.getElementById("cuenta").value=cuenta;
     var nombre = document.getElementById("nombre").value;
     var descripcion = document.getElementById("descripcion").value;
-    document.getElementById("sbcu_nombre").value=nombre;
-    document.getElementById("sbcu_descripcion").value=descripcion; 
-    document.getElementById("insertSubCuenta").submit();
+    //$('#sbcu_nombreEnvio').val(nombre);
+    //$('#sbcu_descripcionEnvio').val(descripcion);
+    document.getElementById("sbcu_nombreEnvio").value=nombre;
+    document.getElementById("sbcu_descripcionEnvio").value=descripcion; 
+    //document.getElementById("insertSubCuenta").submit();
 }
 
 

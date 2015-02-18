@@ -32,6 +32,11 @@ public class SubCuentaAction extends ActionSupport implements SessionAware, Usua
     GrupoDto grupo;
     ClaseDto clase;
 
+    /**
+     * Funcion encargada de realizar la accion de insertar una subcuenta
+     *
+     * @return
+     */
     public String insertSubCuenta() {
         SubCuentaDto subCuenta = null;
         try {

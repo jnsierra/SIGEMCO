@@ -253,7 +253,7 @@
                         <button type="button" class="btn btn-default" data-dismiss="modal">
                             CANCELAR
                         </button>   
-                        <button type="button" class="btn btn-primary" id="adicionaProd ">
+                        <button type="button" class="btn btn-primary" id="adicionaProd" >
                             ADICIONAR
                         </button> 
                     </div>

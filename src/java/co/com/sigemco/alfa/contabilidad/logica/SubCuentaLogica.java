@@ -64,20 +64,22 @@ public class SubCuentaLogica {
         SubCuentaDto objDto=null;
         SubCuentaDao objDao = null;
         try(EnvioFunction function = new EnvioFunction();) {
+            objDao = new SubCuentaDao();            
             objDto = new SubCuentaDto();
+            
             objDto.setSbcu_clas(clasDto.getClas_clas());
             objDto.setSbcu_grup(grupoDto.getGrup_grup());
             objDto.setSbcu_cuen(cuenDto.getCuen_cuen());
             
-            boolean rs = function.enviarUpdate(objDao.insertSubCuenta());
-            if(!rs){
-                rta="Error";
-            }
-            objDao = new SubCuentaDao();
             objDao = poblarDao(objDto);
             
+            boolean rs = function.enviarUpdate(objDao.insertSubCuenta());
+            if(!rs){
+                rta="Error ";
+            }            
         } catch (Exception e) {
             e.printStackTrace();
+            rta = "Error "+ e;
         }
         return rta;
     }
