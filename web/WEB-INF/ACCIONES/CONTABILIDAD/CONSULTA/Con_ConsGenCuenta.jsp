@@ -50,7 +50,7 @@
                         </div>
                         <div class="form-group">
                             <h3>GRUPO:<br>
-                                <a onclick="buscaClase('<s:text name="clase.clas_clas" />')">
+                                <a onclick="#">
                                     <h4><s:text name="grupo.grup_codigo" /> <s:text name="grupo.grup_nombre" /></h4>
                                 </a>
                             </h3>

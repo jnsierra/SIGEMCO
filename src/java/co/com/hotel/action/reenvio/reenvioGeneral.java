@@ -90,6 +90,7 @@ public class reenvioGeneral extends ActionSupport implements UsuarioHabilitado, 
 
     //MODULO DE CONTABILIDAD (Primer digito 5)
     public static final int CON_CONSGENCLASES = 514;
+    public static final int CON_INSERTSUBCUENTAS =515;
 
     //Listas iniciales de las paginas
     private List<String> perfiles;
@@ -381,6 +382,9 @@ public class reenvioGeneral extends ActionSupport implements UsuarioHabilitado, 
                     logicaClase = new ClaseLogica();
                     clase = logicaClase.consultaGeneralActivo();
                     nextPage = "con_consgenclases";
+                    break;
+                case CON_INSERTSUBCUENTAS:
+                    nextPage = "con_insertcuentas";
                     break;
             }
         } catch (Exception e) {

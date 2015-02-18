@@ -32,6 +32,14 @@
                         </thead>
                         <tbody>
                             <tr>
+                                <td>Clase</td>
+                                <td><s:textfield cssClass="form-control" name="clase" id="clase"/></td>
+                            </tr>
+                            <tr>
+                                <td>Grupo</td>
+                                <td><s:textfield cssClass="form-control" name="grupo" id="grupo"/></td>
+                            </tr>
+                            <tr>
                                 <td>Cuenta</td>
                                 <td><s:textfield cssClass="form-control" name="cuenta" id="cuenta"/></td>
                             </tr>

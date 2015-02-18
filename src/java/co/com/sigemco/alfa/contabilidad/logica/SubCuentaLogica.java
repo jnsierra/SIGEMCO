@@ -7,20 +7,27 @@ package co.com.sigemco.alfa.contabilidad.logica;
 
 import co.com.hotel.persistencia.general.EnvioFunction;
 import co.com.sigemco.alfa.contabilidad.dao.SubCuentaDao;
+import co.com.sigemco.alfa.contabilidad.dto.ClaseDto;
 import co.com.sigemco.alfa.contabilidad.dto.CuentaDto;
+import co.com.sigemco.alfa.contabilidad.dto.GrupoDto;
 import co.com.sigemco.alfa.contabilidad.dto.SubCuentaDto;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Funcion encargada de realizar la logica para obtener la lista de Sub Cuentas
- * por medio del id de la cuenta
+ * Funcion encargada de realizar la logica para Sub Cuentas
  *
  * @author Daniel
  */
 public class SubCuentaLogica {
 
+    /**
+     * Funcion encargada de realizar la logica para obtener la lista de Sub
+     * Cuentas por medio del id de la cuenta
+     *
+     * @author Daniel
+     */
     public List<SubCuentaDto> obtieneSubCuentaXCuenta(String cuen_cuen) {
         List<SubCuentaDto> rta = null;
         SubCuentaDao objDao = null;
@@ -45,7 +52,51 @@ public class SubCuentaLogica {
         } catch (Exception e) {
             e.printStackTrace();
         }
-
         return rta;
+    }
+    /**
+     * Funcion encargada de realizar la logica para Sub Cuentas
+     *
+     * @author Daniel
+     */
+    public String insertSubCuenta(ClaseDto clasDto, CuentaDto cuenDto,GrupoDto grupoDto){
+        String rta = "OK";
+        SubCuentaDto objDto=null;
+        SubCuentaDao objDao = null;
+        try(EnvioFunction function = new EnvioFunction();) {
+            objDto = new SubCuentaDto();
+            objDto.setSbcu_clas(clasDto.getClas_clas());
+            objDto.setSbcu_grup(grupoDto.getGrup_grup());
+            objDto.setSbcu_cuen(cuenDto.getCuen_cuen());
+            
+            boolean rs = function.enviarUpdate(objDao.insertSubCuenta());
+            if(!rs){
+                rta="Error";
+            }
+            objDao = new SubCuentaDao();
+            objDao = poblarDao(objDto);
+            
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return rta;
+    }
+    /**
+     * Funcion encargada de poblar del dao de SubCuentas con el Dto de SubCuentas
+     * @param objDto
+     * @return 
+     */
+    public SubCuentaDao poblarDao(SubCuentaDto objDto){
+        SubCuentaDao objDao = new SubCuentaDao();
+        objDao.setSbcu_clas(objDto.getSbcu_clas());
+        objDao.setSbcu_codigo(objDto.getSbcu_codigo());
+        objDao.setSbcu_cuen(objDto.getSbcu_cuen());
+        objDao.setSbcu_descripcion(objDto.getSbcu_descripcion());
+        objDao.setSbcu_estado(objDto.getSbcu_estado());
+        objDao.setSbcu_grup(objDto.getSbcu_grup());
+        objDao.setSbcu_nombre(objDto.getSbcu_nombre());
+        objDao.setSbcu_sbcu(objDto.getSbcu_sbcu());
+        
+        return objDao;
     }
 }
