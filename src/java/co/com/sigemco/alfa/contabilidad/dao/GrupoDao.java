@@ -17,7 +17,16 @@ public class GrupoDao {
     private String grup_nombre;
     private String grup_codigo;
     private String grup_descripcion;
+    private String clas_naturaleza;
 
+    public String getClas_naturaleza() {
+        return clas_naturaleza;
+    }
+
+    public void setClas_naturaleza(String clas_naturaleza) {
+        this.clas_naturaleza = clas_naturaleza;
+    }
+    
     public String getGrup_grup() {
         return grup_grup;
     }

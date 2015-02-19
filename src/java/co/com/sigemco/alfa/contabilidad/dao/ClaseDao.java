@@ -16,7 +16,16 @@ public class ClaseDao {
     private String clas_nombre;
     private String clas_codigo;
     private String clas_descripcion;
+    private String clas_naturaleza;
 
+    public String getClas_naturaleza() {
+        return clas_naturaleza;
+    }
+
+    public void setClas_naturaleza(String clas_naturaleza) {
+        this.clas_naturaleza = clas_naturaleza;
+    }
+    
     public String getClas_clas() {
         return clas_clas;
     }

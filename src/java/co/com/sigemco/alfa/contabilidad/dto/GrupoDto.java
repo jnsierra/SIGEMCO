@@ -20,6 +20,15 @@ public class GrupoDto {
     private String grup_codigo;
     private String grup_descripcion;
     private List<CuentaDto> cuenta;
+    private String grup_naturaleza;
+
+    public String getGrup_naturaleza() {
+        return grup_naturaleza;
+    }
+
+    public void setGrup_naturaleza(String grup_naturaleza) {
+        this.grup_naturaleza = grup_naturaleza;
+    }
 
     public String getGrup_grup() {
         return grup_grup;

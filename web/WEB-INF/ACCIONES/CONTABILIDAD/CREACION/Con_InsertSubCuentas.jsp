@@ -5,7 +5,7 @@
 <html>
     <head>
         <s:include value="/WEB-INF/NEWTEMPLATE/cabecera.jsp"></s:include>
-        <script type="text/javascript" src="<%=RutaSitio%>/JS/ADMINISTRACION/PERMISOS/Adm_UpdPermisos.js"></script>
+        <script type="text/javascript" src="<%=RutaSitio%>/JS/CONTABILIDAD/PUC/Con_InsertSubCuentas.js"></script>
     </head>
     <body>
         <s:div cssClass="header">
@@ -23,7 +23,7 @@
         <div class="row">
             <div class="col-md-3 col-sm-0 col-xs-0"></div>
             <div class="col-md-6 col-sm-12 col-xs-12">
-                <s:form theme="simple" action="Con_InsertSubCuentas" name="SubCuentas" id="SubCuentas">
+                <s:form theme="simple" action="Con_InsertSubCuentas" name="Con_InsertSubCuentas" id="Con_InsertSubCuentas">
                     <table class="table table-bordered">
                         <thead>
                             <tr>
@@ -32,27 +32,57 @@
                         </thead>
                         <tbody>
                             <tr>
-                                <td>Clase</td>
-                                <td><s:textfield cssClass="form-control" name="clase" id="clase"/></td>
+                                <td>Clase:</td>
+                                <td>
+                                    <s:textfield cssClass="form-control" name="clase.clas_codigo" readonly="true"/> 
+                                    <s:textfield cssClass="form-control" name="clase.clas_nombre" readonly="true"/>
+                                </td>
                             </tr>
                             <tr>
-                                <td>Grupo</td>
-                                <td><s:textfield cssClass="form-control" name="grupo" id="grupo"/></td>
+                                <td>Grupo:</td>
+                                <td>
+                                    <s:textfield cssClass="form-control" name="grupo.grup_codigo" readonly="true"/> 
+                                    <s:textfield cssClass="form-control" name="grupo.grup_nombre" readonly="true"/>
+                                </td>
                             </tr>
                             <tr>
-                                <td>Cuenta</td>
-                                <td><s:textfield cssClass="form-control" name="cuenta" id="cuenta"/></td>
-                            </tr>
-                            <tr>
-                                <td>Código:</td>
-                                <td><s:textfield cssClass="form-control" name="codigo" id="codigo"/></td>
+                                <td>Cuenta:</td>
+                                <td>
+                                    <s:textfield cssClass="form-control" name="cuenta.cuen_codigo" readonly="true"/> 
+                                    <s:textfield cssClass="form-control" name="cuenta.cuen_nombre" readonly="true"/>
+                                </td>
                             </tr>
                             <tr>
                                 <td>Nombre:</td>
-                                <td><s:textfield cssClass="form-control" name="nombre" id="nombre"/></td>
+                                <td><s:textfield cssClass="form-control" name="subCuenta.sbcu_nombre" id="sbcu_nombre"/></td>
+                            </tr>
+                            <tr>
+                                <td>Descripción:</td>
+                                <td><s:textfield cssClass="form-control" name="subCuenta.sbcu_descripcion" id="sbcu_descripcion"/></td>
+                            </tr>
+                            <tr>
+                                <td>Naturaleza:</td>
+                                <td>
+                                    <s:select list="naturaleza" cssClass="form-control" name="subCuenta.sbcu_naturaleza" id="sbcu_naturaleza" headerKey="-1" headerValue="NATURALEZA..."/>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td colspan="4">
+                                    <s:include value="/WEB-INF/TEMPLATE/botones/add.jsp" > 
+                                        <s:param name="function">insertarSubCuenta</s:param>
+                                        <s:param name="title">Adicion de la SubCuenta al sistema</s:param>
+                                    </s:include>
+                                    <s:include value="/WEB-INF/TEMPLATE/botones/clean.jsp" />
+                                </td>
                             </tr>
                         </tbody>
                     </table>
+                    <div id="datos">
+                        <s:textfield name="clase.clas_clas" id="clas_clas" />
+                        <s:textfield name="grupo.grup_grup" id="grup_grup" />
+                        <s:textfield name="clase.clas_descripcion" id="clas_descripcion" />
+                        <s:textfield name="cuenta.cuen_cuen" id="cuen_cuen" />
+                    </div>
                 </s:form>
             </div>
             <div class="col-md-3 col-sm-0 col-xs-0"></div>

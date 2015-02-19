@@ -16,6 +16,7 @@ import co.com.sigemco.alfa.contabilidad.logica.CuentaLogica;
 import co.com.sigemco.alfa.contabilidad.logica.GrupoLogica;
 import co.com.sigemco.alfa.contabilidad.logica.SubCuentaLogica;
 import com.opensymphony.xwork2.ActionSupport;
+import java.util.HashMap;
 import java.util.Map;
 import org.apache.struts2.interceptor.SessionAware;
 
@@ -26,11 +27,14 @@ import org.apache.struts2.interceptor.SessionAware;
  */
 public class SubCuentaAction extends ActionSupport implements SessionAware, UsuarioHabilitado {
 
-    Usuario usuario;
-    Map Session;
-    CuentaDto cuenta;
-    GrupoDto grupo;
-    ClaseDto clase;
+    private Usuario usuario;
+    private Map Session;
+    private CuentaDto cuenta;
+    private GrupoDto grupo;
+    private ClaseDto clase;
+    private Map<String, String> naturaleza;
+    private SubCuentaDto subCuenta;
+    private String accion;
 
     /**
      * Funcion encargada de realizar la accion de insertar una subcuenta
@@ -38,14 +42,14 @@ public class SubCuentaAction extends ActionSupport implements SessionAware, Usua
      * @return
      */
     public String insertSubCuenta() {
-        SubCuentaDto subCuenta = null;
+       // subCuenta = new SubCuentaDto();
         try {
             SubCuentaLogica subCuentaLogica = new SubCuentaLogica();
-            String rta = subCuentaLogica.insertSubCuenta(clase, cuenta, grupo);
+            String rta = subCuentaLogica.insertSubCuenta(subCuenta, clase, cuenta, grupo);
             if (rta.equalsIgnoreCase("ok")) {
-                addActionError("Error al insertar SubCuenta");
+                addActionMessage("SubCuenta insertada correctamente");
             } else {
-                addActionError("SubCuenta insertada correctamente");
+                addActionError("Error al insertar SubCuenta");
             }
             subCuenta = new SubCuentaDto();
 
@@ -53,6 +57,29 @@ public class SubCuentaAction extends ActionSupport implements SessionAware, Usua
             e.printStackTrace();
         }
         return SUCCESS;
+    }
+
+    /**
+     * Funcion encargada de realizar la accion de redireccionar la insercion de
+     * la subcuenta
+     *
+     * @return
+     */
+    public String guadaDatos() {
+        this.naturaleza = new HashMap<String, String>();
+        try {
+            naturaleza.put("D", "DEBITO");
+            naturaleza.put("C", "CREDITO");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return SUCCESS;
+    }
+    
+    public void validate(){
+        //if(accion.equalsIgnoreCase("insetarSubCuenta")){
+            
+        //}
     }
 
     public Usuario getUsuario() {
@@ -95,4 +122,27 @@ public class SubCuentaAction extends ActionSupport implements SessionAware, Usua
         this.clase = clase;
     }
 
+    public Map<String, String> getNaturaleza() {
+        return naturaleza;
+    }
+
+    public void setNaturaleza(Map<String, String> naturaleza) {
+        this.naturaleza = naturaleza;
+    }
+
+    public SubCuentaDto getSubCuenta() {
+        return subCuenta;
+    }
+
+    public void setSubCuenta(SubCuentaDto subCuenta) {
+        this.subCuenta = subCuenta;
+    }
+
+    public String getAccion() {
+        return accion;
+    }
+
+    public void setAccion(String accion) {
+        this.accion = accion;
+    }
 }

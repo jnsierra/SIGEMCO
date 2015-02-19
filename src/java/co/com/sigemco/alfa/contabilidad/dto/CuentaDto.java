@@ -19,7 +19,16 @@ public class CuentaDto {
     private String cuen_nombre;
     private String cuen_codigo;
     private String cuen_descripcion;
+    private String cuen_naturaleza;
     private List<SubCuentaDto> subCuenta;
+
+    public String getCuen_naturaleza() {
+        return cuen_naturaleza;
+    }
+
+    public void setCuen_naturaleza(String cuen_naturaleza) {
+        this.cuen_naturaleza = cuen_naturaleza;
+    }
 
     public List<SubCuentaDto> getSubCuenta() {
         return subCuenta;

@@ -42,10 +42,13 @@
             <result name="success">/WEB-INF/ACCIONES/CONTABILIDAD/CONSULTA/Con_ConsGenSubCuentas.jsp</result>
             <result name="input">/WEB-INF/ACCIONES/CONTABILIDAD/CONSULTA/Con_ConsGenCuenta.jsp</result>
         </action>
-        
-        <action name="insertSubCuenta" class="co.com.sigemco.alfa.contabilidad.action.SubCuentaAction" method="insertSubCuenta" >
+        <action name="insertSubCuenta" class="co.com.sigemco.alfa.contabilidad.action.SubCuentaAction" method="guadaDatos" >
+            <result name="success">/WEB-INF/ACCIONES/CONTABILIDAD/CREACION/Con_InsertSubCuentas.jsp</result>
+            <result name="input">/WEB-INF/ACCIONES/CONTABILIDAD/CREACION/Con_InsertSubCuentas.jsp</result>
+        </action>
+        <action name="Con_InsertSubCuentas" class="co.com.sigemco.alfa.contabilidad.action.SubCuentaAction" method="insertSubCuenta" >
             <result name="success">/WEB-INF/ACCIONES/CONTABILIDAD/CONSULTA/Con_ConsGenSubCuentas.jsp</result>
-            <result name="input">/WEB-INF/ACCIONES/CONTABILIDAD/CONSULTA/Con_ConsGenCuenta.jsp</result>
+            <result name="input">/WEB-INF/ACCIONES/CONTABILIDAD/CONSULTA/Con_ConsGenSubCuentas.jsp</result>
         </action>
     </package>
 </struts>

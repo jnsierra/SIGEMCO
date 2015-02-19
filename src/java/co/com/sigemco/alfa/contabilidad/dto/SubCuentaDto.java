@@ -19,7 +19,15 @@ public class SubCuentaDto {
     private String sbcu_nombre;
     private String sbcu_codigo;
     private String sbcu_descripcion;
-    
+    private String sbcu_naturaleza;
+
+    public String getSbcu_naturaleza() {
+        return sbcu_naturaleza;
+    }
+
+    public void setSbcu_naturaleza(String sbcu_naturaleza) {
+        this.sbcu_naturaleza = sbcu_naturaleza;
+    }
     
     public String getSbcu_sbcu() {
         return sbcu_sbcu;

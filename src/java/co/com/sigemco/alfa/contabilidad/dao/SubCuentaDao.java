@@ -19,6 +19,15 @@ public class SubCuentaDao {
     private String sbcu_nombre;
     private String sbcu_codigo;
     private String sbcu_descripcion;
+    private String sbcu_naturaleza;
+
+    public String getSbcu_naturaleza() {
+        return sbcu_naturaleza;
+    }
+
+    public void setSbcu_naturaleza(String sbcu_naturaleza) {
+        this.sbcu_naturaleza = sbcu_naturaleza;
+    }
 
     public String getSbcu_sbcu() {
         return sbcu_sbcu;
@@ -107,9 +116,9 @@ public class SubCuentaDao {
         String sql = "";
         sql += "INSERT INTO co_tsbcu(";
         sql += "sbcu_cuen, sbcu_clas, sbcu_grup, sbcu_estado, sbcu_nombre, ";
-        sql += " sbcu_descripcion)";
+        sql += " sbcu_descripcion,sbcu_naturaleza)";
         sql += "VALUES ("+this.getSbcu_cuen()+","+this.getSbcu_clas()+", "+this.getSbcu_grup()+", UPPER('A'), '"+this.getSbcu_nombre()+"',";
-        sql += "'"+this.getSbcu_nombre()+"');";
+        sql += "'"+this.getSbcu_descripcion()+"',UPPER('"+this.getSbcu_naturaleza()+"'));";
         return sql;
     }
 }

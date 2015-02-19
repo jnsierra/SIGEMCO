@@ -19,6 +19,7 @@ public class ClaseDto {
     private String clas_nombre;
     private String clas_codigo;
     private String clas_descripcion;
+    private String clas_naturaleza;
     private List<GrupoDto> grupo;
 
     public String getClas_clas() {
@@ -67,6 +68,14 @@ public class ClaseDto {
 
     public void setGrupo(List<GrupoDto> grupo) {
         this.grupo = grupo;
+    }
+
+    public String getClas_naturaleza() {
+        return clas_naturaleza;
+    }
+
+    public void setClas_naturaleza(String clas_naturaleza) {
+        this.clas_naturaleza = clas_naturaleza;
     }
 
 }

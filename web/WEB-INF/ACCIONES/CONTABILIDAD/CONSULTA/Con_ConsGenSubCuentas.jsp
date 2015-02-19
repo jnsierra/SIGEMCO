@@ -57,7 +57,7 @@
                         </div>
                         <div class="form-group">
                             <h3>CUENTA:<br>
-                                <a onclick="#')">
+                                <a onclick="#">
                                     <h4><s:text name="cuenta.cuen_codigo" /> <s:text name="cuenta.cuen_nombre" /></h4>
                                 </a>
                             </h3>
@@ -72,7 +72,7 @@
                 <div class="row">
                     <div class="form-group alert alert-warning">
                         <h3>SubCuentas
-                            <a class="text-right btn btn-danger" data-toggle="modal" data-target="#myModal">Crear SubCuenta</a>
+                            <a class="text-right btn btn-danger" onclick="guardarScuenta();">Crear SubCuenta</a>
                         </h3>
                     </div>
                     <div class="panel panel-warning" style="max-height: 250px;overflow-y: scroll;">
@@ -88,32 +88,6 @@
                         </table>
                     </div>
                 </div>
-
-                <div class="modal fade col-md-12 col-sm-12 col-xs-12" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-                    <div class="modal-dialog">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <div class="alert alert-info text-center"><h3>INGRESO DE SUBCUENTA</h3></div>
-                            </div>
-                            <div class="modal-body">
-                                <div class="form-group">
-                                    <h4>Nombre:</h4>
-                                    <s:textfield cssClass="form-control" name="nombre" id="nombre"/>
-                                </div>
-                                <div class="form-group">
-                                    <h4>Descripción:</h4>
-                                    <s:textfield cssClass="form-control" name="descripcion" id="descripcion"/>
-                                </div>
-                            </div>
-                            <div class="modal-footer">
-                                <a class="text-right btn btn-info" onclick="guardarScuenta('<s:text name="clase.clas_clas"/>', '<s:text name="grupo.grup_grup"/>', '<s:text name="cuenta.cuen_cuen"/>')">Guardar</a>
-                                <button type="button" class="btn btn-default" data-dismiss="modal">
-                                    CANCELAR
-                                </button> 
-                            </div>
-                        </div>
-                    </div>
-                </div>
             </div>
             <div class="col-md-3 col-xs-0 col-sm-0"></div>
         </div>
@@ -123,10 +97,15 @@
         <s:textfield name="grupo.grup_grup" id="grupoBusca" />
     </s:form>
     <s:form action="insertSubCuenta" id="insertSubCuenta" theme="simple" cssStyle="display:none" >
-        <s:textfield name="clase.clas_clas" id="claseEnvio" />
-        <s:textfield name="grupo.grup_grup" id="grupoEnvio" />
-        <s:textfield name="cuenta.cuen_cuen" id="cuentaEnvio" />
-        <s:textfield name="subCuenta.sbcu_nombre" id="sbcu_nombreEnvio"/>
-        <s:textfield name="subCuenta.sbcu_descripcion" id="sbcu_descripcionEnvio"/>
+        <s:textfield name="clase.clas_clas" id="clas_clas" />
+        <s:textfield name="clase.clas_codigo" id="clas_codigo" />
+        <s:textfield name="clase.clas_nombre" id="clas_nombre" />
+        <s:textfield name="clase.clas_descripcion" id="clas_descripcion" />
+        <s:textfield name="grupo.grup_grup" id="grup_grup" />
+        <s:textfield name="grupo.grup_codigo" id="grup_codigo" />
+        <s:textfield name="grupo.grup_nombre" id="grup_nombre" />
+        <s:textfield name="cuenta.cuen_cuen" id="cuen_cuen" />
+        <s:textfield name="cuenta.cuen_codigo" id="cuen_codigo" />
+        <s:textfield name="cuenta.cuen_nombre" id="cuen_nombre" />
     </s:form>
 </html>

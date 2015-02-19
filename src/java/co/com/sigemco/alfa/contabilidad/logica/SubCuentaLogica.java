@@ -59,20 +59,18 @@ public class SubCuentaLogica {
      *
      * @author Daniel
      */
-    public String insertSubCuenta(ClaseDto clasDto, CuentaDto cuenDto,GrupoDto grupoDto){
+    public String insertSubCuenta(SubCuentaDto objDto,ClaseDto clasDto, CuentaDto cuenDto,GrupoDto grupoDto){
         String rta = "OK";
-        SubCuentaDto objDto=null;
         SubCuentaDao objDao = null;
         try(EnvioFunction function = new EnvioFunction();) {
             objDao = new SubCuentaDao();            
-            objDto = new SubCuentaDto();
             
             objDto.setSbcu_clas(clasDto.getClas_clas());
             objDto.setSbcu_grup(grupoDto.getGrup_grup());
             objDto.setSbcu_cuen(cuenDto.getCuen_cuen());
             
             objDao = poblarDao(objDto);
-            
+            System.out.println("Query: "+objDao.insertSubCuenta());
             boolean rs = function.enviarUpdate(objDao.insertSubCuenta());
             if(!rs){
                 rta="Error ";
@@ -98,6 +96,7 @@ public class SubCuentaLogica {
         objDao.setSbcu_grup(objDto.getSbcu_grup());
         objDao.setSbcu_nombre(objDto.getSbcu_nombre());
         objDao.setSbcu_sbcu(objDto.getSbcu_sbcu());
+        objDao.setSbcu_naturaleza(objDto.getSbcu_naturaleza());
         
         return objDao;
     }
