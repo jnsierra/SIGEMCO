@@ -67,6 +67,10 @@
                                 </td>
                             </tr>
                             <tr>
+                                <td>Codigo:</td>
+                                <td><s:textfield cssClass="form-control" name="subCuenta.sbcu_codigo" id="sbcu_codigo"/></td>
+                            </tr>
+                            <tr>
                                 <td colspan="4">
                                     <s:include value="/WEB-INF/TEMPLATE/botones/add.jsp" > 
                                         <s:param name="function">insertarSubCuenta</s:param>
@@ -77,7 +81,7 @@
                             </tr>
                         </tbody>
                     </table>
-                    <div id="datos">
+                    <div id="datos" style="display: none;">
                         <s:textfield name="clase.clas_clas" id="clas_clas" />
                         <s:textfield name="grupo.grup_grup" id="grup_grup" />
                         <s:textfield name="clase.clas_descripcion" id="clas_descripcion" />

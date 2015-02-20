@@ -94,9 +94,11 @@ public class SubCuentaDao {
     }
 
     /**
-     * Query encargado de seleccioanr todas las Subcuentas que pertenecen a una Cuenta
+     * Query encargado de seleccioanr todas las Subcuentas que pertenecen a una
+     * Cuenta
+     *
      * @param cuen_cuen
-     * @return 
+     * @return
      */
     public String subCuentasXIdCuenta(String cuen_cuen) {
         String sql = "";
@@ -106,19 +108,21 @@ public class SubCuentaDao {
         sql += " WHERE sbcu_cuen = " + cuen_cuen;
         return sql;
     }
+
     /**
-     * Query encargado de insertar una nueva SubCuenta en la tabla con_tsbcu
-     * no s envia ni el id(sbcu_sbcU)ni el codigo(sbcu_codigo) 
-     * ya que se generan desde el triger.
-     * @return 
+     * Query encargado de insertar una nueva SubCuenta en la tabla con_tsbcu no
+     * s envia ni el id(sbcu_sbcU)ni el codigo(sbcu_codigo) ya que se generan
+     * desde el triger.
+     *
+     * @return
      */
     public String insertSubCuenta() {
         String sql = "";
         sql += "INSERT INTO co_tsbcu(";
-        sql += "sbcu_cuen, sbcu_clas, sbcu_grup, sbcu_estado, sbcu_nombre, ";
-        sql += " sbcu_descripcion,sbcu_naturaleza)";
-        sql += "VALUES ("+this.getSbcu_cuen()+","+this.getSbcu_clas()+", "+this.getSbcu_grup()+", UPPER('A'), '"+this.getSbcu_nombre()+"',";
-        sql += "'"+this.getSbcu_descripcion()+"',UPPER('"+this.getSbcu_naturaleza()+"'));";
+        sql += "sbcu_cuen, sbcu_clas, sbcu_grup, sbcu_estado, sbcu_nombre,";
+        sql += " sbcu_descripcion,sbcu_naturaleza,sbcu_codigo)";
+        sql += "VALUES (" + this.getSbcu_cuen() + "," + this.getSbcu_clas() + ", " + this.getSbcu_grup() + ", UPPER('A'), '" + this.getSbcu_nombre() + "',";
+        sql += "'" + this.getSbcu_descripcion() + "',UPPER('" + this.getSbcu_naturaleza() + "'),'" + this.getSbcu_codigo() + "');";
         return sql;
     }
 }

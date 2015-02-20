@@ -42,7 +42,6 @@ public class SubCuentaAction extends ActionSupport implements SessionAware, Usua
      * @return
      */
     public String insertSubCuenta() {
-       // subCuenta = new SubCuentaDto();
         try {
             SubCuentaLogica subCuentaLogica = new SubCuentaLogica();
             String rta = subCuentaLogica.insertSubCuenta(subCuenta, clase, cuenta, grupo);

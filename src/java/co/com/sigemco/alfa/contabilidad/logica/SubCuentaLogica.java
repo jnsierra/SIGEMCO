@@ -54,50 +54,58 @@ public class SubCuentaLogica {
         }
         return rta;
     }
+
     /**
      * Funcion encargada de realizar la logica para Sub Cuentas
      *
      * @author Daniel
      */
-    public String insertSubCuenta(SubCuentaDto objDto,ClaseDto clasDto, CuentaDto cuenDto,GrupoDto grupoDto){
+    public String insertSubCuenta(SubCuentaDto objDto, ClaseDto clasDto, CuentaDto cuenDto, GrupoDto grupoDto) {
         String rta = "OK";
         SubCuentaDao objDao = null;
-        try(EnvioFunction function = new EnvioFunction();) {
-            objDao = new SubCuentaDao();            
-            
+        try (EnvioFunction function = new EnvioFunction();) {
+            objDao = new SubCuentaDao();
+
             objDto.setSbcu_clas(clasDto.getClas_clas());
             objDto.setSbcu_grup(grupoDto.getGrup_grup());
             objDto.setSbcu_cuen(cuenDto.getCuen_cuen());
-            
+
             objDao = poblarDao(objDto);
-            System.out.println("Query: "+objDao.insertSubCuenta());
+            System.out.println("Query: " + objDao.insertSubCuenta());
             boolean rs = function.enviarUpdate(objDao.insertSubCuenta());
-            if(!rs){
-                rta="Error ";
-            }            
+            if (!rs) {
+                rta = "Error ";
+            }
         } catch (Exception e) {
             e.printStackTrace();
-            rta = "Error "+ e;
+            rta = "Error " + e;
         }
         return rta;
     }
+
     /**
-     * Funcion encargada de poblar del dao de SubCuentas con el Dto de SubCuentas
+     * Funcion encargada de poblar del dao de SubCuentas con el Dto de
+     * SubCuentas
+     *
      * @param objDto
-     * @return 
+     * @return
      */
-    public SubCuentaDao poblarDao(SubCuentaDto objDto){
+    public SubCuentaDao poblarDao(SubCuentaDto objDto) {
         SubCuentaDao objDao = new SubCuentaDao();
-        objDao.setSbcu_clas(objDto.getSbcu_clas());
-        objDao.setSbcu_codigo(objDto.getSbcu_codigo());
-        objDao.setSbcu_cuen(objDto.getSbcu_cuen());
-        objDao.setSbcu_descripcion(objDto.getSbcu_descripcion());
-        objDao.setSbcu_estado(objDto.getSbcu_estado());
-        objDao.setSbcu_grup(objDto.getSbcu_grup());
-        objDao.setSbcu_nombre(objDto.getSbcu_nombre());
-        objDao.setSbcu_sbcu(objDto.getSbcu_sbcu());
-        objDao.setSbcu_naturaleza(objDto.getSbcu_naturaleza());
-        
+        try {            
+            objDao.setSbcu_clas(objDto.getSbcu_clas());
+            objDao.setSbcu_codigo(objDto.getSbcu_codigo());
+            objDao.setSbcu_cuen(objDto.getSbcu_cuen());
+            objDao.setSbcu_descripcion(objDto.getSbcu_descripcion());
+            objDao.setSbcu_estado(objDto.getSbcu_estado());
+            objDao.setSbcu_grup(objDto.getSbcu_grup());
+            objDao.setSbcu_nombre(objDto.getSbcu_nombre());
+            objDao.setSbcu_sbcu(objDto.getSbcu_sbcu());
+            objDao.setSbcu_naturaleza(objDto.getSbcu_naturaleza());
+        } catch (Exception e) {
+            e.printStackTrace();
+            objDao = null;
+        }
         return objDao;
     }
 }
