@@ -40,7 +40,7 @@ public class ConfirmaDatos {
             int tam = rtaVector.length;
             if (tam == 2) {
                 // Este mensaje lo envia la funcion que envia la funcion de java que
-                // confirma que el llamado de a la funcion fue exitiso.
+                // confirma que el llamado de a la funcion fue exitoso.
                 if (rtaVector[1].equalsIgnoreCase("Ok")) {
                     // aqui verifico si es true or false
                     String[] rtaPg = function.getRespuesta().split(",");

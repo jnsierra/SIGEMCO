@@ -162,17 +162,33 @@
                     <li><a href="#">Categorias</a>
                         <ul class="dropdown-menu">
                             <%if (permisos.indexOf(".InCat1.") >= 0) {%>
-                            <li><a href="reenvioGeneral.action?accion=271">Adicionar Referencia</a></li>
+                            <li><a href="reenvioGeneral.action?accion=271">Adicionar Categoría</a></li>
                                 <%}
                                     if (permisos.indexOf(".InCat2.") >= 0) {%>
-                            <li><a href="reenvioGeneral.action?accion=272">Actualizar Referencia </a></li>
+                            <li><a href="reenvioGeneral.action?accion=272">Actualizar Categoría </a></li>
                                 <%}
                                     if (permisos.indexOf(".InCat3.") >= 0) {%>
-                            <li><a href="reenvioGeneral.action?accion=274">Consultar Referencia</a></li>
+                            <li><a href="reenvioGeneral.action?accion=274">Consultar Categoría</a></li>
                                 <%}%>
                         </ul>
                     </li>
                     <%}
+                        
+                         if (permisos.indexOf(".InProv1.") >= 0 || permisos.indexOf(".InProv2.") >= 0 || permisos.indexOf(".InProv3.") >= 0) {%>
+                    <li><a href="#">Categorias</a>
+                        <ul class="dropdown-menu">
+                            <%if (permisos.indexOf(".InProv1.") >= 0) {%>
+                            <li><a href="reenvioGeneral.action?accion=281">Adicionar Proveedores</a></li>
+                                <%}
+                                    if (permisos.indexOf(".InProv2.") >= 0) {%>
+                            <li><a href="reenvioGeneral.action?accion=282">Actualizar Proveedores </a></li>
+                                <%}
+                                    if (permisos.indexOf(".InProv3.") >= 0) {%>
+                            <li><a href="reenvioGeneral.action?accion=284">Consultar Porveedores</a></li>
+                                <%}%>
+                        </ul>
+                    </li>
+                    <%}  
                         if (permisos.indexOf(".InPr7.") >= 0 || permisos.indexOf(".InPr8.") >= 0) {%>
                     <li><a href="#">Celulares</a>
                         <ul class="dropdown-menu">

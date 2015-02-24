@@ -301,7 +301,33 @@
                                                 </tbody>                                
                                             </table>
                                         </div>
-                                    </div>                                    
+                                    </div>
+                                    
+                                    <div class="row">
+                                        <div class="col-md-12 col-sm-12 col-xs-12">
+                                            <table style="width: 100%">
+                                                <thead>
+                                                    <tr>
+                                                        <th class="subTitulo"><a id="InRefe">PROVEEDORES</a></th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody style="display: none;" class="subPermisoInRefe">
+                                                    <tr>                                    
+                                                        <td style="width: 30%">Inserci&oacute;n</td>
+                                                        <td style="width: 20%"><input type="checkbox" value="InProv1" id="InProv1"/></td>
+                                                        <td style="width: 30%">Modificacion</td>
+                                                        <td style="width: 20%"><input type="checkbox" value="InProv2" id="InProv2"/></td>
+                                                    </tr>
+                                                    <tr>                                    
+                                                        <td>Consulta General</td>
+                                                        <td><input type="checkbox" value="InProv3" id="InProv3"/></td>
+                                                        <td>&nbsp;&nbsp;&nbsp;&nbsp;</td>
+                                                        <td>&nbsp;&nbsp;&nbsp;&nbsp;</td>
+                                                    </tr>
+                                                </tbody>                                
+                                            </table>
+                                        </div>
+                                    </div>
                                     <div class="row">
                                         <div class="col-md-12 col-sm-12 col-xs-12">
                                             <table style="width: 100%">
