@@ -58,6 +58,7 @@
             <result name="inv_ins_referencia">/WEB-INF/ACCIONES/INVENTARIOS/CREACION/Inv_InsertReferencia.jsp</result>
             <result name="Inv_ConReferencia">/WEB-INF/ACCIONES/INVENTARIOS/CONSULTA/Inv_ConsReferencia.jsp</result>
             <result name="Inv_ConCategoria">/WEB-INF/ACCIONES/INVENTARIOS/CONSULTA/Inv_ConsCategoria.jsp</result>
+            <result name="inv_ins_categoria">/WEB-INF/ACCIONES/INVENTARIOS/CREACION/Inv_InsertCategoria.jsp</result>
             <result name="inv_con_celular">/WEB-INF/ACCIONES/INVENTARIOS/CONSULTA/Inv_ConsGenRemision.jsp</result>
             <result name="adm_ins_parempre">/WEB-INF/ACCIONES/ADMINISTRACION/CREACION/Adm_ParamGenerales.jsp</result>
             <result name="con_consgenclases">/WEB-INF/ACCIONES/CONTABILIDAD/CONSULTA/Con_ConsGenClase.jsp</result>
@@ -122,6 +123,22 @@
         <action name="inv_UpdReferencia" class="co.com.sigemco.alfa.inventario.action.ReferenciaAction" method="actualizaReferencia">
             <result name="success">/WEB-INF/ACCIONES/INVENTARIOS/MODIFICAR/inv_conUpdReferencia.jsp</result>
             <result name="input"  >/WEB-INF/ACCIONES/INVENTARIOS/MODIFICAR/inv_conUpdReferencia.jsp</result>
-        </action>              
+        </action>
+        <action name="inv_ConCategoria" class="co.com.sigemco.alfa.inventario.action.CategoriaAction" method="consultaCategorias">
+            <result name="success">/WEB-INF/ACCIONES/INVENTARIOS/CONSULTA/Inv_ConsCategoria.jsp</result>
+            <result name="input"  >/WEB-INF/ACCIONES/INVENTARIOS/CONSULTA/Inv_ConsCategoria.jsp</result>
+        </action> 
+        <action name="inv_conUpdCategoria" class="co.com.sigemco.alfa.inventario.action.CategoriaAction" method="consultaCategoriaEspecifica">
+            <result name="success">/WEB-INF/ACCIONES/INVENTARIOS/MODIFICAR/inv_conUpdCategoria.jsp</result>
+            <result name="input"  >/WEB-INF/ACCIONES/INVENTARIOS/MODIFICAR/inv_conUpdCategoria.jsp</result>
+        </action>
+        <action name="inv_UpdCategoria" class="co.com.sigemco.alfa.inventario.action.CategoriaAction" method="actualizaCategoria">
+            <result name="success">/WEB-INF/ACCIONES/INVENTARIOS/MODIFICAR/inv_conUpdCategoria.jsp</result>
+            <result name="input"  >/WEB-INF/ACCIONES/INVENTARIOS/MODIFICAR/inv_conUpdCategoria.jsp</result>
+        </action>
+        <action name="inv_InsCategoria" class="co.com.sigemco.alfa.inventario.action.CategoriaAction" method="insertar">
+            <result name="success">/WEB-INF/ACCIONES/INVENTARIOS/CREACION/Inv_InsertCategoria.jsp</result>
+            <result name="input"  >/WEB-INF/ACCIONES/INVENTARIOS/CREACION/Inv_InsertCategoria.jsp</result>
+        </action>                
     </package>
 </struts> 

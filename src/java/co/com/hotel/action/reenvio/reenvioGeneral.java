@@ -80,7 +80,7 @@ public class reenvioGeneral extends ActionSupport implements UsuarioHabilitado, 
     public static final int INV_UPD_CATEGORIA = 272;
     public static final int INV_CON_CATEGORIA = 274;
     //Paginas de porveedores
-     public static final int INV_INS_PROVEEDORES = 281;
+    public static final int INV_INS_PROVEEDORES = 281;
     public static final int INV_UPD_PROVEEDORES = 282;
     public static final int INV_CON_PROVEEDORES = 284;
     //MODULO FACTURACION (Primer digito 3)
@@ -94,7 +94,7 @@ public class reenvioGeneral extends ActionSupport implements UsuarioHabilitado, 
 
     //MODULO DE CONTABILIDAD (Primer digito 5)
     public static final int CON_CONSGENCLASES = 514;
-    public static final int CON_INSERTSUBCUENTAS =515;
+    public static final int CON_INSERTSUBCUENTAS = 515;
 
     //Listas iniciales de las paginas
     private List<String> perfiles;
@@ -327,13 +327,24 @@ public class reenvioGeneral extends ActionSupport implements UsuarioHabilitado, 
                     this.camara.put("8", "MENOS DE 8");
                     this.camara.put("13", "ENTRE 8 Y 13");
                     this.camara.put("14", "MAS DE 13 ");
-                    
 
                 case INV_INS_CATEGORIA:
                     nextPage = "inv_ins_categoria";
+                    this.runico = new HashMap<String, String>();
+                    this.runico.put("A", "Activo");
+                    this.runico.put("I", "Inactivo");
+                    this.estadoMap = new HashMap<String, String>();
+                    this.estadoMap.put("A", "Activo");
+                    this.estadoMap.put("I", "Inactivo");
                     break;
                 case INV_UPD_CATEGORIA:
                     nextPage = "inv_upd_categoria";
+                    this.runico = new HashMap<String, String>();
+                    this.runico.put("A", "Activo");
+                    this.runico.put("I", "Inactivo");
+                    this.estadoMap = new HashMap<String, String>();
+                    this.estadoMap.put("A", "Activo");
+                    this.estadoMap.put("I", "Inactivo");
                     break;
                 case INV_CON_CATEGORIA:
                     nextPage = "Inv_ConCategoria";
@@ -355,8 +366,6 @@ public class reenvioGeneral extends ActionSupport implements UsuarioHabilitado, 
                     this.runico = new HashMap<String, String>();
                     this.runico.put("A", "Activo");
                     this.runico.put("I", "Inactivo");
-                    
-
 
                     this.estadoMap = new HashMap<String, String>();
                     this.estadoMap.put("A", "Activo");
@@ -643,6 +652,5 @@ public class reenvioGeneral extends ActionSupport implements UsuarioHabilitado, 
     public void setRunico(Map<String, String> runico) {
         this.runico = runico;
     }
-    
-    
+
 }
